@@ -245,6 +245,8 @@ function soportes(){
 }
 // Clave para mostrar las soluciones ocultas (cámbiala aquí cuando quieras)
 const SOL_CLAVE="profe";
+// Cambia false por true para dejar las soluciones visibles para todo el alumnado (sin clave)
+const SOL_VISIBLE=false;
 function bl(b){
  const [t,a,c,d]=b;
  if(t==="parte")return `<h2 class="parte" id="${sl(a)}">${a}</h2>`;
@@ -281,7 +283,10 @@ function bl(b){
  if(t==="guion")return `<div class="gn">${a.map(([k,x])=>`<div class="${k}">${x}</div>`).join("")}</div>`;
  if(t==="story")return `<div class="sb">${a.map(([n,pl,an,mv,so],i)=>{const [x,y,w,h]=encRect(n);return `<figure><svg viewBox="${x} ${y} ${w} ${h}" role="img" aria-label="Viñeta ${i+1}">${escena()}</svg><figcaption><b>Viñeta ${i+1}.</b> Plano: ${pl}. Angulación: ${an}. Movimiento: ${mv}. Sonido: ${so}.</figcaption></figure>`}).join("")}</div><p class="pie">Storyboard de ejemplo: cada viñeta es un plano del guion técnico. Elaboración propia.</p>`;
  if(t==="act")return actividad(a,c);
- if(t==="movdib")return movDib();if(t==="solmapas")return `<div class="box sol"><b>🔒 Soluciones de la actividad «Mapa conceptual del lenguaje audiovisual»</b><p>Este material está oculto para el alumnado. El profesorado lo muestra con la clave cuando va a corregir la actividad.</p><p><button class="btn" data-sol="abrir">Mostrar soluciones (profesorado)</button></p><div class="solc" hidden data-items='${JSON.stringify(a).replace(/'/g,"&#39;")}'></div></div>`;if(t==="retoimg")return retEj();if(t==="angdiag")return angDiag(a);if(t==="ejang")return angEj(a);
+ if(t==="movdib")return movDib();if(t==="solmapas"){const op=SOL_VISIBLE||(()=>{try{return localStorage.getItem("sol")==="1"}catch(e){return false}})();
+  const figs=a.map(([r,t])=>`<figure class="solf"><figcaption><b>${t}</b></figcaption><a href="${r}" target="_blank" rel="noopener" title="Pulsa para ampliar"><img src="${r}" alt="${t}" loading="lazy"></a></figure>`).join("");
+  return `<div class="box sol"><b>${op?"Soluciones":"🔒 Soluciones"} de la actividad «Mapa conceptual del lenguaje audiovisual»</b>${op?"":`<p>Este material está oculto para el alumnado. El profesorado lo muestra con la clave cuando va a corregir la actividad.</p>`}<p><button class="btn" data-sol="abrir"${op?" hidden":""}>Mostrar soluciones (profesorado)</button></p><div class="solc"${op?"":" hidden"} data-items='${JSON.stringify(a).replace(/'/g,"&#39;")}'>${op?figs+(SOL_VISIBLE?"":'<p><button class="btn" data-sol="cerrar">Ocultar soluciones</button></p>'):""}</div></div>`}
+ if(t==="retoimg")return retEj();if(t==="angdiag")return angDiag(a);if(t==="ejang")return angEj(a);
  if(t==="cono")return conoDiag();
  if(t==="eje")return `<div class="fig" data-k="eje"><svg viewBox="0 0 400 320" role="img" aria-label="Vista cenital de dos personajes y el eje de acción"><rect width="400" height="320" fill="var(--card)"/><line x1="20" y1="160" x2="380" y2="160" stroke="#c0392b" stroke-width="3" stroke-dasharray="8 6"/><circle cx="130" cy="160" r="18" fill="#2b7bd6"/><text x="130" y="166" text-anchor="middle" fill="#fff" font-weight="700">A</text><circle cx="270" cy="160" r="18" fill="#e08a00"/><text x="270" y="166" text-anchor="middle" fill="#fff" font-weight="700">B</text><text x="200" y="150" text-anchor="middle" fill="#c0392b" font-size="13">eje de acción</text>${cam("cam",110,260)}</svg><div class="btns">${EJE.map(([n],i)=>`<button data-eje="${i}">${n}</button>`).join("")}</div><p class="desc">Elige dónde colocar la cámara respecto al eje.</p></div>`;
  if(t==="breakout")return `<div class="box ej"><b>${a}</b><div class="bo" data-n="${c.length}">${c.map(([q,r],i)=>`<div class="lock"><p>${i+1}. ${q}</p><input aria-label="Respuesta ${i+1}" data-r="${r.join("|")}"> <button data-open>Abrir candado</button> <span class="st"></span></div>`).join("")}<p class="fin" hidden><b>${d}</b></p></div></div>`;
@@ -545,9 +550,9 @@ app.addEventListener("click",e=>{
  }else if(d.encreset!==undefined){const f=b.closest(".fig");f.dataset.cuts="[]";updEnc(f);
  }else if(d.sol!==undefined){const bx=b.closest(".sol"),c=bx.querySelector(".solc");
   if(d.sol==="abrir"){const k=prompt("Clave del profesorado:");if(k===null)return;if(k!==SOL_CLAVE){alert("Clave incorrecta");return}
-   const it=JSON.parse(c.dataset.items);c.innerHTML=it.map(([r,t])=>`<figure class="solf"><figcaption><b>${t}</b></figcaption><a href="${r}" target="_blank" rel="noopener" title="Pulsa para ampliar"><img src="${r}" alt="${t}" loading="lazy"></a></figure>`).join("")+'<p><button class="btn" data-sol="cerrar">Volver a ocultar</button></p>';
-   c.hidden=false;b.hidden=true}
-  else{c.hidden=true;c.innerHTML="";bx.querySelector("[data-sol=abrir]").hidden=false}
+   const it=JSON.parse(c.dataset.items);c.innerHTML=it.map(([r,t])=>`<figure class="solf"><figcaption><b>${t}</b></figcaption><a href="${r}" target="_blank" rel="noopener" title="Pulsa para ampliar"><img src="${r}" alt="${t}" loading="lazy"></a></figure>`).join("")+'<p><button class="btn" data-sol="cerrar">Ocultar soluciones</button></p>';
+   c.hidden=false;b.hidden=true;try{localStorage.setItem("sol","1")}catch(e){}}
+  else{c.hidden=true;c.innerHTML="";bx.querySelector("[data-sol=abrir]").hidden=false;try{localStorage.removeItem("sol")}catch(e){}}
  }else if(d.tira!==undefined){ruletaTira(b.closest(".rul"));
  }else if(d.slot!==undefined){const on=b.getAttribute("aria-pressed")!=="true";if(b.dataset.v||!on){b.setAttribute("aria-pressed",on?"true":"false");b.querySelector(".lk").textContent=on?"🔒":"🔓"}
  }else if(d.copia!==undefined){const t=b.closest(".rul").querySelector(".rfr").dataset.txt;if(t){try{navigator.clipboard.writeText(t);b.textContent="¡Copiado!";setTimeout(()=>b.textContent="Copiar el reto",1500)}catch(e){}} }else if(d.tgl!==undefined){const li=b.closest("li.g");tocSet(li,li.querySelector(".subs").hidden);
