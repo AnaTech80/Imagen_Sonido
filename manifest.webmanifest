@@ -1,0 +1,15 @@
+{
+  "name": "Imagen y Sonido · Bachillerato",
+  "short_name": "Imagen y Sonido",
+  "description": "Recurso de aula para Imagen y Sonido de 1.º y 2.º de Bachillerato (Comunitat Valenciana).",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101820",
+  "theme_color": "#101820",
+  "icons": [
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable"}
+  ]
+}

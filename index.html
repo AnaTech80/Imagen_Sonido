@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Imagen y Sonido · Bachillerato</title>
+<meta name="theme-color" content="#101820">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#EEF1F4;--ink:#101820;--mute:#5B6673;--card:#fff;--line:#CBD3DC;--acc:#1F6FEB;--clap:#F5B700}
+@media(prefers-color-scheme:dark){:root{--bg:#0E141B;--ink:#E8EDF2;--mute:#9AA6B2;--card:#161F29;--line:#2A3541;--acc:#6EA8FF}}
+*{box-sizing:border-box}
+body{margin:0;font:clamp(17px,1.1vw + 11px,19px)/1.6 "Avenir Next","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:#101820;color:#fff;border-bottom:6px solid var(--clap)}
+.wrap{max-width:1240px;margin:0 auto;padding:1.25rem clamp(1rem,3vw,2.5rem)}
+header .wrap{padding-top:calc(1.5rem + env(safe-area-inset-top,0px))}
+h1{margin:0;font-size:clamp(1.9rem,6vw,2.8rem);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+header p{margin:.5rem 0 0;color:#B9C4CF}
+header{background:linear-gradient(110deg,#101820 40%,#1c2f4a 75%,#3b2a5e)}
+.unav{display:flex;flex-wrap:wrap;gap:.5rem 1rem;justify-content:space-between;align-items:center;margin:.2rem 0 .8rem}.unav .back{margin:0;display:inline-flex;align-items:center;gap:.35rem}.unav .ico{width:1.15em;height:1.15em}.pn{display:flex;gap:.5rem;flex-wrap:wrap}.pn a{padding:.3rem .7rem;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--acc);font-weight:650;text-decoration:none;font-size:.9rem}.pn a:hover{background:color-mix(in srgb,var(--acc) 10%,var(--card))}.lnk{background:none;border:0;padding:0;color:var(--acc);font:inherit;font-weight:650;text-decoration:underline;cursor:pointer;text-align:left}
+.hd{display:flex;align-items:center;gap:1rem;justify-content:space-between}.hd-i{flex:0 1 460px;min-width:0}.hd-i svg{display:block;width:100%;height:auto}
+.logo{display:block;width:min(100%,440px);height:auto}header h1{margin:0}
+@media (max-width:760px){.hd{flex-direction:column;align-items:flex-start}.hd-i{flex:none;width:100%;max-width:380px}}
+header .creada{margin:.25rem 0 0;font-size:.82rem;color:#E9EEF3;opacity:.8;font-style:italic}
+.hero{margin:0 0 1.2rem;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#101820,#1c2f4a 55%,#3b2a5e);border:1px solid var(--line)}
+.hero svg{display:block;width:100%;height:auto;max-height:260px}
+.hd-i .nt{animation:fl 4s ease-in-out infinite}.hd-i .nt:nth-of-type(2n){animation-delay:-1.5s}
+@keyframes fl{50%{transform:translateY(-8px)}}
+.hd-i .on{animation:ond 1.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes ond{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.hd-i .nt,.hd-i .on{animation:none}}
+#estado{display:inline-block;margin-top:.9rem;font-size:.85rem;padding:.15rem .6rem;border:1px solid #3A4755;border-radius:99px;color:#B9C4CF}
+.strip{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,430px),1fr));gap:.8rem}.strip li{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.strip a{display:grid;grid-template-columns:34px 56px 1fr;align-items:stretch;min-height:68px;color:inherit;text-decoration:none;background:var(--card)}
+.strip a:hover{background:color-mix(in srgb,var(--acc) 8%,var(--card))}
+.perf{background:repeating-linear-gradient(to bottom,transparent 0 10px,var(--bg) 10px 22px) center/10px 100% no-repeat,#101820}
+.num{display:grid;place-items:center;font-size:1.6rem;font-weight:800;color:var(--acc)}
+.tit{display:flex;flex-direction:column;justify-content:center;padding:.6rem .8rem .6rem 0;font-weight:650}
+.tit small{font-weight:400;color:var(--mute)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--clap);outline-offset:2px}
+.back{display:inline-block;margin-bottom:1rem;color:var(--acc);text-decoration:none;font-weight:650}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1.2rem}
+.final{border-left:6px solid var(--clap)}
+main h2{margin:.2rem 0 .6rem;font-size:1.7rem;line-height:1.15}
+.panel h3{margin:1.2rem 0 .3rem;font-size:1.05rem}
+.panel ul{margin:.3rem 0;padding-left:1.2rem}
+.panel li{margin:.25rem 0}
+.panel p,.panel li,.box,.nota,.sticky,.desc{text-align:justify;hyphens:auto;-webkit-hyphens:auto}.btns,.btns button,.enl li,.unav,.tw td,.tw th,.rub td,.rub th{text-align:left;hyphens:manual}
+.enl{list-style:none;padding:0!important}
+.enl a,.back{color:var(--acc);font-weight:650}
+.panel h4{margin:.9rem 0 .2rem;font-size:1rem}
+.crit{padding-left:1.1rem}
+.panel ol{margin:.3rem 0;padding-left:1.4rem}
+.fig{margin:1rem 0}
+.ejg{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:.6rem}.ejc{margin:0;text-align:center}.ejw{position:relative;aspect-ratio:140/170;border-radius:8px;overflow:hidden;border:1px solid var(--line)}.ejw svg,.ejw img{position:absolute;inset:0;width:100%;height:100%;max-width:none;border:0;border-radius:0;object-fit:cover}.ejc figcaption{display:flex;flex-direction:column;font-size:.85rem;margin-top:.3rem}.ejc small{color:var(--mute)}.ejc a{font-size:.8rem}
+.sol{border-left:5px solid #7b4fc4}.solf{margin:1rem 0}.solf img{width:100%;max-width:100%;border:1px solid var(--line);border-radius:6px}.solf figcaption{margin:.3rem 0}
+.fig svg{display:block;width:100%;max-width:640px;margin:0 auto;border:1px solid var(--line);border-radius:6px}
+.mk{fill:none;stroke:var(--line);stroke-width:2;opacity:0}
+.mk.on{stroke:var(--clap);stroke-width:5;opacity:1}
+.btns{display:flex;flex-wrap:wrap;gap:.4rem;margin:.7rem 0}
+.btns button{font:inherit;font-size:.9rem;padding:.4rem .7rem;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);cursor:pointer}
+.btns button.sel{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
+.btns button.ok{border-color:#1a8a4a;background:color-mix(in srgb,#1a8a4a 18%,var(--card))}
+.btns button.ko{border-color:#c0392b;background:color-mix(in srgb,#c0392b 18%,var(--card))}
+.desc,.fb{margin:.3rem 0}
+.q{padding:.8rem 0;border-top:1px solid var(--line)}
+.vid{position:relative;aspect-ratio:16/9;margin:1rem 0 .3rem;background:#101820;border-radius:6px;overflow:hidden}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.pie,.mute{font-size:.88rem;color:var(--mute)}
+.nota{padding:.6rem .8rem;border-left:4px solid var(--clap);background:color-mix(in srgb,var(--clap) 10%,var(--card))}
+.refs{margin-top:2rem;padding-top:1rem;border-top:2px solid var(--line);font-size:.92rem;color:var(--mute)}
+.refs h3{font-size:1rem}
+.panel h3{border-left:8px solid var(--acc);padding:.45rem .8rem;margin-top:2rem;font-size:1.3rem;line-height:1.25;background:color-mix(in srgb,var(--acc) 12%,var(--card));border-radius:0 8px 8px 0}.panel h4{border-bottom:2px solid var(--line);padding-bottom:.15rem;font-size:1.08rem}
+.t{color:var(--acc)}
+.box{margin:.7rem 0;padding:.7rem .9rem;border-left:6px solid var(--acc);background:color-mix(in srgb,var(--acc) 10%,var(--card));border-radius:0 6px 6px 0}
+.box.clave{border-color:var(--clap);background:color-mix(in srgb,var(--clap) 16%,var(--card))}
+.box.ej{border-color:#1a8a4a;background:color-mix(in srgb,#1a8a4a 12%,var(--card))}
+.btn{display:inline-block;font:inherit;font-weight:650;padding:.45rem .8rem;margin:.3rem .3rem 0 0;border:0;border-radius:6px;background:var(--acc);color:#fff;text-decoration:none;cursor:pointer}
+.nest div{padding:.5rem .7rem;margin:.35rem 0;border-radius:6px}
+.n1{background:color-mix(in srgb,var(--acc) 12%,var(--card))}.n2{background:color-mix(in srgb,var(--acc) 22%,var(--card))}.n3{background:color-mix(in srgb,var(--clap) 35%,var(--card))}.n4{background:var(--acc);color:#fff}.n5{background:#fff;color:#222}.n5 small{color:#444}
+.glo dt{font-weight:800;color:var(--acc);margin-top:.6rem}.glo dd{margin:0 0 0 .1rem}
+.foto{overflow:hidden;aspect-ratio:16/9;border:1px solid var(--line);border-radius:6px}.foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.lock{padding:.5rem 0;border-top:1px solid var(--line)}.lock input{font:inherit;padding:.3rem;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}.lock.abierto{background:color-mix(in srgb,#1a8a4a 14%,transparent)}.st{font-weight:650}
+.sim label{display:block;margin:.4rem 0;font-weight:650}.sim input{width:100%;max-width:420px}
+.box.def::before{content:"📘 "}.box.clave::before{content:"⚠️ "}.box.ej::before{content:"🎥 "}
+.panel h2::before{content:"🎬 "}
+.gal{display:flex;flex-wrap:wrap;justify-content:center;gap:.9rem;margin:1rem 0}.gal figure{margin:0;flex:1 1 280px;max-width:440px}.gal figcaption,.fig>.pie{text-align:center}.gal img{width:100%;border-radius:6px;display:block}
+.gal:has(figure:nth-child(8)) figure{flex:1 1 150px;max-width:190px}.gal:has(figure:nth-child(8)) img{height:210px;object-fit:cover;object-position:center}.gal a{display:block}
+.tlh{list-style:none;margin:1.2rem 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:.7rem}.tlh li{text-align:left;hyphens:manual;display:flex;flex-direction:column;gap:.25rem;padding:.7rem .75rem .8rem;border:1px solid var(--line);border-top:6px solid var(--c);border-radius:8px;background:var(--card);font-size:.92rem;line-height:1.35}.tly{align-self:flex-start;font-weight:800;color:#fff;background:var(--c);padding:.1rem .55rem;border-radius:999px;font-size:.85rem}.tle{font-size:1.6rem;line-height:1}.tlh b{font-size:1rem}
+.sop{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:.8rem;margin:1.2rem 0}.sop figure{margin:0;padding:.6rem;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}.sop svg{display:block;width:100%;max-width:150px;margin:0 auto;background:color-mix(in srgb,var(--acc) 7%,var(--card));border-radius:6px}.sop figcaption{text-align:left;hyphens:manual;display:flex;flex-direction:column;gap:.2rem;margin-top:.5rem;font-size:.9rem;line-height:1.35}.sop em{color:var(--mute);font-size:.85rem}
+.vlink{margin:.4rem 0 .8rem;padding:.4rem .7rem;border-left:4px solid #c0392b;background:color-mix(in srgb,#c0392b 8%,var(--card));border-radius:0 6px 6px 0;font-size:.92rem}.vlink button{font:inherit;font-size:.88rem;margin:.15rem .3rem .15rem 0;padding:.15rem .55rem;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--acc);cursor:pointer;text-decoration:underline}.vitem{scroll-margin-top:12px}.ejt td:first-child{font-weight:700}.ejt .btn{white-space:nowrap}.rul{margin:1.4rem 0;padding:1rem 1.1rem;border-radius:14px;background:linear-gradient(120deg,#fff4d6,#ffe0f0 60%,#e1ecff);color:#1a1a2e;border:2px dashed #c0392b}.rul h3{margin:.1rem 0 .3rem;background:none!important;border:0!important;padding:0!important;color:#7a1f1f!important;font-size:1.25rem}.rul p{margin:.3rem 0;text-align:left}.rcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin:.7rem 0}.rslot{position:relative;display:flex;flex-direction:column;gap:.2rem;min-height:92px;padding:.5rem .6rem;text-align:left;font:inherit;border:2px solid #1a1a2e;border-radius:12px;background:#fff;color:#1a1a2e;cursor:pointer;box-shadow:0 3px 0 #1a1a2e}.rslot small{font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:#7a1f1f;font-weight:800}.rslot .rv{font-size:1.02rem;line-height:1.25}.rslot .lk{position:absolute;top:.35rem;right:.45rem;font-size:.9rem}.rslot[aria-pressed=true]{background:#fff3b0}.rslot.spin{animation:rtemb .18s infinite}@keyframes rtemb{0%{transform:translateY(0) rotate(0)}25%{transform:translateY(-2px) rotate(-1.2deg)}75%{transform:translateY(2px) rotate(1.2deg)}}.rfr{padding:.6rem .8rem;border-radius:10px;background:#1a1a2e;color:#fff;font-weight:600;min-height:2.6em}.rul .btns .btn,.rul .btns button{color:#fff}.rul .btns button:not(.btn){background:#fff;color:#1a1a2e;border:1px solid #1a1a2e}.rul .ir{margin-left:.2rem}@media (prefers-reduced-motion:reduce){.rslot.spin{animation:none}}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:1rem;margin:1rem 0}.vitem{display:flex;flex-direction:column;gap:.25rem;padding:.6rem;border:1px solid var(--line);border-radius:8px;background:var(--card)}.vitem .vcard{margin:0 0 .3rem}.vitem .vt{line-height:1.3}.vap{font-size:.88rem;color:var(--mute)}.dur{align-self:flex-start;font-size:.85rem;font-weight:700;padding:.15rem .5rem;border-radius:999px;background:color-mix(in srgb,var(--clap) 22%,var(--card));color:var(--ink)}.dur.ok{background:color-mix(in srgb,#1a8a4a 22%,var(--card))}.vtot{font-size:.95rem}.vcard{position:relative;aspect-ratio:16/9;background:#101820;border-radius:6px;overflow:hidden;margin:1rem 0 .2rem}.vcard img{width:100%;height:100%;object-fit:cover;opacity:.75}.vcard iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.play{position:absolute;inset:0;margin:auto;width:68px;height:68px;border:0;border-radius:50%;background:#c0392b;color:#fff;font-size:26px;cursor:pointer}
+.tw{overflow-x:auto;margin:.8rem 0}.tw table{border-collapse:collapse;width:100%;min-width:560px}.tw th{background:var(--acc);color:#fff;padding:.5rem;text-align:left}.tw td{padding:.45rem .5rem;border-bottom:1px solid var(--line)}.tw tr:nth-child(even) td{background:color-mix(in srgb,var(--acc) 7%,var(--card))}
+.fig:has(>.rej){text-align:center}.rej{position:relative;line-height:0;max-width:560px;margin:0 auto}.rej img{width:100%;border-radius:6px}.rej .gr{position:absolute;inset:0;display:none;pointer-events:none;filter:drop-shadow(0 0 2px #000)}.rej.on .gr{display:block}
+.rej[data-m=horizonte] .gr{background:linear-gradient(#fff,#fff) 0 33.33%/100% 2px no-repeat,linear-gradient(#fff,#fff) 0 66.66%/100% 2px no-repeat}
+.rej[data-m=tercios] .gr{background:linear-gradient(#fff,#fff) 33.33% 0/2px 100% no-repeat,linear-gradient(#fff,#fff) 66.66% 0/2px 100% no-repeat,linear-gradient(#fff,#fff) 0 33.33%/100% 2px no-repeat,linear-gradient(#fff,#fff) 0 66.66%/100% 2px no-repeat,radial-gradient(circle,#f5b700 7px,transparent 8px) calc(33.33% - 10px) calc(33.33% - 10px)/20px 20px no-repeat,radial-gradient(circle,#f5b700 7px,transparent 8px) calc(66.66% - 10px) calc(33.33% - 10px)/20px 20px no-repeat,radial-gradient(circle,#f5b700 7px,transparent 8px) calc(33.33% - 10px) calc(66.66% - 10px)/20px 20px no-repeat,radial-gradient(circle,#f5b700 7px,transparent 8px) calc(66.66% - 10px) calc(66.66% - 10px)/20px 20px no-repeat}
+#arriba{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));width:50px;height:50px;border:0;border-radius:50%;background:var(--acc);color:#fff;font-size:26px;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.4);cursor:pointer;opacity:0;visibility:hidden;transition:opacity .2s;z-index:50}
+#arriba.ver{opacity:1;visibility:visible}
+.panel .parte{margin:2.4rem 0 .8rem;padding:.7rem 1rem;background:var(--acc);color:#fff;border-radius:6px;font-size:1.3rem;scroll-margin-top:12px}.parte::before{content:none!important}
+.toc{margin:1rem 0;padding:.8rem 1rem;border:1px solid var(--line);border-radius:6px;background:var(--card)}.toc ol{margin:.4rem 0 0;padding-left:0;list-style:none}.toc li{margin:.1rem 0}.tocb{display:flex;gap:.4rem;margin:.5rem 0 .2rem}.toc .tocb button{text-decoration:none;color:var(--ink);padding:.2rem .5rem;font:inherit;font-size:.8rem;padding:.2rem .5rem;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none}.toc .tg{display:flex;align-items:baseline;gap:.2rem}.toc .tgl{width:1.4rem;flex:none;padding:0;text-decoration:none;color:var(--acc);font-size:1rem}.toc .tgs{width:1.4rem;flex:none}.toc .subs{list-style:none;margin:.1rem 0 .3rem 1.5rem;padding:0}.toc .subs[hidden]{display:none}.toc li.sub{margin-left:1rem;font-size:.9em;border-left:2px solid var(--line);padding-left:.5rem}.toc li.sub button{text-decoration:none;color:var(--ink)}.toc button{font:inherit;color:var(--acc);background:none;border:0;padding:.2rem 0;cursor:pointer;text-align:left;text-decoration:underline}
+
+.layout{display:block}
+.side .toc{margin:0 0 1rem}
+.final .parte,.sa{border-color:var(--clap)}
+.sa-h{margin:2rem 0 .6rem;font-size:1.15rem}
+.sa a{display:grid;grid-template-columns:34px 56px 1fr;align-items:stretch;min-height:76px;color:inherit;text-decoration:none;background:color-mix(in srgb,var(--clap) 14%,var(--card));border:2px solid var(--clap);border-radius:8px;overflow:hidden}
+.sa .num{font-size:1.8rem}
+.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1rem;align-items:start}
+.cols2>*{min-width:0}
+.mapafig svg{max-width:100%!important}
+@media(min-width:1000px){
+ .layout.sola{display:block}
+ .layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:1.5rem;align-items:start}
+ .side{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+ .side .toc{font-size:.92rem}
+ .panel{padding:1.6rem 2rem}
+}
+@media(min-width:1000px){.sin-side{display:block}}
+
+#casa{position:fixed;right:calc(max(16px,env(safe-area-inset-right,0px)) + 60px);bottom:max(16px,env(safe-area-inset-bottom,0px));width:50px;height:50px;border-radius:50%;background:var(--clap);color:#101820;display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.4);opacity:0;visibility:hidden;transition:opacity .2s;z-index:50}
+#casa.ver{opacity:1;visibility:visible}#casa svg{width:26px;height:26px}
+.autora{margin-top:1.2rem;text-align:center}
+.act{margin:1.2rem 0;border:2px solid var(--clap);border-radius:8px;padding:.4rem 1rem 1rem;background:color-mix(in srgb,var(--clap) 8%,var(--card))}
+.act>summary{font-weight:800;font-size:1.1rem;cursor:pointer;padding:.5rem 0}
+.act h4{margin:1rem 0 .3rem}
+.rub{overflow-x:auto;margin:.6rem 0}.rub table{border-collapse:collapse;min-width:720px;width:100%}.rub th{background:var(--acc);color:#fff;padding:.4rem;text-align:left;font-size:.9rem}.rub td{padding:.4rem;border-bottom:1px solid var(--line);vertical-align:top;font-size:.9rem}.rub label{display:block;cursor:pointer}.rub td:first-child{font-weight:700;min-width:140px}
+.rubn{font-weight:800;font-size:1.05rem}
+.act{border:0!important;padding:0!important;background:none!important;box-shadow:none!important}.act>summary{font-weight:700;cursor:pointer;margin:.4rem 0}.abn{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 1.3rem;border-radius:16px;color:#fff;background:linear-gradient(120deg,#5b8def,#8e6fdc 60%,#c28ae6);margin:.4rem 0 .8rem}.abt{display:block;font-size:.9rem;opacity:.9}.abh{display:block;font-size:1.5rem;font-weight:800;line-height:1.15;margin:.2rem 0 .5rem}.chip{display:inline-block;background:#fff;color:#1d4fb8;border-radius:99px;padding:.15rem .8rem;font-size:.8rem;font-weight:700}.abi{font-size:2.6rem}.sticky{background:#5fbb8c;color:#073b22;border-radius:6px;padding:.7rem .9rem;margin:.6rem 0 .8rem;box-shadow:0 3px 8px #0002;width:100%;box-sizing:border-box}.ah{display:flex;align-items:center;gap:.5rem;padding:.45rem .8rem;border-radius:10px;margin:1.1rem 0 .5rem;font-size:1.05rem;background:#e9ecff;color:#2b2f8f}.ah span{font-size:1.2rem}.ah.h2{background:#d8f1e6;color:#145a3a}.ah.h3{background:#dfe0ff;color:#33349e}.ah.h4{background:#ffe9c7;color:#7a4300}.ah.h5{background:#e4dcff;color:#47297f}.ah.h6{background:#ffdede;color:#8a1f1f}.ah.h7{background:#d7f0ff;color:#0b4f7a}.explora{background:#d9eef7;border-radius:12px;padding:.8rem 1rem}.explora p{margin:.4rem 0}
+.fig[data-k="pl"] svg,.fig[data-k="pl"] .foto{max-width:300px}
+.encg{display:grid;grid-template-columns:minmax(110px,150px) 1fr;gap:1rem;align-items:start}.encl-t{font-size:.85rem;margin:0 0 .5rem}.encv{display:flex;height:200px}.encd{min-width:0}.encv input[type=range]{writing-mode:vertical-lr;width:28px;height:100%;margin:0}.encr2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:.8rem}.encr2>*{min-width:0}@media (max-width:620px){.encg{grid-template-columns:90px 1fr}.encl-t{font-size:.75rem}}
+.enc .tlw{position:relative;margin:.3rem 0 .8rem}.enc .tl{display:flex;height:34px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}.enc .tl span{display:grid;place-items:center;color:#fff;font-size:.8rem;font-weight:700;white-space:nowrap;overflow:hidden}
+.enc .pos{position:absolute;top:-5px;bottom:-5px;width:3px;background:var(--ink);pointer-events:none}
+.enc svg{max-width:100%}
+
+.gn{font:15px/1.5 ui-monospace,"Courier New",monospace;background:#fffef7;color:#1b1b1b;border:1px solid #d9d4bf;border-radius:6px;padding:1rem 1.2rem;margin:1rem 0;max-width:640px}
+@media(prefers-color-scheme:dark){.gn{background:#1d1f22;color:#e8e6df;border-color:#3a3d42}}
+.gn .esc{font-weight:800;color:var(--acc);margin-top:.8rem;text-transform:uppercase}.gn .per{margin:.6rem 0 0 30%;font-weight:700}.gn .par{margin-left:24%;font-style:italic;color:var(--mute)}.gn .dia{margin:0 12% 0 18%}.gn .acc{margin:.5rem 0}
+.sb{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:.8rem;margin:1rem 0}.sb figure{margin:0;border:2px solid var(--ink);border-radius:4px;background:var(--card)}.sb svg{display:block;width:100%}.sb figcaption{padding:.4rem .6rem;font-size:.85rem;border-top:2px solid var(--ink)}
+</style>
+</head>
+<body>
+<header><div class="wrap hd"><div class="hd-t"><h1><svg class="logo" viewBox="-4 -58 509 80" role="img" aria-label="Imagen y Sonido" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#FFD54A"/><stop offset="1" stop-color="#FF8A5B"/></linearGradient></defs><path d="M4.4 0H13.1V-47.3H4.4ZM21.4 0H29.9V-17.5C29.9 -25.9 31.9 -28.5 36.8 -28.5C41.3 -28.5 43.7 -26.4 43.7 -19.5V0H52.2V-17.5C52.2 -25.9 54.7 -28.5 59.4 -28.5C63.4 -28.5 66 -26.6 66 -19.5V0H74.6V-20.5C74.6 -31.1 69.6 -36.3 60.2 -36.3C55.2 -36.3 51.7 -34.6 48.8 -30.8C46.4 -34.6 43.3 -36.3 38.4 -36.3C34.2 -36.3 31.7 -35.1 29.2 -32.1V-35.5H21.4ZM80 -17.6C80 -6.9 87.5 0.8 97.9 0.8C102.8 0.8 106.2 -0.8 109.6 -4.6V0H117.4V-35.5H109.6V-30.7C106.7 -34.6 103.2 -36.3 98 -36.3C87.6 -36.3 80 -28.4 80 -17.6ZM88.6 -17.4C88.6 -23.9 92.9 -28.5 98.9 -28.5C105 -28.5 109.4 -23.9 109.4 -17.5C109.4 -11.6 105.5 -7 99.1 -7C92.9 -7 88.6 -11.2 88.6 -17.4ZM122.2 -18C122.2 -7 129.5 0.8 139.6 0.8C144.6 0.8 148 -0.8 151.3 -4.7C151 2.9 147.7 6.7 141.4 6.7C137.4 6.7 135 5.6 132.5 2.9H122.8C125.7 10 132.4 14.1 141.1 14.1C152.1 14.1 159.4 8.5 159.4 -6.7V-35.5H151.3V-31C148.7 -34.6 144.8 -36.3 139.7 -36.3C129.7 -36.3 122.2 -28.5 122.2 -18ZM130.8 -17.6C130.8 -24.1 134.7 -28.5 140.7 -28.5C146.8 -28.5 150.9 -24.1 150.9 -17.6C150.9 -11.2 146.9 -7 140.8 -7C134.7 -7 130.8 -11.1 130.8 -17.6ZM164.5 -17.6C164.5 -7.2 172.9 0.8 183.7 0.8C190.8 0.8 198.2 -3.2 200.6 -10.5H191.3C189.1 -7.9 187 -7 183.5 -7C178.4 -7 174.7 -9.7 173.7 -14H201.2C201.4 -15.2 201.5 -15.9 201.5 -17.2C201.5 -28.2 193.7 -36.3 183.2 -36.3C172.7 -36.3 164.5 -28 164.5 -17.6ZM173.4 -21.4C174.8 -26 178.2 -28.5 183.3 -28.5C188.5 -28.5 192 -26 193.1 -21.4ZM207 0H215.5V-16.7C215.5 -21.4 215.8 -23.5 216.9 -25.2C218.2 -27.3 220.5 -28.5 223.2 -28.5C227.4 -28.5 230 -26.8 230 -17.3V0H238.5V-19C238.5 -25.3 237.8 -28.4 235.9 -31.2C233.6 -34.5 229.8 -36.3 224.8 -36.3C220.8 -36.3 218 -35.1 214.8 -32.1V-35.5H207Z" fill="#fff"/><path d="M282.2 -26.6 280.4 -25.6 278.2 -24.5C277.8 -24.3 277.3 -24.1 276.8 -23.8L272.8 -8.3C266.4 -4.3 266.1 -4.1 265 -4.1C264.2 -4.1 263.6 -5 263.6 -6.1C263.6 -7.6 264.2 -10.5 265.4 -15C267 -21.4 267.9 -25 267.9 -25.5C267.9 -26 267.6 -26.3 267.2 -26.3C266.5 -26.3 262.4 -24.1 257 -20.9L256.8 -19.2C259.9 -20.7 260.6 -21.1 261.3 -21.1C261.9 -21.1 262.2 -20.7 262.2 -20.1C262.2 -18.9 261.8 -17 260.2 -11.4C258.7 -5.8 258.4 -4.4 258.4 -2.8C258.4 -0.7 259.3 0.8 260.6 0.8C261.8 0.8 267 -2.2 272.7 -6.3C270.2 5.4 270.2 5.4 269.5 7.7C268.4 11 266.4 12.2 262.2 12.2C260.4 12.2 259 12 255.2 11.1L252.6 15.4C254.6 15.7 257.4 15.9 259.7 15.9C264.1 15.9 266.7 14.7 270.4 10.8C274.1 6.8 274.3 6.1 276.6 -4.4C278.8 -14.7 280 -19.5 282.2 -26.6Z" fill="#FFB800"/><path d="M290.4 -13.5C291.2 -4.5 297.6 0.8 306 0.8C314.5 0.8 321.1 -5.8 321.1 -14.3C321.1 -20.7 318.4 -24.9 308.8 -28.5C304.4 -30.1 304.2 -30.2 303.6 -30.6C301.9 -31.7 301 -33.2 301 -34.9C301 -37.7 303 -39.7 305.8 -39.7C308.8 -39.7 310.6 -37.9 310.8 -34.7H319.9C319.5 -43 313.5 -48.1 305.9 -48.1C298.3 -48.1 292.1 -42.2 292.1 -34.7C292.1 -28.7 295.7 -24.2 302 -21.8C308.3 -19.5 308.8 -19.3 310.2 -18.2C311.6 -17.1 312.4 -15.3 312.4 -13.4C312.4 -10 309.7 -7.6 306 -7.6C302.1 -7.6 300 -9.5 299.6 -13.5ZM324.7 -17.7C324.7 -7.5 333.2 0.8 343.5 0.8C353.8 0.8 362.4 -7.5 362.4 -17.5C362.4 -28 354.2 -36.3 343.5 -36.3C333.2 -36.3 324.7 -27.9 324.7 -17.7ZM333.3 -17.9C333.3 -23.7 338 -28.5 343.5 -28.5C349.2 -28.5 353.8 -23.6 353.8 -17.7C353.8 -11.8 349.2 -7 343.6 -7C337.8 -7 333.3 -11.8 333.3 -17.9ZM367.2 0H375.7V-16.7C375.7 -21.4 376 -23.5 377.1 -25.2C378.5 -27.3 380.7 -28.5 383.4 -28.5C387.6 -28.5 390.2 -26.8 390.2 -17.3V0H398.7V-19C398.7 -25.3 398.1 -28.4 396.1 -31.2C393.8 -34.5 390 -36.3 385.1 -36.3C381 -36.3 378.2 -35.1 375.1 -32.1V-35.5H367.2ZM405.6 0H414.1V-35.5H405.6ZM405.7 -40.6H414.2V-49.1H405.7ZM419.4 -17.8C419.4 -7.3 427.2 0.8 437.2 0.8C442 0.8 445.6 -0.8 448.9 -4.6V0H456.8V-47.3H448.2V-32.3C445.7 -35.1 441.6 -36.7 437.2 -36.7C427.2 -36.7 419.4 -28.4 419.4 -17.8ZM428 -18.2C428 -24.2 432.6 -28.9 438.4 -28.9C444.3 -28.9 448.9 -24.1 448.9 -17.9C448.9 -11.8 444.3 -7 438.6 -7C432.6 -7 428 -11.9 428 -18.2ZM461.7 -17.7C461.7 -7.5 470.1 0.8 480.5 0.8C490.8 0.8 499.4 -7.5 499.4 -17.5C499.4 -28 491.1 -36.3 480.4 -36.3C470.1 -36.3 461.7 -27.9 461.7 -17.7ZM470.3 -17.9C470.3 -23.7 474.9 -28.5 480.5 -28.5C486.2 -28.5 490.8 -23.6 490.8 -17.7C490.8 -11.8 486.2 -7 480.6 -7C474.8 -7 470.3 -11.8 470.3 -17.9Z" fill="url(#tg)"/></svg></h1>
+<p>Currículo de 1.º y 2.º de Bachillerato · Comunitat Valenciana</p>
+<p class="creada">Creada por Ana de Gregorio con apoyo de IA (Claude, de Anthropic)</p>
+<span id="estado">Comprobando…</span></div><div class="hd-i" aria-hidden="true"><svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" x2="1"><stop offset="0" stop-color="#FFB800"/><stop offset="1" stop-color="#FF6B6B"/></linearGradient></defs><g opacity=".18" fill="#fff"><rect x="0" y="12" width="900" height="26"/><rect x="0" y="222" width="900" height="26"/></g><g fill="#101820" opacity=".9"><rect x="10" y="19" width="16" height="12" rx="2"/><rect x="10" y="229" width="16" height="12" rx="2"/><rect x="46" y="19" width="16" height="12" rx="2"/><rect x="46" y="229" width="16" height="12" rx="2"/><rect x="82" y="19" width="16" height="12" rx="2"/><rect x="82" y="229" width="16" height="12" rx="2"/><rect x="118" y="19" width="16" height="12" rx="2"/><rect x="118" y="229" width="16" height="12" rx="2"/><rect x="154" y="19" width="16" height="12" rx="2"/><rect x="154" y="229" width="16" height="12" rx="2"/><rect x="190" y="19" width="16" height="12" rx="2"/><rect x="190" y="229" width="16" height="12" rx="2"/><rect x="226" y="19" width="16" height="12" rx="2"/><rect x="226" y="229" width="16" height="12" rx="2"/><rect x="262" y="19" width="16" height="12" rx="2"/><rect x="262" y="229" width="16" height="12" rx="2"/><rect x="298" y="19" width="16" height="12" rx="2"/><rect x="298" y="229" width="16" height="12" rx="2"/><rect x="334" y="19" width="16" height="12" rx="2"/><rect x="334" y="229" width="16" height="12" rx="2"/><rect x="370" y="19" width="16" height="12" rx="2"/><rect x="370" y="229" width="16" height="12" rx="2"/><rect x="406" y="19" width="16" height="12" rx="2"/><rect x="406" y="229" width="16" height="12" rx="2"/><rect x="442" y="19" width="16" height="12" rx="2"/><rect x="442" y="229" width="16" height="12" rx="2"/><rect x="478" y="19" width="16" height="12" rx="2"/><rect x="478" y="229" width="16" height="12" rx="2"/><rect x="514" y="19" width="16" height="12" rx="2"/><rect x="514" y="229" width="16" height="12" rx="2"/><rect x="550" y="19" width="16" height="12" rx="2"/><rect x="550" y="229" width="16" height="12" rx="2"/><rect x="586" y="19" width="16" height="12" rx="2"/><rect x="586" y="229" width="16" height="12" rx="2"/><rect x="622" y="19" width="16" height="12" rx="2"/><rect x="622" y="229" width="16" height="12" rx="2"/><rect x="658" y="19" width="16" height="12" rx="2"/><rect x="658" y="229" width="16" height="12" rx="2"/><rect x="694" y="19" width="16" height="12" rx="2"/><rect x="694" y="229" width="16" height="12" rx="2"/><rect x="730" y="19" width="16" height="12" rx="2"/><rect x="730" y="229" width="16" height="12" rx="2"/><rect x="766" y="19" width="16" height="12" rx="2"/><rect x="766" y="229" width="16" height="12" rx="2"/><rect x="802" y="19" width="16" height="12" rx="2"/><rect x="802" y="229" width="16" height="12" rx="2"/><rect x="838" y="19" width="16" height="12" rx="2"/><rect x="838" y="229" width="16" height="12" rx="2"/><rect x="874" y="19" width="16" height="12" rx="2"/><rect x="874" y="229" width="16" height="12" rx="2"/></g><g transform="translate(60,70)"><rect x="0" y="30" width="130" height="80" rx="10" fill="#2b3a52" stroke="#fff" stroke-width="3"/><rect x="95" y="10" width="40" height="30" rx="5" fill="#2b3a52" stroke="#fff" stroke-width="3"/><circle cx="55" cy="70" r="30" fill="#101820" stroke="#FFB800" stroke-width="5"/><circle cx="55" cy="70" r="14" fill="#3b82f6"/><circle cx="48" cy="63" r="5" fill="#fff" opacity=".8"/><circle cx="112" cy="48" r="5" fill="#ff5a5a" class="on"/></g><g transform="translate(260,60)"><rect x="40" y="0" width="50" height="90" rx="25" fill="#cfd8e3" stroke="#fff" stroke-width="3"/><g stroke="#8b9bb0" stroke-width="3"><path d="M48 20h34M48 36h34M48 52h34M48 68h34"/></g><path d="M25 60v10a40 40 0 0 0 80 0V60" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M65 110v35M40 148h50" stroke="#fff" stroke-width="6" stroke-linecap="round"/></g><g transform="translate(430,60)"><rect x="0" y="0" width="120" height="150" rx="12" fill="#2b3a52" stroke="#fff" stroke-width="3"/><circle cx="60" cy="48" r="20" fill="#101820" stroke="#FFB800" stroke-width="4"/><circle cx="60" cy="48" r="7" fill="#FFB800"/><circle cx="60" cy="108" r="32" fill="#101820" stroke="#fff" stroke-width="4"/><circle cx="60" cy="108" r="18" fill="#3b82f6"/><circle cx="60" cy="108" r="6" fill="#101820"/></g><g fill="none" stroke="url(#hg)" stroke-width="5" stroke-linecap="round"><path class="on" d="M575 105q22 25 0 50"/><path class="on" d="M595 90q36 40 0 80" style="animation-delay:.3s"/><path class="on" d="M615 75q50 55 0 110" style="animation-delay:.6s"/></g><g transform="translate(690,50)"><rect x="0" y="60" width="150" height="100" rx="6" fill="#222" stroke="#fff" stroke-width="3"/><path d="M0 60 18 20h40L40 60M50 60 68 20h40L90 60M100 60l18-40h32l-18 40" fill="#fff" stroke="#101820" stroke-width="2"/><path d="M0 60 150 40V20L0 40z" fill="#FFB800" opacity="0"/><rect x="0" y="22" width="150" height="26" rx="4" fill="#fff" transform="rotate(-8 0 48)"/><g stroke="#101820" stroke-width="8" transform="rotate(-8 0 48)"><path d="M14 22l-12 26M44 22 32 48M74 22 62 48M104 22 92 48M134 22 122 48"/></g><text x="75" y="125" fill="#FFB800" font-family="Inter,Arial" font-weight="800" font-size="22" text-anchor="middle">¡ACCIÓN!</text></g><g font-family="Arial" fill="#FFB800" font-size="44"><text class="nt" x="215" y="70">♪</text><text class="nt" x="590" y="60" fill="#7dd3fc">♫</text><text class="nt" x="400" y="46" fill="#fda4af">♬</text><text class="nt" x="860" y="60" fill="#86efac">♪</text></g></svg></div></div></header>
+<main class="wrap" id="app"></main>
+<a id="casa" href="#/" aria-label="Ir a la pantalla de inicio" title="Inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg></a>
+<button id="arriba" aria-label="Subir al inicio" title="Subir al inicio">↑</button>
+<script src="unidades.js"></script>
+<script>
+// Fuente de los bloques: currículo de Imagen y Sonido (GVA), Decreto 108/2022. Pendiente de revisión.
+const BLOQUES=[
+ {t:"Imagen",g:[
+  ["Captación de imágenes fotográficas y de vídeo",["Técnicas de captación","Composición estética y narrativa","Ajustes técnicos y de identificación","El ojo humano y los sistemas de captación y reproducción","Soportes de registro audiovisual"]],
+  ["Tratamiento digital de imágenes",["Herramientas de edición de imágenes","Software libre de edición de imágenes","Técnicas de generación, procesamiento y retoque de imágenes","Color, formato, contraste"]],
+  ["Edición de piezas visuales",["Edición de contenidos visuales","Técnicas de edición audiovisual","Edición lineal y no lineal en proyectos de montaje y postproducción"]]]},
+ {t:"Sonido",g:[
+  ["Diseño y edición de sonido",["El lenguaje sonoro en el cine y en la radio","Bandas sonoras","Géneros radiofónicos","Podcast","Herramientas de edición de audio","Software libre de edición de audio","Productos de audiodescripción y subtitulación para discapacitados"]],
+  ["Cualidades técnicas del equipamiento de sonido idóneo en radio y medios audiovisuales",["El oído humano y su funcionamiento","Equipamiento de sonido en diferentes entornos","Frecuencias audibles","Sistemas de captación de sonido","Evolución histórica de los sistemas de captación","Prestaciones técnicas en proyectos audiovisuales"]]]},
+ {t:"Equipamiento técnico en proyectos multimedia",g:[["",["Equipos informáticos multimedia: prestaciones técnicas y operativas","Formatos de imagen, audio y vídeo","Accesibilidad de usuarios","Exigencias técnicas de medios de explotación"]]]},
+ {t:"Recursos expresivos utilizados en producciones audiovisuales",g:[["",["Recursos expresivos: características funcionales, tipológicas y consecución de objetivos comunicativos","Composiciones fotográficas","El mundo visual y audiovisual","El campo profesional relacionado con la Comunicación Audiovisual","Valores y categorías estéticas audiovisuales","Actitudes éticas de creador y receptor","Atención, respeto, participación y sentido crítico en la exploración de manifestaciones visuales y audiovisuales"]]]},
+ {t:"Situaciones audiovisuales",g:[["",["Técnicas y elementos del lenguaje audiovisual","Mantenimiento de la continuidad narrativa y formal","Teoría del montaje audiovisual","Historia del montaje audiovisual","Continuidad narrativa, perceptiva, formal, de movimiento, de acción y de dirección de diferentes productos fílmicos"]]]},
+ {t:"Elaboración de guiones audiovisuales",g:[["",["Guiones audiovisuales: storyboard, ideas temáticas, estructura narrativa","Tipos de guiones (técnicos, audiovisuales y de audiodescripción)","Fases de producción (idea, documentación, argumentación, conclusiones, etc.)","Recursos humanos (personal técnico y personal artístico)"]]]},
+ {t:"Piezas audiovisuales",g:[["",["Edición de contenidos audiovisuales","Software libre de edición de contenidos audiovisuales","Soportes del producto final","Componentes de las piezas audiovisuales","Aspectos formales, semiológicos y contextuales de las piezas audiovisuales a través de una perspectiva multicultural y de género"]]]}
+];
+// b = bloques de saberes con los que se relaciona cada unidad (propuesta, pendiente de revisión)
+const UNIDADES=[
+ {t:"Recursos Expresivos",b:[4],fase:"Analizar"},
+ {t:"Técnicas del Lenguaje Audiovisual",b:[5],fase:"Analizar"},
+ {t:"Guiones Audiovisuales",b:[6],fase:"Preparar"},
+ {t:"Grabación de Piezas Audiovisuales",b:[1,3],fase:"Grabar"},
+ {t:"Tratamiento Digital de Imágenes",b:[1,3],fase:"Retocar"},
+ {t:"Edición de Vídeo con Kdenlive",b:[1,3,7],fase:"Montar"},
+ {t:"El Sonido en Producciones Audiovisuales",b:[2],fase:"Sonorizar"},
+ {t:"Cortometraje",f:true,b:[1,2,3,4,5,6,7],fase:"Crear"}
+];
+const app=document.getElementById("app");
+const nb=i=>`Bloque ${i}. ${BLOQUES[i-1].t}`;
+function inicio(){
+ const li=(u,i)=>`<li><a href="#/unidad/${i+1}"><span class="perf"></span><span class="num">${i+1}</span><span class="tit">${u.t}<small>${u.fase}</small></span></a></li>`;
+ const fin=UNIDADES.findIndex(u=>u.f),uf=UNIDADES[fin];
+ app.innerHTML='<ol class="strip">'+UNIDADES.map((u,i)=>u.f?"":li(u,i)).join("")+'</ol><h2 class="sa-h">Situación de Aprendizaje final</h2><div class="sa"><a href="#/unidad/'+(fin+1)+'"><span class="perf"></span><span class="num">🎬</span><span class="tit">'+uf.t+'<small>Aplicas todo lo aprendido en las siete unidades · Crear</small></span></a></div>'+ruletaHTML(1+Math.floor(Math.random()*8),true)+'<p class="pie">Recorrido del curso: analizar, preparar, grabar, retocar, montar y sonorizar; y, para terminar, crear tu cortometraje.</p><p><a class="back" href="#/bloques">Ver los 7 bloques de saberes</a></p><p><a class="back" href="#/interes">🌐 Páginas de interés: filmotecas, concursos y recursos</a></p><p class="pie">Marco normativo: LOE modificada por la LOMLOE, Real Decreto 243/2022 y Decreto 108/2022 del Consell (Currículo de Bachillerato de la Comunitat Valenciana), modificado por el Decreto 103/2026.</p>';
+ document.title="Imagen y Sonido · Bachillerato";
+}
+const quita=t=>t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
+const dk=l=>l.map(x=>`<li>${x.replace(/^([^:]{2,70}):/,'<b class="t">$1:</b>')}</li>`).join("");
+const NORMA=["Ley Orgánica 2/2006, de 3 de mayo, de Educación (LOE), modificada por la Ley Orgánica 3/2020, de 29 de diciembre (LOMLOE).","Real Decreto 243/2022, de 5 de abril, por el que se establecen la ordenación y las enseñanzas mínimas del Bachillerato.","Decreto 108/2022, de 5 de agosto, del Consell, por el que se establecen la ordenación y el currículo de Bachillerato en la Comunitat Valenciana, modificado por el Decreto 103/2026, de 26 de junio."];
+const PLANO_FOTO="";const PLANO_ORIGEN="50% 30%";const ESC=[1,1.5,2.2,3,4.2,6,10,16];
+const ANG=[["Normal",80,150,0,"Cámara a la altura de los ojos. Es neutra: no juzga al personaje."],["Picado",90,60,0,"Cámara por encima, mirando hacia abajo. El personaje parece pequeño, débil o atrapado."],["Contrapicado",90,255,0,"Cámara por debajo, mirando hacia arriba. El personaje parece grande, poderoso o amenazante."],["Cenital",300,28,0,"Cámara justo encima, en vertical. Da sensación de distancia y de observación."],["Nadir",300,308,0,"Cámara justo debajo, en vertical hacia arriba. Es poco habitual y muy forzado."],["Plano holandés",80,150,-20,"Cámara inclinada sobre su eje: el horizonte queda torcido. Transmite tensión o desorden."]];
+const EJE=[["Cámara 1 (lado inferior)",110,260,"En pantalla, A está a la izquierda y B a la derecha. Correcto."],["Cámara 2 (mismo lado, otro punto)",290,260,"A sigue a la izquierda y B a la derecha. Correcto: la cámara no ha cruzado el eje."],["Cámara 3 (cruza el eje)",200,60,"A pasa a la derecha y B a la izquierda. Incorrecto: parecen haber cambiado de sitio y el espectador se desorienta."]];
+function cam(id,x,y){return `<g id="${id}" transform="translate(${x} ${y})"><rect x="-14" y="-9" width="22" height="18" rx="3" fill="var(--acc)"/><path d="M8 -6 L20 -12 L20 12 L8 6Z" fill="var(--acc)"/></g>`}
+const sl=t=>"p-"+quita(t).replace(/ /g,"-");
+
+
+const RULETAS={
+1:{t:"Cartel imposible",i:"Mezcla un género, un protagonista y una composición. Los límites obligan a decidir, y decidir es crear.",c:[["Género",["terror","comedia","western","ciencia ficción","romance","documental","musical","animación"]],["Motivo",["un paraguas roto","una bicicleta","un gato","unas llaves","un zapato solo","una naranja","un espejo","un globo"]],["Composición",["composición horizontal, tranquila","composición vertical, rotunda","composición diagonal, tensa","composición cíclica, dinámica","regla de los tercios","horizonte bajo","un enmarcado con una ventana","líneas que convergen en el motivo"]]],f:"Crea una imagen de <b>{0}</b> con <b>{1}</b> como motivo, usando <b>{2}</b>."},
+2:{t:"Escena de tres planos",i:"Tu cámara decide qué sentimos. Tira los dados y cuenta una escena con lo que te toque.",c:[["Plano",["gran plano general","plano general","plano entero","plano americano","plano medio","primer plano","plano detalle"]],["Angulación",["picado","contrapicado","cenital","nadir","normal","aberrante"]],["Movimiento",["panorámica","travelling hacia delante","travelling hacia atrás","zoom","cámara fija","barrido"]]],f:"Graba un plano con <b>{0}</b>, en ángulo <b>{1}</b> y con <b>{2}</b>. ¿Qué siente quien lo ve?"},
+3:{t:"Generador de historias",i:"Todo guion empieza con alguien que quiere algo y un obstáculo. Aquí tienes los ingredientes.",c:[["Protagonista",["una abuela que colecciona relojes","un robot con miedo al vacío","un repartidor sin suerte","una niña que oye pensar a las plantas","un fantasma tímido","una viajera que olvidó su destino","un portero de discoteca sordo","un astronauta vegetariano"]],["Conflicto",["pierde algo irremplazable","descubre un secreto","debe llegar antes del amanecer","tiene que pedir perdón","se queda atrapado","recibe una llamada equivocada"]],["Lugar",["una biblioteca de noche","un tren","una azotea","un ascensor","un mercado","una playa en invierno","un aula vacía","un parque de atracciones cerrado"]]],f:"Escribe una sinopsis de tres líneas: <b>{0}</b>; su conflicto: <b>{1}</b>; ocurre en <b>{2}</b>. Marca el detonante y el primer punto de giro."},
+4:{t:"Diez segundos de luz",i:"La luz cuenta la historia antes que los actores. Elige y graba diez segundos.",c:[["Acción",["abrir una puerta","atarse los cordones","servir un café","leer un mensaje","esperar un autobús","guardar un secreto en un cajón"]],["Luz",["contraluz","luz de ventana","luz de linterna","hora dorada","luz dura cenital","luz de pantalla","luz de vela","penumbra con un solo foco"]],["Soporte",["trípode","cámara en mano","apoyada en un objeto","gimbal","un travelling casero","a ras de suelo"]]],f:"Graba diez segundos: <b>{0}</b> con <b>{1}</b> y <b>{2}</b>."},
+5:{t:"Retoque con intención",i:"Un mismo retrato cambia de significado con el color y el contraste. Pruébalo.",c:[["Imagen de partida",["un retrato","un paisaje","un objeto cotidiano","tu mesa de trabajo","una calle","un selfie"]],["Retoque",["blanco y negro","saturación alta","temperatura fría","temperatura cálida","alto contraste","viñeteado","reencuadre atrevido","fondo desenfocado"]],["Intención",["miedo","nostalgia","alegría","misterio","calma","ciencia ficción"]]],f:"Parte de <b>{0}</b> y retócalo con <b>{1}</b> para transmitir <b>{2}</b>."},
+6:{t:"Monta una emoción",i:"El montaje es donde se construye el sentido. Marca el ritmo y elige cómo pasas de un plano a otro.",c:[["Transición",["corte directo","fundido a negro","encadenado","barrido","match-cut","cortinilla","corte en el sonido"]],["Ritmo",["muy rápido","lento y contemplativo","acelerando poco a poco","con silencios","al compás de una canción"]],["Emoción",["tensión","humor","ternura","nostalgia","sorpresa"]]],f:"Monta 30 segundos con ritmo <b>{1}</b> y usa <b>{0}</b> para transmitir <b>{2}</b>."},
+7:{t:"Escena sonora",i:"Cierra los ojos: el sonido también cuenta historias. Diseña veinte segundos solo con el oído.",c:[["Ambiente",["lluvia","mercado","biblioteca","estación","bosque","patio de recreo","pasillo del instituto","cocina"]],["Efecto protagonista",["pasos","una puerta que cruje","un teléfono","una gota de agua","una cremallera","una campana"]],["Juego sonoro",["silencio absoluto","música desde una radio","música triste","percusión con objetos","voz en off susurrada","un sonido fuera de campo"]]],f:"Crea una escena sonora de 20 segundos: ambiente <b>{0}</b>, destaca <b>{1}</b> y juega con <b>{2}</b>."},
+8:{t:"Idea de cortometraje",i:"Dogma 95 se puso reglas para ser más libre. Elige tu tema, tu género y tu restricción.",c:[["Tema",["la amistad","la identidad","el paso del tiempo","la brecha digital","el consumo","la memoria","la migración","los miedos"]],["Género",["comedia","thriller","docuficción","mimo ficción","videoclip narrativo","falso documental"]],["Restricción",["sin diálogos","solo tres localizaciones","un único plano secuencia","en blanco y negro","tres minutos como máximo","cámara siempre fija"]]],f:"Idea un cortometraje sobre <b>{0}</b>, como <b>{1}</b>, con esta restricción: <b>{2}</b>."}
+};
+function ruletaHTML(n,home){
+ const R=RULETAS[n];
+ return `<section class="rul${home?" home":""}" data-ru="${n}"><h3${home?"":' id="ruleta"'}>${home?"🎬 ¡Claqueta sorpresa!":"🎲 Ruleta creativa: "+R.t}</h3><p>${home?"Pulsa y recibe un reto creativo al azar de cualquiera de las unidades. Prepara el móvil: ¡acción!":R.i}</p><div class="rcols">${R.c.map(([l],i)=>`<button class="rslot" data-slot="${i}" aria-pressed="false" title="Pulsa para fijar este dado"><small>${l}</small><b class="rv">?</b><span class="lk">🔓</span></button>`).join("")}</div><p class="rfr" aria-live="polite">Pulsa «¡Tirar!». Si un dado te gusta, púlsalo para fijarlo y vuelve a tirar los demás.</p><div class="btns"><button class="btn" data-tira="1">🎲 ¡Tirar!</button><button data-copia="1">Copiar el reto</button>${home?`<a class="btn ir" href="#/unidad/${n}" hidden>Ir a la unidad</a>`:""}</div></section>`;
+}
+function ruletaTira(s){
+ let n=+s.dataset.ru;
+ if(s.classList.contains("home")){n=1+Math.floor(Math.random()*8);s.dataset.ru=n;
+  const R=RULETAS[n];s.querySelectorAll(".rslot").forEach((b,i)=>{b.querySelector("small").textContent=R.c[i][0];b.dataset.v="";b.setAttribute("aria-pressed","false");b.querySelector(".lk").textContent="🔓"});
+  const ir=s.querySelector(".ir");if(ir){ir.hidden=false;ir.href="#/unidad/"+n;ir.textContent="Ir a la unidad "+n+": "+UNIDADES[n-1].t}}
+ const R=RULETAS[n],sl=[...s.querySelectorAll(".rslot")],fr=s.querySelector(".rfr");
+ const red=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ const fin=()=>{const v=sl.map(b=>b.dataset.v);fr.innerHTML=(s.classList.contains("home")?`<i>Reto de la unidad ${n}.</i> `:"")+R.f.replace(/\{(\d)\}/g,(m,i)=>v[+i]);fr.dataset.txt=fr.textContent;s.classList.remove("gira")};
+ let pend=0;
+ sl.forEach((b,i)=>{
+  if(b.getAttribute("aria-pressed")==="true"&&b.dataset.v)return;
+  const op=R.c[i][1];pend++;
+  const fija=()=>{b.dataset.v=op[Math.floor(Math.random()*op.length)];b.querySelector(".rv").textContent=b.dataset.v;b.classList.remove("spin")};
+  if(red){fija();if(!--pend)fin();return}
+  b.classList.add("spin");s.classList.add("gira");
+  const iv=setInterval(()=>{b.querySelector(".rv").textContent=op[Math.floor(Math.random()*op.length)]},70);
+  setTimeout(()=>{clearInterval(iv);fija();if(!--pend)fin()},650+i*350);
+ });
+ if(!pend)fin();
+}
+function lineaTiempo(a){
+ const C=["#7b2cbf","#0077b6","#2a9d8f","#f77f00","#e63946","#d90368","#1F6FEB"];
+ return `<ol class="tlh">${a.map(([y,e,t,x],i)=>`<li style="--c:${C[i%C.length]}"><span class="tly">${y}</span><span class="tle" aria-hidden="true">${e}</span><b>${t}</b><span>${x}</span></li>`).join("")}</ol>`;
+}
+function soportes(){
+ const cam=(x,y,r=0)=>`<g transform="translate(${x} ${y}) rotate(${r})"><rect x="-14" y="-9" width="28" height="18" rx="3" fill="#1F6FEB" stroke="currentColor" stroke-width="2"/><circle cx="14" cy="0" r="6" fill="#9fc3ff" stroke="currentColor" stroke-width="2"/></g>`;
+ const S=[
+  ["Trípode","Tres patas con cabezal. Planos fijos y panorámicas suaves.","Nivélalo con la burbuja.",`<line x1="60" y1="46" x2="30" y2="108"/><line x1="60" y1="46" x2="60" y2="108"/><line x1="60" y1="46" x2="90" y2="108"/><rect x="52" y="40" width="16" height="8" fill="currentColor"/>${cam(60,30)}`],
+  ["Monopié","Una sola pata. Ligero y rápido para moverte, aunque no da una imagen tan fija como el trípode.","Apóyalo con las dos manos.",`<line x1="60" y1="44" x2="60" y2="110"/><line x1="48" y1="110" x2="72" y2="110"/>${cam(60,32)}`],
+  ["Grúa","Brazo largo con contrapeso. Movimientos de subida, bajada y desplazamiento amplios.","Necesita espacio y varias personas.",`<line x1="30" y1="108" x2="50" y2="76"/><line x1="70" y1="108" x2="50" y2="76"/><line x1="18" y1="86" x2="104" y2="46"/><rect x="10" y="80" width="14" height="14" fill="currentColor"/>${cam(100,40,-20)}`],
+  ["Cabeza caliente","Cabezal motorizado en el extremo de una grúa. Se maneja a distancia: gira y cabecea la cámara.","Se controla con mando.",`<line x1="14" y1="96" x2="64" y2="64"/><circle cx="68" cy="60" r="9" fill="currentColor"/>${cam(86,50,-15)}<path d="M64 36 A22 22 0 0 1 92 36" fill="none" stroke="#e63946" stroke-width="3"/><path d="M104 66 A22 22 0 0 1 104 92" fill="none" stroke="#e63946" stroke-width="3"/>`],
+  ["Steadicam","Arnés con brazo articulado: sigue al personaje caminando sin temblores.","Exige práctica y fuerza.",`<circle cx="42" cy="26" r="9" fill="none"/><path d="M42 35 V72 M42 72 L30 106 M42 72 L54 106 M42 46 L62 56"/><rect x="36" y="42" width="12" height="22" fill="#9fc3ff"/>${cam(78,58)}`],
+  ["Dron","Cámara en un aparato volador. Da planos aéreos.","Respeta la normativa de vuelo.",`<circle cx="22" cy="30" r="14" fill="none"/><circle cx="98" cy="30" r="14" fill="none"/><circle cx="22" cy="90" r="14" fill="none"/><circle cx="98" cy="90" r="14" fill="none"/><line x1="30" y1="38" x2="52" y2="54"/><line x1="90" y1="38" x2="68" y2="54"/><line x1="30" y1="82" x2="52" y2="66"/><line x1="90" y1="82" x2="68" y2="66"/><rect x="48" y="48" width="24" height="24" rx="6" fill="#1F6FEB"/><circle cx="60" cy="60" r="6" fill="#9fc3ff"/>`]
+ ];
+ return `<div class="sop">${S.map(([n,d,o,svg])=>`<figure><svg viewBox="0 0 120 120" role="img" aria-label="Dibujo de ${n.toLowerCase()}" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${svg}</svg><figcaption><b>${n}</b><span>${d}</span><em>${o}</em></figcaption></figure>`).join("")}</div>`;
+}
+// Clave para mostrar las soluciones ocultas (cámbiala aquí cuando quieras)
+const SOL_CLAVE="profe";
+function bl(b){
+ const [t,a,c,d]=b;
+ if(t==="parte")return `<h2 class="parte" id="${sl(a)}">${a}</h2>`;
+ if(t==="h")return `<h3 id="${sl(a)}">${a}</h3>`;
+ if(t==="p")return `<p>${a}</p>`;
+ if(t==="ul")return "<ul>"+dk(a)+"</ul>";
+ if(t==="ol")return "<ol>"+a.map(x=>`<li>${x}</li>`).join("")+"</ol>";
+ if(t==="nota")return `<p class="nota">${a}</p>`;
+ if(t==="linea")return lineaTiempo(a);
+ if(t==="ejemplos")return `<div class="tw"><table class="ejt"><thead><tr><th>Género</th><th>Ejemplo para ver</th><th>Enlace</th></tr></thead><tbody>${a.map(([g,e,q])=>`<tr><td>${g}</td><td>${e}</td><td><a class="btn" href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" rel="noopener">▶ Buscar</a></td></tr>`).join("")}</tbody></table></div><p class="nota-i">Los enlaces abren una búsqueda en YouTube. Elige un resultado oficial o un fragmento breve, y revisa que sea adecuado para tu clase.</p>`;
+ if(t==="vlink"){const V=(window.VCUR||[]);const L=a.map(i=>{const v=V.find(x=>x[0]===i);return v?`<button data-go="v-${i}">${v[1]}</button>`:""}).filter(Boolean);return L.length?`<p class="vlink">▶ <b>Vídeo${L.length>1?"s":""} de este apartado</b> (más abajo, en «Vídeos recomendados»): ${L.join(" ")}</p>`:""}
+ if(t==="soportes")return soportes();
+ if(t==="clave")return `<div class="box clave"><b>Importante.</b> ${a}</div>`;
+ if(t==="ej")return `<div class="box ej"><b>Ejemplo.</b> ${a}</div>`;
+ if(t==="def")return `<div class="box def"><b>${a}.</b> ${c}</div>`;
+ if(t==="esquema")return `<div class="nest"><div class="n1"><b>Obra audiovisual</b><div class="n2"><b>Secuencia</b><div class="n3"><b>Escena</b><div class="n4"><b>Plano</b> <small>unidad del montaje</small><div class="n5"><b>Toma</b> <small>cada grabación del plano en rodaje; se repite hasta dar con la buena</small></div></div></div></div></div></div><p class="pie">En el rodaje se graba cada plano una o varias veces (tomas); en el montaje se elige la mejor toma de cada plano.</p>`;
+ if(t==="buscar")return `<div class="box ej"><b>${a}.</b> ${d}<br><a class="btn" href="https://www.youtube.com/results?search_query=${encodeURIComponent(c)}" target="_blank" rel="noopener">Buscar en YouTube</a></div>`;
+ if(t==="video")return `<div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/${a}?rel=0&start=${d||0}" title="Vídeo" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="pie">${c} <a href="https://www.youtube.com/watch?v=${a}${d?"&t="+d+"s":""}" target="_blank" rel="noopener">Abrir en YouTube</a></p>`;
+ if(t==="mapa"){const N=Object.fromEntries(a.map(z=>[z[0],z]));
+  const ln=c.map(([p,q,k])=>{const A=N[p],B=N[q];if(k==="e")return `<path d="M${A[2]} ${A[3]+20} V${A[3]+30} H${A[2]-70} V${B[3]} H${B[2]-59}" fill="none" stroke="var(--mute)" stroke-width="1.6"/>`;return `<line x1="${A[2]}" y1="${A[3]+20}" x2="${B[2]}" y2="${B[3]-20}" stroke="var(--mute)" stroke-width="2"/>`}).join("");
+  const nd=a.map(([id,l,x,y,col])=>{const L=l.split("|");return `<g><rect x="${x-59}" y="${y-20}" width="118" height="40" rx="8" fill="${col}"/>${L.map((s,i)=>`<text x="${x}" y="${y+(L.length===1?4:i*14-3)}" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">${s}</text>`).join("")}</g>`}).join("");
+  return `<div class="fig mapafig"><svg viewBox="0 0 ${Math.max(...a.map(z=>z[2]))+70} ${Math.max(...a.map(z=>z[3]))+30}" role="img" aria-label="Mapa conceptual de la unidad">${ln}${nd}</svg></div>`;}
+ if(t==="fotos")return `<div class="gal">${a.map(([r,p])=>`<figure><a href="${r}" target="_blank" rel="noopener" title="Pulsa para ampliar"><img src="${r}" alt="${p}" onerror="this.parentNode.parentNode.remove()"></a><figcaption class="pie">${p}</figcaption></figure>`).join("")}</div>`;
+ if(t==="yt")return `<div class="vc"><div class="vcard"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/${a}/hqdefault.jpg" onerror="this.style.display='none'"><button class="play" data-yt="${a}" data-t="${d||0}" aria-label="Reproducir vídeo">▶</button></div><p class="pie">${c} · <a href="https://www.youtube.com/watch?v=${a}${d?"&t="+d+"s":""}" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>`;
+ if(t==="enlace")return `<p><a class="btn" href="${a}"${a[0]==="#"?"":" target=\"_blank\" rel=\"noopener\""}>${c}</a></p>`;
+ if(t==="rejilla")return `<div class="fig"><div class="rej" data-m="${d||"tercios"}"><img src="${a}" alt="${c}" onerror="this.closest('.fig').remove()"><span class="gr"></span></div><button class="btn" data-rej>Mostrar u ocultar la rejilla</button><p class="pie">${c}</p></div>`;
+ if(t==="tabla")return `<div class="tw"><table><thead><tr>${a.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${c.map(f=>`<tr>${f.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+ if(t==="tomaplano")return `<div class="fig"><svg viewBox="0 0 600 250" role="img" aria-label="De las tomas del rodaje a los planos de edición del montaje"><defs><marker id="fl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--mute)"/></marker></defs><rect width="600" height="250" fill="var(--card)"/><text x="12" y="20" font-size="13" font-weight="700" fill="var(--ink)">RODAJE: varias tomas del mismo plano planificado</text><rect x="12" y="30" width="230" height="26" rx="4" fill="#9aa6b2"/><text x="20" y="48" font-size="12" fill="#fff">Toma 1 (descartada)</text><rect x="12" y="62" width="300" height="26" rx="4" fill="#9db9ee"/><rect x="100" y="62" width="110" height="26" rx="4" fill="#1F6FEB"/><text x="20" y="80" font-size="12" fill="#10223f">Toma 2</text><rect x="200" y="94" width="260" height="26" rx="4" fill="#a8d8bd"/><rect x="280" y="94" width="120" height="26" rx="4" fill="#2ea060"/><text x="207" y="112" font-size="12" fill="#10311f">Toma 3</text><text x="470" y="80" font-size="11" fill="var(--mute)">En color fuerte,</text><text x="470" y="94" font-size="11" fill="var(--mute)">el trozo elegido</text><path d="M155 88V132H280V176" fill="none" stroke="var(--mute)" stroke-width="2" marker-end="url(#fl)"/><path d="M340 120V148H385V176" fill="none" stroke="var(--mute)" stroke-width="2" marker-end="url(#fl)"/><text x="12" y="166" font-size="13" font-weight="700" fill="var(--ink)">MONTAJE</text><rect x="225" y="182" width="110" height="32" rx="4" fill="#1F6FEB"/><text x="280" y="203" text-anchor="middle" font-size="12" fill="#fff">Plano 1</text><rect x="335" y="182" width="100" height="32" rx="4" fill="#2ea060"/><text x="385" y="203" text-anchor="middle" font-size="12" fill="#fff">Plano 2</text><line x1="335" y1="178" x2="335" y2="226" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3"/><text x="335" y="240" text-anchor="middle" font-size="12" fill="#c0392b">corte</text><text x="12" y="203" font-size="11" fill="var(--mute)">Cada trozo elegido</text><text x="12" y="217" font-size="11" fill="var(--mute)">es un plano de edición</text></svg><p class="pie">Se elige y se recorta lo mejor de cada toma: ese trozo es un <b>plano de edición</b>. Las tomas descartadas no llegan al montaje.</p></div>`;
+ if(t==="planos")return figPlanos();
+ if(t==="angulos")return `<div class="fig sim"><svg viewBox="0 0 400 210" role="img" aria-label="Vista lateral y vista desde arriba de la cámara alrededor del sujeto"><rect width="400" height="210" fill="var(--card)"/><line x1="200" y1="22" x2="200" y2="205" stroke="var(--line)"/><text x="100" y="16" text-anchor="middle" font-size="11" fill="var(--mute)">Vista lateral (eje vertical)</text><text x="300" y="16" text-anchor="middle" font-size="11" fill="var(--mute)">Vista desde arriba (eje horizontal)</text><circle cx="100" cy="110" r="70" fill="none" stroke="var(--line)" stroke-dasharray="4 4"/><circle cx="100" cy="110" r="13" fill="var(--mute)"/><rect x="92" y="123" width="16" height="40" rx="6" fill="var(--mute)"/><circle cx="300" cy="110" r="70" fill="none" stroke="var(--line)" stroke-dasharray="4 4"/><circle cx="300" cy="110" r="16" fill="var(--mute)"/><path d="M293 122 L307 122 L300 134Z" fill="#e0b08c"/><polygon id="cono" points="30,110 100,65 100,155" fill="var(--clap)" opacity=".3"/><g id="cv" transform="translate(30 110)"><circle r="9" fill="var(--acc)"/></g><g id="ch" transform="translate(300 180)"><circle r="9" fill="#e08a00"/></g></svg><label>Eje vertical: <input type="range" min="-90" max="90" value="0" data-sl="v"></label> <label>Eje horizontal: <input type="range" min="0" max="360" value="0" data-sl="h"></label><p class="desc">Mueve los deslizadores para colocar la cámara alrededor del sujeto. El punto azul es la cámara en vertical y el naranja, en horizontal.</p></div>`;
+ if(t==="encuadre")return simEnc();
+ if(t==="actos")return actos();
+ if(SIM[t])return SIM[t](a,c,d);
+ if(t==="guion")return `<div class="gn">${a.map(([k,x])=>`<div class="${k}">${x}</div>`).join("")}</div>`;
+ if(t==="story")return `<div class="sb">${a.map(([n,pl,an,mv,so],i)=>{const [x,y,w,h]=encRect(n);return `<figure><svg viewBox="${x} ${y} ${w} ${h}" role="img" aria-label="Viñeta ${i+1}">${escena()}</svg><figcaption><b>Viñeta ${i+1}.</b> Plano: ${pl}. Angulación: ${an}. Movimiento: ${mv}. Sonido: ${so}.</figcaption></figure>`}).join("")}</div><p class="pie">Storyboard de ejemplo: cada viñeta es un plano del guion técnico. Elaboración propia.</p>`;
+ if(t==="act")return actividad(a,c);
+ if(t==="movdib")return movDib();if(t==="solmapas")return `<div class="box sol"><b>🔒 Soluciones de la actividad «Mapa conceptual del lenguaje audiovisual»</b><p>Este material está oculto para el alumnado. El profesorado lo muestra con la clave cuando va a corregir la actividad.</p><p><button class="btn" data-sol="abrir">Mostrar soluciones (profesorado)</button></p><div class="solc" hidden data-items='${JSON.stringify(a).replace(/'/g,"&#39;")}'></div></div>`;if(t==="retoimg")return retEj();if(t==="angdiag")return angDiag(a);if(t==="ejang")return angEj(a);
+ if(t==="cono")return conoDiag();
+ if(t==="eje")return `<div class="fig" data-k="eje"><svg viewBox="0 0 400 320" role="img" aria-label="Vista cenital de dos personajes y el eje de acción"><rect width="400" height="320" fill="var(--card)"/><line x1="20" y1="160" x2="380" y2="160" stroke="#c0392b" stroke-width="3" stroke-dasharray="8 6"/><circle cx="130" cy="160" r="18" fill="#2b7bd6"/><text x="130" y="166" text-anchor="middle" fill="#fff" font-weight="700">A</text><circle cx="270" cy="160" r="18" fill="#e08a00"/><text x="270" y="166" text-anchor="middle" fill="#fff" font-weight="700">B</text><text x="200" y="150" text-anchor="middle" fill="#c0392b" font-size="13">eje de acción</text>${cam("cam",110,260)}</svg><div class="btns">${EJE.map(([n],i)=>`<button data-eje="${i}">${n}</button>`).join("")}</div><p class="desc">Elige dónde colocar la cámara respecto al eje.</p></div>`;
+ if(t==="breakout")return `<div class="box ej"><b>${a}</b><div class="bo" data-n="${c.length}">${c.map(([q,r],i)=>`<div class="lock"><p>${i+1}. ${q}</p><input aria-label="Respuesta ${i+1}" data-r="${r.join("|")}"> <button data-open>Abrir candado</button> <span class="st"></span></div>`).join("")}<p class="fin" hidden><b>${d}</b></p></div></div>`;
+ return "";
+}
+
+function camI(x,y,tx,ty,col){const a=Math.atan2(ty-y,tx-x)*180/Math.PI;return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${a.toFixed(1)})"><rect x="-13" y="-8" width="20" height="16" rx="3" fill="${col}"/><path d="M7 -5 L18 -11 L18 11 L7 5Z" fill="${col}"/></g>`}
+function angDiag(w){
+ const cx=260,cy=215,R=125,col="var(--acc)";
+ const H=[[0,"Frontal"],[45,"Frontal 3/4"],[90,"Perfil"],[135,"Escorzo 3/4"],[180,"Contra"],[-135,"Escorzo 3/4"],[-90,"Perfil"],[-45,"Frontal 3/4"]];
+ let h="";
+ H.forEach(([a,n])=>{const r=a*Math.PI/180,x=cx+R*Math.sin(r),y=cy+R*Math.cos(r),lx=cx+(R+52)*Math.sin(r),ly=cy+(R+40)*Math.cos(r);
+  const an=Math.abs(a)===0||Math.abs(a)===180?"middle":(a>0?"start":"end");
+  h+=`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${cx}" y2="${cy}" stroke="var(--line)" stroke-dasharray="4 4"/>${camI(x,y,cx,cy,col)}<text x="${(cx+(R+30)*Math.sin(r)).toFixed(1)}" y="${(cy+(R+34)*Math.cos(r)+4).toFixed(1)}" text-anchor="${an}" font-size="12" font-weight="700" fill="var(--ink)">${n}</text>`});
+ const subj=`<ellipse cx="${cx}" cy="${cy}" rx="30" ry="14" fill="var(--mute)"/><circle cx="${cx}" cy="${cy}" r="15" fill="#e0b08c"/><path d="M${cx-5} ${cy+14} L${cx+5} ${cy+14} L${cx} ${cy+25}Z" fill="#c9966f"/>`;
+ const circ=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--line)" stroke-width="2"/>`;
+ const V=[[90,"Cenital","Distancia y observación"],[45,"Picado","Pequeñez, vulnerabilidad"],[0,"Normal","Neutro, a la altura de los ojos"],[-45,"Contrapicado","Poder, grandeza, amenaza"],[-90,"Nadir","Muy forzado, poco habitual"]];
+ const vx=730,vy=245,Rv=130;let v=`<line x1="${vx-150}" y1="${vy+85}" x2="${vx+70}" y2="${vy+85}" stroke="var(--mute)" stroke-width="2" stroke-dasharray="6 4"/><circle cx="${vx}" cy="${vy-30}" r="13" fill="#e0b08c"/><rect x="${vx-14}" y="${vy-16}" width="28" height="52" rx="8" fill="var(--mute)"/><rect x="${vx-12}" y="${vy+36}" width="10" height="49" rx="4" fill="var(--mute)"/><rect x="${vx+2}" y="${vy+36}" width="10" height="49" rx="4" fill="var(--mute)"/><path d="M${vx-13} ${vy-32} l-8 4 l8 4z" fill="#c9966f"/><path d="M${vx-4} ${vy-30} A${Rv} ${Rv} 0 0 0 ${vx-4} ${vy-30}" fill="none"/><path d="M${vx} ${vy-30-Rv} A${Rv} ${Rv} 0 0 0 ${vx} ${vy-30+Rv}" fill="none" stroke="var(--line)" stroke-width="2"/>`;
+ V.forEach(([a,n,t])=>{const r=a*Math.PI/180,x=vx-Rv*Math.cos(r),y=vy-30-Rv*Math.sin(r);
+  v+=`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${vx}" y2="${vy-30}" stroke="var(--line)" stroke-dasharray="4 4"/>${camI(x,y,vx,vy-30,"#e08a00")}<text x="${(x-24).toFixed(1)}" y="${(y+4).toFixed(1)}" text-anchor="end" font-size="12" font-weight="700" fill="var(--ink)">${n}</text><text x="${vx+30}" y="${(y+4).toFixed(1)}" font-size="11" fill="var(--mute)">${t}</text>`});
+ const vb=w==="h"?"40 0 440 410":w==="v"?"490 0 450 410":"0 0 940 410";const tH=w==="v"?"":`<text x="${cx}" y="28" text-anchor="middle" font-size="14" font-weight="800" fill="var(--acc)">ANGULACIÓN HORIZONTAL (vista desde arriba)</text>`,tV=w==="h"?"":`<text x="${vx-20}" y="28" text-anchor="middle" font-size="14" font-weight="800" fill="#e08a00">ANGULACIÓN VERTICAL (vista lateral)</text>`;const pie=w==="h"?"La cámara gira alrededor del sujeto, que mira hacia abajo en el dibujo.":w==="v"?"La cámara sube o baja respecto a los ojos del sujeto, que mira hacia la izquierda.":"Izquierda: la cámara gira alrededor del sujeto. Derecha: la cámara sube o baja respecto a sus ojos.";return `<div class="fig"><svg viewBox="${vb}" role="img" aria-label="Angulación de cámara" style="max-width:100%"><rect x="0" width="940" height="410" fill="var(--card)"/>${tH}${tV}${w==="v"?"":circ+subj+h}${w==="h"?"":v}</svg><p class="pie">${pie} Elaboración propia.</p></div>`;
+}
+
+function angEj(w){
+ const sk="#e0b08c",hr="#4a3326",bd="var(--mute)";
+ const K={v:["cenital","picado","normal","contrapicado","nadir"],h:["frontal","frontal34","perfil","escorzo","contra"]};
+ const Q={v:["plano cenital persona desde arriba","persona fotografiada desde arriba picado","retrato a la altura de los ojos","persona contrapicado desde abajo","persona vista desde abajo nadir"],h:["retrato frontal persona","retrato tres cuartos persona","retrato de perfil persona","persona de tres cuartos por detrás","persona de espaldas"]};
+ const cell=(i,title,sub,inner,bg)=>`<figure class="ejc"><div class="ejw"><svg viewBox="0 0 140 170" role="img" aria-label="${title}">${inner}</svg><img src="img/ang-${w}-${K[w][i]}.jpg" alt="Foto de ejemplo: ${title}" loading="lazy" onerror="this.remove()"></div><figcaption><b>${title}</b><small>${sub}</small><a href="https://www.pexels.com/es-es/buscar/${encodeURIComponent(Q[w][i])}/" target="_blank" rel="noopener">Buscar fotos</a></figcaption></figure>`;
+ let c="";
+ if(w==="v"){
+  const fl="#cfd8c0";
+  c+=cell(0,"Cenital","desde arriba",`<rect width="140" height="170" fill="${fl}"/><ellipse cx="70" cy="100" rx="52" ry="24" fill="${bd}"/><circle cx="70" cy="85" r="26" fill="${hr}"/><ellipse cx="70" cy="78" rx="13" ry="7" fill="${sk}" opacity="0"/>`,fl);
+  c+=cell(1,"Picado","desde arriba, inclinada",`<rect y="95" width="140" height="75" fill="#cfd8c0"/><circle cx="70" cy="45" r="25" fill="${sk}"/><path d="M45 40 Q70 12 95 40 Q70 28 45 40Z" fill="${hr}"/><path d="M42 72 L98 72 L84 150 L56 150Z" fill="${bd}"/><circle cx="64" cy="48" r="2.5" fill="#222"/><circle cx="76" cy="48" r="2.5" fill="#222"/>`);
+  c+=cell(2,"Normal","a la altura de los ojos",`<rect y="108" width="140" height="62" fill="#cfd8c0"/><line x1="0" y1="52" x2="140" y2="52" stroke="#e08a00" stroke-dasharray="4 3"/><circle cx="70" cy="48" r="20" fill="${sk}"/><path d="M50 44 Q70 22 90 44 Q70 34 50 44Z" fill="${hr}"/><rect x="48" y="70" width="44" height="52" rx="8" fill="${bd}"/><rect x="50" y="120" width="16" height="42" fill="${bd}"/><rect x="74" y="120" width="16" height="42" fill="${bd}"/><circle cx="64" cy="50" r="2.5" fill="#222"/><circle cx="76" cy="50" r="2.5" fill="#222"/>`);
+  c+=cell(3,"Contrapicado","desde abajo, inclinada",`<rect y="0" width="140" height="170" rx="8" fill="#9fc3e8"/><circle cx="70" cy="30" r="14" fill="${sk}"/><path d="M56 27 Q70 10 84 27 Q70 19 56 27Z" fill="${hr}"/><path d="M52 46 L88 46 L112 170 L28 170Z" fill="${bd}"/><circle cx="65" cy="32" r="1.8" fill="#222"/><circle cx="75" cy="32" r="1.8" fill="#222"/>`,"#9fc3e8");
+  c+=cell(4,"Nadir","justo debajo",`<rect width="140" height="170" rx="8" fill="#9fc3e8"/><circle cx="70" cy="40" r="11" fill="${hr}"/><path d="M58 52 L82 52 L110 150 L30 150Z" fill="${bd}"/><ellipse cx="45" cy="158" rx="20" ry="9" fill="#333"/><ellipse cx="95" cy="158" rx="20" ry="9" fill="#333"/>`,"#9fc3e8");
+ }else{
+  const sh=(x1,x2)=>`<path d="M${x1} 168 Q${x1} 118 ${70-(70-x1)*0.2} 112 L${70+(x2-70)*0.2} 112 Q${x2} 118 ${x2} 168Z" fill="${bd}"/>`;
+  c+=cell(0,"Frontal","cara a cámara",`${sh(20,120)}<circle cx="70" cy="70" r="36" fill="${sk}"/><path d="M34 66 Q70 14 106 66 Q70 40 34 66Z" fill="${hr}"/><circle cx="57" cy="72" r="3" fill="#222"/><circle cx="83" cy="72" r="3" fill="#222"/><path d="M70 74 L66 88 L74 88Z" fill="#c9966f"/><path d="M60 98 Q70 104 80 98" stroke="#a33" stroke-width="2" fill="none"/>`);
+  c+=cell(1,"Frontal 3/4","a unos 45°",`${sh(25,125)}<circle cx="66" cy="70" r="36" fill="${sk}"/><path d="M30 68 Q60 14 104 62 Q80 42 30 68Z" fill="${hr}"/><circle cx="68" cy="72" r="3" fill="#222"/><circle cx="90" cy="72" r="3" fill="#222"/><path d="M92 76 L106 88 L90 90Z" fill="#c9966f"/><path d="M78 99 Q88 103 96 98" stroke="#a33" stroke-width="2" fill="none"/>`);
+  c+=cell(2,"Perfil","a 90°",`<path d="M35 168 Q38 118 62 112 L92 112 Q112 120 115 168Z" fill="${bd}"/><circle cx="66" cy="70" r="34" fill="${sk}"/><path d="M104 74 L122 86 L104 90Z" fill="${sk}" stroke="#c9966f"/><path d="M34 70 Q40 20 90 36 Q100 50 80 52 Q60 40 38 78Z" fill="${hr}"/><circle cx="92" cy="68" r="3" fill="#222"/><path d="M96 98 Q104 100 108 96" stroke="#a33" stroke-width="2" fill="none"/>`);
+  c+=cell(3,"Escorzo 3/4","cámara detrás",`${sh(25,125)}<circle cx="70" cy="70" r="36" fill="${sk}"/><path d="M34 70 Q36 18 76 20 Q112 24 106 66 Q104 98 80 104 Q40 100 34 70Z" fill="${hr}"/><ellipse cx="104" cy="74" rx="5" ry="9" fill="${sk}"/>`);
+  c+=cell(4,"Contra","de espaldas",`${sh(20,120)}<circle cx="70" cy="70" r="36" fill="${hr}"/>`);
+ }
+ const t=w==="v"?"EJEMPLOS DE ANGULACIÓN VERTICAL: el mismo sujeto visto desde cada altura":"EJEMPLOS DE ANGULACIÓN HORIZONTAL: el mismo sujeto visto desde cada lado";
+ return `<div class="fig"><p class="pie"><b>${t}.</b></p><div class="ejg">${c}</div><p class="pie">Dibujo esquemático de elaboración propia. Si hay una foto con el mismo nombre en la carpeta img (por ejemplo <code>ang-${w}-${K[w][1]}.jpg</code>), se muestra en su lugar. Usa fotografías libres (Pexels, Pixabay, Wikimedia Commons) y cita al autor.</p></div>`;
+}
+
+function retEj(){
+ const O="#e08a00",B="#1F6FEB",G="#2ea060",R="#d9534f",K="#4a3326",S="#5b6672";
+ const it=[
+ ["comparacion","Comparación","Dos elementos juntos: el coche y el guepardo comparten velocidad.",
+ `<rect width="140" height="140" fill="#fdf1dc"/><path d="M8 88 L16 74 Q22 66 36 66 L58 66 Q68 66 74 74 L80 86 Q84 88 84 92 L84 98 L8 98 Z" fill="${R}"/><circle cx="26" cy="100" r="9" fill="#222"/><circle cx="66" cy="100" r="9" fill="#222"/><path d="M26 70 L38 70 L38 78 L22 78Z" fill="#cfe6f7"/><ellipse cx="108" cy="82" rx="22" ry="11" fill="#e8b84a"/><circle cx="127" cy="72" r="8" fill="#e8b84a"/><rect x="92" y="88" width="4" height="16" fill="#e8b84a"/><rect x="118" y="88" width="4" height="16" fill="#e8b84a"/><path d="M86 80 Q76 70 80 62" stroke="#e8b84a" stroke-width="4" fill="none"/><g fill="${K}"><circle cx="100" cy="78" r="2"/><circle cx="109" cy="84" r="2"/><circle cx="116" cy="77" r="2"/><circle cx="125" cy="70" r="1.6"/></g><text x="70" y="30" text-anchor="middle" font-size="22" font-weight="800" fill="${K}">≈</text><text x="70" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="${S}">VELOCIDAD</text>`],
+ ["metafora","Metáfora","Una bombilla sustituye a la idea sin decirlo.",
+ `<rect width="140" height="140" fill="#e9f1fb"/><path d="M30 130 Q30 96 50 90 L90 90 Q110 96 110 130Z" fill="${S}"/><circle cx="70" cy="76" r="22" fill="#e0b08c"/><path d="M48 72 Q70 40 92 72 Q70 56 48 72Z" fill="${K}"/><g stroke="${O}" stroke-width="3" stroke-linecap="round"><path d="M70 6 V14"/><path d="M42 16 L48 22"/><path d="M98 16 L92 22"/><path d="M30 34 L38 36"/><path d="M110 34 L102 36"/></g><circle cx="70" cy="34" r="14" fill="#ffe066" stroke="${O}" stroke-width="2"/><rect x="63" y="46" width="14" height="8" rx="2" fill="${S}"/>`],
+ ["sinecdoque","Sinécdoque","Una parte, las manos amasando, representa toda la panadería.",
+ `<rect width="140" height="140" fill="#fbeedd"/><ellipse cx="70" cy="92" rx="34" ry="16" fill="#f3d9a6"/><path d="M36 60 Q38 40 56 46 L72 74 Q60 90 44 84Z" fill="#e0b08c"/><path d="M104 60 Q102 40 84 46 L68 74 Q80 90 96 84Z" fill="#d8a47c"/><g fill="#fff" opacity=".9"><circle cx="22" cy="104" r="2"/><circle cx="118" cy="108" r="2"/><circle cx="30" cy="118" r="1.6"/><circle cx="112" cy="122" r="1.6"/><circle cx="70" cy="116" r="2"/></g><text x="70" y="22" text-anchor="middle" font-size="11" font-weight="800" fill="${K}">PANADERÍA</text>`],
+ ["hiperbole","Hipérbole","Se exagera: una hamburguesa gigante junto a una persona diminuta.",
+ `<rect width="140" height="140" fill="#fff3d6"/><path d="M14 66 Q14 24 72 24 Q130 24 130 66Z" fill="#d98a3a"/><g fill="#fff"><ellipse cx="50" cy="40" rx="3" ry="1.6"/><ellipse cx="72" cy="34" rx="3" ry="1.6"/><ellipse cx="94" cy="42" rx="3" ry="1.6"/></g><path d="M10 70 Q24 62 38 70 Q52 78 66 70 Q80 62 94 70 Q108 78 134 68 L134 76 L10 78Z" fill="${G}"/><rect x="12" y="78" width="120" height="14" rx="7" fill="#6b3a1e"/><path d="M14 94 H130 Q130 112 72 112 Q14 112 14 94Z" fill="#d98a3a"/><circle cx="20" cy="122" r="4" fill="#e0b08c"/><rect x="17" y="126" width="6" height="10" fill="${B}"/>`],
+ ["personificacion","Personificación","El producto tiene rasgos humanos: sonríe y saluda.",
+ `<rect width="140" height="140" fill="#e6f6ee"/><rect x="42" y="22" width="56" height="94" rx="12" fill="${R}"/><rect x="42" y="42" width="56" height="30" fill="#fff" opacity=".9"/><circle cx="58" cy="54" r="3.5" fill="#222"/><circle cx="82" cy="54" r="3.5" fill="#222"/><path d="M56 62 Q70 74 84 62" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M42 80 Q24 76 20 60" stroke="${R}" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M98 80 Q116 90 120 104" stroke="${R}" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="20" cy="58" r="5" fill="${R}"/><rect x="50" y="116" width="12" height="14" rx="4" fill="#222"/><rect x="78" y="116" width="12" height="14" rx="4" fill="#222"/>`],
+ ["simbolo","Símbolo","Imágenes que representan ideas por convención: paloma = paz, corazón = amor.",
+ `<rect width="140" height="140" fill="#eaf2fb"/><path d="M20 80 Q34 56 58 62 Q70 38 90 44 Q82 54 82 62 Q96 62 104 54 Q100 74 82 84 Q70 94 50 92 Q36 90 28 96Z" fill="#fff" stroke="${S}" stroke-width="2"/><circle cx="90" cy="46" r="1.8" fill="#222"/><path d="M92 44 L100 46 L92 49Z" fill="${O}"/><path d="M22 100 Q50 112 76 98" stroke="${G}" stroke-width="3" fill="none"/><g fill="${G}"><ellipse cx="36" cy="106" rx="6" ry="3" transform="rotate(-20 36 106)"/><ellipse cx="52" cy="108" rx="6" ry="3" transform="rotate(10 52 108)"/><ellipse cx="66" cy="104" rx="6" ry="3" transform="rotate(30 66 104)"/></g><path d="M112 96 C96 84 96 70 108 70 C112 70 114 73 112 76 C112 73 116 70 120 70 C132 70 132 84 112 96Z" fill="${R}"/>`]
+ ];
+ const Q={comparacion:"anuncio coche y guepardo",metafora:"idea bombilla concepto",sinecdoque:"manos amasando pan",hiperbole:"hamburguesa gigante",personificacion:"publicidad personaje producto sonriente",simbolo:"paloma de la paz"};
+ return `<div class="fig"><p class="pie"><b>Una figura retórica, una imagen.</b> Ejemplos esquemáticos de cada recurso.</p><div class="ejg">${it.map(([k,t,d,inner])=>`<figure class="ejc"><div class="ejw"><svg viewBox="0 0 140 140" role="img" aria-label="${t}">${inner}</svg><img src="img/ret-${k}.jpg" alt="Ejemplo real: ${t}" loading="lazy" onerror="this.remove()"></div><figcaption><b>${t}</b><small>${d}</small></figcaption></figure>`).join("")}</div><p class="pie">Dibujos de elaboración propia. Si copias una foto tuya o libre en <code>img/ret-comparacion.jpg</code>, <code>ret-metafora.jpg</code>, <code>ret-sinecdoque.jpg</code>, <code>ret-hiperbole.jpg</code>, <code>ret-personificacion.jpg</code> o <code>ret-simbolo.jpg</code>, sustituye al dibujo</p></div>`;
+}
+
+function movDib(){
+ const R="#d9534f",S="#5b6672",O="#e08a00",B="#1F6FEB";
+ const cam=(x,y,r=0,c=R)=>`<g transform="translate(${x} ${y}) rotate(${r})"><rect x="-13" y="-8" width="20" height="16" rx="3" fill="${c}"/><path d="M7 -5 L16 -10 L16 10 L7 5Z" fill="${c}"/></g>`;
+ const ar=(d,c=R)=>`<path d="${d}" stroke="${c}" stroke-width="2.5" fill="none" marker-end="url(#mh)"/>`;
+ const it=[
+ ["Panorámica horizontal","Gira sobre su eje a izquierda y derecha. Vista desde arriba.",`<path d="M70 70 L16 28 A68 68 0 0 1 124 28Z" fill="${B}" opacity=".12"/>${cam(70,80,-90)}<rect x="66" y="88" width="8" height="6" fill="${S}"/><path d="M52 102 L70 90 L88 102" stroke="${S}" stroke-width="3" fill="none"/>${ar("M34 54 Q70 20 106 54")}<path d="M34 54 Q70 20 106 54" stroke="${R}" stroke-width="0" />`],
+ ["Panorámica vertical (tilt)","Gira arriba y abajo. Vista lateral.",`<path d="M40 78 L120 30 L120 60Z" fill="${B}" opacity=".12"/>${cam(40,78,-28)}<path d="M28 108 L40 90 L52 108" stroke="${S}" stroke-width="3" fill="none"/>${ar("M96 112 Q132 76 112 36")}`],
+ ["Travelling","La cámara se desplaza sobre railes o ruedas.",`<line x1="10" y1="104" x2="130" y2="104" stroke="${S}" stroke-width="3"/><g stroke="${S}" stroke-width="2">${[16,40,64,88,112].map(x=>`<line x1="${x}" y1="100" x2="${x}" y2="110"/>`).join("")}</g><rect x="36" y="88" width="44" height="10" rx="3" fill="${S}"/><circle cx="46" cy="100" r="4" fill="#222"/><circle cx="70" cy="100" r="4" fill="#222"/>${cam(58,74)}${ar("M30 54 H112")}<circle cx="124" cy="54" r="0"/>`],
+ ["Grúa","Sube o baja la cámara con un brazo articulado.",`<rect x="14" y="108" width="40" height="12" rx="3" fill="${S}"/><circle cx="24" cy="122" r="5" fill="#222"/><circle cx="46" cy="122" r="5" fill="#222"/><path d="M34 108 L96 56" stroke="${S}" stroke-width="5" stroke-linecap="round"/>${cam(104,52)}${ar("M122 98 V30")}`],
+ ["Zoom in / zoom out","Cambia la focal; la cámara no se mueve.",`${cam(22,70)}<path d="M38 70 L118 28 L118 112Z" fill="${B}" opacity=".12"/><path d="M38 70 L82 47 L82 93Z" fill="${B}" opacity=".25"/>${ar("M118 70 H92",B)}<text x="70" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="${S}">IN ⟷ OUT</text>`],
+ ["Barrido","Panorámica muy rápida: se usa como transición.",`<path d="M70 82 L8 40 A76 76 0 0 1 132 40Z" fill="${B}" opacity=".1"/>${cam(70,84,-90)}${ar("M26 52 Q70 8 114 52")}<g stroke="${S}" stroke-width="2" opacity=".6"><line x1="30" y1="62" x2="44" y2="62"/><line x1="26" y1="68" x2="46" y2="68"/><line x1="94" y1="62" x2="110" y2="62"/><line x1="92" y1="68" x2="114" y2="68"/></g>`]
+ ];
+ return `<div class="fig"><p class="pie"><b>Movimientos de cámara: una imagen de cada uno.</b></p><div class="ejg"><svg width="0" height="0" style="position:absolute"><defs><marker id="mh" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#d9534f"/></marker></defs></svg>${it.map(([t,d,inner])=>`<figure class="ejc"><div class="ejw"><svg viewBox="0 0 140 140" role="img" aria-label="${t}"><rect width="140" height="140" fill="#fbeeee"/>${inner}</svg></div><figcaption><b>${t}</b><small>${d}</small></figcaption></figure>`).join("")}</div><p class="pie">Dibujos esquemáticos de elaboración propia.</p></div>`;
+}
+function conoDiag(){
+ const ox=60,oy=165,C=[[84,"Gran angular (24 mm)","#1a8a4a",170],[47,"Normal (50 mm)","#1F6FEB",300],[12,"Teleobjetivo (200 mm)","#c0392b",470]];
+ let h="";C.forEach(([a,n,c,dx],i)=>{const dy=dx*Math.tan(a/2*Math.PI/180);
+  h+=`<polygon points="${ox},${oy} ${ox+dx},${oy-dy} ${ox+dx},${oy+dy}" fill="${c}" opacity=".16"/><line x1="${ox}" y1="${oy}" x2="${ox+dx}" y2="${oy-dy}" stroke="${c}" stroke-width="2"/><line x1="${ox}" y1="${oy}" x2="${ox+dx}" y2="${oy+dy}" stroke="${c}" stroke-width="2"/><text x="${ox+dx+8}" y="${oy-dy+4}" font-size="13" font-weight="700" fill="${c}">${n}: ${a}°</text>`});
+ return `<div class="fig"><svg viewBox="0 0 780 350" role="img" aria-label="Cono de visión según el objetivo" style="max-width:100%"><rect width="780" height="350" fill="var(--card)"/>${h}${camI(ox-20,oy,ox+40,oy,"var(--ink)")}<text x="20" y="340" font-size="13" fill="var(--mute)">Cuanto menor es el ángulo, menos escena cabe y más grande se ve el sujeto.</text></svg><p class="pie">El ángulo de visión depende de la distancia focal del objetivo (valores aproximados, en fotograma completo y medidos en la diagonal). Elaboración propia.</p></div>`;
+}
+
+function escena(){
+ return `<rect width="800" height="300" fill="#bfe0f5"/><circle cx="690" cy="70" r="32" fill="#ffe27a"/><path d="M0 300 Q150 230 300 290 T600 280 T800 290 V300Z" fill="#a9d18e"/><rect y="300" width="800" height="150" fill="#8fbf7a"/><rect x="70" y="200" width="160" height="110" fill="#d9a066"/><polygon points="58,202 150,135 242,202" fill="#b5513a"/><rect x="132" y="250" width="32" height="60" fill="#7a4a2b"/><rect x="85" y="225" width="30" height="28" fill="#bfe0f5"/><rect x="190" y="225" width="30" height="28" fill="#bfe0f5"/><rect x="654" y="240" width="22" height="75" fill="#7a4a2b"/><circle cx="665" cy="215" r="55" fill="#4f9a50"/><rect x="376" y="284" width="22" height="100" rx="6" fill="#34495e"/><rect x="402" y="284" width="22" height="100" rx="6" fill="#34495e"/><rect x="370" y="380" width="30" height="10" rx="4" fill="#222"/><rect x="400" y="380" width="30" height="10" rx="4" fill="#222"/><rect x="372" y="194" width="56" height="94" rx="14" fill="#c0392b"/><rect x="354" y="198" width="18" height="80" rx="8" fill="#c0392b"/><rect x="428" y="198" width="18" height="80" rx="8" fill="#c0392b"/><circle cx="363" cy="282" r="9" fill="#e0b08c"/><circle cx="437" cy="282" r="9" fill="#e0b08c"/><circle cx="400" cy="170" r="24" fill="#e0b08c"/><path d="M376 166 Q400 134 424 166 Q400 150 376 166Z" fill="#5a3a22"/><circle cx="391" cy="170" r="2.6" fill="#222"/><circle cx="409" cy="170" r="2.6" fill="#222"/><path d="M391 181 Q400 188 409 181" fill="none" stroke="#222" stroke-width="2"/>`;
+}
+const ENC_KF=[[450,0],[250,140],[180,140],[130,135],[70,145],[45,150]];
+function encRect(t){
+ const h=450*Math.pow(0.1,t/100);let top=0;
+ for(let i=0;i<ENC_KF.length-1;i++){const [h1,t1]=ENC_KF[i],[h2,t2]=ENC_KF[i+1];if(h<=h1&&h>=h2){top=t1+(t2-t1)*(h1-h)/(h1-h2);break}}
+ const w=h*16/9;return [400-w/2,top,w,h];
+}
+function encName(t){const h=450*Math.pow(0.1,t/100);return h>=330?"Plano general":h>=235?"Plano entero":h>=165?"Plano americano":h>=105?"Plano medio":h>=60?"Primer plano":"Gran primer plano"}
+function simEnc(){
+ const e=escena();
+ return `<div class="fig sim enc" data-k="enc" data-cuts="[]"><div class="encg"><div class="encl"><p class="encl-t"><b>Travelling in</b>: la cámara <b>avanza</b> hacia el sujeto sin cortar. Baja el deslizador para acercarla.</p><div class="encv"><input type="range" min="0" max="100" value="0" data-enc orient="vertical" aria-label="Acercar la cámara con un travelling in"></div></div><div class="encd"><div class="encr2"><div><svg class="encfull" viewBox="0 0 800 450" role="img" aria-label="Escena completa con el marco de la cámara">${e}<rect class="encr" x="0" y="0" width="800" height="450" fill="none" stroke="#F5B700" stroke-width="7"/></svg><p class="pie">Escena completa y marco de la cámara (amarillo).</p></div><div><svg class="encview" viewBox="0 0 800 450" role="img" aria-label="Lo que ve el espectador">${e}</svg><p class="pie">Lo que ve el espectador (encuadre).</p></div></div><p class="pie"><b>Plano de edición</b> (línea de tiempo del montaje; cada color es un plano):</p><div class="tlw"><div class="tl"></div><div class="pos"></div></div><div class="btns"><button data-enccut>✂ Cortar aquí (montaje)</button><button data-encreset>Borrar cortes</button></div></div></div><p class="desc" aria-live="polite"></p></div>`;
+}
+function updEnc(f){
+ const t=+f.querySelector("[data-enc]").value,[x,y,w,h]=encRect(t);
+ const r=f.querySelector(".encr");r.setAttribute("x",x);r.setAttribute("y",y);r.setAttribute("width",w);r.setAttribute("height",h);
+ f.querySelector(".encview").setAttribute("viewBox",`${x} ${y} ${w} ${h}`);
+ const cuts=JSON.parse(f.dataset.cuts),pts=[0,...cuts,100],col=["#1F6FEB","#2ea060","#d17b00","#8e44ad","#c0392b","#17808f"];
+ f.querySelector(".tl").innerHTML=pts.slice(0,-1).map((a,i)=>`<span style="width:${pts[i+1]-a}%;background:${col[i%col.length]}">Plano ${i+1}</span>`).join("");
+ f.querySelector(".pos").style.left=`calc(${t}% - 1px)`;
+ const seg=pts.slice(0,-1).map((a,i)=>{const b=pts[i+1],n1=encName(a),n2=encName(b);return `<li><b>Plano de edición ${i+1}:</b> empieza en <b>${n1.toLowerCase()}</b> y termina en <b>${n2.toLowerCase()}</b>${n1===n2?" (mismo encuadre de principio a fin)":" (el encuadre cambia dentro del mismo plano)"}.</li>`}).join("");
+ f.querySelector(".desc").innerHTML=`<b>Encuadre ahora: ${encName(t).toLowerCase()}.</b> Cortes realizados: ${cuts.length}. Planos de edición: ${pts.length-1}.<ul>${seg}</ul>${cuts.length===0?"Sin cortes hay un único plano de edición, aunque el plano de encuadre vaya cambiando. Pulsa «Cortar aquí» para que el montaje cree otro plano.":"Cada corte crea un nuevo plano de edición. Ojo: los cortes no cambian el encuadre; es la cámara la que lo cambia."}`;
+}
+function actividad(titulo,z){
+ const id="act-"+quita(titulo).replace(/ /g,"-");
+ const L=["Excelente","Bien","Suficiente","Insuficiente"];
+ const H=(e,t,c)=>`<h4 class="ah ${c||""}"><span>${e}</span> ${t}</h4>`;
+ const rub=z.rub?H("📝","Rúbrica de evaluación","h5")+`<p class="mute">Marca el nivel de cada criterio para calcular una nota orientativa. Sirve para la autoevaluación y la coevaluación.</p><div class="rub" data-id="${id}"><table><thead><tr><th>Criterio</th>${L.map((l,i)=>`<th>${l} (${4-i})</th>`).join("")}</tr></thead><tbody>${z.rub.map(([k,...d],i)=>`<tr><td>${k}</td>${d.map((x,j)=>`<td><label><input type="radio" name="${id}-${i}" value="${4-j}"> ${x}</label></td>`).join("")}</tr>`).join("")}</tbody></table><p class="rubn" aria-live="polite">Nota orientativa: marca todos los criterios.</p></div>`:"";
+ const tt=titulo.match(/^Actividad (A\d\.\d)\. (.*)$/);
+ return `<details class="act" open id="${id}"><summary>${titulo}</summary><div class="abn"><div><span class="abt">Hoy, tu tarea creativa se centrará en…</span><span class="abh">${tt?tt[1]+". "+tt[2]:titulo}</span>${z.chip?`<span class="chip">${z.chip}</span>`:""}</div><span class="abi" aria-hidden="true">🎯</span></div>${z.nota?`<div class="sticky"><b>¿Sabías que…?</b> ${z.nota}</div>`:""}${z.obj?H("🎯","Objetivos de la actividad")+`<ul>${z.obj.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}${z.explora?H("🔎","Explora","h2")+`<div class="explora">${z.explora}</div>`:""}${z.terminos?H("📚","Términos clave","h3")+`<p>${z.terminos}</p>`:""}${z.pasos?H("🎬","Qué tienes que hacer","h4")+`<ol>${z.pasos.map(x=>`<li>${x}</li>`).join("")}</ol>`:""}${z.tabla?`<div class="tw"><table><thead><tr>${z.tabla[0].map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${z.tabla[1].map(f=>`<tr>${f.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`:""}${z.entrega?H("📤","Entrega","h6")+`<p>${z.entrega}</p>`:""}${rub}${z.amp?H("🚀","Para seguir practicando","h7")+`<ul>${z.amp.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}</details>`;
+}
+
+const ACOL=["#e63946","#f77f00","#7b2cbf","#0077b6","#d90368","#2a9d8f"];
+const ACTOS=[["Detonante",110,235,"Suceso que rompe la normalidad del protagonista y pone la historia en marcha. Ocurre dentro del acto I."],["Primer punto de giro",210,180,"Final del acto I (hacia el 25 % de la historia). El protagonista asume un objetivo y la historia cambia de dirección: ya no hay vuelta atrás."],["Punto medio",420,140,"Mitad del acto II. Un hecho cambia la comprensión del conflicto: una revelación, una victoria aparente o un revés. No todas las historias lo tienen."],["Segundo punto de giro",600,110,"Final del acto II (hacia el 75 %). Un golpe lleva al protagonista a su momento más difícil o le da la clave para el desenlace."],["Clímax",680,60,"El momento de máxima tensión, en el que se resuelve el conflicto principal."],["Resolución",760,200,"Se muestra el nuevo equilibrio: cómo ha cambiado el protagonista y su mundo. Cierra el acto III."]];
+function actos(){
+ const pts=[[40,250],[110,235],[210,180],[300,200],[420,140],[500,170],[600,110],[680,60],[760,200]];
+ return `<div class="fig" data-k="ac"><svg viewBox="0 0 800 330" role="img" aria-label="Estructura en tres actos con puntos de giro" style="max-width:100%"><rect width="800" height="330" fill="var(--card)"/><rect x="40" y="20" width="170" height="260" fill="#1F6FEB" opacity=".12"/><rect x="210" y="20" width="390" height="260" fill="#2ea060" opacity=".12"/><rect x="600" y="20" width="160" height="260" fill="#d17b00" opacity=".14"/><text x="125" y="310" text-anchor="middle" font-size="14" font-weight="800" fill="#1F6FEB">ACTO I · Planteamiento (≈25 %)</text><text x="405" y="310" text-anchor="middle" font-size="14" font-weight="800" fill="#2ea060">ACTO II · Nudo (≈50 %)</text><text x="680" y="310" text-anchor="middle" font-size="14" font-weight="800" fill="#d17b00">ACTO III · Desenlace (≈25 %)</text><polyline points="${pts.map(q=>q.join(",")).join(" ")}" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/><text x="46" y="40" font-size="12" fill="var(--mute)">tensión dramática ↑</text>${ACTOS.map(([n,x,y],i)=>`<circle class="mk2" data-i="${i}" cx="${x}" cy="${y}" r="13" fill="${ACOL[i]}" stroke="#fff" stroke-width="3"/><text x="${x}" y="${y+5}" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" pointer-events="none">${i+1}</text>`).join("")}</svg><div class="btns">${ACTOS.map(([n],i)=>`<button data-acto="${i}" style="border-left:6px solid ${ACOL[i]}">${i+1}. ${n}</button>`).join("")}</div><p class="desc" aria-live="polite">Pulsa un punto para ver qué ocurre en cada momento de la estructura. Es un modelo orientativo, no una regla fija.</p></div>`;
+}
+
+const SIM={};
+const APS=[1.8,2.8,4,5.6,8,11,16,22],OBT=[[1/4000,"1/4000"],[1/2000,"1/2000"],[1/1000,"1/1000"],[1/500,"1/500"],[1/250,"1/250"],[1/125,"1/125"],[1/60,"1/60"],[1/30,"1/30"],[1/15,"1/15"],[1/8,"1/8"],[1/4,"1/4"],[1/2,"1/2"],[1,"1 s"]],ISOS=[100,200,400,800,1600,3200,6400];
+SIM.expo=()=>`<div class="fig sim expo" data-ini="expo"><svg viewBox="0 0 800 450" role="img" aria-label="Escena para probar la exposición"><defs><filter id="ex-bg" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur class="ex-fb" stdDeviation="0"/></filter><filter id="ex-mv" x="-80%" y="-20%" width="260%" height="140%"><feGaussianBlur class="ex-fm" stdDeviation="0 0"/></filter><filter id="ex-no"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs><g filter="url(#ex-bg)"><rect width="800" height="300" fill="#bfe0f5"/><circle cx="690" cy="70" r="32" fill="#ffe27a"/><path d="M0 300 Q150 230 300 290 T600 280 T800 290 V300Z" fill="#a9d18e"/><rect y="300" width="800" height="150" fill="#8fbf7a"/><rect x="70" y="200" width="160" height="110" fill="#d9a066"/><polygon points="58,202 150,135 242,202" fill="#b5513a"/><rect x="132" y="250" width="32" height="60" fill="#7a4a2b"/><circle cx="665" cy="215" r="55" fill="#4f9a50"/><rect x="654" y="240" width="22" height="75" fill="#7a4a2b"/></g><g><rect x="376" y="284" width="22" height="100" rx="6" fill="#34495e"/><rect x="402" y="284" width="22" height="100" rx="6" fill="#34495e"/><rect x="372" y="194" width="56" height="94" rx="14" fill="#c0392b"/><circle cx="400" cy="170" r="24" fill="#e0b08c"/><circle cx="391" cy="170" r="2.6" fill="#222"/><circle cx="409" cy="170" r="2.6" fill="#222"/><path d="M391 181 Q400 188 409 181" fill="none" stroke="#222" stroke-width="2"/></g><g filter="url(#ex-mv)"><circle cx="560" cy="395" r="26" fill="#f5b700" stroke="#101820" stroke-width="3"/><path d="M542 395 H578 M560 377 V413" stroke="#101820" stroke-width="3"/></g><rect class="ex-no" width="800" height="450" filter="url(#ex-no)" opacity="0" style="mix-blend-mode:overlay"/><rect class="ex-ov" width="800" height="450" fill="#000" opacity="0"/></svg><div class="cols2"><label>Diafragma: <b class="ex-a"></b><input type="range" min="0" max="7" value="3" data-expo></label><label>Velocidad de obturación: <b class="ex-s"></b><input type="range" min="0" max="12" value="5" data-expo></label><label>ISO: <b class="ex-i"></b><input type="range" min="0" max="6" value="0" data-expo></label></div><p class="desc" aria-live="polite"></p></div>`;
+function updExpo(f){
+ const v=[...f.querySelectorAll("[data-expo]")].map(x=>+x.value),N=APS[v[0]],[S,St]=OBT[v[1]],I=ISOS[v[2]];
+ f.querySelector(".ex-a").textContent="f/"+N;f.querySelector(".ex-s").textContent=St;f.querySelector(".ex-i").textContent=I;
+ const ev=Math.log2((S*I/100)/(N*N))-Math.log2((1/125)/(5.6*5.6));
+ const ov=f.querySelector(".ex-ov");ov.setAttribute("fill",ev<0?"#000":"#fff");ov.setAttribute("opacity",ev<0?Math.min(.92,1-Math.pow(2,ev)):Math.min(.9,1-Math.pow(2,-ev)));
+ f.querySelector(".ex-fb").setAttribute("stdDeviation",(14/N).toFixed(2));
+ const mb=Math.min(60,S*400);f.querySelector(".ex-fm").setAttribute("stdDeviation",mb.toFixed(1)+" 0");
+ f.querySelector(".ex-no").setAttribute("opacity",Math.min(.6,Math.log2(I/100)/6*.6).toFixed(2));
+ const q=Math.abs(ev)<=.5?"correcta":ev>0?"sobreexpuesta (demasiada luz)":"subexpuesta (poca luz)";
+ f.querySelector(".desc").innerHTML=`<b>Exposición ${q}</b> (${ev>0?"+":""}${ev.toFixed(1)} pasos respecto a la referencia f/5,6, 1/125 s, ISO 100).<br><b>Profundidad de campo:</b> ${N<=2.8?"poca: el fondo sale muy desenfocado":N<=8?"media":"mucha: casi todo sale nítido"}.<br><b>Movimiento:</b> ${S<=1/250?"la pelota queda congelada":S<=1/60?"ligero rastro de movimiento":"la pelota sale muy movida"}.<br><b>Ruido:</b> ${I<=400?"bajo":I<=1600?"visible":"alto: la imagen pierde calidad"}.<br><span class="mute">En vídeo, la velocidad de obturación suele ser aproximadamente 1/(2 × fotogramas por segundo): 1/50 s a 25 fps. Por eso se regula la luz con el diafragma, el ISO y filtros ND, no con la obturación.</span>`;
+}
+SIM.luz3=()=>`<div class="fig sim luz3"><svg viewBox="0 0 520 300" role="img" aria-label="Iluminación de tres puntos sobre un rostro"><defs><radialGradient id="l-key" cx="25%" cy="40%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".6" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><radialGradient id="l-fill" cx="78%" cy="55%" r="60%"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><clipPath id="l-clip"><circle cx="150" cy="140" r="78"/></clipPath></defs><rect width="520" height="300" fill="#15181d"/><g><rect x="62" y="215" width="176" height="85" rx="40" fill="#2b2f36"/><circle cx="150" cy="140" r="78" fill="#3b2d26"/><g clip-path="url(#l-clip)"><rect class="l-k" x="72" y="62" width="156" height="156" fill="url(#l-key)" opacity="0"/><rect class="l-f" x="72" y="62" width="156" height="156" fill="url(#l-fill)" opacity="0"/></g><circle cx="125" cy="130" r="5" fill="#111"/><circle cx="175" cy="130" r="5" fill="#111"/><path d="M125 168 Q150 184 175 168" fill="none" stroke="#111" stroke-width="3"/><path class="l-b" d="M72 140 A78 78 0 0 1 228 140" fill="none" stroke="#ffd36b" stroke-width="5" opacity="0"/><path class="l-b" d="M62 250 Q62 215 100 215 M200 215 Q238 215 238 250" fill="none" stroke="#ffd36b" stroke-width="4" opacity="0"/></g><g font-size="12" fill="#e8edf2"><text x="270" y="30" font-weight="700">Vista desde arriba</text><circle cx="400" cy="150" r="22" fill="#3b2d26"/><path d="M394 128 L406 128 L400 118Z" fill="#e0b08c"/><rect x="385" y="268" width="30" height="18" fill="#889" rx="3"/><text x="420" y="282">cámara</text><circle class="l-lk" cx="330" cy="205" r="12" fill="#f5b700" opacity=".25"/><text x="270" y="222">Luz principal</text><circle class="l-lf" cx="480" cy="205" r="12" fill="#6ea8ff" opacity=".25"/><text x="440" y="222">Relleno</text><circle class="l-lb" cx="400" cy="55" r="12" fill="#ff8f6b" opacity=".25"/><text x="344" y="46">Contraluz</text></g></svg><div class="btns"><button data-luz="k">Luz principal (key)</button><button data-luz="f">Luz de relleno (fill)</button><button data-luz="b">Contraluz (back)</button></div><p class="desc" aria-live="polite">Enciende las luces una a una y mira cómo cambia el rostro.</p></div>`;
+const LUZ={k:["Luz principal (key)","Es la luz más fuerte. Define la dirección de la luz y modela el rostro con luces y sombras. Suele colocarse a unos 45° a un lado de la cámara y algo por encima."],f:["Luz de relleno (fill)","Más suave y débil que la principal, se coloca al lado contrario. Aclara las sombras duras y controla el contraste."],b:["Contraluz (back)","Se coloca detrás del sujeto, hacia la cámara. Dibuja un borde luminoso en el pelo y los hombros y lo separa del fondo."]};
+SIM.pixel=()=>`<div class="fig sim" data-ini="pixel"><canvas width="800" height="450" style="width:100%;max-width:640px;border:1px solid var(--line);border-radius:6px;image-rendering:pixelated"></canvas><label>Resolución horizontal: <b class="px-n"></b><input type="range" min="2" max="40" value="40" data-pix></label><p class="desc" aria-live="polite"></p></div>`;
+function updPix(f){
+ const cv=f.querySelector("canvas"),ctx=cv.getContext("2d"),v=+f.querySelector("[data-pix]").value,n=Math.round(8*Math.pow(100,(v-2)/38)/1),w=Math.max(8,n),h=Math.round(w*9/16);
+ const o=document.createElement("canvas");o.width=800;o.height=450;const c=o.getContext("2d");
+ c.fillStyle="#bfe0f5";c.fillRect(0,0,800,300);c.fillStyle="#ffe27a";c.beginPath();c.arc(690,70,32,0,7);c.fill();c.fillStyle="#a9d18e";c.beginPath();c.moveTo(0,300);c.quadraticCurveTo(150,230,300,290);c.quadraticCurveTo(450,330,600,280);c.quadraticCurveTo(700,260,800,290);c.lineTo(800,300);c.fill();c.fillStyle="#8fbf7a";c.fillRect(0,300,800,150);c.fillStyle="#d9a066";c.fillRect(70,200,160,110);c.fillStyle="#b5513a";c.beginPath();c.moveTo(58,202);c.lineTo(150,135);c.lineTo(242,202);c.fill();c.fillStyle="#7a4a2b";c.fillRect(132,250,32,60);c.fillStyle="#4f9a50";c.beginPath();c.arc(665,215,55,0,7);c.fill();c.fillStyle="#7a4a2b";c.fillRect(654,240,22,75);c.fillStyle="#34495e";c.fillRect(376,284,22,100);c.fillRect(402,284,22,100);c.fillStyle="#c0392b";c.fillRect(372,194,56,94);c.fillStyle="#e0b08c";c.beginPath();c.arc(400,170,24,0,7);c.fill();c.fillStyle="#222";c.fillRect(389,167,5,5);c.fillRect(406,167,5,5);
+ const sm=document.createElement("canvas");sm.width=w;sm.height=h;sm.getContext("2d").drawImage(o,0,0,w,h);
+ ctx.imageSmoothingEnabled=false;ctx.drawImage(sm,0,0,800,450);
+ f.querySelector(".px-n").textContent=`${w} × ${h} píxeles (${(w*h).toLocaleString("es-ES")} en total)`;
+ f.querySelector(".desc").innerHTML=`Un <b>píxel</b> es el cuadradito más pequeño de una imagen digital y tiene un único color. Con pocos píxeles se ven los «escalones»; con muchos, la imagen parece continua. ${w>=400?"Esta resolución ya es suficiente para una pantalla pequeña.":""}`;
+}
+SIM.color=()=>`<div class="fig sim" data-ini="color"><div class="cols2"><div class="col-sw" style="height:150px;border-radius:8px;border:1px solid var(--line)"></div><div><label style="color:#c0392b">Rojo: <b class="cr"></b><input type="range" min="0" max="255" value="245" data-col></label><label style="color:#1a8a4a">Verde: <b class="cg"></b><input type="range" min="0" max="255" value="183" data-col></label><label style="color:#1F6FEB">Azul: <b class="cb"></b><input type="range" min="0" max="255" value="0" data-col></label></div></div><p class="desc" aria-live="polite"></p></div>`;
+function updCol(f){
+ const [r,g,b]=[...f.querySelectorAll("[data-col]")].map(x=>+x.value);
+ f.querySelector(".cr").textContent=r;f.querySelector(".cg").textContent=g;f.querySelector(".cb").textContent=b;
+ f.querySelector(".col-sw").style.background=`rgb(${r},${g},${b})`;
+ const mx=Math.max(r,g,b)/255,mn=Math.min(r,g,b)/255,d=mx-mn;let h=0;
+ if(d){const R=r/255,G=g/255,B=b/255;h=mx===R?((G-B)/d)%6:mx===G?(B-R)/d+2:(R-G)/d+4;h=Math.round((h*60+360)%360)}
+ const l=(mx+mn)/2,sat=d?d/(1-Math.abs(2*l-1)):0,hex="#"+[r,g,b].map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();
+ f.querySelector(".desc").innerHTML=`<b>${hex}</b> · RGB(${r}, ${g}, ${b}) · Tono ${h}° · Saturación ${Math.round(sat*100)} % · Luminosidad ${Math.round(l*100)} %.<br>En la <b>síntesis aditiva</b> (pantallas) el rojo, el verde y el azul se suman: los tres al máximo dan blanco y los tres a cero, negro.`;
+}
+SIM.ajuste=()=>`<div class="fig sim" data-ini="ajuste"><div class="cols2"><div><svg viewBox="0 0 800 450" role="img" aria-label="Imagen original">${escena()}</svg><p class="pie">Original</p></div><div><svg class="aj-img" viewBox="0 0 800 450" role="img" aria-label="Imagen editada">${escena()}</svg><p class="pie">Editada</p></div></div><div class="cols2"><label>Brillo <input type="range" min="40" max="160" value="100" data-adj="b"></label><label>Contraste <input type="range" min="40" max="180" value="100" data-adj="c"></label><label>Saturación <input type="range" min="0" max="200" value="100" data-adj="s"></label><label>Temperatura (fría ↔ cálida) <input type="range" min="-50" max="50" value="0" data-adj="t"></label></div><div class="btns"><button data-adjreset>Restablecer</button></div><p class="desc" aria-live="polite">Mueve los controles para ver cómo se transforma la imagen. La temperatura es una aproximación.</p></div>`;
+function updAdj(f){
+ const g=k=>+f.querySelector(`[data-adj=${k}]`).value,t=g("t");
+ f.querySelector(".aj-img").style.filter=`brightness(${g("b")/100}) contrast(${g("c")/100}) saturate(${g("s")/100})${t>0?` sepia(${t/100}) saturate(${1+t/60})`:t<0?` hue-rotate(${t*1.1}deg) saturate(${1-t/200})`:""}`;
+}
+let AU=null;
+SIM.onda=()=>`<div class="fig sim" data-ini="onda"><svg viewBox="0 0 800 220" role="img" aria-label="Onda sonora"><rect width="800" height="220" fill="var(--card)"/><line x1="0" y1="110" x2="800" y2="110" stroke="var(--line)"/><path class="on-p" d="" fill="none" stroke="var(--acc)" stroke-width="3"/><text x="10" y="20" font-size="12" fill="var(--mute)">Ventana de 10 milisegundos</text></svg><div class="cols2"><label>Frecuencia: <b class="on-f"></b><input type="range" min="50" max="4000" step="10" value="440" data-onda></label><label>Amplitud (volumen): <b class="on-a"></b><input type="range" min="5" max="100" value="60" data-onda></label></div><div class="btns"><button data-ondaplay>▶ Escuchar / parar (volumen bajo)</button></div><p class="desc" aria-live="polite"></p></div>`;
+function updOnda(f){
+ const [fr,am]=[...f.querySelectorAll("[data-onda]")].map(x=>+x.value),A=am/100*90,cy=110;let d="";
+ for(let x=0;x<=800;x+=2){const y=cy-A*Math.sin(2*Math.PI*fr*0.01*x/800);d+=(x?"L":"M")+x+" "+y.toFixed(1)}
+ f.querySelector(".on-p").setAttribute("d",d);
+ f.querySelector(".on-f").textContent=fr+" Hz";f.querySelector(".on-a").textContent=am+" % ("+(20*Math.log10(am/100)).toFixed(1)+" dB respecto al máximo)";
+ const tono=fr<250?"grave":fr<2000?"medio":"agudo";
+ f.querySelector(".desc").innerHTML=`Tono <b>${tono}</b>. La <b>frecuencia</b> (Hz) es el número de ciclos por segundo y decide si el sonido es grave o agudo; la <b>amplitud</b> decide si suena fuerte o suave. El oído humano percibe aproximadamente entre 20 Hz y 20 000 Hz.`;
+ if(AU){AU.o.frequency.value=fr;AU.g.gain.value=am/100*.15}
+}
+const POL={omni:["Omnidireccional","Capta por igual desde todas las direcciones. Es útil para ambientes y entrevistas en lugares tranquilos, pero recoge también el ruido de alrededor.",a=>1],card:["Cardioide","Capta sobre todo lo que tiene delante y rechaza lo que viene de atrás. Es el más usado para voz, porque aísla del ruido ambiente.",a=>.5*(1+Math.cos(a))],sup:["Supercardioide (cañón)","Más estrecho que el cardioide, con una pequeña zona de captación detrás. Lo llevan los micrófonos de cañón para rodajes.",a=>Math.abs(.37+.63*Math.cos(a))],bi:["Bidireccional (en ocho)","Capta por delante y por detrás y rechaza los lados. Se usa en entrevistas cara a cara con un solo micro.",a=>Math.abs(Math.cos(a))]};
+SIM.polar=()=>`<div class="fig sim" data-ini="polar"><svg viewBox="0 0 400 300" role="img" aria-label="Patrón polar del micrófono" style="max-width:420px"><rect width="400" height="300" fill="var(--card)"/><g stroke="var(--line)" fill="none"><circle cx="200" cy="150" r="40"/><circle cx="200" cy="150" r="80"/><circle cx="200" cy="150" r="120"/><line x1="200" y1="20" x2="200" y2="280"/><line x1="70" y1="150" x2="330" y2="150"/></g><path class="po-p" d="" fill="var(--acc)" fill-opacity=".3" stroke="var(--acc)" stroke-width="3"/><rect x="190" y="140" width="20" height="20" rx="5" fill="var(--ink)"/><text x="200" y="14" text-anchor="middle" font-size="12" fill="var(--mute)">Delante (sonido que se quiere captar)</text><text x="200" y="294" text-anchor="middle" font-size="12" fill="var(--mute)">Detrás</text></svg><div class="btns">${Object.keys(POL).map(k=>`<button data-polar="${k}">${POL[k][0]}</button>`).join("")}</div><p class="desc" aria-live="polite"></p></div>`;
+function updPolar(f,k){
+ const [n,t,fn]=POL[k];let d="";
+ for(let i=0;i<=120;i++){const a=i/120*2*Math.PI,r=fn(a)*120;d+=(i?"L":"M")+(200+r*Math.sin(a)).toFixed(1)+" "+(150-r*Math.cos(a)).toFixed(1)}
+ f.querySelector(".po-p").setAttribute("d",d+"Z");f.querySelectorAll("button").forEach(b=>b.classList.toggle("sel",b.dataset.polar===k));
+ f.querySelector(".desc").innerHTML=`<strong>${n}.</strong> ${t}`;
+}
+const TL={corte:["Corte directo","La imagen y el sonido cambian a la vez, en el mismo punto. Es el corte más habitual.",{v:[[0,50,0],[50,100,1]],a:[[0,50,0],[50,100,1]]}],l:["Corte en L (L-cut)","La imagen cambia al plano 2, pero el sonido del plano 1 sigue sonando un momento. Se usa para escuchar la respuesta mientras vemos la reacción de quien escucha.",{v:[[0,50,0],[50,100,1]],a:[[0,70,0],[70,100,1]]}],j:["Corte en J (J-cut)","El sonido del plano 2 empieza antes de que cambie la imagen. Anticipa lo que va a pasar y hace la transición más fluida.",{v:[[0,50,0],[50,100,1]],a:[[0,30,0],[30,100,1]]}],fund:["Fundido encadenado","Los dos planos se superponen un momento: el primero se desvanece mientras aparece el segundo. Indica paso del tiempo o cambio de lugar.",{v:[[0,56,0],[44,100,1]],a:[[0,56,0],[44,100,1]],x:[44,56]}]};
+SIM.tline=()=>`<div class="fig sim" data-ini="tline"><svg viewBox="0 0 800 210" role="img" aria-label="Línea de tiempo con una pista de vídeo y otra de audio"><rect width="800" height="210" fill="var(--card)"/><text x="10" y="42" font-size="13" font-weight="700" fill="var(--ink)">V1</text><text x="10" y="132" font-size="13" font-weight="700" fill="var(--ink)">A1</text><g class="tl-v"></g><g class="tl-a"></g><line class="tl-x" x1="400" y1="20" x2="400" y2="200" stroke="#c0392b" stroke-width="2" stroke-dasharray="5 4"/><text x="400" y="14" text-anchor="middle" font-size="11" fill="#c0392b">punto de corte</text></svg><div class="btns">${Object.keys(TL).map(k=>`<button data-tl="${k}">${TL[k][0]}</button>`).join("")}</div><p class="desc" aria-live="polite"></p></div>`;
+function updTl(f,k){
+ const [n,t,z]=TL[k],col=["#1F6FEB","#2ea060"],X=v=>50+v*7.2;
+ f.querySelector(".tl-v").innerHTML=z.v.map(([a,b,c])=>`<rect x="${X(a)}" y="22" width="${X(b)-X(a)}" height="46" rx="5" fill="${col[c]}" opacity="${z.x?.85:1}"/><text x="${(X(a)+X(b))/2}" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Plano ${c+1}</text>`).join("");
+ f.querySelector(".tl-a").innerHTML=z.a.map(([a,b,c])=>`<rect x="${X(a)}" y="112" width="${X(b)-X(a)}" height="46" rx="5" fill="${col[c]}" opacity=".6"/><text x="${(X(a)+X(b))/2}" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Audio ${c+1}</text>`).join("");
+ const xl=f.querySelector(".tl-x");xl.setAttribute("x1",X(50));xl.setAttribute("x2",X(50));
+ f.querySelectorAll("button").forEach(b=>b.classList.toggle("sel",b.dataset.tl===k));
+ f.querySelector(".desc").innerHTML=`<strong>${n}.</strong> ${t}`;
+}
+const INI={expo:updExpo,pixel:updPix,color:updCol,ajuste:updAdj,onda:updOnda,polar:f=>updPolar(f,"card"),tline:f=>updTl(f,"corte")};
+function figPlanos(){
+ const foto=PLANO_FOTO;
+ const r=PLANOS.map(([n,[x,y,w,h]],i)=>`<rect class="mk" data-i="${i}" x="${x}" y="${y}" width="${w}" height="${h}"/>`).join("");
+ const vis=foto?`<div class="foto"><img src="${foto}" alt="Fotografía de ejemplo" style="transform-origin:${PLANO_ORIGEN}"></div>`:`<svg viewBox="0 0 400 440" role="img" aria-label="Figura humana con los ocho encuadres posibles"><rect width="400" height="440" fill="#bfe0f5"/><rect y="350" width="400" height="90" fill="#8fbf7a"/><circle cx="60" cy="60" r="26" fill="#ffe27a"/><g><circle cx="200" cy="170" r="18" fill="#e0b08c"/><rect x="168" y="192" width="64" height="78" rx="14" fill="#c0392b"/><rect x="176" y="270" width="20" height="80" rx="6" fill="#34495e"/><rect x="204" y="270" width="20" height="80" rx="6" fill="#34495e"/></g>${r}</svg>`;
+ return `<div class="fig" data-k="pl">${vis}<div class="btns">${PLANOS.map(([n],i)=>`<button data-plano="${i}">${n}</button>`).join("")}</div><p class="desc" aria-live="polite">Pulsa una escala de plano para ver su encuadre.</p></div>`;
+}
+function quiz(q,n){
+ let m={};try{m=JSON.parse(localStorage.getItem("qz"+n)||"{}")}catch(e){}
+ return `<div class="quiz" data-n="${n}" data-tot="${q.length}" data-ans="0" data-ok="0">${q.map(([t,o,ok,e],i)=>`<div class="q"><p><strong>${i+1}.</strong> ${t}</p><div class="btns">${o.map((x,j)=>`<button data-q="${j}" data-ok="${ok}">${x}</button>`).join("")}</div><p class="fb" hidden>${e}</p></div>`).join("")}<div class="res" hidden></div><p class="pie hist">${m.i?`Intentos anteriores: ${m.i}. Mejor nota: ${m.b} / 10.`:"Puedes repetirlo todas las veces que quieras."}</p></div>`;
+}
+function resultado(qz){
+ const n=qz.dataset.n,t=+qz.dataset.tot,ok=+qz.dataset.ok,nota=(ok/t*10).toFixed(1);
+ let m={i:0,b:0};try{m=JSON.parse(localStorage.getItem("qz"+n)||'{"i":0,"b":0}')}catch(e){}
+ m.i=(m.i||0)+1;m.b=Math.max(+m.b||0,+nota);
+ try{localStorage.setItem("qz"+n,JSON.stringify(m))}catch(e){}
+ const r=qz.querySelector(".res");r.hidden=false;
+ r.innerHTML=`<p class="nota"><b>Calificación: ${nota} / 10</b> (${ok} de ${t} aciertos). Intento ${m.i}. Mejor nota: ${m.b} / 10.</p><button data-retry>Intentar de nuevo</button>`;
+}
+app.addEventListener("click",e=>{
+ const b=e.target.closest("button");if(!b)return;
+ const d=b.dataset,f=b.closest(".fig");
+ if(d.plano!==undefined){const i=+d.plano;
+  f.querySelectorAll(".mk").forEach(r=>r.classList.toggle("on",+r.dataset.i===i));
+  const im=f.querySelector(".foto img");if(im)im.style.transform=`scale(${ESC[i]})`;
+  f.querySelectorAll("button").forEach(x=>x.classList.toggle("sel",x===b));
+  f.querySelector(".desc").innerHTML=`<strong>${PLANOS[i][0]}.</strong> ${PLANOS[i][2]}`;
+ }else if(d.ang!==undefined){const [n,x,y,r,t]=ANG[+d.ang];
+  f.querySelector("#cam").setAttribute("transform",`translate(${x} ${y}) rotate(${r})`);
+  const l=f.querySelector("#rayo");l.setAttribute("x1",x);l.setAttribute("y1",y);l.setAttribute("x2",300);l.setAttribute("y2",150);
+  f.querySelectorAll("button").forEach(z=>z.classList.toggle("sel",z===b));
+  f.querySelector(".desc").innerHTML=`<strong>${n}.</strong> ${t}`;
+ }else if(d.eje!==undefined){const [n,x,y,t]=EJE[+d.eje];
+  f.querySelector("#cam").setAttribute("transform",`translate(${x} ${y})`);
+  f.querySelectorAll("button").forEach(z=>z.classList.toggle("sel",z===b));
+  f.querySelector(".desc").innerHTML=`<strong>${n}.</strong> ${t}`;
+ }else if(d.q!==undefined){
+  const q=b.closest(".q"),qz=b.closest(".quiz"),ok=+d.ok,sel=+d.q;
+  q.querySelectorAll("button").forEach((x,j)=>{x.disabled=true;if(j===ok)x.classList.add("ok");else if(j===sel)x.classList.add("ko")});
+  const fb=q.querySelector(".fb");fb.hidden=false;fb.innerHTML=`<strong>${sel===ok?"Correcto.":"Incorrecto."}</strong> ${fb.innerHTML}`;
+  qz.dataset.ans=+qz.dataset.ans+1;if(sel===ok)qz.dataset.ok=+qz.dataset.ok+1;
+  if(+qz.dataset.ans===+qz.dataset.tot)resultado(qz);
+ }else if(d.yt!==undefined){b.parentNode.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${d.yt}?autoplay=1&rel=0&start=${d.t}" title="Vídeo" allow="autoplay;fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+ }else if(d.luz!==undefined){const k=d.luz;b.classList.toggle("sel");const on=b.classList.contains("sel");
+  f.querySelectorAll(k==="b"?".l-b":".l-"+k).forEach(x=>x.setAttribute("opacity",on?1:0));
+  f.querySelector(".l-l"+k).setAttribute("opacity",on?1:.25);
+  f.querySelector(".desc").innerHTML=`<strong>${LUZ[k][0]}.</strong> ${LUZ[k][1]}`;
+ }else if(d.polar!==undefined){updPolar(f,d.polar);
+ }else if(d.tl!==undefined){updTl(f,d.tl);
+ }else if(d.adjreset!==undefined){f.querySelectorAll("[data-adj]").forEach(x=>x.value=x.dataset.adj==="t"?0:100);updAdj(f);
+ }else if(d.ondaplay!==undefined){
+  if(AU){AU.o.stop();AU.c.close();AU=null;b.textContent="▶ Escuchar / parar (volumen bajo)"}
+  else{try{const c=new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.type="sine";g.gain.value=.09;o.connect(g).connect(c.destination);o.start();AU={c,o,g};b.textContent="■ Parar";updOnda(f)}catch(e){f.querySelector(".desc").textContent="Tu navegador no permite reproducir sonido aquí."}}
+ }else if(d.acto!==undefined){const [n,x,y,t]=ACTOS[+d.acto];
+  f.querySelectorAll("circle[data-i]").forEach(c=>{const s=+c.dataset.i===+d.acto;c.setAttribute("r",s?"22":"13");c.setAttribute("stroke",s?"#101820":"#fff");c.setAttribute("stroke-width",s?"5":"3");if(s){const tx=c.nextElementSibling,pp=c.parentNode;pp.appendChild(c);pp.appendChild(tx)}});
+  f.querySelectorAll("button").forEach(z=>{const s=z===b;z.classList.toggle("sel",s);z.style.background=s?ACOL[+d.acto]:"";z.style.color=s?"#fff":""});
+  f.querySelectorAll(".aclb").forEach(e=>e.remove());
+  const lb=document.createElementNS("http://www.w3.org/2000/svg","text");lb.setAttribute("class","aclb");lb.setAttribute("x",Math.min(Math.max(x,90),710));lb.setAttribute("y",y>90?y-30:y+44);lb.setAttribute("text-anchor","middle");lb.setAttribute("font-size","16");lb.setAttribute("font-weight","800");lb.setAttribute("fill",ACOL[+d.acto]);lb.setAttribute("stroke","var(--card)");lb.setAttribute("stroke-width","4");lb.setAttribute("paint-order","stroke");lb.textContent=n;f.querySelector("svg").appendChild(lb);
+  f.querySelector(".desc").innerHTML=`<strong style="color:${ACOL[+d.acto]}">${n}.</strong> ${t}`;
+ }else if(d.enccut!==undefined){const f=b.closest(".fig"),t=+f.querySelector("[data-enc]").value,c=JSON.parse(f.dataset.cuts);
+  if(t>=3&&t<=97&&c.every(x=>Math.abs(x-t)>=3)){c.push(t);c.sort((a,b)=>a-b);f.dataset.cuts=JSON.stringify(c)}updEnc(f);
+ }else if(d.encreset!==undefined){const f=b.closest(".fig");f.dataset.cuts="[]";updEnc(f);
+ }else if(d.sol!==undefined){const bx=b.closest(".sol"),c=bx.querySelector(".solc");
+  if(d.sol==="abrir"){const k=prompt("Clave del profesorado:");if(k===null)return;if(k!==SOL_CLAVE){alert("Clave incorrecta");return}
+   const it=JSON.parse(c.dataset.items);c.innerHTML=it.map(([r,t])=>`<figure class="solf"><figcaption><b>${t}</b></figcaption><a href="${r}" target="_blank" rel="noopener" title="Pulsa para ampliar"><img src="${r}" alt="${t}" loading="lazy"></a></figure>`).join("")+'<p><button class="btn" data-sol="cerrar">Volver a ocultar</button></p>';
+   c.hidden=false;b.hidden=true}
+  else{c.hidden=true;c.innerHTML="";bx.querySelector("[data-sol=abrir]").hidden=false}
+ }else if(d.tira!==undefined){ruletaTira(b.closest(".rul"));
+ }else if(d.slot!==undefined){const on=b.getAttribute("aria-pressed")!=="true";if(b.dataset.v||!on){b.setAttribute("aria-pressed",on?"true":"false");b.querySelector(".lk").textContent=on?"🔒":"🔓"}
+ }else if(d.copia!==undefined){const t=b.closest(".rul").querySelector(".rfr").dataset.txt;if(t){try{navigator.clipboard.writeText(t);b.textContent="¡Copiado!";setTimeout(()=>b.textContent="Copiar el reto",1500)}catch(e){}} }else if(d.tgl!==undefined){const li=b.closest("li.g");tocSet(li,li.querySelector(".subs").hidden);
+ }else if(d.tall!==undefined){b.closest(".toc").querySelectorAll("li.g").forEach(li=>tocSet(li,d.tall==="1"));
+ }else if(d.go!==undefined){document.getElementById(d.go).scrollIntoView({behavior:"smooth",block:"start"});
+ }else if(d.rej!==undefined){b.parentNode.querySelector(".rej").classList.toggle("on");
+ }else if(d.retry!==undefined){
+  const qz=b.closest(".quiz");qz.dataset.ans=0;qz.dataset.ok=0;
+  qz.querySelectorAll(".q button").forEach(x=>{x.disabled=false;x.classList.remove("ok","ko")});
+  qz.querySelectorAll(".fb").forEach(x=>{x.hidden=true;x.innerHTML=x.innerHTML.replace(/^<strong>[^<]*<\/strong> /,"")});
+  qz.querySelector(".res").hidden=true;qz.scrollIntoView();
+ }else if(d.open!==undefined){
+  const l=b.closest(".lock"),i=l.querySelector("input"),bo=b.closest(".bo");
+  if(i.dataset.r.split("|").includes(quita(i.value))){l.classList.add("abierto");l.querySelector(".st").textContent="Candado abierto";i.disabled=true;b.disabled=true;
+   if(bo.querySelectorAll(".abierto").length===+bo.dataset.n)bo.querySelector(".fin").hidden=false;
+  }else l.querySelector(".st").textContent="Respuesta incorrecta, prueba otra vez.";
+ }else if(d.kahoot!==undefined){
+  const t=CONTENIDO[+d.kahoot].quiz.map(([q,o,ok])=>[q,...o,20,ok+1].join("\t")).join("\n");
+  const m=b.nextElementSibling;
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>m.textContent="Copiado. Pégalo en la plantilla de importación de Kahoot.").catch(()=>m.textContent="No se pudo copiar automáticamente.");
+ }
+});
+function simAng(f){
+ const v=+f.querySelector("[data-sl=v]").value,g=+f.querySelector("[data-sl=h]").value,r=v*Math.PI/180,q=g*Math.PI/180;
+ f.querySelector("#cv").setAttribute("transform",`translate(${100-70*Math.cos(r)} ${110-70*Math.sin(r)})`);
+ f.querySelector("#ch").setAttribute("transform",`translate(${300+70*Math.sin(q)} ${110+70*Math.cos(q)})`);
+ const cx=100-70*Math.cos(r),cy=110-70*Math.sin(r),ux=(100-cx)/70,uy=(110-cy)/70;
+ f.querySelector("#cono").setAttribute("points",`${cx},${cy} ${100-uy*45},${110+ux*45} ${100+uy*45},${110-ux*45}`);
+ const av=Math.abs(v),vn=av<=10?"normal":av>=80?(v>0?"cenital":"nadir"):(v>0?"picado":"contrapicado");
+ const hh=g>180?360-g:g,hn=hh<=20?"frontal":hh<=70?"frontal a 45°":hh<=110?"lateral a 90°":hh<=160?"lateral trasero a 45°":"trasero a 180°";
+ const E={normal:"cámara a la altura de los ojos; es neutra.",picado:"el sujeto parece pequeño o vulnerable.",contrapicado:"el sujeto parece grande o poderoso.",cenital:"vista en vertical desde arriba.",nadir:"vista en vertical desde abajo."};
+ f.querySelector(".desc").innerHTML=`<strong>Angulación vertical: ${vn}</strong> (${v}°): ${E[vn]}<br><strong>Angulación horizontal: ${hn}</strong> (${g}°).`;
+}
+app.addEventListener("input",e=>{if(e.target.dataset.sl)simAng(e.target.closest(".fig"));else if(e.target.dataset.enc!==undefined)updEnc(e.target.closest(".fig"));
+ else{const f=e.target.closest(".fig"),d=e.target.dataset;if(!f)return;
+  if(d.expo!==undefined)updExpo(f);else if(d.pix!==undefined)updPix(f);else if(d.col!==undefined)updCol(f);else if(d.adj!==undefined)updAdj(f);else if(d.onda!==undefined)updOnda(f)}});
+app.addEventListener("change",e=>{const r=e.target.closest(".rub");if(!r)return;
+ const rows=r.querySelectorAll("tbody tr"),v=[...rows].map(tr=>tr.querySelector("input:checked")).filter(Boolean).map(i=>+i.value);
+ r.querySelector(".rubn").textContent=v.length<rows.length?`Faltan ${rows.length-v.length} criterios por marcar.`:`Nota orientativa: ${(v.reduce((a,b)=>a+b,0)/(4*rows.length)*10).toFixed(1)} / 10`});
+new MutationObserver(()=>{document.querySelectorAll("[data-vg]:not([data-i])").forEach(g=>{g.dataset.i=1;durMide(g)});document.querySelectorAll(".enc:not([data-i])").forEach(f=>{f.dataset.i=1;updEnc(f)});document.querySelectorAll("[data-ini]:not([data-i])").forEach(f=>{f.dataset.i=1;INI[f.dataset.ini]&&INI[f.dataset.ini](f)})}).observe(app,{childList:true,subtree:true});
+function tocLista(it){
+ const G=[];it.forEach(x=>{if(x[2]&&G.length)G[G.length-1].s.push(x);else G.push({m:x,s:[]})});
+ const hay=G.some(g=>g.s.length);
+ return (hay?`<div class="tocb"><button data-tall="1">Expandir todo</button><button data-tall="0">Contraer todo</button></div>`:"")+`<ol>${G.map(g=>`<li class="g"><span class="tg">${g.s.length?`<button class="tgl" data-tgl="1" aria-expanded="false" aria-label="Mostrar u ocultar los subapartados de ${g.m[1].replace(/"/g,"")}">▸</button>`:`<span class="tgs"></span>`}<button data-go="${g.m[0]}">${g.m[1]}</button></span>${g.s.length?`<ul class="subs" hidden>${g.s.map(s=>`<li class="sub"><button data-go="${s[0]}">${s[1]}</button></li>`).join("")}</ul>`:""}</li>`).join("")}</ol>`;
+}
+function tocSet(li,ab){const u=li.querySelector(".subs"),b=li.querySelector(".tgl");if(!u)return;u.hidden=!ab;b.setAttribute("aria-expanded",ab?"true":"false");b.textContent=ab?"▾":"▸"}
+function intro(c){
+ let x="";
+ if(c.objetivos)x+=`<div class="box ej"><b>Qué vas a aprender.</b><ul>${c.objetivos.map(o=>`<li>${o}</li>`).join("")}</ul></div>`;
+ const it=[];{const R=(c.rico||[]).filter(b=>b[0]==="parte"||b[0]==="h");R.forEach((b,i)=>{if(b[0]==="parte"){let n=0;for(let k=i+1;k<R.length&&R[k][0]==="h";k++)n++;it.push([sl(b[1]),b[1],0,n>=3])}else{const q=it.length?it[it.length-1]:null;let j=it.length-1;while(j>=0&&it[j][2])j--;if(j>=0&&it[j][3])it.push([sl(b[1]),b[1],1])}})}
+ if(window.RUCUR)it.push(["ruleta","Ruleta creativa"]);it.push(["actividades","Actividades"]);
+ if(c.clase)it.push(["clase","Para trabajar con toda la clase"]);
+ if(c.quiz)it.push(["autoeval","Autoevaluación"]);
+ if(c.mapa)it.push(["mapa","Mapa conceptual"]);
+ it.push(["glosario","Glosario"]);if(c.videos)it.push(["videos","Vídeos recomendados"]);it.push(["refs","Referencias curriculares"]);
+ return {obj:x,toc:`<nav class="toc"><b>En esta unidad</b>${tocLista(it)}</nav>`};
+}
+
+function videosSec(c){
+ if(!c.videos||!c.videos.length)return"";
+ return `<h3 id="videos">Vídeos recomendados</h3><p class="nota-i">Selección de vídeos para ver en el aula. Cada tarjeta indica el apartado al que apoya y su duración, para que puedas calcular si cabe en el tiempo que queda de clase. Revísalos antes de proyectarlos.</p><div class="vgrid" data-vg>${c.videos.map(([id,t,ap,hint,st])=>`<div class="vitem" id="v-${id}"><div class="vcard"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" onerror="this.style.display='none'"><button class="play" data-yt="${id}" data-t="${st||0}" aria-label="Reproducir vídeo">▶</button></div><b class="vt">${t}</b><span class="vap">Apartado: ${ap}</span><span class="dur" data-dur="${id}"${hint?` data-hint="${hint}"`:""}>⏱ duración: se mide con conexión</span><a href="https://www.youtube.com/watch?v=${id}${st?"&t="+st+"s":""}" target="_blank" rel="noopener">Abrir en YouTube</a></div>`).join("")}</div><p class="vtot" aria-live="polite"></p>`;
+}
+const fmtDur=s=>s<60?Math.round(s)+" s":(Math.floor(s/60)+" min"+(Math.round(s%60)?" "+String(Math.round(s%60)).padStart(2,"0")+" s":""));
+function durGet(id){try{const v=+localStorage.getItem("dur:"+id);return v>0?v:0}catch(e){return 0}}
+function durSet(id,s){try{localStorage.setItem("dur:"+id,String(Math.round(s)))}catch(e){}}
+function durPaint(g){
+ let tot=0,n=0,all=g.querySelectorAll(".dur");
+ all.forEach(e=>{const s=durGet(e.dataset.dur);
+  if(s){e.textContent="⏱ "+fmtDur(s);e.classList.add("ok");tot+=s;n++}
+  else if(e.dataset.hint)e.textContent="⏱ aprox. "+e.dataset.hint+" (según el título)";});
+ const t=g.parentNode.querySelector(".vtot");
+ if(t)t.innerHTML=n?`<b>Duración de los vídeos medidos (${n} de ${all.length}):</b> ${fmtDur(tot)} en total.`:"";
+}
+let YTP=null;
+function ytApi(){
+ if(YTP)return YTP;
+ YTP=new Promise((ok,ko)=>{
+  if(window.YT&&YT.Player)return ok();
+  const s=document.createElement("script");s.src="https://www.youtube.com/iframe_api";s.onerror=()=>{YTP=null;ko()};
+  const prev=window.onYouTubeIframeAPIReady;window.onYouTubeIframeAPIReady=()=>{prev&&prev();ok()};
+  document.head.appendChild(s);setTimeout(()=>{if(!(window.YT&&YT.Player)){YTP=null;ko()}},10000);
+ });
+ return YTP;
+}
+async function durMide(g){
+ durPaint(g);
+ if(!navigator.onLine)return;
+ const ids=[...g.querySelectorAll(".dur")].map(e=>e.dataset.dur).filter(i=>!durGet(i));
+ if(!ids.length)return;
+ try{await ytApi()}catch(e){return}
+ const box=document.createElement("div");box.style.cssText="position:fixed;left:-9999px;top:0;width:200px;height:120px;overflow:hidden";document.body.appendChild(box);
+ for(const id of ids){
+  if(!document.body.contains(g))break;
+  await new Promise(res=>{
+   const d=document.createElement("div");box.appendChild(d);let pl,fin=false,n=0;
+   const end=()=>{if(fin)return;fin=true;try{pl.destroy()}catch(e){}res()};
+   try{pl=new YT.Player(d,{videoId:id,playerVars:{controls:0,rel:0},events:{onReady:()=>{const iv=setInterval(()=>{let s=0;try{s=pl.getDuration()}catch(e){}
+    if(s>0){durSet(id,s);durPaint(g);clearInterval(iv);end()}else if(++n>16){clearInterval(iv);end()}},500)},onError:end}})}catch(e){end()}
+   setTimeout(end,12000);
+  });
+ }
+ box.remove();
+}
+function contenido(n){
+ const c=CONTENIDO[n];
+ window.VCUR=(c&&c.videos)||[];window.RUCUR=!!RULETAS[n];
+ if(!c)return {toc:"",html:"<p>Este apartado se desarrollará en una fase posterior.</p>"};
+ const cuerpo=c.rico?c.rico.filter(b=>b[0]!=="act").map(bl).join(""):c.secciones.map(([h,b])=>`<h3>${h}</h3>`+(Array.isArray(b)?"<ul>"+dk(b)+"</ul>":`<p>${b}</p>`)).join("");
+ let k="";
+ if(c.clase){const z=c.clase;
+  k=`<h3 id="clase">Para trabajar con toda la clase</h3><div class="box clave">${z.reto}</div>`+(z.breakout?bl(["breakout",z.breakout[0],z.breakout[1],z.breakout[2]]):"")
+   +`<p>${z.kahoot?`<a class="btn" href="${z.kahoot}" target="_blank" rel="noopener">Abrir Kahoot de la unidad</a> `:""}${z.live?`<a class="btn" href="${z.live}" target="_blank" rel="noopener">Abrir ficha de Liveworksheets</a> `:""}${z.liveq?`<a class="btn" href="https://www.google.com/search?q=${encodeURIComponent("site:liveworksheets.com "+z.liveq)}" target="_blank" rel="noopener">Buscar más fichas de Liveworksheets</a> `:""}${c.quiz?`<button class="btn" data-kahoot="${n}">Copiar las preguntas para Kahoot</button> <span class="pie"></span>`:""}</p>`;
+ }
+ const I=intro(c);
+ return {toc:I.toc,html:I.obj+cuerpo+`${RULETAS[n]?ruletaHTML(n):""}<h3 id="actividades">Actividades</h3><ol>${c.actividades.map(x=>`<li>${x}</li>`).join("")}</ol>`+((c.rico||[]).filter(b=>b[0]==="act").length?`<h4>Actividades de clase con rúbrica</h4>`+[...c.rico.filter(b=>b[0]==="act")].sort((x,y)=>x[1].localeCompare(y[1])).map(bl).join(""):"")+k
+  +(c.quiz?`<h3 id="autoeval">Autoevaluación</h3>${quiz(c.quiz,n)}`:"")
+  +(c.mapa?`<h3 id="mapa">Mapa conceptual</h3>`+bl(["mapa",c.mapa.n,c.mapa.l])+(c.mapa.img?bl(["fotos",[c.mapa.img]]):"")+(c.mapa.sol?bl(["solmapas",c.mapa.sol]):"")+(c.mapa.ext?`<p><a class="btn" href="${c.mapa.ext[0]}" target="_blank" rel="noopener">${c.mapa.ext[1]}</a></p>`:""):"")+(c.glosario?`<h3 id="glosario">Glosario</h3><dl class="glo">${[...c.glosario].sort((x,y)=>x[0].localeCompare(y[0],"es",{sensitivity:"base"})).map(([t,d])=>`<dt>${t}</dt><dd>${d}</dd>`).join("")}</dl>`:`<h3>Vocabulario clave</h3><p>${c.vocab.join(", ")}.</p>`)+videosSec(c)};
+}
+function referencias(n){
+ const u=UNIDADES[n-1],c=CONTENIDO[n];
+ let h=`<section class="refs" id="refs"><h3>Referencias curriculares</h3><h4>Marco normativo</h4><ul>${NORMA.map(x=>`<li>${x}</li>`).join("")}</ul><h4>Bloques de saberes (currículo de Bachillerato de la Comunitat Valenciana)</h4><ul class="enl">${u.b.map(b=>`<li><a href="#/bloque/${b}">${nb(b)}</a></li>`).join("")}</ul>`;
+ if(c){const cs=c.comp||[...new Set(c.criterios.map(x=>+x[0].split(".")[1]))];
+  h+=`<h4>Competencias específicas</h4><ul>${cs.map(k=>`<li><strong>Competencia específica ${k}.</strong> ${COMP[k-1]}</li>`).join("")}</ul><h4>Criterios de evaluación</h4>${c.criterios&&c.criterios.length?`<ul>${c.criterios.map(([k,t])=>`<li><strong>${k}</strong> ${t}</li>`).join("")}</ul>`:`<p class="mute">Los criterios de evaluación de esta unidad se indicarán tras contrastarlos con el texto oficial del currículo.</p>`}`;}
+ return h+"</section>";
+}
+function unidad(n){
+ const u=UNIDADES[n-1];
+ if(!u){location.hash="#/";return}
+ const C=contenido(n);
+ const nav=()=>{const a=n>1?UNIDADES[n-2]:null,z=UNIDADES[n]||null,nm=(u,i)=>u.f?"Situación de Aprendizaje final":"Unidad "+i;return `<nav class="unav" aria-label="Navegación entre unidades"><a class="back" href="#/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg> Volver al inicio</a><span class="pn">${a?`<a href="#/unidad/${n-1}">← ${nm(a,n-1)}</a>`:""}${z?`<a href="#/unidad/${n+1}">${nm(z,n+1)} →</a>`:""}</span></nav>`};
+ app.innerHTML=`${nav()}
+ <div class="layout${C.toc?"":" sola"}">${C.toc?`<aside class="side">${C.toc}</aside>`:""}<div class="panel${u.f?" final":""}"><h2>${u.f?"Situación de Aprendizaje final: "+u.t:"Unidad "+n+". "+u.t}</h2>
+ ${u.f?`<p class="mute">No es una unidad del currículo: es una Situación de Aprendizaje (SdA) en la que aplicas todo lo anterior para crear tu propia pieza.</p>`:""}
+ ${C.html}${referencias(n)}</div></div><p><a class="back" href="#/interes">🌐 Páginas de interés: filmotecas, concursos y recursos</a></p>${nav()}`;
+ document.title=`${u.t} · Imagen y Sonido`;
+ scrollTo(0,0);
+}
+function bloques(){
+ app.innerHTML=`<a class="back" href="#/">Volver a las unidades</a><div class="panel"><h2>Bloques de saberes</h2>
+ <ul class="enl">${BLOQUES.map((b,i)=>`<li><a href="#/bloque/${i+1}">${nb(i+1)}</a></li>`).join("")}</ul></div>`;
+ document.title="Bloques de saberes · Imagen y Sonido";
+ scrollTo(0,0);
+}
+function bloque(n){
+ const b=BLOQUES[n-1];
+ if(!b){location.hash="#/bloques";return}
+ const us=UNIDADES.map((u,i)=>u.b.includes(n)?i+1:0).filter(Boolean);
+ app.innerHTML=`<a class="back" href="#/bloques">Volver a los bloques</a>
+ <div class="panel"><h2>${nb(n)}</h2>
+ ${b.g.map(([h,l])=>(h?`<h3>${h}</h3>`:"")+`<ul>${l.map(x=>`<li>${x}</li>`).join("")}</ul>`).join("")}
+ <h3>Unidades relacionadas</h3>
+ <ul class="enl">${us.map(i=>`<li><a href="#/unidad/${i}">${UNIDADES[i-1].f?"Situación de Aprendizaje final":"Unidad "+i}. ${UNIDADES[i-1].t}</a></li>`).join("")}</ul></div>`;
+ document.title=`${nb(n)} · Imagen y Sonido`;
+ scrollTo(0,0);
+}
+const INTERES=[
+["🎞️ Filmotecas y cine en Valencia",[["Filmoteca de València (Institut Valencià de Cultura)","https://ivc.gva.es","Programación de ciclos y proyecciones en el Teatre Principal y otras sedes."],["Mostra de València – Cinema del Mediterrani","https://www.mostravalencia.com","Festival valenciano de cine con sección de cortometrajes."],["À Punt Mèdia","https://www.apuntmedia.es","Televisión y medios audiovisuales públicos valencianos: producción en valenciano."]]],
+["🏛️ Filmotecas y archivos",[["Filmoteca Española","https://www.cultura.gob.es","Ministerio de Cultura: busca «Filmoteca Española» para su programación y fondos."],["Cineteca Madrid","https://www.cinetecamadrid.com","Ciclos, documental y cine de autor."],["RTVE Play","https://www.rtve.es/play/","Archivo audiovisual gratuito: películas, documentales y cortos."],["Filmin","https://www.filmin.es","Plataforma de cine independiente y de autor."],["Internet Archive","https://archive.org","Cine y sonido de dominio público."]]],
+["🏆 Concursos y festivales para estudiantes",[["Cinema Jove – Festival Internacional de Cine de València","https://www.cinemajove.com","Incluye el Encuentro Audiovisual Joven. Consulta las bases de cada convocatoria."],["Premios Goya (Academia de Cine)","https://www.premiosgoya.com","Mira los cortometrajes nominados, de ficción, documental y animación."],["Notodofilmfest","https://www.notodofilmfest.com","Festival de cine hecho con móvil y bajo coste: ideal para tu cortometraje."]]],
+["🛠️ Herramientas y recursos libres",[["Kdenlive","https://kdenlive.org","Editor de vídeo libre y gratuito."],["GIMP","https://www.gimp.org","Retoque fotográfico libre."],["Audacity","https://www.audacityteam.org","Editor de audio libre."],["Freesound","https://freesound.org","Sonidos con licencia abierta (revisa la licencia de cada uno)."],["Wikimedia Commons","https://commons.wikimedia.org","Imágenes y sonidos libres de uso."],["INTEF","https://intef.es","Recursos educativos del Ministerio de Educación."]]]
+];
+function interes(){
+ app.innerHTML=`<a class="back" href="#/">Volver a las unidades</a><div class="panel"><h2>Páginas de interés</h2>
+ <p class="nota-i">Enlaces a las páginas principales de cada organización. Las webs cambian: si alguno no abre, búscalo por su nombre. Antes de participar en un concurso, lee siempre sus bases actualizadas.</p>
+ ${INTERES.map(([t,l])=>`<h3>${t}</h3><ul class="enl">${l.map(([n,u,d])=>`<li><a href="${u}" target="_blank" rel="noopener">${n}</a><br><small>${d}</small></li>`).join("")}</ul>`).join("")}</div>`;
+ document.title="Páginas de interés · Imagen y Sonido";
+ scrollTo(0,0);
+}
+function ruta(){
+ const h=location.hash;
+ let m;
+ if(m=h.match(/^#\/unidad\/(\d+)$/))unidad(+m[1]);
+ else if(m=h.match(/^#\/bloque\/(\d+)$/))bloque(+m[1]);
+ else if(h==="#/bloques")bloques();
+ else if(h==="#/interes")interes();
+ else inicio();
+}
+addEventListener("hashchange",()=>{if(AU){try{AU.o.stop();AU.c.close()}catch(e){}AU=null}ruta()});ruta();
+const up=document.getElementById("arriba");
+const casa=document.getElementById("casa");
+function pintaBotones(){up.classList.toggle("ver",scrollY>400);const h=location.hash;casa.classList.toggle("ver",scrollY>400&&h!==""&&h!=="#/")}
+addEventListener("scroll",pintaBotones,{passive:true});addEventListener("hashchange",pintaBotones);
+casa.addEventListener("click",()=>{if(location.hash==="#/"||location.hash==="")scrollTo(0,0)});
+up.addEventListener("click",()=>scrollTo({top:0,behavior:"smooth"}));
+const est=document.getElementById("estado");
+function pintaEstado(){est.textContent=navigator.onLine?"En línea":"Sin conexión"}
+addEventListener("online",pintaEstado);addEventListener("offline",pintaEstado);pintaEstado();
+if("serviceWorker" in navigator){
+ navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).then(()=>{if(navigator.onLine)est.textContent="En línea · disponible sin conexión"}).catch(()=>{});
+}
+</script>
+</body>
+</html>
