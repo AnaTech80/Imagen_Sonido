@@ -1850,3 +1850,94 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  u.actividades.push("Elabora un mapa conceptual del lenguaje audiovisual (secuencia, escena, plano, toma, encuadre, escala, angulación y movimiento) con conceptos, frases de enlace y al menos un ejemplo o dibujo por rama. Hazlo a mano o con una herramienta digital como Canva.");
  if(u.mapa) u.mapa.sol=[["img/mapa-definitivo.jpg","Solución: mapa definitivo"],["img/mapa-jerarquico.jpg","Modelo 1: mapa jerárquico"],["img/mapa-radial.jpg","Modelo 2: mapa radial"],["img/infografia.jpg","Modelo 3: infografía"]];
 })();
+
+// ---- Unidad 1: actividad «¿De qué género es?» ----
+(function(){
+ const u=CONTENIDO[1],r=u.rico;
+ const yt=id=>"https://www.youtube.com/watch?v="+id;
+ // Orden mezclado (distinto del de la teoría). Solución en cada elemento.
+ const V=[
+  ["Terror","El resplandor (1980), encuentro con las gemelas en el pasillo","atmósfera inquietante, música y sensación de amenaza.",yt("hOhuC_ukBDU"),"El resplandor gemelas pasillo"],
+  ["Comedia","Mr. Bean's Holiday, escenas de la estación","humor visual, gags y exageración.",yt("xm8I67pPZXY"),"Mr. Bean's Holiday estación"],
+  ["Western","El bueno, el feo y el malo (1966), duelo final en el cementerio","planos generales, tensión narrativa, pistolas y ambientación del Oeste.",yt("i42lSdgthZM"),"El bueno el feo y el malo duelo final"],
+  ["Documental","Planet Earth (BBC), secuencia de caza de los lobos","narrador omnisciente, imágenes reales y voluntad informativa.","https://youtu.be/WHICe7FoixA","Planet Earth BBC caza lobos"],
+  ["Bélico","Salvar al soldado Ryan (1998), desembarco de Normandía","realismo, combate, cámara nerviosa y tensión.","https://youtu.be/11oJTcU5Plw","Salvar al soldado Ryan desembarco Normandía"],
+  ["Musical","La La Land (2016), «Another Day of Sun» (obertura)","la música y la coreografía impulsan la narración.","https://youtu.be/xVVqlm8Fq3Y","La La Land Another Day of Sun"],
+  ["Suspense","Psicosis (1960), escena de la ducha","creación de tensión y anticipación del peligro.","https://youtu.be/be9yeq4mwEA","Psicosis escena de la ducha"],
+  ["Infantil","Toy Story (1995), descubrimiento de los juguetes vivos","personajes atractivos, valores y lenguaje accesible.","https://youtu.be/V2az2VHTyj8","Toy Story juguetes cobran vida"],
+  ["Drama","En busca de la felicidad (2006), escena del lavabo con el hijo","conflictos humanos, emociones y desarrollo psicológico.","https://youtu.be/5D6v78dUYPw","En busca de la felicidad escena lavabo"],
+  ["Aventuras y acción","Indiana Jones: En busca del arca perdida (1981), persecución del camión","ritmo elevado, peligro, movimiento y protagonismo del héroe.","https://youtu.be/FVdRfnLPypE","Indiana Jones arca perdida persecución camión"],
+  ["Histórico","Gandhi (1982), masacre de Jallianwala Bagh","recreación de un acontecimiento histórico.",yt("d729RCo5JGg"),"Gandhi masacre Jallianwala Bagh"],
+  ["Ciencia ficción","Encuentros en la tercera fase (1977), encuentro final con los extraterrestres","tecnología, elementos futuristas y especulación científica.","https://www.youtube.com/playlist?list=PLC_WFV0H2WJQt7ObWwmmMRWmbizzWAyU4","Encuentros en la tercera fase escena final"],
+  ["Biográfico","Gandhi (1982), discurso de la no violencia","reconstrucción de la vida de un personaje real.","https://www.youtube.com/results?search_query=Gandhi+1982+discurso+no+violencia","Gandhi 1982 discurso no violencia"]
+ ];
+ const pos=r.findIndex(b=>b[0]==="h"&&/^Los géneros de no ficción en televisión/.test(b[1]));
+ r.splice(pos<0?r.length:pos,0,
+  ["h","Actividad: ¿de qué género es? Adivina por el vídeo"],
+  ["actteo",[
+   ["p","Ahora te toca a ti. Verás fragmentos de películas y documentales que <b>no</b> hemos visto en la teoría y que están en un orden mezclado. Tu tarea es reconocer el género de cada uno fijándote en los recursos que has estudiado: ritmo, música, tipo de plano, ambientación y personajes."],
+   ["nota","Dos de los vídeos son de la misma película (<i>Gandhi</i>), pero de géneros distintos. Fíjate en qué se cuenta y cómo se cuenta."],
+   ["adivina",V],
+   ["p","<b>Para entregar:</b> elige tres vídeos y escribe, para cada uno, un recurso audiovisual que te haya ayudado a reconocer el género (el tipo de plano, la música, la ambientación…)."]]]);
+})();
+
+// ---- Unidad 2: Actividad A2.4 (continuidad en el montaje) ----
+(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ let i=r.findIndex(b=>b[0]==="act"&&/A2\.3/.test(b[1]));
+ if(i<0) i=r.length-1;
+ r.splice(i+1,0,["act","Actividad A2.4. Sin palabras: el montaje que cuenta una vida (Continuidad en el montaje)",{
+  chip:"Unidad 2 · Imagen y Sonido",
+  nota:"un mismo momento puede combinar varios recursos a la vez. Si encuentras uno así, cuéntalo: es un punto extra de análisis.",
+  obj:["Identificar, nombrar y explicar los recursos de continuidad del montaje audiovisual: elipsis y transiciones.","Justificar qué aporta cada recurso a la narración y a la emoción del espectador.","Elaborar una memoria ilustrada con fotogramas y minutado."],
+  explora:"<p>El cine es el arte de esconder los empalmes: cuando ves una película no notas que has saltado de una habitación a otra, que han pasado diez años en dos segundos o que un plano «rima» visualmente con el siguiente. Tu misión es hacer lo contrario: <b>desmontar el montaje</b> de una secuencia legendaria de <i>Up</i> (Pixar) y sacar a la luz los trucos que usa para contar toda una vida en pocos minutos, sin diálogos.</p><h5>Tu kit de detective</h5><ul><li><b>Elipsis espacial:</b> se omite un desplazamiento o un cambio de lugar; el espectador entiende que el personaje ha ido de un sitio a otro sin verlo.</li><li><b>Elipsis temporal:</b> se omite un tramo de tiempo irrelevante para la historia; el espectador entiende que han pasado minutos, días o años.</li><li><b>Transición por corte:</b> paso directo de un plano al siguiente, sin efecto intermedio.</li><li><b>Transición por encadenado:</b> el final de un plano se superpone con el inicio del siguiente (fundido encadenado o disolvencia).</li><li><b>Match-cut (corte por coincidencia visual):</b> dos planos se unen porque comparten forma, composición, color o movimiento, aunque pertenezcan a momentos o lugares distintos.</li></ul>",
+  pasos:["<b>Primer visionado, solo disfrutar.</b> Mira la secuencia de <i>Up</i> sin parar: <a href=\"https://www.youtube.com/watch?v=F2bk_9T482g\" target=\"_blank\" rel=\"noopener\">ver la secuencia en YouTube</a>.","<b>Segundo visionado, modo detective.</b> Vuelve a verla pausando y retrocediendo todas las veces que haga falta. Anota el minutado de lo que encuentres.","<b>Caza de recursos.</b> Localiza un ejemplo de cada uno de estos cinco recursos: elipsis espacial, elipsis temporal, transición por corte, transición por encadenado y transición visual match-cut.","<b>Capturas de pantalla.</b> Para cada ejemplo, saca el fotograma (o los dos fotogramas) exactos a los que te refieres: el último de un plano y el primero del siguiente si se trata de una transición.","<b>Explica y justifica.</b> Para cada hallazgo responde con tus palabras: ¿qué recurso es y cómo lo has reconocido? ¿En qué minuto aparece? ¿Qué efecto narrativo o emocional consigue? (¿Qué nos hace sentir o entender sin que nadie lo diga?)","<b>La memoria.</b> Desarrolla una memoria breve de una o dos páginas (o su equivalente, si eliges un formato no paginado), ilustrada con los fotogramas. Debe incluir: una cabecera con el título de la película, el enlace del vídeo y el minutado de la secuencia; los cinco análisis, cada uno con su fotograma, su minutado y su explicación; y un cierre de 2-3 líneas: ¿cuál te parece el recurso más ingenioso de la secuencia y por qué?","<b>Formato libre.</b> Elige el que mejor te permita lucir tu análisis: documento escrito (Word, Google Docs, LibreOffice…), presentación o storyboard comentado, diseño en Canva u otra plataforma, cómic, infografía o cualquier otra propuesta creativa. Solo hay dos condiciones: que se vean con claridad los fotogramas y que el contenido sea legible y ordenado."],
+  entrega:"Sube a AULES un archivo PDF con tu memoria, nombrado «Apellidos, Nombre A2.4». Si has trabajado en Canva o en cualquier otra plataforma que genere un enlace, debes incluir ese enlace dentro del PDF (por ejemplo, en la primera página) y también escribirlo en el apartado de Comentarios de la entrega en AULES. Comprueba antes de entregar que el enlace permite la visualización a cualquier persona que lo reciba: si el profesorado no puede abrirlo, no podrá evaluarlo.",
+  rub:[
+   ["Identificación","Los cinco recursos están bien localizados y correctamente nombrados","Localiza y nombra cuatro de los cinco recursos","Localiza dos o tres, o confunde algunos","Localiza uno o ninguno, o los nombra mal"],
+   ["Explicación","Razona con claridad el efecto narrativo y emocional de cada recurso","Razona el efecto en la mayoría de los casos","Se limita a describir lo que se ve","No explica o la explicación es incorrecta"],
+   ["Fotogramas y minutado","Cada análisis incluye la imagen exacta y su minuto","Casi todos los análisis tienen imagen y minuto","Faltan varias imágenes o minutos, o no corresponden","Sin fotogramas ni minutado"],
+   ["Vocabulario","Uso preciso de los términos del lenguaje audiovisual","Vocabulario correcto con alguna imprecisión","Vocabulario pobre o impreciso","No usa el vocabulario de la unidad"],
+   ["Presentación","Claridad, orden, extensión adecuada y formato cuidado","Presentación correcta con detalles mejorables","Desordenada o con extensión inadecuada","Ilegible o confusa"],
+   ["Entrega","PDF bien nombrado y enlace incluido si procede","PDF correcto con un pequeño fallo (nombre o enlace)","Fallos en el nombre y en el enlace","Entrega fuera de formato o sin posibilidad de verla"]],
+  amp:["Reto extra: busca en otra película, serie o anuncio un match-cut o una elipsis que te parezca aún más brillante y compárala en un párrafo con la de Up."]}]);
+ // sustituir la actividad simple sobre Up por la referencia a A2.4
+ const k=u.actividades.findIndex(x=>/Visiona la secuencia de montaje de la película Up/.test(x));
+ const t="Realiza la actividad A2.4 (continuidad en el montaje, con la secuencia de Up) y evalúala con su rúbrica.";
+ if(k>=0) u.actividades[k]=t; else u.actividades.push(t);
+})();
+
+// ---- Material nuevo (Paco Barreda, Valentín Bayarri y blog de otro IES): unidad 2 y vídeos ----
+(function(){
+ const u1=CONTENIDO[1],u2=CONTENIDO[2],r=u2.rico;
+ const idx=(t)=>r.findIndex(b=>b[0]==="h"&&b[1]===t);
+ const pon=(u,t,ids)=>{const rr=u.rico;const i=rr.findIndex(b=>(b[0]==="h"||b[0]==="parte")&&b[1]===t);if(i<0)throw new Error(t);rr.splice(i+1,0,["vlink",ids])};
+ // 1) Raccord: tipos completos y diferencia con la continuidad narrativa
+ let i=idx("Tipos de raccord");
+ if(i<0) throw new Error("Tipos de raccord");
+ let j=i+1; while(r[j]&&r[j][0]==="ul") j++;
+ r.splice(j,0,
+  ["ul",["<b>Formal y espacio-temporal:</b> las líneas virtuales, los gestos y las miradas mantienen un espacio y un tiempo coherentes.","<b>De acción e interpretación:</b> los intérpretes cuidan la dirección, el tono de voz y la expresividad para que resulte natural en cada cambio de plano.","<b>De iluminación:</b> no debe haber cambios bruscos de tonalidad dentro de un mismo espacio y secuencia.","<b>De vestuario y atrezo:</b> como se graba sin seguir el orden del guion, la ropa y los objetos del decorado no pueden cambiar sin razón."]],
+  ["nota","Truco habitual: en una película de acción, el protagonista pelea sin parar y ni siquiera se despeina. No es lo más natural, pero el raccord de vestuario mantiene su aspecto para que el espectador no note nada «raro». Del mismo modo, si un personaje va de un edificio a otro, la dirección del movimiento se mantiene aunque solo se grabe un fragmento del trayecto: el espectador completa el resto."],
+  ["clave","<b>Continuidad narrativa</b> y <b>raccord</b> no son lo mismo. La continuidad narrativa es la unidad del mensaje (un único relato con distintas tomas y planos) y pertenece al <b>guion literario</b>. El raccord es el ajuste técnico que la consigue (posiciones de cámara, acciones, atrezo…) y pertenece al <b>guion técnico</b>."]);
+ // 2) Montaje alternado y continuidad temporal
+ i=idx("Tipos de continuidad");
+ if(i>=0){ j=i+1; while(r[j]&&(r[j][0]==="ul"||r[j][0]==="yt")) j++;
+  r.splice(j,0,["def","Montaje alternado","Montaje que alterna vistas de distintas acciones o espacios. En los inicios del cine se respetaba en exceso la cronología para evitar confusiones; el montaje alternado hace menos evidentes los problemas de continuidad porque no obliga a que un único personaje sea el eje de la continuidad. Una misma situación se resuelve de forma más expresiva fragmentándola en unidades de contenido, como en la acción coral de <i>El acorazado Potemkin</i>, que se fragmenta para aumentar el dramatismo. El montaje paralelo de Griffith es una variante de este recurso."]); }
+ // 3) Vídeos nuevos de la unidad 2
+ const A="A. Antecedentes: Modelo de Representación Primitivo (MRP)",B="B. Montaje clásico o invisible: Modelo de Representación Institucional (MRI)";
+ u2.videos.push(["_FrdVdKlxUk","Viaje a la Luna (Méliès, 1902)",A],["dtV5RbziLAg","Mary Jane's Mishap (G. A. Smith, 1903)",A],["vZ871wZd7UY","El nacimiento de una nación (Griffith, 1915)",B]);
+ try{pon(u2,A,["_FrdVdKlxUk","dtV5RbziLAg"]);}catch(e){}
+ try{pon(u2,B,["vZ871wZd7UY"]);}catch(e){}
+ // 4) Vídeos nuevos del videoclip (unidad 1), tal como están en la presentación
+ const H="El videoclip: breve historia";
+ u1.videos.push(
+  ["GB2yiIoEtXw","Años 30 a 60: del cine sonoro al musical",H],
+  ["BC2dRkm8ATU","Código de la imagen (vídeo 1)","El videoclip: códigos"],["Qtb11P1FWnc","Código de la imagen (vídeo 2)","El videoclip: códigos"],["djV11Xbc914","Código de la imagen (vídeo 3)","El videoclip: códigos"],
+  ["bRNfIcUhllk","Código del espacio: chroma key","El videoclip: códigos"],["YlUKcNNmywk","Código del espacio (vídeo 2)","El videoclip: códigos"],
+  ["K4dx42YzQCE","Transición por corte","El videoclip: códigos"],["uvzLRzyGXOM","Fundido encadenado","El videoclip: códigos"],
+  ["LWGJA9i18Co","Videoclip tipo A (vídeo 2)","El videoclip: tipos"],["qybUFnY7Y8w","Videoclip tipo A (vídeo 3)","El videoclip: tipos"],["2vjPBrBU-TM","Videoclip tipo B (vídeo 2)","El videoclip: tipos"]);
+ try{pon(u1,"Los códigos del videoclip",["BC2dRkm8ATU","Qtb11P1FWnc","djV11Xbc914","bRNfIcUhllk","YlUKcNNmywk","K4dx42YzQCE","uvzLRzyGXOM"]);}catch(e){}
+ try{pon(u1,"Tipos de videoclip",["LWGJA9i18Co","qybUFnY7Y8w","2vjPBrBU-TM"]);}catch(e){}
+ try{pon(u1,"Breve historia del videoclip",["GB2yiIoEtXw"]);}catch(e){}
+})();
