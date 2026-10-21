@@ -1,1 +1,0 @@
-# Imagen_Sonido
