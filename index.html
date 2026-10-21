@@ -105,6 +105,7 @@ main h2{margin:.2rem 0 .6rem;font-size:1.7rem;line-height:1.15}
 .panel .parte{margin:2.4rem 0 .8rem;padding:.7rem 1rem;background:var(--acc);color:#fff;border-radius:6px;font-size:1.3rem;scroll-margin-top:12px}.parte::before{content:none!important}
 .toc{margin:1rem 0;padding:.8rem 1rem;border:1px solid var(--line);border-radius:6px;background:var(--card)}.toc ol{margin:.4rem 0 0;padding-left:0;list-style:none}.toc li{margin:.1rem 0}.tocb{display:flex;gap:.4rem;margin:.5rem 0 .2rem}.toc .tocb button{text-decoration:none;color:var(--ink);padding:.2rem .5rem;font:inherit;font-size:.8rem;padding:.2rem .5rem;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none}.toc .tg{display:flex;align-items:baseline;gap:.2rem}.toc .tgl{width:1.4rem;flex:none;padding:0;text-decoration:none;color:var(--acc);font-size:1rem}.toc .tgs{width:1.4rem;flex:none}.toc .subs{list-style:none;margin:.1rem 0 .3rem 1.5rem;padding:0}.toc .subs[hidden]{display:none}.toc li.sub{margin-left:1rem;font-size:.9em;border-left:2px solid var(--line);padding-left:.5rem}.toc li.sub button{text-decoration:none;color:var(--ink)}.toc button{font:inherit;color:var(--acc);background:none;border:0;padding:.2rem 0;cursor:pointer;text-align:left;text-decoration:underline}
 
+.ubar{position:sticky;top:0;z-index:30;display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .6rem;margin:0 -.2rem .6rem;padding:.45rem .8rem;background:var(--acc);color:#fff;border-radius:0 0 8px 8px;font-size:.92rem;box-shadow:0 2px 6px rgba(0,0,0,.25)}.ubar .ubt{opacity:.9}.ubar .ubs{margin-left:auto;font-weight:700}.ubs:empty{display:none}.panel h3,.panel h4{scroll-margin-top:56px}.panel .parte{scroll-margin-top:56px}.toc button.on{font-weight:800;background:color-mix(in srgb,var(--acc) 18%,transparent);border-radius:4px;box-shadow:inset 3px 0 0 var(--acc)}
 .layout{display:block}
 .side .toc{margin:0 0 1rem}
 .final .parte,.sa{border-color:var(--clap)}
@@ -117,7 +118,7 @@ main h2{margin:.2rem 0 .6rem;font-size:1.7rem;line-height:1.15}
 @media(min-width:1000px){
  .layout.sola{display:block}
  .layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:1.5rem;align-items:start}
- .side{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+ .side{position:sticky;top:52px;max-height:calc(100vh - 64px);overflow:auto}
  .side .toc{font-size:.92rem}
  .panel{padding:1.6rem 2rem}
 }
@@ -696,13 +697,28 @@ function unidad(n){
  if(!u){location.hash="#/";return}
  const C=contenido(n);
  const nav=()=>{const a=n>1?UNIDADES[n-2]:null,z=UNIDADES[n]||null,nm=(u,i)=>u.f?"Situación de Aprendizaje final":"Unidad "+i;return `<nav class="unav" aria-label="Navegación entre unidades"><a class="back" href="#/"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg> Volver al inicio</a><span class="pn">${a?`<a href="#/unidad/${n-1}">← ${nm(a,n-1)}</a>`:""}${z?`<a href="#/unidad/${n+1}">${nm(z,n+1)} →</a>`:""}</span></nav>`};
- app.innerHTML=`${nav()}
+ app.innerHTML=`<div class="ubar" id="ubar"><b>${u.f?"Situación de Aprendizaje":"Unidad "+n}</b><span class="ubt">${u.t}</span><span class="ubs" id="ubs"></span></div>${nav()}
  <div class="layout${C.toc?"":" sola"}">${C.toc?`<aside class="side">${C.toc}</aside>`:""}<div class="panel${u.f?" final":""}"><h2>${u.f?"Situación de Aprendizaje final: "+u.t:"Unidad "+n+". "+u.t}</h2>
  ${u.f?`<p class="mute">No es una unidad del currículo: es una Situación de Aprendizaje (SdA) en la que aplicas todo lo anterior para crear tu propia pieza.</p>`:""}
  ${C.html}${referencias(n)}</div></div><p><a class="back" href="#/interes">🌐 Páginas de interés: filmotecas, concursos y recursos</a></p>${nav()}`;
  document.title=`${u.t} · Imagen y Sonido`;
+ spy.ult=null;
  scrollTo(0,0);
+ setTimeout(spy,60);
 }
+// Resalta en el índice el apartado que se está leyendo y lo muestra en la barra superior
+let _spy=0;
+function spy(){
+ _spy=0;const bar=document.getElementById("ubs");if(!bar)return;
+ const bs=[...document.querySelectorAll(".side .toc [data-go]")];if(!bs.length)return;
+ let act=null;
+ for(const b of bs){const h=document.getElementById(b.dataset.go);if(h&&h.getBoundingClientRect().top<=90)act=b}
+ bs.forEach(b=>b.classList.toggle("on",b===act));
+ bar.textContent=act?act.textContent:"";
+ if(act&&act!==spy.ult){spy.ult=act;const li=act.closest("li.g"),u=li&&li.querySelector(".subs");if(u&&u.hidden&&act.closest(".subs"))tocSet(li,true);
+  const sd=act.closest(".side");if(sd&&sd.scrollHeight>sd.clientHeight){const r=act.getBoundingClientRect(),q=sd.getBoundingClientRect();if(r.top<q.top||r.bottom>q.bottom)sd.scrollTop+=r.top-q.top-q.height/3}}
+}
+addEventListener("scroll",()=>{if(!_spy)_spy=requestAnimationFrame(spy)},{passive:true});
 function bloques(){
  app.innerHTML=`<a class="back" href="#/">Volver a las unidades</a><div class="panel"><h2>Bloques de saberes</h2>
  <ul class="enl">${BLOQUES.map((b,i)=>`<li><a href="#/bloque/${i+1}">${nb(i+1)}</a></li>`).join("")}</ul></div>`;
