@@ -1,32 +1,38 @@
 {
- "name": "Tecnología e Ingeniería II · Materiales y Estructuras",
- "short_name": "TEI II",
- "description": "Laboratorio virtual de Materiales y Estructuras para 2.º de Bachillerato (Comunitat Valenciana).",
- "lang": "es",
- "start_url": "./",
- "scope": "./",
- "display": "standalone",
- "orientation": "any",
- "background_color": "#0e7490",
- "theme_color": "#0e7490",
- "icons": [
-  {
-   "src": "icon-192.png",
-   "sizes": "192x192",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "icon-512.png",
-   "sizes": "512x512",
-   "type": "image/png",
-   "purpose": "any"
-  },
-  {
-   "src": "icon-maskable-512.png",
-   "sizes": "512x512",
-   "type": "image/png",
-   "purpose": "maskable"
-  }
- ]
+  "name": "Imagen y Sonido · Bachillerato",
+  "short_name": "Imagen y Sonido",
+  "description": "Recurso de aula para Imagen y Sonido de 1.º y 2.º de Bachillerato (Comunitat Valenciana).",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101820",
+  "theme_color": "#101820",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "id": "./"
 }
