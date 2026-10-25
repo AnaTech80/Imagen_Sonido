@@ -1,3 +1,4 @@
+const V_CONT="65";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -1940,4 +1941,1106 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  try{pon(u1,"Los códigos del videoclip",["BC2dRkm8ATU","Qtb11P1FWnc","djV11Xbc914","bRNfIcUhllk","YlUKcNNmywk","K4dx42YzQCE","uvzLRzyGXOM"]);}catch(e){}
  try{pon(u1,"Tipos de videoclip",["LWGJA9i18Co","qybUFnY7Y8w","2vjPBrBU-TM"]);}catch(e){}
  try{pon(u1,"Breve historia del videoclip",["GB2yiIoEtXw"]);}catch(e){}
+})();
+
+
+// ===== Unidad 2: reorganización del movimiento fílmico y de la continuidad/raccord =====
+;(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ const ix=t=>r.findIndex(b=>b[0]==="h"&&b[1]===t);
+ const lead=s=>s.replace(/^([^:<]{1,70}):/,'<b class="t">$1:</b>');
+ // ---------- 1) MOVIMIENTO FÍLMICO ----------
+ let a=ix("Los movimientos de cámara"),z=ix("Campo y fuera de campo");
+ if(a<0||z<0)throw new Error("mov");
+ const seg=r.slice(a,z);
+ const find=(t,k)=>seg.find(b=>b[0]===t&&(!k||b[1]===k));
+ const yt=find("yt"),panUl=seg.find(b=>b[0]==="ul"&&b[1][0].startsWith("Siempre debe estar")),travUl=seg.find(b=>b[0]==="ul"&&b[1][0].startsWith("Descriptivo")),tab=find("tabla"),md=find("movdib"),fo=find("fotos");
+ if(!(yt&&panUl&&travUl&&tab&&md&&fo))throw new Error("mov piezas");
+ const MOV=[
+  ["h","El movimiento fílmico y los movimientos de cámara"],
+  ["p","El movimiento es lo que <b>define el cine</b> y lo distingue de otras artes. Se clasifica según <b>dónde se produce</b>: <b>A. interno</b>, dentro de un plano sin cortes, o <b>B. externo</b>, al pasar de un plano a otro por el montaje. Al final del apartado tienes un esquema que lo resume."],
+
+  ["h","A. Movimiento interno: dentro del encuadre"],
+  ["p","Es el que vemos <b>dentro de un mismo plano</b>, sin corte. Lo produce lo que hay delante de la cámara (A.1) o la propia cámara (A.2)."],
+  ["niv",2,"A.1","Movimiento de personajes y objetos"],
+  ["p","La cámara permanece <b>inmóvil</b> (plano fijo) y se mueve lo que aparece en el encuadre: un actor que cruza la habitación, un coche que pasa, unas cortinas que se agitan."],
+  ["ej","Un plano fijo de una calle por la que pasa un tranvía. La cámara no se mueve: el movimiento está en el tranvía."],
+  ["niv",2,"A.2","Movimiento de la cámara"],
+  ["p","La <b>cámara se mueve</b> durante el plano. Puede <b>girar sin desplazarse</b> (rotación, A.2.1), <b>desplazarse</b> (traslación, A.2.2) o, solo en apariencia, acercarse o alejarse con el objetivo (zoom, A.2.3)."],
+  yt,
+  ["niv",3,"A.2.1","Rotación: la cámara gira sobre su eje"],
+  ["p","La cámara <b>gira sobre su propio eje</b>, como cuando giras la cabeza: no cambia de sitio, solo cambia hacia dónde mira. Suele hacerse con la cámara sobre un <b>trípode</b>. Tiene dos variantes: la panorámica (a) y el barrido (b)."],
+  ["niv",4,"a)","Panorámica"],
+  ["p","Rotación de la cámara sobre su eje, <b>horizontal</b> (paneo o <i>panning</i>), <b>vertical</b> (<i>tilt</i>) u oblicua."],
+  ["ul",panUl[1].map(lead)],
+  ["ej","Panorámica horizontal: la cámara, fija sobre el trípode, gira de izquierda a derecha para mostrar un paisaje o para seguir a una persona que cruza la plaza."],
+  ["niv",4,"b)","Barrido"],
+  ["p","<b>Panorámica muy rápida</b> en la que no se distingue la imagen. Se usa como <b>transición</b>."],
+  ["niv",3,"A.2.2","Traslación: la cámara se desplaza"],
+  ["p","La cámara <b>se desplaza por el espacio</b>: se acerca, se aleja, sube, baja o acompaña al personaje. Es el <b>travelling</b>. Conserva la <b>profundidad de campo</b> y <b>varía la perspectiva</b>. Se consigue con un carro con ruedas o raíles, una grúa, un steadicam o un dron (los soportes se explican en la unidad 4, Grabación)."],
+  ["niv",4,"a)","Según la trayectoria"],
+  ["ul",["Lateral: la cámara se desplaza hacia un lado, paralela al sujeto.","Vertical: la cámara sube o baja.","Circular: la cámara rodea al sujeto.","De profundidad: la cámara avanza (<i>travelling in</i>) o retrocede (<i>travelling out</i>)."]],
+  ["niv",4,"b)","Según su función"],
+  ["ul",travUl[1].map(lead)],
+  ["ej","Travelling de acompañamiento: la cámara avanza junto a dos personajes que conversan mientras recorren un pasillo."],
+  ["niv",3,"A.2.3","Zoom: no es un movimiento de cámara"],
+  ["p","Es un <b>objetivo de distancia focal variable</b>. Al cambiar la focal cambia el ángulo de visión, pero <b>la cámara no se mueve</b> y no se conserva la profundidad de campo. Puede ser <i>zoom in</i> (acercar) o <i>zoom out</i> (alejar)."],
+  ["clave","<b>Travelling</b>: la cámara se mueve y la perspectiva cambia. <b>Zoom</b>: la cámara está quieta y solo cambia la focal del objetivo."],
+  ["niv",3,"A.2.4","Vocabulario y dibujos de los movimientos"],
+  tab,md,fo,
+
+  ["h","B. Movimiento externo: lo crea el montaje"],
+  ["p","Nace al <b>unir planos</b>: aunque cada plano esté inmóvil, el paso de uno a otro crea sensación de <b>movimiento</b>, de <b>ritmo</b> y de avance de la historia. No se rueda: se <b>construye en el montaje</b>, que ordena planos y secuencias para que el espectador vea los hechos como quiere la dirección."],
+  ["ej","Dos planos fijos: en uno, un hombre mira hacia arriba; en el otro, un avión cruza el cielo. Ninguno se mueve, pero al unirlos entendemos que el hombre ve pasar el avión."],
+  ["p","Según el relato, el montaje puede ser de dos tipos:"],
+  ["niv",2,"B.1","Montaje narrativo"],
+  ["p","Une los planos para <b>contar una historia con claridad</b> y fidelidad a la realidad, asegurando la <b>continuidad de la acción</b>. El corte debe pasar inadvertido. Es el montaje del cine clásico (ver «Montaje clásico o invisible», en el apartado 4 de esta unidad)."],
+  ["ej","Una mujer sale de casa, camina por la calle y entra en un bar. Los planos siguen el orden lógico de la acción y el espectador no nota los cortes."],
+  ["niv",2,"B.2","Montaje expresivo"],
+  ["p","Muestra los hechos <b>tal como los ve el realizador</b> y busca <b>impactar al espectador</b>. El corte se nota y crea significado por sí mismo (ver las vanguardias y el montaje de choque, en el apartado 4 de esta unidad)."],
+  ["ej","En «El acorazado Potemkin», Eisenstein encadena planos de la escalinata de Odesa para provocar emoción, no solo para informar."],
+  ["tabla",["","B.1 Montaje narrativo","B.2 Montaje expresivo"],[["Objetivo","Contar la historia con claridad","Provocar una emoción o una idea"],["El corte","Debe pasar inadvertido","Se nota y tiene significado"],["Prioridad","La continuidad de la acción","El impacto en el espectador"],["Modelo","Cine clásico (Griffith, Hollywood)","Vanguardias soviéticas (Eisenstein)"]]],
+
+  ["h","Esquema global del movimiento fílmico"],
+  ["fl",[["Movimiento fílmico","Lo que se mueve en una película",[
+    ["A. Interno","Dentro del plano",[
+      ["A.1 Personajes y objetos","Con la cámara fija"],
+      ["A.2 Cámara","Rotación (panorámica, barrido), traslación (travelling) y zoom"]]],
+    ["B. Externo","Entre planos (montaje)",[
+      ["B.1 Narrativo","Claridad y continuidad"],
+      ["B.2 Expresivo","Impacto y significado"]]]]]],"Esquema global: de lo general a lo particular, de izquierda a derecha."]
+ ];
+ r.splice(a,z-a,...MOV);
+ u.videos.forEach(v=>{if(v[2]==="Los movimientos de cámara")v[2]="El movimiento fílmico y los movimientos de cámara"});
+
+ // ---------- 2) CONTINUIDAD Y RACCORD ----------
+ a=ix("La continuidad y el raccord");z=r.findIndex(b=>b[0]==="parte"&&b[1].startsWith("3. Las transiciones"));
+ if(a<0||z<0)throw new Error("cont");
+ const sg=r.slice(a,z);
+ const fy=id=>sg.find(b=>b[0]==="yt"&&b[1]===id),fv=sg.find(b=>b[0]==="vlink"),nota=sg.find(b=>b[0]==="nota");
+ const rules=sg.find(b=>b[0]==="ul"&&b[1][0].startsWith("Regla de los 180")),eje=sg.find(b=>b[0]==="eje"),ejeYt=fy("svejkenpjJU"),ejeP=sg.find(b=>b[0]==="p"&&b[1].startsWith("Prueba en la simulaci"));
+ const yUp=fy("F2bk_9T482g"),yEl=fy("iy2sguMdbbw");
+ if(!(fv&&nota&&rules&&eje&&ejeYt&&ejeP&&yUp&&yEl&&fy("WLNPKVKLuwY")&&fy("JL2RigaAt7M")&&fy("6oy3HmYiLuM")&&fy("PemStpjppJ0")))throw new Error("cont piezas");
+ const CON=[
+  ["h","Continuidad, raccord y script: qué son"],
+  fv,
+  ["def","Continuidad","Resultado que busca el espectador: que lo que ocurre en pantalla parezca <b>coherente</b>, como un único flujo de hechos. Afecta a todo lo que debe <b>coincidir entre un plano y el siguiente</b>: posición de los actores, vestuario, objetos, luz y sonido."],
+  ["def","Raccord","Palabra francesa que significa «empalme» o «ajuste». Es la <b>técnica concreta</b> que se aplica en el rodaje y en el montaje para lograr la continuidad: <b>ajustar cada detalle</b> de un plano para que empalme con el siguiente. Gracias a él se puede <b>rodar sin seguir el orden cronológico</b> del relato."],
+  ["ej","En el plano 1, la protagonista bebe de un vaso lleno. El plano 2, rodado otro día, la muestra con el vaso casi vacío. Es un <b>fallo de raccord</b>: se rompe la continuidad y el espectador lo nota."],
+  ["tabla",["","Continuidad","Raccord"],[["Qué es","El resultado: que todo encaje","La técnica para conseguirlo"],["Quién la percibe","El espectador, que no debe notar nada","El equipo de rodaje y de montaje, que la trabaja"],["En el guion","Unidad del relato: guion literario","Ajustes concretos (cámara, acciones, atrezo…): guion técnico"],["Ejemplo","La historia se entiende sin saltos","El vaso tiene la misma bebida en los dos planos"]]],
+  fy("WLNPKVKLuwY"),fy("JL2RigaAt7M"),
+
+  ["h","El script: quién vigila la continuidad"],
+  ["p","El <b>script</b> (secretario o secretaria de rodaje) es la persona del equipo de dirección <b>responsable de la continuidad durante el rodaje</b>. Observa cada toma y <b>anota con detalle cómo queda todo al final</b>, para que se pueda repetir igual en la toma o en el plano siguiente."],
+  ["p","Qué anota:"],
+  ["ul",["Posición y movimiento de actores y objetos al terminar la toma.","Vestuario, peinado y maquillaje de cada personaje.","Los objetos de atrezo que hay en la escena y dónde están (el vaso, el teléfono, el libro…).","Diálogos, gestos y hacia dónde mira cada personaje.","Planos y tomas rodados, su duración, cuál se da por buena y por qué lado sale cada personaje del encuadre.","Fotografías de referencia del decorado y de los actores (hoy, casi siempre con el móvil)."]],
+  ["p","Antes de rodar el siguiente plano, comprueba que todo coincide («¿con qué mano sostenía el teléfono?») y <b>avisa a la dirección</b> si algo no encaja. Sus anotaciones también ayudan después al montador."],
+  ["p","En el rodaje se raccordan muchos elementos de un plano a otro. Se agrupan en dos familias: el <b>raccord de los personajes</b> (actanciales), que cubre lo que hacen los intérpretes, y el <b>raccord de la imagen y del entorno</b> (mecánico-discursivos), que cubre lo que se ve y se oye alrededor. Esta es la lista de comprobación del script:"],
+  ["tabla",["Qué se raccorda","Qué se mantiene","Quién lo vigila"],[
+   ["De dirección","Los personajes avanzan hacia el mismo lado en planos consecutivos. Si corre hacia la derecha, sigue hacia la derecha.","Script y dirección"],
+   ["De mirada","Las miradas se corresponden para que parezca que los personajes se miran (plano y contraplano).","Script y dirección"],
+   ["De movimiento","El gesto empezado en un plano continúa a la misma velocidad en el siguiente: abre la puerta en el plano general y la cruza en el plano medio.","Script, dirección e intérpretes"],
+   ["De interpretación","Tono de voz, gestos y expresividad se mantienen al cambiar de plano: si llora en un plano, en el siguiente sigue emocionado.","Intérpretes y dirección"],
+   ["De luz","Misma tonalidad e iluminación en un mismo espacio y secuencia: no se pasa del mediodía al atardecer entre dos planos de la misma escena.","Dirección de fotografía"],
+   ["De vestuario y maquillaje","La ropa, los complementos, el peinado y el maquillaje no cambian sin razón.","Vestuario, maquillaje y peluquería"],
+   ["De atrezo y decorado","Los objetos y el espacio no cambian sin razón: el vaso, el reloj de pared, los muebles.","Atrezo y decorado"],
+   ["De planificación","Los planos consecutivos cambian lo suficiente de escala y de ángulo (reglas de los 30° y de proporcionalidad, más abajo).","Dirección y montaje"],
+   ["Óptico","La imagen es coherente entre planos: tipo de objetivo, enfoque y color.","Dirección de fotografía"],
+   ["De sonido","El sonido ambiente y los ruidos se mantienen: si suena un avión en un plano, sigue oyéndose en el siguiente.","Sonido"]]],
+  ["p","Después, el <b>montaje</b> une los planos y detecta (o a veces disimula) los fallos que se hayan escapado."],
+  ["nota","<b>Vestuario y atrezo no son lo mismo.</b> El vestuario es lo que lleva puesto el personaje; el atrezo (también escrito atrezzo) son los objetos que maneja o que decoran la escena, como un vaso, un libro o un teléfono. Un reloj de pulsera es un complemento del vestuario; un reloj de pared, atrezo."],
+  nota,
+
+  ["h","Tipos de continuidad"],
+  ["p","La continuidad puede mirarse desde <b>cinco puntos de vista</b>. Los tres primeros (A, B y C) se explican aquí; el temporal (D) y el de acción y dirección (E), en los dos apartados siguientes."],
+  ["jer",[
+   ["<b class='t'>Narrativa.</b> Relación de contenido que hace avanzar el relato de forma <b>comprensible</b>. Deben existir indicios de relación formal:",["Unidad de ambiente.","Coincidencia en las direcciones.","Coincidencia en las situaciones."]],
+   ["<b class='t'>Perceptiva.</b> <b>Ausencia de saltos bruscos</b> de imagen: el espectador puede ser sorprendido, pero nunca confundido. Incluye el fuera de campo:",["Si un personaje sale y vuelve a entrar <b>en el mismo plano</b>, reaparece por el mismo lado.","Si hay un <b>corte</b>, entra por el lado opuesto."]],
+   ["<b class='t'>Formal.</b> Coherencia al pasar de una toma, un espacio o una situación a otra para construir un <b>espacio y un tiempo lineales</b>. <i>Ejemplo: si la escena empieza en el salón, los planos siguientes mantienen la misma habitación.</i>"],
+   ["<b class='t'>Temporal.</b> Cómo se comprime o se expande el tiempo: la elipsis y el montaje alternado (apartado siguiente)."],
+   ["<b class='t'>De acción y de dirección.</b> Reglas que mantienen la orientación del espectador, como la ley del eje (último apartado). En el rodaje se vigilan con el raccord de dirección, de mirada y de movimiento."]]],
+  fy("6oy3HmYiLuM"),fy("PemStpjppJ0"),
+
+  ["h","Continuidad temporal: elipsis y montaje alternado"],
+  ["p","La continuidad temporal (D) se ocupa de <b>cómo se comprime o se expande el tiempo</b>. Tiene tres herramientas: D.1 la elipsis, D.2 el montaje alternado y D.3 el tiempo perceptivo."],
+  ["niv",2,"D.1","Elipsis"],
+  ["p","<b>Salto en el tiempo o en el espacio</b> que elimina lo que no aporta información al relato y da <b>agilidad</b>. Es inherente al lenguaje cinematográfico."],
+  ["ej","Si un personaje sale de casa y aparece en el cine, entendemos el trayecto sin verlo."],
+  ["niv",3,"D.1.1","Elipsis espacial"],
+  ["jer",[["<b class='t'>Con continuidad:</b> en campo aparece el mismo espacio o una parte del plano anterior."],["<b class='t'>Con discontinuidad y relación:</b> el nuevo campo se relaciona con el anterior, por ejemplo otra parte de la misma habitación."],["<b class='t'>Con discontinuidad y sin relación:</b> el segundo plano no se puede situar respecto al primero."]].map(x=>x),],
+  ["niv",3,"D.1.2","Elipsis temporal"],
+  ["p","<b>Omite parte de la acción</b> sin que el espectador pierda el hilo. Es anterior en el lenguaje a la descomposición del espacio en planos próximos. Por ejemplo, las portadas de periódico que muestran los hitos de la carrera de un personaje. Se <b>suaviza</b> de dos maneras:"],
+  ["ul",["Plano de espera: un plano de un segundo, como un barco en el mar, completa la elipsis de un largo viaje.","Empalme en la acción: se termina en el segundo campo la acción empezada en el primero. Un niño cae y, al abrirse el campo desde sus ojos, ya vemos a un hombre."]],
+  yUp,yEl,
+  ["niv",2,"D.2","Montaje alternado"],
+  ["p","Montaje que <b>alterna planos de dos o más acciones</b> (o lugares) que ocurren a la vez o que están relacionadas, volviendo de una a otra. Es lo que vemos en una persecución: un plano del perseguido, otro del perseguidor, otra vez el perseguido…"],
+  ["p","¿Por qué ayuda a la continuidad? Si en cada plano hay que seguir a un único personaje, cualquier pequeño fallo de raccord (la mano, el objeto, la luz) se nota enseguida. Al alternar entre acciones, el espectador <b>no depende de un solo personaje</b> para entender el espacio y el tiempo, y los fallos <b>se notan menos</b>. Además, permite fragmentar una situación en partes y aumentar la tensión."],
+  ["ej","Una mujer corre hacia la estación y, a la vez, un tren se prepara para salir. Alternamos planos de ella y del tren: entendemos que ocurre al mismo tiempo y sentimos la tensión de si llegará."],
+  ["p","El <b>montaje paralelo</b> de Griffith es una variante de este recurso (ver apartado 4)."],
+  ["niv",2,"D.3","Tiempo perceptivo"],
+  ["p","En un cómic, el lector decide cuánto tiempo mira cada viñeta. En el audiovisual no: <b>la duración de cada plano la decide el montaje</b> y el espectador la sigue. Por eso el tiempo que dura un plano crea el <b>ritmo</b> y la sensación de tiempo."],
+  ["ej","Un plano de dos segundos se percibe rápido y tenso; uno de diez segundos, lento y contemplativo, aunque muestren lo mismo."],
+
+  ["h","Continuidad de acción y de dirección"],
+  ["p","Son las <b>reglas</b> que mantienen la orientación del espectador. Se resumen en nueve:"],
+  ["ol",rules[1].map(lead)],
+  ejeP,eje,ejeYt,
+
+
+  ["h","Esquema global de la continuidad y el raccord"],
+  ["fl",[["Coherencia entre planos","Que todo encaje",[
+    ["Continuidad","El resultado",[
+      ["A. Narrativa","Relato comprensible"],
+      ["B. Perceptiva","Sin saltos bruscos"],
+      ["C. Formal","Espacio y tiempo lineales"],
+      ["D. Temporal","Elipsis, montaje alternado y tiempo perceptivo"],
+      ["E. Acción y dirección","Ley del eje, regla de los 30°, plano-contraplano…"]]],
+    ["Raccord","La técnica",[
+      ["De los personajes","Dirección, mirada, movimiento e interpretación"],
+      ["De la imagen y el entorno","Luz, objetual (vestuario, atrezo, decorado), planificación, óptico y sonido"]]],
+    ["Script","Quien lo vigila en el rodaje",[
+      ["Anota cada toma","Y avisa a la dirección"]]]]]],"Esquema global: la continuidad es el resultado, el raccord la técnica y el script quien la vigila."]
+ ];
+ r.splice(a,z-a,...CON);
+
+ // ---------- 3) GLOSARIO y AUTOEVALUACIÓN ----------
+ const quita=new Set(["Movimiento interno y externo","Raccord","Movimiento externo","Movimiento interno","Continuidad"]);
+ u.glosario=u.glosario.filter(x=>!quita.has(x[0])).concat([
+  ["Continuidad","Coherencia entre planos consecutivos para que los cortes no se noten. Es el resultado que percibe el espectador."],
+  ["Movimiento fílmico","Lo que se mueve en una película. Es interno, si ocurre dentro del plano, o externo, si nace del montaje."],
+  ["Movimiento interno","El que ocurre dentro del encuadre: lo producen personajes y objetos con la cámara quieta, o la propia cámara (rotación y traslación)."],
+  ["Movimiento externo","El que nace del montaje, al unir planos distintos. Puede ser narrativo o expresivo."],
+  ["Movimiento de rotación","La cámara gira sobre su eje sin desplazarse: panorámica y barrido."],
+  ["Movimiento de traslación","La cámara se desplaza por el espacio: travelling."],
+  ["Montaje alternado","Alterna vistas de acciones o espacios distintos; hace menos evidentes los problemas de continuidad."],
+  ["Raccord","Técnica que se aplica en rodaje y montaje para lograr la continuidad: ajustar los detalles de un plano para que empalmen con el siguiente."],
+  ["Script","Secretario o secretaria de rodaje: persona que vigila la continuidad y anota con detalle cómo queda todo al final de cada toma."],
+  ["Atrezo","Objetos que los personajes usan o que hay en la escena (no incluye la ropa, que es vestuario)."],
+  ["Fallo de raccord","Error de continuidad que el espectador percibe, como un vaso que cambia de nivel entre dos planos."]
+ ]).sort((x,y)=>x[0].localeCompare(y[0],"es"));
+ u.quiz.push(
+  ["Un plano fijo en el que un coche cruza la calle sin que la cámara se mueva es un ejemplo de…",["Movimiento externo","Movimiento interno","Traslación de la cámara","Zoom"],1,"Ocurre dentro del encuadre y la cámara está quieta: es movimiento interno, de un objeto."],
+  ["La cámara gira sobre su eje, sobre un trípode, sin desplazarse. ¿Qué movimiento es?",["Rotación (panorámica)","Traslación (travelling)","Zoom","Movimiento externo"],0,"Gira pero no cambia de sitio: es una rotación, o panorámica."],
+  ["¿De dónde nace el movimiento externo?",["Del movimiento de los actores","De la cámara sobre un carro","Del montaje, al yuxtaponer planos","Del cambio de focal"],2,"Se construye al unir unos planos con otros en el montaje."],
+  ["¿Qué diferencia al montaje narrativo del expresivo?",["El narrativo cuenta la historia con continuidad; el expresivo busca el impacto","El narrativo usa más planos","El expresivo no tiene cortes","No hay ninguna diferencia"],0,"El narrativo prioriza la claridad y la continuidad; el expresivo, el impacto en el espectador."],
+  ["¿Quién anota con detalle cómo queda todo al final de cada toma para evitar errores de continuidad?",["El script o secretario de rodaje","El sonidista","El director de arte","El espectador"],0,"El script vigila la continuidad durante el rodaje."],
+  ["¿Cuál es la relación entre continuidad y raccord?",["Son exactamente lo mismo","La continuidad es el resultado y el raccord la técnica para lograrlo","El raccord es el resultado y la continuidad la técnica","Solo se aplican en el montaje"],1,"La continuidad es lo que percibe el espectador; el raccord es el ajuste técnico que la consigue."],
+  ["¿Qué es el atrezo?",["La ropa de los personajes","Los objetos que se usan o hay en la escena","La iluminación","El sonido ambiente"],1,"El vestuario es la ropa; el atrezo son los objetos de la escena."]
+ );
+
+ // ---------- 4) PALABRAS CLAVE y fotograma de Up ----------
+ const kw=(s,L)=>{L.forEach(k=>{const i=s.indexOf(k);if(i>=0&&!s.slice(0,i).endsWith("<b>"))s=s.slice(0,i)+"<b>"+k+"</b>"+s.slice(i+k.length)});return s};
+ const byH=t=>r.findIndex(b=>b[0]==="h"&&b[1]===t);
+ const K=(i,L,f)=>{const b=r[byH(f)+i];return b};
+ const doP=(h,k,L)=>{const j=byH(h);if(j<0)return;for(let i=j+1;i<r.length&&r[i][0]!=="h"&&r[i][0]!=="parte";i++){const b=r[i];if(b[0]==="p"&&b[1].includes(k)){b[1]=kw(b[1],L);return}}};
+ const doDef=(n,L)=>{r.forEach(b=>{if(b[0]==="def"&&b[1]===n)b[2]=kw(b[2],L)})};
+ const doList=(h,first,L)=>{const j=byH(h);if(j<0)return;for(let i=j+1;i<r.length&&r[i][0]!=="h"&&r[i][0]!=="parte";i++){const b=r[i];if((b[0]==="ul"||b[0]==="ol")&&b[1][0].startsWith(first)){b[1]=b[1].map(x=>kw(x,L));return}}};
+ doList("Continuidad de acción y de dirección","<b class",["línea imaginaria","mismo semicírculo","salto de eje","al menos 30°","cambiar claramente de escala","diferir claramente","90°","ejes de mirada","alternancia de planos","escorzo","se mantiene","sigue a la derecha","seguir oyéndose","lado opuesto","mismo sentido"]);
+ doP("Signos de puntuación: las transiciones","Para separar",["signos de puntuación","elipsis entre escenas"]);
+ doList("Signos de puntuación: las transiciones","Corte:",["instantaneidad","fallos de raccord","se mezclan","paso del tiempo","negro","cambios de espacio","tan rápido","invade y empuja","similitud o contraste"]);
+ doP("El montaje y sus teorías a lo largo de la historia","El montaje es la etapa",["se construye el sentido","montaje clásico, o invisible","montaje alternativo, o de choque"]);
+ doDef("Hermanos Lumière",["primer montaje","montaje sintético"]);
+ doDef("Georges Méliès",["sustituir a una persona por otra","frontalidad"]);
+ doDef("Escuela de Brighton",["continuidad narrativa","fragmentación"]);
+ doDef("Edwin S. Porter",["western","unidad narrativa"]);
+ doP("B. Montaje clásico o invisible: Modelo de Representación Institucional (MRI)","Cuenta los hechos",["signo analítico","borrar la huella de enunciación"]);
+ doDef("David W. Griffith",["medio expresivo","montaje paralelo","montaje cruzado"]);
+ doDef("André Bazin",["montaje prohibido","transparencia","plano secuencia"]);
+ doDef("Dziga Vertov",["cine-ojo","montaje integral"]);
+ doDef("Lev Kuleshov",["significados distintos"]);
+ doDef("Vsévolod Pudovkin",["se construye"]);
+ doDef("Serguéi M. Eisenstein",["montaje como choque","montaje de atracciones","montaje intelectual"]);
+ doDef("Nouvelle Vague",["espontaneidad","rodaje en exteriores"]);
+ doDef("Dogma 95",["voto de castidad","cámara en mano"]);
+ doDef("Montaje posmoderno",["mezcla de géneros","intertextualidad","narración fracturada"]);
+ doList("Cómo analizar una escena","Mírala",["sin parar","plano a plano","duración media","raccord","su efecto","conclusión"]);
+ const A=r.find(b=>b[0]==="act"&&b[1].startsWith("Actividad A2.4"));
+ if(A&&A[2].explora&&!A[2].explora.includes("fa24")){
+  const fig="<figure class='fa24'><img src='img/up-a24.jpg' alt='Fotograma de la secuencia de Up (Pixar)' loading='lazy' onerror=\"if(!this.dataset.f){this.dataset.f=1;this.src='https://i.ytimg.com/vi/F2bk_9T482g/hqdefault.jpg'}else{this.parentNode.remove()}\"><figcaption>Miniatura de la secuencia de <i>Up</i> (Pixar) que vas a analizar.</figcaption></figure>";
+  A[2].explora=A[2].explora.replace("</p>","</p>"+fig);
+ }
+})();
+
+// ===== Tips y trucos con estilo propio =====
+;(function(){
+ const M=[
+  ["nota","Truco habitual: ","💡","Truco",""],
+  ["nota","Para practicar un travelling con pocos medios","💡","Tip",""],
+  ["nota","Los errores más frecuentes en un guion de clase","⚠️","Ojo",""],
+  ["nota","El mejor foco de que dispones en un rodaje escolar","💡","Tip",""],
+  ["p","Recuerda: el sonido <b>diegético</b>","🧠","Recuerda","Recuerda: "],
+  ["p","Un truco profesional es no cortar","🎬","Truco profesional","Un truco profesional es "],
+  ["nota","Para practicar, abre un simulador de cámara","💡","Tip",""],
+  ["nota","Pasa el ratón unos segundos sobre cualquier herramienta","💡","Tip",""]
+ ];
+ Object.keys(CONTENIDO).forEach(k=>{const r=CONTENIDO[k].rico;if(!r)return;
+  r.forEach((b,i)=>{const m=M.find(x=>b[0]===x[0]&&typeof b[1]==="string"&&b[1].startsWith(x[1]));if(!m)return;
+   let tx=b[1];if(m[4])tx=tx.slice(m[4].length);else if(m[1].endsWith(": "))tx=tx.slice(m[1].length);
+   tx=tx.charAt(0).toUpperCase()+tx.slice(1);
+   r[i]=["tip",m[2],m[3],tx]})});
+ const A=(CONTENIDO[2].rico||[]).find(b=>b[0]==="act"&&b[1].startsWith("Actividad A2.4"));
+ if(A&&A[2].explora)A[2].explora=A[2].explora.replace("sacar a la luz los trucos que usa","sacar a la luz los <b>trucos</b> que usa");
+})();
+
+// ===== Unidad 2: vídeos sobre continuidad y raccord =====
+;(function(){
+ const u=CONTENIDO[2];
+ const ap="Continuidad, raccord y script: qué son";
+ const nuevos=[["HwBk9_5_FHs","Cine para Dummies: el raccord o la continuidad",ap],["ew5WzvL-fEk","Elementos del cine: continuidad y errores en películas",ap]];
+ nuevos.forEach(v=>{if(!u.videos.some(x=>x[0]===v[0]))u.videos.push(v)});
+ const b=u.rico.find(x=>x[0]==="vlink"&&x[1].includes("9WabiiR2Kx0"));
+ if(!b)throw new Error("vlink raccord");
+ nuevos.forEach(v=>{if(!b[1].includes(v[0]))b[1].push(v[0])});
+})();
+
+
+// ===== Unidad 1: estilo didáctico unificado (palabras clave, subapartados numerados, esquemas globales, tips) =====
+;(function(){
+ const U=CONTENIDO[1],R=U.rico;
+ const ixH=t=>R.findIndex(b=>b[0]==="h"&&b[1]===t);
+ const need=(i,m)=>{if(i<0)throw new Error("U1 ancla no encontrada: "+m);return i};
+ const find=(f,m)=>need(R.findIndex(f),m);
+ // negrita en la primera aparición de cada frase (si no hay ya negrita); en listas, solo después de la etiqueta (primer «:»)
+ const kw=(s,L,lista)=>{let pre="",x=s;if(lista){const c=s.indexOf(":");if(c>=0&&c<75){pre=s.slice(0,c+1);x=s.slice(c+1)}}
+  L.forEach(k=>{const i=x.indexOf(k);if(i<0)return;if(x.slice(0,i).endsWith("<b>")||x.slice(0,i).lastIndexOf("<b>")>x.slice(0,i).lastIndexOf("</b>"))return;x=x.slice(0,i)+"<b>"+k+"</b>"+x.slice(i+k.length)});return pre+x};
+ const defKw=(n,L)=>{const i=find(b=>b[0]==="def"&&b[1]===n,"def "+n);R[i][2]=kw(R[i][2],L)};
+ const pKw=(start,L)=>{const i=find(b=>b[0]==="p"&&b[1].startsWith(start),"p "+start);R[i][1]=kw(R[i][1],L)};
+ const ulKw=(first,L)=>{const i=find(b=>b[0]==="ul"&&typeof b[1][0]==="string"&&b[1][0].startsWith(first),"ul "+first);R[i][1]=R[i][1].map(x=>kw(x,L,true))};
+ const tip=(start,icon,label,txt)=>{const i=find(b=>b[0]==="nota"&&b[1].replace(/<[^>]+>/g,"").startsWith(start),"nota "+start);R[i]=["tip",icon,label,txt]};
+
+ // ---------- PARTE 1: la imagen ----------
+ {const i=find(b=>b[0]==="p"&&b[1].startsWith("Las imágenes se dividen en dos grandes grupos"),"p imágenes");
+  R[i][1]="Las imágenes se dividen en <b>dos grandes grupos</b>: las <b>imágenes en movimiento</b> producen la ilusión de moverse porque están formadas por muchas imágenes organizadas en secuencias, y las <b>imágenes fijas</b> no se mueven."}
+ {const h=need(ixH("Para qué se usan las imágenes"),"h usos");
+  const a=find(b=>b[0]==="ul"&&typeof b[1][0]==="string"&&b[1][0].startsWith("Promocionar productos"),"ul usos");
+  if(!(R[a+1][0]==="p"&&R[a+2][0]==="ul"&&R[a+2][1][0].startsWith("Narrativo")))throw new Error("U1 estructura de propósitos");
+  R.splice(a,3,
+   ["p","Las imágenes se pueden clasificar de dos maneras: por el <b>uso</b> que les da la sociedad y por el <b>propósito</b> que persiguen."],
+   ["jer",[
+    ["<b class='t'>Según su uso.</b> Para qué las utilizamos:",[
+     "<b class='t'>Promocionar productos:</b> la publicidad las usa para <b>vender</b>.",
+     "<b class='t'>Persuadir:</b> el Estado las usa para que la ciudadanía <b>adopte ciertos comportamientos</b>.",
+     "<b class='t'>Identificar:</b> por ejemplo, para <b>reconocer</b> a personas buscadas.",
+     "<b class='t'>Expresarse y contar historias:</b> es el uso de las artistas y los artistas."]],
+    ["<b class='t'>Según su propósito.</b> Qué quieren conseguir con quien las mira:",[
+     "<b class='t'>Narrativo:</b> quieren <b>contar una historia</b>.",
+     "<b class='t'>Descriptivo:</b> quieren <b>mostrar cosas</b>.",
+     "<b class='t'>Expositivo:</b> quieren <b>exponer ideas</b>.",
+     "<b class='t'>Argumentativo:</b> quieren presentar argumentos para <b>convencer</b>."]]]]);
+  const p2=find(b=>b[0]==="parte"&&b[1].startsWith("2. La composición"),"parte 2");
+  R.splice(p2,0,
+   ["h","Esquema global: la imagen"],
+   ["fl",[["La imagen","Se clasifica de tres formas",[
+     ["Tipos","Según se mueva o no",[["Fijas únicas","Fotografía, pintura, dibujo…"],["Fijas múltiples","Cómic, novela gráfica"],["En movimiento","Cine, vídeo, TV, videojuegos"]]],
+     ["Usos","Para qué la usa la sociedad",[["Promocionar","Vender"],["Persuadir","Cambiar conductas"],["Identificar","Reconocer"],["Expresarse","Contar historias"]]],
+     ["Propósitos","Qué busca comunicar",[["Narrativo","Contar"],["Descriptivo","Mostrar"],["Expositivo","Exponer ideas"],["Argumentativo","Convencer"]]]]]],
+    "Esquema global de la imagen: tipos, usos y propósitos."]);}
+
+ // ---------- PARTE 2: la composición ----------
+ defKw("Composición",["Organizar","decidir dónde va cada cosa"]);
+ tip("Estos tipos describen","⚠️","Ojo","Estos tipos describen <b>hacia dónde apuntan las líneas y los elementos</b> de la imagen. No los confundas con la forma del cuadro (relación de aspecto: 16:9, 9:16, 1:1), que se trata en la unidad de grabación.");
+ {const i=find(b=>b[0]==="p"&&b[1].startsWith("Antes de aplicar las reglas"),"p reglas");
+  R[i][1]="Antes de aplicar las reglas necesitas tener claros tres conceptos: el <b>encuadre</b>, el <b>motivo</b> y el <b>fondo</b>."}
+ defKw("Encuadre (fotográfico)",["fragmento de realidad","qué queda fuera"]);
+ defKw("Motivo",["sujeto principal"]);
+ defKw("Fondo",["apoya al motivo"]);
+ pKw("Encuadrar es decidir",["Encuadrar es decidir"]);
+ // reglas: familias, intro y negritas
+ {const c=find(b=>b[0]==="clave"&&b[1].startsWith("Estas reglas son una ayuda"),"clave reglas");
+  R[c][1]=kw(R[c][1],["no una obligación"]);
+  R.splice(c+1,0,["p","Las diez reglas se agrupan en <b>cuatro familias</b>, según lo que consiguen: <b>A</b> colocar el motivo, <b>B</b> guiar la mirada, <b>C</b> dar ritmo y atmósfera y <b>D</b> separar y enmarcar."]);
+  [["1. Centro de interés","A","Colocar el motivo"],["5. Líneas","B","Guiar la mirada"],["7. Repetición y grupos de tres","C","Dar ritmo y atmósfera"],["9. Frente y fondo","D","Separar y enmarcar"]].forEach(([d,l,t])=>{
+   const i=find(b=>b[0]==="def"&&b[1]===d,"def "+d);R.splice(i,0,["niv",2,l,t])});}
+ defKw("1. Centro de interés",["centro de interés","Es la regla más importante"]);
+ defKw("2. Regla del horizonte",["dos tercios","línea más o menos horizontal"]);
+ defKw("3. Regla de los tercios",["puntos fuertes","alejado del centro"]);
+ defKw("4. Regla de la mirada o espacio activo",["espacio libre","no entiende bien la escena"]);
+ defKw("5. Líneas",["dirigir la mirada","líneas convergentes"]);
+ defKw("6. Flujo, dirección y movimiento",["flujo","diagonales son más dinámicas","más espacio en la dirección del movimiento"]);
+ defKw("7. Repetición y grupos de tres",["grupos de tres","soledad"]);
+ defKw("8. Color y contraste",["colores cálidos","colores fríos","contraste"]);
+ defKw("9. Frente y fondo",["profundidad de campo","demasiados detalles"]);
+ defKw("10. Enmarcado",["encierre","dirige la atención"]);
+ tip("Línea de horizonte: cómo colocarla","💡","Tip","Coloca la <b>línea de horizonte</b> sobre una de las líneas de tercios, no en el centro sin intención. Evita el horizonte torcido y los elementos que parecen «nacer» de la cabeza de una persona, como un poste detrás.");
+ tip("Líneas dominantes","💡","Tip","Las <b>líneas dominantes</b> son las líneas del entorno (caminos, vallas, edificios, sombras) que dirigen el recorrido de la mirada hacia el centro de interés. Fíjate en cuáles dominan la imagen y colócalas para que lleven al motivo.");
+ tip("Diagonal natural de lectura","🧠","Recuerda","La <b>diagonal natural de lectura</b> explica por qué funciona el flujo: en nuestra cultura leemos de izquierda a derecha y de arriba abajo, así que la mirada tiende a entrar por la esquina superior izquierda y recorrer la imagen hacia la esquina inferior derecha. Colocar los elementos siguiendo esa diagonal resulta natural. Es una tendencia, no una norma estricta.");
+ pKw("En una imagen, cada elemento",["equilibra esos pesos","desequilibra a propósito","más peso visual"]);
+ ulKw("Es más grande",["más grande","más lejos del centro","derecha del encuadre o en la parte alta","más oscuro, más cálido o más saturado","forma regular","también pesa"]);
+ {const e=find(b=>b[0]==="ej"&&b[1].startsWith("Un personaje pequeño a la izquierda"),"ej equilibrio");
+  R.splice(e+1,0,
+   ["h","Esquema global de la composición"],
+   ["fl",[["Composición","Organizar la imagen para que se entienda",[
+     ["Tipos","Hacia dónde apuntan las líneas",[["Horizontal","Calma"],["Vertical","Fuerza"],["Diagonal","Tensión y acción"],["Cíclica","Dinamismo"]]],
+     ["Las diez reglas","Cuatro familias",[["A. Colocar el motivo","1 centro de interés · 2 horizonte · 3 tercios · 4 mirada"],["B. Guiar la mirada","5 líneas · 6 flujo"],["C. Dar ritmo y atmósfera","7 repetición · 8 color y contraste"],["D. Separar y enmarcar","9 frente y fondo · 10 enmarcado"]]],
+     ["Equilibrio","Peso visual de cada elemento",[["Equilibrado","Calma"],["Desequilibrado","Tensión"]]]]]],
+    "Esquema global de la composición: tipos, reglas y equilibrio."]);}
+
+ // ---------- PARTE 3: la retórica ----------
+ pKw("Las imágenes, sobre todo en publicidad",["figuras retóricas","llamar la atención"]);
+ ulKw("Comparación",["destacar su parecido","sustituye por otro","sin decirlo","una parte representa el todo","se exagera","rasgos humanos","por convención"]);
+ tip("Campañas conocidas para analizar en clase","🎬","Para analizar en clase","Campañas conocidas (búscalas por su nombre): <b>«Red Bull te da alas»</b> (hipérbole), los <b>personajes de M&M's</b> (personificación) y el <b>logotipo de Nike</b> (símbolo). Comprueba siempre el anuncio antes de proyectarlo.");
+
+ // ---------- PARTE 4: géneros ----------
+ defKw("Género audiovisual",["rasgos comunes","expectativas"]);
+ tip("La frontera no siempre es nítida","⚠️","Ojo","La frontera no siempre es nítida. El <b>falso documental</b> (mockumentary) usa la forma del documental para contar una ficción; la <b>docuficción</b> mezcla hechos reales con escenas dramatizadas; y la <b>telerrealidad</b> (reality) parte de personas reales pero con situaciones preparadas.");
+ tip("Los botones abren una búsqueda en YouTube","💡","Tip","Los botones abren una <b>búsqueda en YouTube</b>: elige un resultado oficial o un fragmento breve y comprueba que sea adecuado para tu clase.");
+ {const v=need(ixH("El videoclip: concepto, historia, códigos y tipos"),"h videoclip");
+  R.splice(v,0,
+   ["h","Esquema global de los géneros y formatos"],
+   ["fl",[["Géneros y formatos","Se agrupan por rasgos comunes",[
+     ["Ficción","Historia inventada o inspirada en hechos",[["Géneros de cine","Biopic, histórico, musical, comedia, western, acción, terror, drama…"],["Otros formatos","Spot, mimo ficción, postal audiovisual, foto relato"]]],
+     ["No ficción","Hechos y personas reales",[["Cine y televisión","Documental, noticia, reportaje, entrevista, divulgación"],["Música e imagen","Videoclip (tipos A, B y A + B)"]]]]]],
+    "Esquema global: ficción y no ficción, con sus géneros y formatos."]);}
+
+ // ---------- videoclip ----------
+ defKw("Videoclip",["ritmo y a la duración de un tema musical","No exige una historia cerrada"]);
+ {const i=find(b=>b[0]==="ul"&&typeof b[1][0]==="string"&&b[1][0].startsWith("Radicalidad"),"ul videoclip");
+  R[i][1]=["<b>Radicalidad</b> y <b>experimentación</b> con los efectos visuales.","<b>Agilidad</b> en los cortes.","Contornos, filtros y texturas que dan <b>identidad propia</b> a cada videoclip."];}
+ {const t=find(b=>b[0]==="tabla"&&b[1][0]==="Tipo"&&b[1][1]==="Cómo es","tabla tipos videoclip");
+  if(!(R[t+1][0]==="p"&&R[t+1][1].startsWith("En el tipo B")))throw new Error("U1 p tipo B");
+  R.splice(t,2,
+   ["niv",2,"A","Tipo A: anarrativo o descriptivo"],
+   ["p","<b>Sin programa narrativo</b>: hay cierta cronología en la sucesión de imágenes, pero no se cuenta una historia. Se ve al cantante o al grupo en un escenario, un estudio o un concierto, con imágenes asociadas que mantienen la atención. El objetivo es <b>crear una experiencia</b>."],
+   ["niv",2,"B","Tipo B: narrativo"],
+   ["p","Presenta una <b>secuencia de hechos</b> con la estructura dramática clásica y puede estar protagonizado por el cantante. Funciona como un <b>mini-relato</b>: tiene elipsis, ritmo y fundidos en negro, aunque suele saltarse convenciones que el cine no se atrevería a tocar. La música y la imagen se pueden relacionar de tres maneras:"],
+   ["ol",["<b class='t'>Lineal:</b> la imagen <b>repite</b> lo que dice la canción.","<b class='t'>De adaptación:</b> una <b>trama paralela</b> a partir de la canción.","<b class='t'>De superposición:</b> una <b>historia independiente</b> de la letra, pero que funciona con ella."]],
+   ["niv",2,"A+B","Tipo A + B: descriptivo-narrativo"],
+   ["p","<b>Mezcla</b> de los dos tipos anteriores. Tiene dos niveles: el <b>diegético</b> (la historia) y el <b>de actuación</b> (el cantante o el grupo actuando). Se usa para contar una historia y, además, crear una imagen del artista."]);}
+ {const c=find(b=>b[0]==="clave"&&b[1].startsWith("Para analizar un videoclip"),"clave videoclip");
+  R[c][1]="Para analizar un videoclip, fíjate en los <b>siete códigos</b> (imagen, espacio, transición, plano, composición, iluminación y efectos), decide si es de <b>tipo A, B o A + B</b>, y di cómo se relacionan la imagen y la música.";
+  const e=need(ixH("Clasificación por edades"),"h edades");
+  R.splice(e,0,
+   ["h","Esquema global del videoclip"],
+   ["fl",[["Videoclip","Formato ligado a un tema musical",[
+     ["Historia","De la música visual a la MTV",[["1975","«Bohemian Rhapsody»"],["1981","Nace la MTV"],["1983","«Thriller»"]]],
+     ["Códigos","Rasgos de su lenguaje",[["Siete códigos","Imagen, espacio, transición, plano, composición, iluminación y efectos"]]],
+     ["Imagen y música","Cómo se relacionan",[["Cuatro relaciones","Yuxtaposición, divagación, coincidencia y complementariedad"]]],
+     ["Tipos","Según su narración",[["A. Anarrativo","Una experiencia"],["B. Narrativo","Un mini-relato"],["A + B","Dos niveles"]]]]]],
+    "Esquema global del videoclip: historia, códigos, relación con la música y tipos."]);}
+ pKw("Las obras se clasifican según",["mayores de 7, de 12, de 16 y de 18 años","violencia, el sexo, el lenguaje"]);
+
+ // ---------- PARTE 5: valores y profesión ----------
+ pKw("Valorar una imagen no es solo",["valores estéticos","objetivo comunicativo"]);
+ ulKw("Quien crea",["respetar la autoría y la intimidad","no manipular una imagen para engañar","sentido crítico","atención, respeto y participación"]);
+ pKw("Todo lo que aprendes en esta materia",["profesiones reales"]);
+
+ // ---------- GLOSARIO ----------
+ U.glosario.push(["Imagen fija","Imagen que no se mueve: fotografía, pintura, dibujo, cómic…"],["Imagen en movimiento","Serie de imágenes encadenadas que produce ilusión de movimiento: cine, vídeo, televisión y videojuegos."]);
+ U.glosario.sort((x,y)=>x[0].localeCompare(y[0],"es"));
+})();
+
+
+// ===== Unidad 2 (b): estilo didáctico en encuadre, escala, angulación, transiciones e historia del montaje =====
+;(function(){
+ const r=CONTENIDO[2].rico;
+ const E=m=>{throw new Error("u2b: falta ancla: "+m)};
+ const hi=t=>{const i=r.findIndex(b=>b[0]==="h"&&b[1]===t);if(i<0)E("h «"+t+"»");return i};
+ const after=(i,pred,lim)=>{for(let k=i+1;k<r.length&&r[k][0]!=="h"&&r[k][0]!=="parte";k++)if(pred(r[k]))return k;return -1};
+ const need=(k,m)=>{if(k<0)E(m);return k};
+ const kw=(s,L)=>{L.forEach(k=>{const i=s.indexOf(k);if(i>=0&&!s.slice(0,i).endsWith("<b>"))s=s.slice(0,i)+"<b>"+k+"</b>"+s.slice(i+k.length)});return s};
+ const lab=s=>{const i=s.indexOf(": ");return i<0?s:`<b class="t">${s.slice(0,i+1)}</b>`+s.slice(i+1)};
+ const defKw=(n,L)=>{r.forEach(b=>{if(b[0]==="def"&&b[1]===n&&!/<b>/.test(b[2]))b[2]=kw(b[2],L)})};
+ const pKw=(h,pre,L)=>{const j=need(after(hi(h),b=>b[0]==="p"&&b[1].startsWith(pre)),"p «"+pre+"»");r[j][1]=kw(r[j][1],L)};
+ const ulKw=(h,pre,L)=>{const j=need(after(hi(h),b=>b[0]==="ul"&&b[1][0].startsWith(pre)),"ul «"+pre+"»");r[j][1]=r[j][1].map(x=>kw(x,L))};
+
+ // ---------- PARTE 1 ----------
+ // 1) Secuencia, escena, plano y toma: lista numerada de mayor a menor
+ {
+  const h=hi("El lenguaje audiovisual: secuencia, escena, toma y plano");
+  const dS=need(after(h,b=>b[0]==="def"&&b[1]==="Secuencia"),"def Secuencia");
+  const n=r.slice(dS,dS+4).map(b=>b[1]);
+  if(n.join("|")!=="Secuencia|Escena|Toma|Plano (de edición)")E("orden de defs secuencia/escena/toma/plano: "+n);
+  r.splice(dS,4,
+   ["p","Una obra audiovisual se divide en unidades cada vez más pequeñas. De mayor a menor:"],
+   ["jer",[
+    [`<b class="t">Secuencia:</b> unidad del relato en la que se <b>plantea, se desarrolla y se concluye</b> una situación dramática. Puede ocurrir en uno o varios escenarios, sin interrupción, o fragmentarse y mezclarse con otras secuencias intercaladas.`],
+    [`<b class="t">Escena:</b> parte del discurso visual que se desarrolla en <b>un solo escenario</b> y que por sí misma no tiene un sentido dramático completo.`],
+    [`<b class="t">Plano (de edición):</b> la parte de la toma que se utiliza en el montaje. Es lo que el espectador ve <b>entre dos cortes</b>.`],
+    [`<b class="t">Toma:</b> captación de imágenes <b>desde que el operador aprieta el REC hasta que lo para</b>. Cada grabación repetida del mismo plano se llama toma 1, toma 2, toma 3…`]]]);
+  const c=need(after(h,b=>b[0]==="clave"&&b[1].startsWith("Plano de edición ≠ plano de encuadre")),"clave plano de edición ≠ encuadre");
+  r[c]=["tip","🧠","Recuerda","El <b>plano de edición</b> (el fragmento entre dos cortes) no es lo mismo que el <b>plano de encuadre</b> (la escala). Lo verás con calma en «Cuatro cosas distintas que llamamos «plano»»."];
+ }
+ // 2) Motivo, fondo y encuadre
+ defKw("Motivo",["la persona, el objeto o la acción","atención del espectador"]);
+ defKw("Fondo",["detrás del motivo","destacarlo"]);
+ {const h=hi("Motivo, fondo y encuadre: los elementos de la imagen");const j=need(after(h,b=>b[0]==="def"&&b[1]==="Encuadre"),"def Encuadre (1)");if(!/<b>/.test(r[j][2]))r[j][2]=kw(r[j][2],["lo que entra en el cuadro","lo que queda fuera"])}
+ // 3) Cuatro cosas distintas que llamamos «plano»: ejemplo real (antes en el cuadro «Recuerda»)
+ {
+  const h=hi("Cuatro cosas distintas que llamamos «plano»");
+  const t=need(after(h,b=>b[0]==="tabla"),"tabla de los cuatro significados de plano");
+  r.splice(t+1,0,["ej","Grabas a una amiga que camina hacia ti durante diez segundos, sin cortar. La imagen empieza en plano general y acaba en primer plano. Para el montaje es <b>un solo plano de edición</b>, pero ha pasado por varios planos de encuadre. Si al montar cortas en el segundo cinco, tendrás <b>dos planos de edición</b> aunque la cámara no haya cambiado de encuadre."]);
+ }
+ // 4) El encuadre: una sola definición, tres decisiones numeradas
+ {
+  const h=hi("El encuadre");
+  const d=need(after(h,b=>b[0]==="def"&&b[1]==="Encuadre"),"def Encuadre (2)");
+  r.splice(d,1,
+   ["p","El encuadre es la <b>selección de la realidad</b>: el límite físico de la imagen, lo que se ve en pantalla. Reúne <b>tres decisiones</b>:"],
+   ["jer",[
+    [`<b class="t">Plano de encuadre:</b> el cuadro o <i>frame</i>; cuánto se muestra (escala de plano).`],
+    [`<b class="t">Posición de la cámara:</b> la angulación.`],
+    [`<b class="t">Movimiento:</b> lo que se mueve en el plano y cómo lo sigue la cámara.`]]],
+   ["p","Además, al encuadrar se controla:"]);
+ }
+ // 5) Tipos de plano: escala, con tres grupos numerados y esquema global
+ {
+  pKw("Tipos de plano: la escala","Los planos se agrupan",["descriptivos o largos","narrativos o medios","expresivos o cercanos"]);
+  const h=hi("Tipos de plano: la escala");
+  const G=[["Planos descriptivos o largos","1"],["Planos narrativos o medios","2"],["Planos expresivos o cercanos","3"]];
+  G.forEach(([nom,num])=>{
+   const t=need(after(h,b=>b[0]==="tabla"&&b[1][0]===nom),"tabla «"+nom+"»");
+   r[t][1][0]="Plano";
+  });
+  // índices a partir de los datos de cada tabla
+  const firstCells=[["Gran plano general"],["Plano americano"],["Primer plano"]];
+  [2,1,0].forEach(g=>{
+   const t=need(after(h,b=>b[0]==="tabla"&&b[1][0]==="Plano"&&b[2][0][0]===firstCells[g][0]),"tabla de "+firstCells[g][0]);
+   r.splice(t,0,["niv",2,G[g][1],G[g][0]]);
+  });
+  const t3=need(after(h,b=>b[0]==="tabla"&&b[2][0][0]==="Primer plano"),"tabla expresivos");
+  r.splice(t3+1,0,["fl",[["Escala de plano","Cuánto se ve del sujeto y del espacio",[
+    ["1. Descriptivos o largos","Muestran el espacio",[["Gran plano general",""],["Plano general",""],["Plano de conjunto",""],["Plano entero",""]]],
+    ["2. Narrativos o medios","Cuentan la acción",[["Plano americano",""],["Plano medio",""]]],
+    ["3. Expresivos o cercanos","Transmiten emociones",[["Primer plano",""],["Gran primer plano",""],["Primerísimo primer plano",""],["Plano detalle",""]]]]]],"Esquema global de la escala de plano: de los planos más lejanos a los más cercanos."]);
+ }
+ // 6) La angulación
+ {
+  pKw("La angulación","La angulación es la posición",["posición de la cámara respecto al sujeto","el vertical","el horizontal"]);
+  ulKw("Angulación del eje vertical: la altura de la cámara","Normal:",["a la altura del referente","por encima del referente","por debajo del referente","justo encima","justo debajo","inclinado"]);
+  ulKw("Angulación del eje horizontal: respecto al sujeto","Frontal:",["delante del sujeto","unos 45 grados","de perfil","detrás","justo detrás"]);
+  const c=hi("El cono de visión: cuánto cabe en el encuadre");
+  r.splice(c,0,["fl",[["La angulación","Posición de la cámara respecto al sujeto",[
+    ["Eje vertical","Altura de la cámara",[["Normal","A la altura del referente"],["Picado","Por encima"],["Contrapicado","Por debajo"],["Cenital","Justo encima"],["Nadir","Justo debajo"],["Aberrante","Encuadre inclinado"]]],
+    ["Eje horizontal","Lado desde el que se mira",[["Frontal",""],["Frontal a 45°",""],["Lateral a 90°","De perfil"],["Lateral trasero a 45°","Escorzo"],["Trasero a 180°","Justo detrás"]]]]]],"Esquema global de la angulación."]);
+ }
+ // 7) Cono de visión
+ {
+  pKw("El cono de visión: cuánto cabe en el encuadre","El objetivo determina",["gran angular","teleobjetivo","objetivo normal"]);
+  const h=hi("El cono de visión: cuánto cabe en el encuadre");
+  const k=need(after(h,b=>b[0]==="cono"),"bloque cono");
+  r.splice(k+1,0,["fl",[["Objetivo","Determina el ángulo de visión",[["Gran angular","Abre el cono: mucho espacio"],["Normal","Se parece a lo que abarca nuestra mirada atenta"],["Teleobjetivo","Cierra el cono y aísla al sujeto"]]]],"Esquema global del cono de visión."]);
+ }
+ // 8) Campo y fuera de campo
+ defKw("Campo",["dentro de los bordes de la imagen"]);
+ defKw("Fuera de campo",["espaciales y sonoros","sugerir sin mostrar","economía de medios"]);
+
+ // ---------- PARTE 3: transiciones ----------
+ {
+  const h=hi("Signos de puntuación: las transiciones");
+  const u=need(after(h,b=>b[0]==="ul"&&b[1][0].startsWith("Corte:")),"ul de transiciones");
+  const it=r[u][1];if(it.length!==8)E("la lista de transiciones ya no tiene 8 elementos ("+it.length+")");
+  const P=i=>[lab(it[i])];
+  r[u]=["jer",[
+   [`<b class="t">Corte, encadenado y fundido.</b> Las transiciones básicas.`,[P(0),P(1),P(2)]],
+   [`<b class="t">Desenfoque, barrido y cortinillas.</b> Transiciones con efecto.`,[P(3),P(4),P(5)]],
+   [`<b class="t">Match-cut.</b> Unen dos escenas por similitud o contraste.`,[P(6),P(7)]]]];
+  const p4=need(r.findIndex(b=>b[0]==="parte"&&b[1].startsWith("4. Teoría e historia del montaje"))+1,"parte 4");
+  r.splice(p4-1,0,["fl",[["Transiciones","Signos de puntuación del cine",[
+   ["Corte, encadenado y fundido","Las transiciones básicas",[["Corte","Unión directa"],["Encadenado","Mezcla de dos planos"],["Fundido","Pasa por el negro"]]],
+   ["Desenfoque, barrido y cortinillas","Transiciones con efecto",[["Desenfoque","Cambios de espacio"],["Barrido","Cámara muy rápida"],["Cortinilla","Un plano empuja al anterior"]]],
+   ["Match-cut","Similitud o contraste",[["Visual","Forma, color o movimiento"],["Sonoro y de idea","Un sonido o una idea"]]]]]],"Esquema global de las transiciones."]);
+ }
+
+ // ---------- PARTE 4: historia del montaje ----------
+ {
+  const h=hi("El montaje y sus teorías a lo largo de la historia");
+  const p=need(after(h,b=>b[0]==="p"&&b[1].startsWith("El montaje es la etapa")),"p introducción del montaje");
+  r.splice(p+1,0,["tip","🧠","Recuerda","Hay dos modelos opuestos. El <b>montaje clásico</b> busca la transparencia: que el corte pase inadvertido. El <b>montaje de choque</b> (Eisenstein) quiere que el montaje se note y genere ideas."]);
+  const fl=["fl",[["Teorías del montaje","De los orígenes al siglo XX",[
+   ["A. Antecedentes (MRP)","Modelo primitivo",[["Hermanos Lumière","Montaje sintético"],["Georges Méliès","Trucos y sustituciones"],["Escuela de Brighton","Continuidad narrativa"],["Edwin S. Porter","Unidad narrativa y western"]]],
+   ["B. Clásico o invisible (MRI)","Modelo institucional",[["David W. Griffith","Montaje paralelo"],["André Bazin","Realismo y transparencia"]]],
+   ["C. Alternativo o de choque","Primeras vanguardias",[["Los «ismos» y el cine puro",""],["Dziga Vertov","Cine-ojo"],["Lev Kuleshov","Efecto Kuleshov"],["Vsévolod Pudovkin","El filme se construye"],["Serguéi M. Eisenstein","Montaje como choque"]]],
+   ["D. Segunda mitad del siglo XX","Renovación del lenguaje",[["Nouvelle Vague","Espontaneidad"],["Dogma 95","Voto de castidad"],["Montaje posmoderno","Mezcla y parodia"]]]]]],"Esquema global de las teorías del montaje."];
+  const e=r.findIndex(b=>b[0]==="enlace"&&String(b[1]).includes("iysahc2bach"));
+  const p5=need(r.findIndex(b=>b[0]==="parte"&&b[1].startsWith("5. Cómo analizar una escena")),"parte 5");
+  r.splice(e>=0?e:p5,0,fl);
+ }
+
+ // ---------- PARTE 5: cómo analizar una escena ----------
+ {
+  const h=hi("Cómo analizar una escena");
+  const o=need(after(h,b=>b[0]==="ol"&&b[1][0].startsWith("Mírala")),"ol de pasos de análisis");
+  r.splice(o+1,0,["fl",[["Analizar una escena","Seis pasos",[
+   ["1. Mirar","Una vez, sin parar, como espectador"],["2. Anotar","Tamaño, ángulo y movimiento de cada plano"],["3. Contar","Número de planos y duración media"],["4. Revisar cortes","Raccord, eje de acción y elipsis"],["5. Relacionar","Cada decisión con su efecto"],["6. Concluir","Qué quiere conseguir la escena y cómo"]]]],"Esquema global del análisis de una escena."]);
+ }
+})();
+
+
+// ===== Unidad 5: estilo didáctico (palabras clave, subapartados, esquemas globales y tips) =====
+;(function(){
+ const u=CONTENIDO[5],r=u.rico,O=r.slice();
+ const used=new Set();
+ const get=(pred,desc)=>{const b=O.find(pred);if(!b)throw new Error("U5: no encuentro "+desc);used.add(b);return b};
+ const ty=(t,k)=>b=>b[0]===t&&(k===undefined||(typeof b[1]==="string"&&b[1].startsWith(k)));
+ const df=k=>get(b=>b[0]==="def"&&b[1]===k,"def "+k);
+ const H=t=>get(b=>b[0]==="h"&&b[1]===t,"h "+t);
+ const P=t=>get(b=>b[0]==="parte"&&b[1]===t,"parte "+t);
+ const tb=k=>get(b=>b[0]==="tabla"&&b[1][0]===k[0]&&b[1][1]===k[1],"tabla "+k);
+ const one=(t,dsc)=>get(b=>b[0]===t,dsc||t);
+
+ const pixel=one("pixel"),color=one("color"),ajuste=one("ajuste"),vlink=one("vlink"),act=one("act"),tip0=one("tip");
+ const tabRaster=tb(["","Mapa de bits (ráster)"]),tabTam=tb(["Tamaño","Qué indica"]),tabAsp=tb(["Formato","Relación"]),tabFmt=tb(["Formato","Compresión"]),tabProg=tb(["Programa","Para qué sirve"]);
+ const ejAsp=get(ty("ej","En 16:9"),"ej 16:9"),claveJpeg=get(ty("clave","Cada vez que guardas un JPEG"),"clave JPEG");
+ const claveND=get(ty("clave","El trabajo"),"clave no destructivo"),ejFoto=get(ty("ej","Para integrar a una persona"),"ej fotomontaje"),claveEt=get(ty("clave","Antes de usar una imagen"),"clave ética");
+ const pPix=get(ty("p","Mueve el control"),"p píxel"),pRGB=get(ty("p","Prueba el mezclador RGB"),"p RGB");
+ const rgb=df("Modo de color RGB"),cmyk=df("Modo de color CMYK");
+
+ const t="<b class='t'>",e="</b>";
+ const NEW=[
+  // ---------- PARTE 1 ----------
+  P("1. La imagen digital"),
+  ["h","Imagen digital: mapa de bits y vectorial"],
+  ["def","Imagen digital","Imagen codificada como <b>números</b> para que un ordenador pueda almacenarla, mostrarla y modificarla. Hay dos grandes familias: las imágenes de <b>mapa de bits</b> y las <b>vectoriales</b>."],
+  tabRaster,
+  ["h","El píxel"],
+  ["def","Píxel","Cada uno de los cuadraditos que forman una imagen de mapa de bits. Tiene un <b>único color</b>. La palabra viene del inglés <i>picture element</i>."],
+  pPix,pixel,
+
+  ["h","Resolución y tamaño"],
+  ["ul",["Resolución de pantalla: número de <b>píxeles</b> de ancho por alto (por ejemplo, 1920×1080).","Resolución de impresión: se mide en <b>puntos por pulgada</b> (ppp o dpi). Para imprimir bien se suelen necesitar unos <b>300 ppp</b>.","Para la web y las pantallas importa el <b>número de píxeles</b>, no los ppp: una imagen de 1920×1080 se ve igual con 72 ppp que con 300."]],
+  ["tip","⚠️","Ojo","Ampliar una imagen pequeña <b>no añade detalle real</b>: el programa solo inventa píxeles a partir de los vecinos."],
+
+  ["h","Los tres tamaños de una imagen"],
+  ["jer",[
+   [t+"Tamaño en píxeles."+e+" Cuántas <b>filas y columnas</b> tiene la imagen, o cuántos píxeles en total. <i>Ejemplo: 1600 × 1200 = 1 920 000 píxeles, casi 2 megapíxeles.</i>"],
+   [t+"Tamaño superficial (de impresión)."+e+" El tamaño que ocupará <b>impresa</b>. Lo decides tú al elegir la resolución, en píxeles por pulgada (ppp). <i>La misma foto impresa más pequeña tiene más ppp y más nitidez.</i>"],
+   [t+"Tamaño informático."+e+" Lo que <b>pesa el archivo</b> (bytes, KB, MB). Depende del número de píxeles y de la profundidad de bits. <i>A más píxeles y más colores, más peso.</i>"]]],
+
+  ["h","Relación de aspecto"],
+  ["p","La <b>relación de aspecto</b> es la proporción entre el <b>ancho y el alto</b> de la imagen, y se escribe «X:Y». Cuanto más distintos son los números, más alargada es la imagen."],
+  tabAsp,
+  ejAsp,
+
+  ["h","Profundidad de color y formatos"],
+  ["p","La <b>profundidad de color</b> es el número de <b>bits</b> que se usan para guardar el color de cada píxel. Con 8 bits por canal (24 bits en total en RGB) se pueden representar más de <b>16 millones de colores</b>."],
+  tabFmt,
+  claveJpeg,
+
+  ["h","La imagen digital de un vistazo"],
+  ["fl",[["Imagen digital","Imagen hecha de números",[
+    ["Mapa de bits (ráster)","Cuadrícula de píxeles",[["Resolución","Píxeles y ppp"],["Tamaños","Píxeles, superficial e informático"],["Relación de aspecto","Ancho:alto"],["Profundidad de color","Bits por píxel"],["Formatos","JPEG, PNG, GIF, WebP, TIFF, RAW"]]],
+    ["Vectorial","Formas matemáticas",[["Formatos","SVG, PDF vectorial, AI"],["Programa libre","Inkscape"]]]]]],"Esquema global: de la familia de imagen a sus características."],
+
+  // ---------- PARTE 2 ----------
+  P("2. El color digital"),
+  ["h","Modos de color: RGB y CMYK"],
+  ["p","Según se mezcle <b>luz</b> o <b>tinta</b>, hay dos modos de color principales:"],
+  ["def","Modo de color RGB","Sistema de <b>síntesis aditiva</b> de las pantallas: los colores se forman sumando luz roja (R), verde (G) y azul (B). Los tres al máximo dan <b>blanco</b> y los tres a cero dan <b>negro</b>."],
+  ["def","Modo de color CMYK","Sistema de <b>síntesis sustractiva</b> de la impresión: las tintas cian (C), magenta (M), amarillo (Y) y negro (K) <b>absorben luz</b>. Se usa para <b>imprimir</b>."],
+  pRGB,color,
+
+  ["h","Tono, saturación y luminosidad"],
+  ["ul",["Tono: el <b>color puro</b> (rojo, verde, azul…). Se mide en <b>grados</b> en el círculo cromático.","Saturación: la <b>pureza o intensidad</b> del color. Sin saturación, la imagen es gris.","Luminosidad o brillo: lo <b>claro u oscuro</b> que es el color."]],
+
+  ["h","Brillo, contraste y temperatura"],
+  ["p","Además de la saturación (apartado anterior), tres ajustes cambian el aspecto de una imagen:"],
+  ["ul",["Brillo: <b>aclara u oscurece</b> toda la imagen.","Contraste: diferencia entre las zonas más claras y las más oscuras. Mucho contraste es una <b>imagen dura</b>; poco, una <b>imagen apagada</b>.","Temperatura y tinte: desplazan la imagen hacia tonos <b>cálidos</b> (naranjas) o <b>fríos</b> (azules), y corrigen el <b>balance de blancos</b>."]],
+  ajuste,
+
+  ["h","El histograma: leer la luz de la imagen"],
+  ["def","Histograma","Gráfico que muestra <b>cuántos píxeles hay en cada nivel de luminosidad</b>, de las sombras (izquierda) a las luces (derecha). Si el gráfico se amontona a la izquierda, la imagen está <b>oscura</b>; si se amontona a la derecha, está <b>muy clara</b>. Si toca los extremos, hay zonas <b>sin detalle</b>."],
+
+  ["h","El color digital de un vistazo"],
+  ["fl",[["Color digital","Cómo se forma y se ajusta",[
+    ["Modos de color","Cómo se mezcla",[["RGB","Luz: síntesis aditiva (pantallas)"],["CMYK","Tinta: síntesis sustractiva (impresión)"]]],
+    ["Propiedades","Del color",[["Tono","Color puro"],["Saturación","Intensidad"],["Luminosidad","Claro u oscuro"]]],
+    ["Ajustes","De la imagen",[["Brillo y contraste",""],["Temperatura y tinte","Balance de blancos"],["Histograma","Reparto de luces y sombras"]]]]]],"Esquema global del color digital."],
+
+  // ---------- PARTE 3 ----------
+  P("3. Herramientas de edición y software libre"),
+  vlink,
+  ["h","Software libre para tratar imágenes"],
+  ["p","No hace falta pagar para editar bien. Estos programas son <b>software libre</b>: puedes <b>usarlos, estudiarlos, copiarlos y mejorarlos</b>."],
+  tabProg,
+
+  ["h","Conocer la pantalla de GIMP"],
+  ["p","<b>GIMP</b> es un programa libre y gratuito de edición de imágenes de <b>mapa de bits</b>. Su pantalla tiene tres zonas:"],
+  ["jer",[
+   [t+"Caja de herramientas."+e+" A un lado de la pantalla:",["Arriba, las <b>herramientas</b>.","En medio, los colores de <b>primer plano y fondo</b>.","Abajo, las <b>opciones</b> de la herramienta elegida, que cambian al cambiar de herramienta."]],
+   [t+"Imagen."+e+" La zona de trabajo, con la barra de menús, las <b>reglas</b> (en píxeles, con el punto 0,0 arriba a la izquierda), el <b>zoom</b> y el modo de color (RGB) en la barra de estado."],
+   [t+"Paneles."+e+" De <b>capas, canales, rutas y deshacer</b>, y de pinceles, patrones y degradados."]]],
+  ["p","Las herramientas se agrupan en <b>cinco familias</b>:"],
+  ["ul",["Selección: elegir una <b>zona</b> de la imagen.","Pintura: retocar con <b>pincel, goma o clonar</b>.","Transformación: <b>mover, rotar y escalar</b>.","Color y otras: ajustes de color y el resto de herramientas."]],
+  ["tip","⚠️","Ojo","En versiones recientes las ventanas pueden estar unidas en una sola; los nombres son los mismos."],
+  tip0,
+
+  ["h","Las herramientas básicas"],
+  ["ul",["Recorte: cambia el <b>encuadre</b> y la proporción. Aplica las reglas de composición de la unidad 1.","Selección (rectángulo, elipse, lazo, varita mágica): marca la <b>zona</b> sobre la que vas a trabajar.","Capas: «hojas de acetato» apiladas que permiten <b>editar sin tocar el original</b>. Cada elemento va en su capa.","Máscara de capa: <b>oculta o muestra</b> partes de una capa sin borrar nada. Lo <b>blanco se ve</b> y lo <b>negro se oculta</b>.","Clonar y curación: <b>copian una zona</b> sobre otra para eliminar imperfecciones.","Pincel, degradado y texto: para pintar, rellenar y rotular.","Filtros: desenfoque, nitidez, ruido, efectos artísticos."]],
+  claveND,
+
+  ["h","Un flujo de trabajo ordenado"],
+  ["ol",["Haz una <b>copia del original</b> y trabaja siempre sobre la copia.","<b>Recorta y endereza</b> la imagen.","Corrige la <b>exposición, el contraste y el color</b> general.","Retoca zonas concretas con <b>selecciones y máscaras</b>.","Aplica un <b>enfoque final</b> suave.","<b>Guarda el proyecto</b> y exporta el formato y el tamaño adecuados al destino (web, redes o impresión)."]],
+
+  ["h","Fotomontaje y composición"],
+  ["p","Un <b>fotomontaje</b> combina partes de varias imágenes en una sola. Para que sea creíble hay que <b>igualar</b> la luz (dirección y dureza), la perspectiva, la escala, el color y el grano de todas las piezas. Un <b>recorte con bordes duros</b> o una sombra que no coincide delata el montaje."],
+  ejFoto,
+
+  ["h","Herramientas y flujo de trabajo de un vistazo"],
+  ["fl",[["Tratamiento con GIMP","Software libre",[
+    ["Pantalla","Tres zonas",[["Caja de herramientas",""],["Imagen",""],["Paneles",""]]],
+    ["Herramientas","Edición no destructiva",[["Capas y máscaras","Sin tocar el original"],["Selección y clonado","Zonas concretas"],["Recorte, pincel y filtros",""]]],
+    ["Flujo de trabajo","Seis pasos",[["Copia y recorte",""],["Exposición y color",""],["Retoque y enfoque",""],["Guardar y exportar","Proyecto y formato final"]]]]]],"Esquema global: de la pantalla de GIMP al flujo de trabajo."],
+
+  // ---------- PARTE 4 ----------
+  P("4. Imágenes generadas y ética del retoque"),
+  ["h","Imágenes generadas y ética del retoque"],
+  ["p","Hoy se pueden crear imágenes por ordenador: dibujo digital, modelos 3D e <b>inteligencia artificial generativa</b>, que produce imágenes a partir de una <b>descripción escrita</b>. Estas herramientas son potentes, pero obligan a pensar con criterio."],
+  ["ul",["Retocar para mejorar: es una práctica <b>normal</b> (recortar, corregir luz, quitar una mancha).","Manipular para engañar: <b>no es ético</b> y puede ser delito (inventar un hecho, cambiar el sentido de una noticia, suplantar a una persona).","Deepfakes: vídeos o imágenes <b>falsos que parecen reales</b>. Se usan para humor, pero también para desinformar y acosar.","Imagen generada o muy modificada: hay que <b>indicarlo</b>."]],
+  claveEt,
+
+  ["h","Derechos de autor y licencias"],
+  ["p","Casi todas las imágenes tienen un <b>autor</b> y unos <b>derechos</b>. Las licencias <b>Creative Commons</b> permiten reutilizar una obra bajo ciertas condiciones. Las más habituales son:"],
+  ["ul",["Reconocimiento: hay que <b>citar al autor</b>.","No comercial: la obra <b>no puede usarse con fines comerciales</b>.","Compartir igual: las obras derivadas deben publicarse con la <b>misma licencia</b>."]],
+  ["p","Los bancos de imágenes libres y las obras de dominio público indican cómo pueden usarse."],
+  ["tip","💡","Tip","<b>Cita siempre la fuente y la licencia</b> de cada imagen que uses."],
+  act
+ ];
+ // comprobación: no se pierde ningún bloque original
+ const falta=O.filter(b=>!used.has(b)&&!NEW.includes(b));
+ const perdidos=O.filter(b=>!NEW.includes(b));
+ const toler=new Set(["def","ul","p","ol","clave","ej","h","parte","tabla","tip"]);
+ const graves=perdidos.filter(b=>!toler.has(b[0]));
+ if(graves.length)throw new Error("U5: bloques multimedia perdidos: "+graves.map(b=>b[0]).join(","));
+ r.splice(0,r.length,...NEW);
+})();
+
+
+// ===== Unidad 6 (Kdenlive): estilo didáctico unificado (palabras clave, esquemas, tips) =====
+;(function(){
+ const u=CONTENIDO[6],r=u.rico;
+ const kw=(s,L)=>{L.forEach(k=>{const i=s.indexOf(k);if(i>=0&&!s.slice(Math.max(0,i-3),i).endsWith("<b>"))s=s.slice(0,i)+"<b>"+k+"</b>"+s.slice(i+k.length)});return s};
+ const find=(t,k)=>{const i=r.findIndex(b=>b[0]===t&&typeof b[1]==="string"&&b[1].startsWith(k));if(i<0)throw new Error("u6: no encuentro "+t+" «"+k+"»");return i};
+ const findL=(t,k)=>{const i=r.findIndex(b=>b[0]===t&&Array.isArray(b[1])&&typeof b[1][0]==="string"&&b[1][0].startsWith(k));if(i<0)throw new Error("u6: no encuentro lista "+t+" «"+k+"»");return i};
+ const P=(t,k,L)=>{const i=find(t,k);r[i][1]=kw(r[i][1],L)};
+ const D=(n,L)=>{const i=r.findIndex(b=>b[0]==="def"&&b[1]===n);if(i<0)throw new Error("u6: def "+n);r[i][2]=kw(r[i][2],L)};
+ const LST=(t,k,L)=>{const i=findL(t,k);r[i][1]=r[i][1].map(x=>kw(x,L))};
+ const parte=k=>{const i=r.findIndex(b=>b[0]==="parte"&&b[1].startsWith(k));if(i<0)throw new Error("u6: parte "+k);return i};
+
+ // ---- Parte 1 ----
+ D("Edición o montaje",["seleccionar, ordenar, cortar y unir","pieza audiovisual final"]);
+ P("p","Kdenlive (de",["no lineal"]);
+
+ // ---- Parte 2 ----
+ P("p","En la línea de tiempo hay",["se ve por encima"]);
+ LST("ul","Selección:",["mueve y selecciona","divide un clip en dos","acorta o alarga","todo lo que hay a la derecha","puntos importantes"]);
+ {const i=find("nota","Los atajos de teclado");r[i]=["tip","⚠️","Ojo","Los <b>atajos de teclado</b> y algunos nombres de los menús cambian entre versiones de Kdenlive. Mantén abierta la ayuda de tu versión y personaliza los atajos en la configuración."]}
+
+ // ---- Parte 3 ----
+ LST("ol","Abre Kdenlive",["misma resolución","carpeta propia","nombres comprensibles","carpetas por escena"]);
+ P("p","Los vídeos pesados",["copias ligeras"]);
+
+ // ---- Parte 4 ----
+ LST("ul","Corta en la acción",["mitad de un movimiento","pase desapercibido","ya ha entendido","el eje y los raccords","al ritmo de la música"]);
+ {const i=findL("ul","Planos cortos y muchos cortes");
+  r.splice(i,1,
+   ["jer",[
+    ["<b class=\"t\">Ritmo rápido:</b> planos cortos y muchos cortes. Expresa <b>tensión, acción y energía</b>."],
+    ["<b class=\"t\">Ritmo pausado:</b> planos largos y pocos cortes. Expresa <b>contemplación, calma</b> o incomodidad."]]],
+   ["p","La <b>duración media de plano</b> (ASL) se calcula dividiendo la duración total entre el número de planos. Varía mucho entre épocas y géneros."]);}
+ P("p","Ya conoces los signos de puntuación",["transiciones o composiciones"]);
+ P("clave","Una transición vistosa",["corte directo bien elegido"]);
+ {const i=parte("5. Imagen, sonido y texto");
+  r.splice(i,0,
+   ["h","Esquema global: montar"],
+   ["fl",[["Montar la pieza","De las tomas al corte final",[
+     ["1. Del plano al montaje","Entrada, salida, línea de tiempo y corte"],
+     ["2. Dónde cortar","En la acción, al entenderse, con continuidad y al ritmo"],
+     ["3. Ritmo","Rápido: tensión. Pausado: calma"],
+     ["4. Imagen y sonido","Cortes en L y en J"],
+     ["5. Transiciones","Cambio entre dos clips",[
+       ["Corte","Cambio inmediato"],
+       ["Fundido a negro","Final de escena o capítulo"],
+       ["Fundido encadenado","Paso del tiempo o de lugar"],
+       ["Cortinilla","Recurso de estilo"]]]]]],"Esquema global del montaje: de izquierda a derecha, de lo general a lo concreto."]);}
+
+ // ---- Parte 5 ----
+ LST("ul","Coloca los diálogos",["pistas de audio","ajustar cada nivel por separado","fundidos de entrada y de salida","Baja la música cuando hable alguien","saltos de volumen"]);
+ P("p","Los planos de una misma escena",["mismo momento","balance de blancos, el brillo y el contraste","«look»"]);
+ LST("ul","Usa letras grandes",["buen contraste","dos veces","márgenes de seguridad","todas las personas que han participado"]);
+ LST("ul","Cambio de velocidad:",["cámara lenta o rápida","reduce los temblores","a costa de resolución","sustituye un color por otra imagen","luz uniforme"]);
+ {const i=parte("6. Exportar y presentar");
+  r.splice(i,0,
+   ["h","Esquema global: imagen, sonido y texto"],
+   ["fl",[["Acabado del montaje","Imagen, sonido y texto",[
+     ["Audio","Pistas separadas",[["Diálogos, música y efectos",""],["Fundidos y ducking",""],["Volumen uniforme",""]]],
+     ["Corrección de color","Mismo momento",[["Balance de blancos, brillo y contraste",""],["Look de toda la pieza",""]]],
+     ["Títulos y créditos","Legibles",[["Contraste y margen de seguridad",""],["Tiempo para leer",""],["Créditos y licencias",""]]],
+     ["Efectos y velocidad","Con moderación",[["Velocidad",""],["Estabilización",""],["Recorte y reencuadre",""],["Chroma",""]]]]]],"Esquema global: cada decisión cuida la imagen, el sonido o el texto."]);}
+
+ // ---- Parte 6 ----
+ D("Renderizar (exportar)",["calcula todos los cambios","archivo de vídeo final"]);
+ LST("ul","Internet y plataformas",["enlace o incrustado","memoria USB o disco","Proyección en sala"]);
+ LST("ul","Subtítulos para personas sordas",["Subtítulos","audiodescripción","contraste suficiente"]);
+ {const i=parte("7. Analizar una pieza");
+  r.splice(i,0,
+   ["h","Esquema global: exportar"],
+   ["fl",[["Exportar la pieza","Del proyecto al archivo final",[
+     ["Renderizar","Genera el archivo; el proyecto se guarda aparte"],
+     ["Destino y formato","Según dónde se verá",[["Web y redes",""],["Proyección en el aula",""],["Archivo de calidad (máster)",""],["Pantalla vertical",""]]],
+     ["Soportes","Dónde se presenta",[["Internet",""],["USB o disco",""],["Sala o aula",""],["Exposición o evento",""]]],
+     ["Accesibilidad","Para todo el público",[["Subtítulos",""],["Audiodescripción",""],["Texto legible",""]]]]]],"Esquema global: antes de entregar, comprueba la pieza completa."]);}
+
+ // ---- Parte 7: sin repetir la tabla en el párrafo ----
+ {const i=find("p","Una pieza audiovisual puede analizarse");
+  r[i][1]="Una pieza audiovisual puede analizarse en <b>tres niveles</b>, que se resumen en la tabla. Hacerlo con una mirada <b>multicultural y de género</b> ayuda a ver qué representaciones se repiten y cuáles faltan.";
+  const j=r.findIndex((b,k)=>k>i&&b[0]==="tabla"&&b[1][0]==="Nivel");if(j<0)throw new Error("u6: tabla niveles");
+  const T=r[j][2];const nom={Formal:"A. Formal: cómo está hecha",Semiológico:"B. Semiológico: qué significan los signos",Contextual:"C. Contextual: época, lugar, cultura y público"};
+  T.forEach(f=>{if(nom[f[0]])f[0]=nom[f[0]]});}
+ LST("ul","¿Cuántos personajes",["diálogo","diversos","estereotipos","punto de vista"]);
+ {const i=find("nota","El test de Bechdel");r[i]=["tip","🧠","Recuerda","El <b>test de Bechdel</b> es una prueba sencilla: una obra la supera si aparecen al menos dos mujeres con nombre que hablan entre sí de algo que no sea un hombre. No mide la calidad de la obra ni si es feminista, pero sirve para observar la <b>presencia de personajes femeninos</b>."]}
+})();
+
+
+// ===== Unidad 8 (SdA Cortometraje): mismo estilo didáctico que la unidad 2 =====
+;(function(){
+ const u=CONTENIDO[8],R=u.rico;
+ const g=(t,f,n)=>{const b=R.find(x=>x[0]===t&&f(x));if(!b)throw new Error("u8: no encuentro "+n);return b};
+ const sw=s=>x=>typeof x[1]==="string"&&x[1].startsWith(s);
+ const pIntro=g("p",sw("Esta Situación de Aprendizaje"),"intro");
+ const dSdA=g("def",sw("Situación de Aprendizaje"),"def SdA"),dCorto=g("def",sw("Cortometraje"),"def Cortometraje");
+ const tFase=g("tabla",x=>x[1][0]==="Fase","tabla de fases"),tRol=g("tabla",x=>x[1][0]==="Rol","tabla de roles");
+ const pEquipo=g("p",sw("En un grupo de trabajo"),"p equipo");
+ const pPres=g("p",sw("El cortometraje se proyectará"),"p presentación");
+ const pInsp=g("p",sw("Estos cortos están"),"p inspiración");
+ const preguntas=g("ul",x=>x[1][0].startsWith("¿Qué querías contar"),"preguntas");
+ const enlaces=R.filter(b=>b[0]==="enlace");if(enlaces.length!==9)throw new Error("u8: se esperaban 9 enlaces");
+ const act=R.filter(b=>b[0]==="act");if(!act.length)throw new Error("u8: falta la rúbrica (act)");
+ const parte=n=>g("parte",x=>x[1].startsWith(n),"parte "+n);
+
+ // La tabla original colocaba el sonido en la unidad 6 y el montaje en la 7; en el curso la 6 es Kdenlive y la 7 es El Sonido.
+ const fases=tFase[2].map(f=>f.slice());
+ fases.forEach(f=>{if(f[0]==="Sonorizar")f[1]="7";else if(f[0]==="Montar")f[1]="6"});
+ const tFase2=["tabla",tFase[1],fases];
+
+ const tl="<b class='t'>";
+ const nueva=[
+  parte("1."),
+  pIntro,
+  ["def",dSdA[1],"Propuesta de trabajo en la que el alumnado resuelve un <b>reto real o verosímil</b> movilizando sus conocimientos, destrezas y actitudes, y aplicándolos de forma conjunta. Se evalúa tanto el <b>producto final</b> como el <b>proceso</b>."],
+  ["def",dCorto[1],"Obra audiovisual de ficción, documental o animación de corta duración. En los festivales suele considerarse cortometraje una obra de <b>menos de 30 minutos</b>; en el aula, lo normal es de <b>entre 2 y 5 minutos</b>."],
+  ["h","De la idea a la proyección: las fases del reto"],
+  ["p","El reto se recorre en <b>siete fases</b>. Cada una se apoya en una unidad del curso y produce algo concreto."],
+  tFase2,
+  ["tip","💡","Tip","Cuando te atasques en una fase, vuelve a la unidad que indica la tabla: ahí tienes la teoría y las actividades que necesitas."],
+
+  parte("2."),
+  ["h","Los roles del equipo"],
+  ["p","En un grupo de trabajo cada persona asume un <b>rol principal</b>, pero todas ayudan en lo demás. Una sugerencia para equipos de cuatro o cinco personas:"],
+  tRol,
+  ["h","Calendario sugerido"],
+  ["p","El trabajo se reparte en <b>ocho semanas</b> y cuatro bloques:"],
+  ["jer",[
+   [tl+"Preproducción</b> (semanas 1 a 3)",[
+     tl+"Semana 1:</b> <b>idea, premisa y referencias</b>; elección de géneros y roles.",
+     tl+"Semana 2:</b> <b>guion literario</b>, guion técnico y storyboard.",
+     tl+"Semana 3:</b> desglose, <b>plan de rodaje</b>, permisos y ensayo."]],
+   [tl+"Producción</b> (semanas 4 y 5)",[
+     tl+"Semanas 4 y 5:</b> <b>rodaje</b> y copias de seguridad."]],
+   [tl+"Postproducción</b> (semanas 6 y 7)",[
+     tl+"Semana 6:</b> <b>sonido y montaje</b>.",
+     tl+"Semana 7:</b> corrección, créditos, subtítulos y <b>exportación</b>."]],
+   [tl+"Presentación</b> (semana 8)",[
+     tl+"Semana 8:</b> <b>proyección y evaluación</b>."]]]],
+  ["tip","⚠️","Ojo","Las fechas dependen de la programación de tu centro y de tu profesora. El calendario debe incluir <b>tiempo de reserva</b> para repetir tomas y corregir."],
+
+  parte("3."),
+  ["h","Qué debe tener tu cortometraje"],
+  ["jer",[
+   [tl+"Historia y duración</b>",[
+     "Duración orientativa: entre <b>2 y 5 minutos</b>, créditos incluidos.",
+     "Historia con <b>planteamiento, nudo y desenlace</b> claros y con un <b>conflicto</b>."]],
+   [tl+"Lenguaje audiovisual</b>",[
+     "Uso intencionado de, al menos, <b>cuatro escalas de plano</b>, <b>dos angulaciones</b> distintas y <b>un movimiento de cámara</b>.",
+     "Respeto del <b>eje de acción</b> y de la <b>continuidad</b>."]],
+   [tl+"Sonido</b>",[
+     "Sonido directo limpio y <b>banda sonora</b> con música, ambientes y, si procede, efectos."]],
+   [tl+"Imagen y acabado</b>",[
+     "Un <b>cartel o una portada</b> creados con tratamiento digital de imagen.",
+     "<b>Títulos de crédito</b> completos, con música e imágenes y sus licencias.",
+     "<b>Subtítulos o transcripción</b> para garantizar la accesibilidad."]],
+   [tl+"Entrega</b>",[
+     "Formato de entrega: <b>MP4 (H.264), Full HD, 25 fps</b>, salvo indicación diferente."]]]],
+  ["h","Qué se entrega"],
+  ["ol",["El <b>cortometraje exportado</b>.","La <b>carpeta de preproducción</b>: premisa, guion literario, guion técnico, storyboard, desglose y plan de rodaje.","El <b>cartel o la portada</b>.","La <b>memoria del proceso</b>: decisiones, dificultades y cómo se resolvieron.","La <b>documentación de derechos</b>: permisos de imagen y licencias de música y de imágenes."]],
+  ["h","Cortometrajes para inspirarte"],
+  ["p","Estos cortos están recogidos en los materiales de la asignatura. Mira cómo cuentan una historia con pocos medios, en una o pocas localizaciones: el <b>ingenio</b> pesa más que el presupuesto. Al verlos, anota el <b>tipo de plano</b>, el <b>sonido</b> y cómo se resuelve el <b>final</b>."],
+  ...enlaces,
+  ["tip","⚠️","Ojo","Comprueba cada vídeo antes de proyectarlo en clase: el contenido y la disponibilidad pueden haber cambiado desde que se recopilaron."],
+
+  parte("4."),
+  ["h","Cinco reglas para grabar con respeto"],
+  ["jer",[
+   [tl+"Respeto a las personas</b>",[
+     tl+"Derecho a la propia imagen:</b> necesitas el <b>permiso</b> de las personas que aparecen. Si son menores de edad, el de su familia o tutores legales según las normas del centro.",
+     tl+"Sin estereotipos:</b> evita estereotipos y escenas que humillen o discriminen. Revisa el guion con <b>mirada de género y diversidad</b>."]],
+   [tl+"Permisos y derechos</b>",[
+     tl+"Lugares y personas:</b> no grabes en lugares donde no tengas permiso ni a personas que no sepan que las grabas.",
+     tl+"Música e imágenes de otros:</b> usa obras propias, de <b>dominio público</b> o con licencia que lo permita (por ejemplo, <b>Creative Commons</b>) y cita siempre la autoría y la licencia.",
+     tl+"Publicación:</b> no publiques el cortometraje en internet <b>sin las autorizaciones</b> necesarias."]]]],
+  ["tip","⚠️","Ojo","Un buen cortometraje <b>no necesita grabar nada peligroso</b>. Planifica las escenas de acción con seguridad: ensaya, evita riesgos y no uses objetos que parezcan armas reales en lugares públicos."],
+
+  parte("5."),
+  ["p","El cortometraje se <b>proyectará en el aula</b>, como en un pequeño festival. Después, cada grupo presentará su proceso y se evaluará con una <b>rúbrica común</b>, en la que también participan la <b>autoevaluación</b> y la <b>coevaluación</b>."],
+  ["h","Preguntas para la presentación"],
+  ["ul",preguntas[1]],
+  ["h","Esquema global del cortometraje"],
+  ["fl",[["Cortometraje","Situación de Aprendizaje",[
+    ["Preproducción","Unidades 1 a 3",[
+      ["Referentes","Unidades 1 y 2"],
+      ["Idea y guion","Premisa, guion literario y técnico"],
+      ["Storyboard y desglose",""],
+      ["Plan de rodaje","Permisos y ensayo"]]],
+    ["Producción","Unidad 4",[
+      ["Rodaje","Tomas y copias de seguridad"]]],
+    ["Postproducción","Unidades 5, 6 y 7",[
+      ["Cartel","Tratamiento digital (unidad 5)"],
+      ["Montaje","Kdenlive (unidad 6)"],
+      ["Sonido","Banda sonora (unidad 7)"]]],
+    ["Presentación","Todas las unidades",[
+      ["Proyección","Mini festival"],
+      ["Memoria","Proceso y decisiones"],
+      ["Evaluación","Rúbrica común"]]]]]],"Esquema global: las fases del cortometraje, de izquierda a derecha."],
+  ...act
+ ];
+ R.splice(0,R.length,...nueva);
+ u.glosario=u.glosario.slice().sort((x,y)=>x[0].localeCompare(y[0],"es"));
+})();
+
+// ===== Unidad 2: mapa conceptual oculto, actividad A2.2, dibujos de reglas y transiciones =====
+;(function(){
+ const u=CONTENIDO[2],r=u.rico,m=u.mapa;
+ // 1) Todos los mapas resueltos, ocultos; solo queda visible el mapa interactivo «Técnicas del lenguaje audiovisual»
+ if(m.img){m.sol=[[m.img[0],"Mapa resumen: los elementos del lenguaje audiovisual"]].concat(m.sol||[]);delete m.img}
+ if(m.ext){m.sol=(m.sol||[]).concat([[m.ext[0],m.ext[1]]]);delete m.ext}
+ // 2) Dibujos de las reglas y de las transiciones
+ let i=r.findIndex(b=>b[0]==="h"&&b[1]==="Continuidad de acción y de dirección");
+ if(i<0)throw new Error("h reglas");
+ let o=r.findIndex((b,k)=>k>i&&b[0]==="ol");
+ if(o<0)throw new Error("ol reglas");
+ r.splice(o+1,0,["regdib"]);
+ const j=r.findIndex(b=>b[0]==="jer"&&String(b[1][0][0]).includes("Corte, encadenado y fundido"));
+ if(j<0)throw new Error("jer transiciones");
+ r.splice(j+1,0,["transdib"]);
+ // 3) Actividad A2.2
+ const a3=r.findIndex(b=>b[0]==="act"&&b[1].startsWith("Actividad A2.3"));
+ if(a3<0)throw new Error("A2.3");
+ r.splice(a3,0,["act","Actividad A2.2. Mapa conceptual del lenguaje audiovisual",{
+  chip:"Unidad 2 · Imagen y Sonido",
+  nota:"no existe un único mapa correcto. Lo importante es que cada relación tenga sentido y se pueda leer como una frase.",
+  obj:["Organizar los conceptos clave del lenguaje audiovisual en un mapa conceptual jerárquico.","Relacionar los conceptos con conectores que expliquen cada vínculo.","Usar con precisión el vocabulario de la unidad."],
+  explora:"<p>Un mapa conceptual no es una lista con flechas: es una <b>red de ideas</b> en la que cada conexión se lee como una frase. Tu misión es construir el de <b>«El lenguaje audiovisual»</b> con lo que has aprendido en esta unidad. Cuando lo hayas entregado, la profesora te mostrará un modelo para que compares el tuyo.</p><h5>Cómo se construye un buen mapa</h5><ul><li><b>Concepto central:</b> «Lenguaje audiovisual», arriba o en el centro.</li><li><b>Ramas principales:</b> entre cuatro y seis. Por ejemplo: unidades narrativas (secuencia, escena, plano, toma), el encuadre (escala de plano, angulación), el movimiento (interno y externo), la continuidad (raccord, script, elipsis, reglas del eje), las transiciones y el montaje.</li><li><b>Jerarquía:</b> de lo más general a lo más concreto, con dos o tres niveles de profundidad.</li><li><b>Conectores:</b> escribe sobre cada flecha un verbo o una frase corta («se divide en», «se mide con», «se consigue con»). Si no puedes leerla como frase, la relación no está clara.</li><li><b>Nodos breves:</b> entre una y cuatro palabras. Las explicaciones largas no caben en un mapa.</li><li><b>Enlaces cruzados:</b> añade al menos tres conexiones entre ramas distintas (por ejemplo, el raccord con las transiciones, o el movimiento externo con el montaje).</li><li><b>Color y forma:</b> un color por rama y formas distintas según el nivel.</li></ul>",
+  pasos:["<b>Haz una lista de conceptos.</b> Repasa la unidad y apunta todos los términos importantes (mínimo 25).","<b>Agrúpalos en ramas.</b> Junta los que van juntos y busca el concepto que los reúne.","<b>Dibuja un borrador en papel.</b> Ordena de lo general a lo concreto y piensa los conectores.","<b>Pásalo a digital.</b> Puedes usar Canva, CmapTools, draw.io o la herramienta que prefieras.","<b>Añade conectores, colores y enlaces cruzados.</b>","<b>Revísalo con la lista de comprobación:</b> ¿hay concepto central?, ¿hay conectores legibles?, ¿hay al menos tres enlaces cruzados?, ¿los nodos son breves?","<b>Compáralo con el modelo</b> que te enseñe la profesora y anota en tres líneas qué cambiarías."],
+  entrega:"Sube a AULES un archivo PDF (y el enlace de Canva u otra plataforma, si es el caso) nombrado «Apellidos, Nombre A2.2». Comprueba que el enlace permite ver el mapa a cualquier persona que lo reciba.",
+  rub:[["Estructura y jerarquía","Concepto central claro, ramas bien agrupadas y de lo general a lo concreto, con dos o tres niveles","Estructura clara con algún concepto mal ubicado","Estructura poco jerárquica o con ramas mezcladas","Sin estructura reconocible o es una simple lista"],
+       ["Contenido","Recoge los conceptos clave de la unidad (25 o más) con precisión","Recoge casi todos los conceptos clave con alguna imprecisión","Faltan conceptos importantes o hay errores","Contenido muy incompleto o incorrecto"],
+       ["Conectores","Todas las relaciones tienen un conector que se lee como frase","La mayoría de las relaciones tienen conector claro","Pocos conectores o poco claros","Sin conectores"],
+       ["Enlaces cruzados","Tres o más enlaces cruzados entre ramas, bien justificados","Dos enlaces cruzados correctos","Un enlace cruzado o poco claro","Ninguno"],
+       ["Presentación","Legible, con nodos breves, color por rama y buen orden visual","Legible con algún problema de espacio o color","Difícil de leer en algunas zonas","Desordenado o ilegible"]],
+  amp:["Reto extra: añade a cada rama un ejemplo de una película o serie con su minutado.","Intercambia tu mapa con un compañero o una compañera y justifica por escrito tres cambios que le propondrías."]
+ }]);
+ const ai=u.actividades.findIndex(x=>/^Realiza la actividad A2\.4/.test(x));
+ u.actividades.splice(ai>=0?ai:0,0,"Realiza la actividad A2.2 (mapa conceptual del lenguaje audiovisual) y compara tu mapa con el modelo que te enseñe la profesora.");
+})();
+
+// ===== Unidad 3 (Guiones): estilo didáctico unificado =====
+;(function(){
+ const u=CONTENIDO[3],r=u.rico;
+ const kw=(s,L)=>{L.forEach(k=>{const i=s.indexOf(k);if(i>=0&&!s.slice(Math.max(0,i-3),i).endsWith("<b>"))s=s.slice(0,i)+"<b>"+k+"</b>"+s.slice(i+k.length)});return s};
+ const find=(t,k)=>{const i=r.findIndex(b=>b[0]===t&&typeof b[1]==="string"&&b[1].startsWith(k));if(i<0)throw new Error("u3: no encuentro "+t+" «"+k+"»");return i};
+ const P=(t,k,L)=>{const i=find(t,k);r[i][1]=kw(r[i][1],L)};
+ const D=(n,L)=>{const i=r.findIndex(b=>b[0]==="def"&&b[1]===n);if(i<0)throw new Error("u3: def "+n);r[i][2]=kw(r[i][2],L)};
+ const H=k=>{const i=r.findIndex(b=>b[0]==="h"&&b[1].startsWith(k));if(i<0)throw new Error("u3: h "+k);return i};
+ D("Guion audiovisual",["de forma ordenada y detallada","lo que se va a ver y oír"]);
+ D("Documentación",["investigación"]);
+ D("Guion literario",["escena por escena","no da instrucciones de cámara"]);
+ D("Guion técnico",["traduce el guion literario a planos"]);
+ D("Storyboard",["dibujos en secuencia","antes de rodarlo"]);
+ D("Audiodescripción",["accesibilidad","información visual esencial"]);
+ P("p","Contar bien una historia",["ordenar la información"]);
+ P("p","Esta es la estructura clásica",["no es obligatoria"]);
+ P("p","Un buen guion piensa",["lo que se ve y en lo que se oye"]);
+ // nota -> tip
+ {const i=find("nota","Las proporciones");r[i]=["tip","⚠️","Ojo",r[i][1]]}
+ {const i=find("clave","Escribe las indicaciones de sonido");r[i]=["tip","🎧","Truco",r[i][1].replace(/^<b>Escribe/,"Escribe")]}
+ // esquemas globales (de abajo arriba para no alterar índices)
+ {const i=H("Los diálogos");
+  r.splice(i,0,["h","Esquema global: tipos de guion"],
+   ["fl",[["Tipos de guion","Cada documento sirve a una fase y a un lector",[
+     ["1. Guion literario","Escenas, acciones y diálogos; sin cámara"],
+     ["2. Guion técnico","Plano a plano: escala, angulación, movimiento, sonido y duración"],
+     ["3. Storyboard","Dibujos de los planos antes de rodar"],
+     ["4. Audiodescripción","Narración para personas ciegas o con baja visión"],
+     ["5. Otros guiones","Radio y podcast, documental, publicidad"]]]],"De la historia escrita a la imagen planificada."]);}
+ {const i=H("Idea, sinopsis y argumento");
+  r.splice(i,0,["h","Esquema global: fases del guion"],
+   ["fl",[["De la idea al guion","Siete pasos en orden",[
+     ["1. Idea","Punto de partida"],
+     ["2. Documentación","Investigar"],
+     ["3. Argumento","Qué ocurre y por qué"],
+     ["4. Sinopsis y escaleta","Resumir y ordenar"],
+     ["5. Guion literario","Escenas y diálogos"],
+     ["6. Guion técnico y storyboard","Planos"],
+     ["7. Revisión","¿Se entiende y se puede rodar?"]]]],"Cada fase se apoya en la anterior."]);}
+})();
+
+// ===== Unidad 4 (Grabación): estilo didáctico unificado =====
+;(function(){
+ const u=CONTENIDO[4],r=u.rico;
+ const kw=(s,L)=>{L.forEach(k=>{const i=s.indexOf(k);if(i>=0&&!s.slice(Math.max(0,i-3),i).endsWith("<b>"))s=s.slice(0,i)+"<b>"+k+"</b>"+s.slice(i+k.length)});return s};
+ const D=(n,L)=>{const i=r.findIndex(b=>b[0]==="def"&&b[1]===n);if(i<0)throw new Error("u4: def "+n);r[i][2]=kw(r[i][2],L)};
+ const LST=(k,L)=>{const i=r.findIndex(b=>b[0]==="ul"&&Array.isArray(b[1])&&typeof b[1][0]==="string"&&b[1][0].startsWith(k));if(i<0)throw new Error("u4: ul "+k);r[i][1]=r[i][1].map(x=>kw(x,L))};
+ const H=k=>{const i=r.findIndex(b=>b[0]==="h"&&b[1].startsWith(k));if(i<0)throw new Error("u4: h "+k);return i};
+ const PA=k=>{const i=r.findIndex(b=>b[0]==="parte"&&b[1].startsWith(k));if(i<0)throw new Error("u4: parte "+k);return i};
+ D("Sensor de imagen",["celdas sensibles a la luz","señal eléctrica"]);
+ D("Distancia focal",["ángulo de visión"]);
+ D("Claqueta",["sincronizar el sonido"]);
+ LST("Diafragma (f/)",["abertura grande","abertura pequeña","congela el movimiento","ruido"]);
+ LST("Enfoque automático",["equivocarse de sujeto","habitual en cine"]);
+ LST("Frontal:",["aplana el volumen","modela el volumen","silueta","dramático","inquietante"]);
+ // esquemas globales (de abajo arriba)
+ {const i=r.findIndex(b=>b[0]==="act");
+  if(i<0)throw new Error("u4: act");
+  r.splice(i,0,["h","Esquema global: preparar la grabación"],
+   ["fl",[["Grabar bien","Del ojo a la tarjeta de memoria",[
+     ["1. Cámara","Sensor, objetivo y soporte de registro"],
+     ["2. Exposición","Diafragma, velocidad e ISO"],
+     ["3. Formato","Resolución, fotogramas y códec iguales en todo el proyecto"],
+     ["4. Luz","Cualidad, dirección y tres puntos"],
+     ["5. Estabilidad","Soporte de cámara y ensayo del movimiento"],
+     ["6. Organización","Claqueta, nombres de archivo y tarjetas"]]]],"Antes de grabar, repasa de izquierda a derecha."]);}
+ {const i=PA("6. Estabilidad");
+  r.splice(i,0,["h","Esquema global: la luz"],
+   ["fl",[["Iluminar","Dar forma a lo que se ve",[
+     ["1. Cualidad","Dura o suave"],
+     ["2. Descripción","Característica, pregunta y ejemplo"],
+     ["3. Tres puntos","Principal, de relleno y contraluz"],
+     ["4. Dirección","Frontal, lateral, contraluz, cenital y desde abajo"]]]],"Para describir una luz, recorre estos cuatro pasos."]);}
+ {const i=H("Pasos de luz");
+  r.splice(i,0,["h","Esquema global: el triángulo de la luz"],
+   ["fl",[["Exposición","Cantidad de luz que llega al sensor",[
+     ["Diafragma (f/)","Entra más o menos luz y cambia la profundidad de campo"],
+     ["Velocidad de obturación","Congela o deja estela de movimiento"],
+     ["ISO","Más sensibilidad, más ruido"]]]],"Cada ajuste cambia la luz y, a la vez, otro aspecto de la imagen."]);}
+})();
+
+// ===== Unidad 7 (El sonido): estilo didáctico unificado =====
+;(function(){
+ const u=CONTENIDO[7],r=u.rico;
+ const kw=(s,L)=>{L.forEach(k=>{const i=s.indexOf(k);if(i>=0&&!s.slice(Math.max(0,i-3),i).endsWith("<b>"))s=s.slice(0,i)+"<b>"+k+"</b>"+s.slice(i+k.length)});return s};
+ const D=(n,L)=>{const i=r.findIndex(b=>b[0]==="def"&&b[1]===n);if(i<0)throw new Error("u7: def "+n);r[i][2]=kw(r[i][2],L)};
+ const LST=(k,L)=>{const i=r.findIndex(b=>b[0]==="ul"&&Array.isArray(b[1])&&typeof b[1][0]==="string"&&b[1][0].startsWith(k));if(i<0)throw new Error("u7: ul "+k);r[i][1]=r[i][1].map(x=>kw(x,L))};
+ const PA=k=>{const i=r.findIndex(b=>b[0]==="parte"&&b[1].startsWith(k));if(i<0)throw new Error("u7: parte "+k);return i};
+ D("Sonido",["medio elástico","ondas","En el vacío no hay sonido"]);
+ D("Micrófono",["Transductor","señal eléctrica"]);
+ D("Banda sonora",["diálogos, música y efectos"]);
+ D("Podcast",["Programa de audio"]);
+ LST("Altura (tono)",["grave o agudo","fuerte o suave","armónicos"]);
+ // esquemas globales (de abajo arriba)
+ {const i=PA("6. Accesibilidad");
+  r.splice(i,0,["h","Esquema global: editar y mezclar"],
+   ["fl",[["Del audio bruto a la mezcla","Cinco pasos en orden",[
+     ["1. Limpiar","Quitar errores y ruidos"],
+     ["2. Ordenar","Cortar, mover y encadenar fragmentos"],
+     ["3. Equilibrar niveles","La voz debe entenderse siempre"],
+     ["4. Añadir música y efectos","Sin tapar la voz"],
+     ["5. Mezclar y exportar","Revisar con auriculares y con altavoces"]]]],"Proceso de edición de audio."]);}
+ {const i=PA("5. Edición");
+  r.splice(i,0,["h","Esquema global: la banda sonora"],
+   ["fl",[["Banda sonora","Todo lo que se oye en la obra",[
+     ["Voz","Narración y diálogo"],
+     ["Efectos de sonido","Contextuales o ambientales"],
+     ["Música","Ubica, enfatiza y emociona"],
+     ["Silencio","Suspende la acción y da peso"]]]],"Los cuatro elementos y su relación con la imagen."]);}
+ {const i=PA("4. El lenguaje sonoro");
+  r.splice(i,0,["h","Esquema global: del sonido al archivo"],
+   ["fl",[["Sonido","Del aire a la señal digital",[
+     ["1. Qué es","Vibración con cuatro cualidades: altura, intensidad, timbre y duración"],
+     ["2. Cómo se oye","Oído externo, medio e interno"],
+     ["3. Cómo se capta","Micrófono, patrón polar y conexiones"],
+     ["4. Cómo se digitaliza","Frecuencia de muestreo, bits y niveles sin saturar"]]]],"Recorrido de la parte 1 a la 3."]);}
+})();
+
+/* v64: revisión unidades 3, 4 y 7 — duplicados fusionados y etiquetas de lista limpias */
+(function(){
+ // Etiquetas «<b>Etiqueta:</b>» en listas: la etiqueta se pinta sola (regla de estilo)
+ [3,4,7].forEach(n=>{const r=CONTENIDO[n].rico;
+  r.forEach(b=>{if(b[0]==="ul"&&Array.isArray(b[1]))b[1]=b[1].map(s=>s.replace(/^<b>([^<:]{2,70}):<\/b>/,"$1:"));});});
+
+ // ---------- Unidad 3: idea y sinopsis se definían dos veces ----------
+ (function(){const r=CONTENIDO[3].rico;
+  const iUl=r.findIndex(b=>b[0]==="ul"&&/^Idea:/.test(b[1][0]));
+  if(iUl>=0){
+   r[iUl]=["p","El <b>argumento</b> es el desarrollo de la idea hasta narrar una historia completa. Se cuenta en presente e incluye los acontecimientos esenciales y los personajes principales. La <b>idea</b> puede ser <b>original</b> o <b>adaptada</b> (de un libro, una película, etc.); si es adaptada, está sujeta a la propiedad intelectual y a los derechos de autor. La idea y la <b>sinopsis</b> se definen paso a paso en la tabla «Del tema a la historia», más adelante."];
+   const h=r.findIndex(b=>b[0]==="h"&&b[1]==="Idea, sinopsis y argumento"); if(h>=0)r[h][1]="Argumento, escena y secuencia";}
+  const t=r.find(b=>b[0]==="tabla"&&b[1][0]==="Paso");
+  if(t){const f=t[2].find(x=>x[0]==="4. Sinopsis"); if(f)f[1]="La historia contada con su final y todos los hechos importantes. En un corto, media página (como máximo unas 400 palabras)";}
+ })();
+
+ // ---------- Unidad 7: cualidades, oído y elementos de la banda sonora duplicados ----------
+ (function(){const r=CONTENIDO[7].rico;
+  const rm=b=>{const i=r.indexOf(b);if(i>=0)r.splice(i,1);};
+  const f=fn=>r.find(fn);
+  // 1) Las cuatro cualidades: una sola vez (tabla), justo antes del simulador
+  const bUl3=f(b=>b[0]==="ul"&&/^Altura \(tono\): <b>grave/.test(b[1][0]));
+  const bTab=f(b=>b[0]==="tabla"&&b[1][0]==="Cualidad"&&b[1][1]==="De qué depende");
+  const bH10=f(b=>b[0]==="h"&&b[1]==="Altura, intensidad, duración y timbre");
+  if(bUl3&&bTab&&bH10){
+   r[r.indexOf(bUl3)]=bTab; r.splice(r.lastIndexOf(bTab),1); rm(bH10);}
+  // 2) El oído: una sola explicación (fases) + datos + umbral
+  const bH6=f(b=>b[0]==="h"&&b[1]==="El oído humano");
+  const bUl7=f(b=>b[0]==="ul"&&/^Oído externo: la oreja y el conducto/.test(b[1][0]));
+  const bT8=f(b=>b[0]==="tabla"&&b[1][0]==="Concepto"&&b[1][1]==="Valor aproximado");
+  const bN9=f(b=>b[0]==="nota"&&/pierde sensibilidad a las frecuencias agudas/.test(b[1]));
+  const bUl12=f(b=>b[0]==="ul"&&/^Por encima de 20 000 Hz están/.test(b[1][0]));
+  const bH13=f(b=>b[0]==="h"&&b[1]==="Cómo oímos, fase a fase");
+  const bOl14=f(b=>b[0]==="ol"&&/^<b>Oído externo:<\/b>/.test(b[1][0]));
+  if(bH6&&bUl7&&bT8&&bN9&&bUl12&&bH13&&bOl14){
+   bH6[1]="El oído humano: cómo oímos";
+   bOl14[1][2]="<b>Oído interno:</b> en la <b>cóclea</b> (el caracol), un líquido mueve unas células ciliadas que transforman la vibración en impulsos eléctricos; el nervio auditivo los lleva hasta el cerebro.";
+   bT8[2].splice(4,0,["Voz en conversación (banda de frecuencias)","Entre 250 y 3000 Hz; algunos sonidos del habla llegan a 4000-8000 Hz"]);
+   r[r.indexOf(bUl12)]=["p","El <b>umbral auditivo</b> es la intensidad mínima que necesitas para empezar a oír. El <b>umbral del dolor</b> está en torno a los 120 dB. Entre ambos queda la zona de <b>confort</b>, donde la escucha es agradable."];
+   const bUmbral=r[r.findIndex(b=>b[0]==="p"&&/^El <b>umbral auditivo<\/b>/.test(b[1]))];
+   rm(bUl7); rm(bH13); rm(bOl14); r.splice(r.indexOf(bH6)+1,0,bOl14);
+   rm(bN9); r.splice(r.indexOf(bUmbral)+1,0,bN9);}
+  // 3) Banda sonora: los cuatro elementos se explican una sola vez (voz, efectos, música, silencio)
+  const bP39=f(b=>b[0]==="p"&&/cuatro elementos que ya viste en la unidad de guiones/.test(b[1]));
+  const bT40=f(b=>b[0]==="tabla"&&b[1][0]==="Elemento"&&b[1][1]==="Funciones");
+  const bP52=f(b=>b[0]==="p"&&/^Toda banda sonora se construye con cuatro elementos/.test(b[1]));
+  if(bP39&&bT40&&bP52){
+   bP39[1]="La <b>banda sonora</b> es la suma de todo lo que se oye en la obra. Primero verás cómo se construye en la práctica y, más abajo, sus <b>cuatro elementos</b>: voz, efectos de sonido, música y silencio.";
+   bT40[2][0][0]="Voz";
+   rm(bT40); r.splice(r.indexOf(bP52)+1,0,bT40);}
+  // 4) Etiqueta larga pintada de azul por error (el primer «:» quedaba a 62 caracteres)
+  r.forEach(b=>{if(b[0]==="ul")b[1]=b[1].map(s=>s.replace("importa lo que se dice y también el ritmo: las pausas","importa lo que se dice y también el ritmo; las pausas"));});
+ })();
+})();
+
+/* v65: subapartados numerados (A, A.1) en las unidades 1, 3, 4, 5, 6, 7 y 8 */
+(function(){
+ const L="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+ // hijos: títulos que pasan a ser subapartado A.1 del apartado anterior
+ const HIJOS={
+  1:["Breve historia del videoclip","Los códigos del videoclip","Relación entre la imagen y la música","Tipos de videoclip"],
+  3:["El formato del guion literario","Qué lleva cada viñeta del storyboard","Diez funciones del diálogo","Errores frecuentes al escribir diálogos","¿Y una película sin diálogos?"],
+  6:["Dónde cortar","Ritmo del montaje","Cortes de imagen y de sonido"],
+  7:["La voz: narración y diálogo","Los efectos de sonido","La música","El silencio"]
+ };
+ // U3: los errores y «sin diálogos» van detrás de «Diez funciones del diálogo», dentro de «Los diálogos»
+ (function(){const r=CONTENIDO[3].rico;
+  const ini=r.findIndex(b=>b[0]==="h"&&b[1]==="Errores frecuentes al escribir diálogos");
+  const fin=r.findIndex(b=>b[0]==="h"&&b[1]==="Resumen: de la idea al guion literario");
+  const dest=r.findIndex(b=>b[0]==="parte"&&/^4\./.test(b[1]));
+  if(ini>=0&&fin>ini&&dest>fin){const seg=r.splice(ini,fin-ini);const d2=r.findIndex(b=>b[0]==="parte"&&/^4\./.test(b[1]));r.splice(d2,0,...seg);}
+ })();
+ [1,3,4,5,6,7,8].forEach(n=>{
+  const r=CONTENIDO[n].rico,hijos=HIJOS[n]||[];let k=-1,s=0,padre="";
+  for(let i=0;i<r.length;i++){const b=r[i];
+   if(b[0]==="parte"){k=-1;s=0;continue;}
+   if(b[0]!=="h")continue;
+   if(/^[A-Z]\.\s/.test(b[1])){k=L.indexOf(b[1][0]);s=0;continue;}
+   if(hijos.includes(b[1])&&k>=0){s++;r[i]=["niv",2,L[k]+"."+s,b[1]];continue;}
+   k++;s=0;b[1]=L[k]+". "+b[1];}
+ });
+ // Referencia interna actualizada
+ CONTENIDO[3].rico.forEach(b=>{if(b[0]==="p")b[1]=b[1].replace("«Del tema a la historia», más adelante","«Del tema a la historia: idea, log line y story line», más adelante");});
 })();
