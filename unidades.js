@@ -1,4 +1,4 @@
-const V_CONT="65";
+const V_CONT="67";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3043,4 +3043,113 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  });
  // Referencia interna actualizada
  CONTENIDO[3].rico.forEach(b=>{if(b[0]==="p")b[1]=b[1].replace("«Del tema a la historia», más adelante","«Del tema a la historia: idea, log line y story line», más adelante");});
+})();
+
+/* v66: unidad 2 — «¿Qué es el montaje?» antes de las teorías, vídeo y actividad A2.5 */
+(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ // 1) Nuevo apartado antes de las teorías e historia
+ const iH=r.findIndex(b=>b[0]==="h"&&b[1]==="El montaje y sus teorías a lo largo de la historia");
+ if(iH<0)throw new Error("u2 montaje h");
+ const nuevo=[
+  ["h","¿Qué es el montaje?"],
+  ["def","Montaje","<b>Proceso de seleccionar, ordenar y unir</b> los planos y los sonidos grabados para construir una obra audiovisual con su propia <b>duración, ritmo y sentido</b>. Con el mismo material filmado, un montaje distinto cuenta otra historia. En vídeo digital se habla también de <b>edición</b>."],
+  ["p","El guion planifica y el rodaje consigue las imágenes y los sonidos, pero es en el <b>montaje</b> donde todo cobra forma. Por eso se suele decir que una película se escribe tres veces: en el guion, en el rodaje y en la sala de montaje. Quien lo hace es el <b>montador</b> o la <b>montadora</b>."],
+  ["niv",2,"1","¿Para qué sirve? Funciones del montaje"],
+  ["ul",["Seleccionar: elegir las mejores tomas y descartar el resto.","Ordenar: decidir en qué orden se ve cada plano (cronológico, con saltos en el tiempo, con acciones alternadas…).","Dar ritmo: la <b>duración de cada plano</b> y la frecuencia de los cortes marcan si una escena es tranquila, tensa o vertiginosa.","Crear sentido: al unir dos planos aparece un significado que ninguno tiene por separado (es el efecto Kuleshov, que verás más abajo).","Dar continuidad: que los cortes se entiendan y el espectador no se pierda en el espacio ni en el tiempo (apartado 2 de esta unidad).","Manejar el tiempo: comprimirlo (elipsis), alargarlo o repetirlo."]],
+  ["niv",2,"2","Dos grandes formas de montar"],
+  ["tabla",["","Montaje narrativo","Montaje expresivo"],[["Qué busca","Contar una historia con claridad, asegurando la continuidad de la acción","Provocar una emoción o una idea en el espectador, mostrando los hechos desde la mirada del realizador"],["Cómo une los planos","Uno tras otro, de forma lógica, para que el corte pase inadvertido","Por contraste, por choque o por comparación entre imágenes"],["Ejemplo","Una persecución que seguimos plano a plano sin perder el hilo","La escalera de Odesa de <i>El acorazado Potemkin</i>, que dilata el tiempo y golpea con imágenes"]]],
+  ["niv",2,"3","El proceso: del material bruto a la pieza final"],
+  ["fl",[["El proceso del montaje","Seis pasos en orden",[["1. Visionar","Ver todo el material y anotar las mejores tomas"],["2. Seleccionar","Elegir las tomas útiles y descartar el resto"],["3. Ordenar","Montaje en bruto: los planos en su orden"],["4. Ajustar","Cortes, ritmo y transiciones"],["5. Sonorizar","Diálogos, música y efectos"],["6. Exportar","Archivo final listo para ver"]]]],"En la unidad 6 lo practicarás paso a paso con Kdenlive."],
+  ["tip","🎬","Truco","Mira una escena que conozcas <b>sin sonido</b> y fíjate solo en cuándo cambia el plano: notarás el ritmo del montaje y cuánto dura cada plano."],
+  ["vlink",["Xh3PAAGhYg4"]],
+  ["yt","eUof3nOK-TI","Lección: qué es el montaje (UMH)",0]
+ ];
+ r.splice(iH,0,...nuevo);
+ // 2) Quitar duplicados del apartado de teorías (la definición ya está arriba)
+ const iP=r.findIndex(b=>b[0]==="p"&&/^El montaje es la etapa en la que, a partir de todo el material filmado/.test(b[1]));
+ if(iP>=0)r[iP][1]=r[iP][1].replace(/^El montaje es la etapa en la que[^.]*\.[^.]*\. /,"Una vez definido el montaje, veamos cómo lo han entendido los autores a lo largo de la historia, de formas muy distintas y a menudo enfrentadas. ");
+ const iY=r.findIndex((b,i)=>b[0]==="yt"&&b[1]==="eUof3nOK-TI"&&i>iH+nuevo.length);
+ if(iY>=0)r.splice(iY,1);
+ if(!u.videos.some(v=>v[0]==="Xh3PAAGhYg4"))u.videos.push(["Xh3PAAGhYg4","¿Qué es el montaje? Términos y técnicas del cine (ChromaPlay)","¿Qué es el montaje?"]);
+
+ // 3) Actividad A2.5
+ const iA=r.findIndex(b=>b[0]==="act"&&/A2\.4/.test(b[1]));
+ const act=["act","Actividad A2.5. Creando con la elipsis temporal",{
+  chip:"Unidad 2 · Imagen y Sonido",
+  nota:"puedes grabar con el móvil, pero el montaje final debe hacerse con un programa de edición. La duración máxima es de 2 minutos.",
+  obj:["Escribir y filmar una breve secuencia, de no más de 2 minutos, que involucre una elipsis temporal.","Hacer visible el paso del tiempo con objetos, vestuario, luz, planos y transiciones.","Montar la secuencia con un programa de edición, ordenando los planos en el montaje."],
+  explora:"<p>¿Cómo mostrarías todo lo que haces en un día entero (24 horas) en solo 2 minutos? ¿Y cómo contarías a una cocinera o un cocinero hábil que prepara unas ricas empanadas, desde la masa hasta la mesa? La respuesta es la <b>elipsis temporal</b>: omitir lo que no es importante para que el espectador complete el salto por sí mismo. Tu misión es <b>crear tu propia secuencia</b>, de no más de 2 minutos, con la elipsis temporal como protagonista.</p><p>Piensa en acciones o procesos que tarden mucho tiempo en la vida real y luego aplica la elipsis: un día completo, una planta que crece, una habitación que se recoge, una receta, una mañana de instituto, una construcción, una partida, el estudio de una semana de exámenes…</p><h5>Tu caja de herramientas para mostrar el paso del tiempo</h5><ul><li><b>Objetos que cambian:</b> comida que se consume, una vela que se gasta, un vaso que se vacía, un reloj o un calendario, una planta, un montón de papeles.</li><li><b>Vestuario y aspecto:</b> cambios de ropa, de peinado, de cansancio o de suciedad en los personajes.</li><li><b>La luz:</b> amanecer, mediodía, atardecer y noche; sombras que se mueven, lámparas encendidas.</li><li><b>Planos de apoyo:</b> primeros planos y planos detalle de relojes, ventanas o manos que ayudan a «saltar» en el tiempo.</li><li><b>Transiciones:</b> el corte directo, el fundido a negro y el encadenado son los más habituales para marcar un salto temporal.</li><li><b>El sonido:</b> una música que avanza, un despertador, los ruidos de la calle que cambian a lo largo del día.</li></ul><h5>Programas para montar: seguros y sin registro</h5><ul><li><b>Ordenador:</b> <b>Kdenlive</b> es libre y gratuito, no pide cuenta, no pone marca de agua y tus archivos se quedan en tu equipo. Es el que se trabaja en la unidad 6. Otras opciones libres: <b>Shotcut</b> y <b>OpenShot</b>.</li><li><b>iPhone o iPad:</b> <b>iMovie</b>, gratuita y sin crear cuentas nuevas. Se descarga solo desde la tienda oficial.</li><li><b>Android:</b> graba con el móvil y pasa los vídeos al ordenador para montarlos con Kdenlive. No recomendamos instalar editores desconocidos ni archivos APK de fuera de la tienda oficial.</li></ul><p><b>Antes de instalar nada:</b> evita aplicaciones que te obliguen a registrarte, que pongan marca de agua o que pidan permisos que no necesitan. Algunas apps de edición muy populares recopilan datos con fines publicitarios: consulta con tu profesora antes de usarlas. Y recuerda pedir permiso a todas las personas que aparezcan en tu vídeo.</p>",
+  pasos:["<b>Escribe una historia breve.</b> Recomendable que no pase de dos párrafos. En ella, mediante imágenes y saltos temporales, se tiene que ver mucho tiempo condensado en pocas palabras.","<b>Prepara el paso del tiempo.</b> Antes de filmar, piensa con cuidado en los objetos que usarás, los cambios de vestuario, el aspecto de los personajes y los cambios de luz que harán evidente el paso del tiempo.","<b>Filma los planos de tu secuencia.</b> Puedes grabarlos en el orden que quieras: será en el montaje donde les des el orden final. Graba también algún plano de apoyo (detalles, relojes, ventanas) por si te hace falta.","<b>Monta tu secuencia final.</b> Con un programa de edición, ordena los planos, ajusta los cortes y elige las transiciones. ¡Recuerda que el paso del tiempo debe ser el protagonista! La pieza no puede superar los 2 minutos.","<b>Revisa y exporta.</b> Mírala entera como si no la conocieras: ¿se entiende que ha pasado tiempo? Evalúate con la rúbrica y exporta el vídeo en formato MP4."],
+  entrega:"Sube a AULES el vídeo (máximo 2 minutos, en MP4) y un documento con la historia escrita (máximo dos párrafos), nombrados «Apellidos, Nombre A2.5». Si el vídeo pesa demasiado y lo subes a una plataforma con enlace, incluye ese enlace en el documento y también en el apartado de Comentarios de la entrega en AULES, y comprueba antes que cualquier persona que lo reciba puede verlo.",
+  rub:[
+   ["Idea e historia escrita","Historia original y clara, en dos párrafos como máximo, pensada para condensar mucho tiempo","Historia correcta, con alguna imprecisión","Historia confusa o que no necesita elipsis","Sin historia escrita"],
+   ["Elipsis temporal","Se entiende perfectamente que ha pasado tiempo y se omite lo prescindible","Se entiende el paso del tiempo, con algún salto poco claro","El tiempo se muestra casi entero o los saltos desorientan","No hay elipsis temporal"],
+   ["Recursos para marcar el tiempo","Objetos, vestuario, luz y sonido cuidados que refuerzan el paso del tiempo","Usa varios recursos con eficacia irregular","Usa un solo recurso o de forma poco clara","Sin recursos que marquen el tiempo"],
+   ["Planos y continuidad","Planos variados, bien encuadrados y con raccord dentro de cada momento","Planos correctos con algún fallo de raccord o encuadre","Planos repetitivos o con varios fallos","Planos inservibles"],
+   ["Montaje y transiciones","Cortes limpios, ritmo adecuado y transiciones al servicio de la elipsis","Montaje correcto con algún corte o transición mejorable","Montaje irregular o transiciones sin intención","Montaje confuso"],
+   ["Duración y entrega","Dura 2 minutos o menos, en MP4, bien nombrado y con la historia incluida","Entrega correcta con un pequeño fallo","Se pasa de duración o falla el nombre o el formato","Entrega fuera de formato o imposible de ver"]],
+  amp:["Reto extra: incluye un match-cut o un encadenado que una dos momentos distintos por su forma, su color o su movimiento."]}];
+ if(!r.some(b=>b[0]==="act"&&/A2\.5/.test(b[1])))r.splice(iA>=0?iA+1:r.length,0,act);
+ const t="Realiza la actividad A2.5 (creando con la elipsis temporal), un vídeo de dos minutos como máximo, y evalúalo con su rúbrica.";
+ const ia=u.actividades.findIndex(x=>/actividad A2\.4/.test(x));
+ if(!u.actividades.includes(t))u.actividades.splice(ia>=0?ia+1:u.actividades.length,0,t);
+})();
+
+/* v67: unidad 2 — actividad A2.6 «Crucigrama audiovisual» */
+(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ if(r.some(b=>b[0]==="act"&&/A2\.6/.test(b[1])))return;
+ const cel="width:24px;height:24px;border:1px solid var(--line);padding:0;text-align:center;font-size:.8rem;position:relative;background:var(--card)";
+ // Plantilla en blanco 13 x 13
+ let vacia='<div style="overflow-x:auto;margin:.5rem 0"><table style="border-collapse:collapse;table-layout:fixed" aria-label="Cuadrícula en blanco de 13 por 13 casillas"><tbody>';
+ for(let i=0;i<13;i++){vacia+="<tr>";for(let j=0;j<13;j++)vacia+=`<td style="${cel}">&nbsp;</td>`;vacia+="</tr>";}
+ vacia+="</tbody></table></div>";
+ // Ejemplo resuelto: ELIPSIS (vertical), PLANO (horizontal), TOMA (vertical)
+ const G=[7,5],L={};const put=(w,r0,c0,dv)=>[...w].forEach((ch,i)=>L[(r0+(dv?i:0))+","+(c0+(dv?0:i))]=ch);
+ put("ELIPSIS",0,0,true);put("PLANO",3,0,false);put("TOMA",2,4,true);
+ const num={"0,0":1,"2,4":2,"3,0":3};
+ let ej='<div style="overflow-x:auto;margin:.5rem 0"><table style="border-collapse:collapse" aria-label="Ejemplo de crucigrama resuelto con tres palabras"><tbody>';
+ for(let i=0;i<G[0];i++){ej+="<tr>";for(let j=0;j<G[1];j++){const k=i+","+j,ch=L[k];
+  ej+=ch?`<td style="${cel};font-weight:700">${num[k]?`<sup style="position:absolute;left:2px;top:0;font-size:.55rem;font-weight:400">${num[k]}</sup>`:""}${ch}</td>`:`<td style="width:24px;height:24px;border:0"></td>`;}ej+="</tr>";}
+ ej+="</tbody></table></div>";
+ const plant='<div class="tw"><table><thead><tr><th>Nº</th><th>H / V</th><th>Palabra</th><th>Definición (sin decir la palabra)</th></tr></thead><tbody>'
+  +'<tr><td>1</td><td>V</td><td>ELIPSIS</td><td>Salto que omite un trozo de tiempo o de espacio en el relato.</td></tr>'
+  +'<tr><td>2</td><td>V</td><td>TOMA</td><td>Cada intento de grabar un mismo plano.</td></tr>'
+  +'<tr><td>3</td><td>H</td><td>PLANO</td><td>Lo que ves entre un corte y el siguiente.</td></tr>'
+  +'<tr><td>4</td><td></td><td></td><td></td></tr><tr><td>5</td><td></td><td></td><td></td></tr></tbody></table></div>';
+ const act=["act","Actividad A2.6. Crucigrama audiovisual",{
+  chip:"Unidad 2 · Imagen y Sonido",
+  nota:"una buena definición explica sin decir la palabra: si alguien la lee sin la solución, tiene que poder adivinarla.",
+  obj:["Repasar y usar con precisión el vocabulario de las unidades 1 y 2.","Redactar definiciones claras y escritas con tus propias palabras.","Diseñar una cuadrícula en la que las palabras se crucen correctamente."],
+  explora:"<p>Tu misión es <b>crear un crucigrama</b> con las palabras que ya dominas del lenguaje audiovisual. Quien lo resuelva tendrá que repasar la unidad sin darse cuenta. Puedes <b>ayudarte del glosario</b> de esta unidad (menú lateral) y de tus apuntes para elegir palabras, pero las definiciones deben ir <b>con tus palabras</b>, no copiadas.</p>"
+   +"<h5>Mínimos que debe cumplir</h5><ul>"
+   +"<li><b>Palabras:</b> al menos <b>15</b>, de 3 letras o más, y <b>12 de ellas cruzadas</b> con otra.</li>"
+   +"<li><b>Temas:</b> al menos <b>2 palabras de cada bloque</b>: escala de plano y encuadre · angulación y movimiento · continuidad (raccord, elipsis, eje…) · transiciones y montaje.</li>"
+   +"<li><b>Cuadrícula:</b> una letra por casilla, sin tildes, espacios ni guiones, y todas las palabras unidas en un solo bloque.</li>"
+   +"<li><b>Definiciones:</b> una por palabra, de <b>15 palabras como máximo</b>, sin incluir la palabra ni otra de su misma familia.</li>"
+   +"<li><b>Pistas:</b> numeradas y separadas en <b>Horizontales</b> y <b>Verticales</b>.</li></ul>"
+   +"<h5>Cómo se construye un buen crucigrama</h5><ul>"
+   +"<li><b>Empieza por lo largo:</b> coloca primero la palabra más larga y ve cruzando las demás por las letras que comparten.</li>"
+   +"<li><b>Cruces:</b> las vocales (A, E, I, O) ayudan mucho a cruzar. Evita dejar palabras sueltas.</li>"
+   +"<li><b>Definir bien:</b> usa una función («Lo que…», «Cuando…»), un ejemplo o una pista de uso; evita definiciones vagas como «Cosa del cine».</li>"
+   +"<li><b>Prueba final:</b> pide a una persona que lo resuelva sin ayuda y corrige las pistas que no entienda.</li></ul>"
+   +"<h5>Plantilla 1: ejemplo resuelto</h5><p>Fíjate en los números y en cómo comparten letra: la <b>P</b> de ELIPSIS es también la de PLANO, y la <b>O</b> de PLANO es la de TOMA.</p>"+ej
+   +"<h5>Plantilla 2: lista de palabras y definiciones</h5><p>Copia esta tabla y complétala con tus palabras antes de dibujar la cuadrícula.</p>"+plant
+   +"<h5>Plantilla 3: cuadrícula en blanco (13 × 13)</h5><p>Puedes copiarla en un documento, en Canva, en una hoja de cálculo o dibujarla en papel y escanearla.</p>"+vacia
+   +"<p><b>Herramientas (opcionales):</b> puedes hacerlo a mano o con un generador en línea que no pida cuenta, como <b>Crossword Labs</b> (crosswordlabs.com, en inglés). Ojo: sus crucigramas se publican de forma abierta, así que <b>no pongas datos personales</b> ni tu nombre en el título. Aunque uses un generador, tienes que revisar tú los cruces y las definiciones.</p>",
+  pasos:["<b>Elige tus palabras.</b> Repasa el glosario y tus apuntes y selecciona 15 o más, cubriendo los cuatro bloques.","<b>Escribe una definición propia</b> para cada palabra en la lista (plantilla 2), sin decir la palabra.","<b>Construye la cuadrícula.</b> Empieza por la palabra más larga y cruza el resto por letras comunes (plantilla 3 o tu herramienta).","<b>Numera y ordena las pistas</b> en Horizontales y Verticales.","<b>Pruébalo.</b> Que otra persona lo resuelva sin ayuda y mejora lo que no se entienda."],
+  entrega:"Sube a AULES un PDF con tres partes: el crucigrama en blanco y numerado, las pistas (Horizontales y Verticales) y la solución. Nómbralo «Apellidos, Nombre A2.6». Si lo haces en Canva u otra plataforma con enlace, incluye el enlace en el documento y en Comentarios de la entrega, y comprueba que cualquiera puede verlo.",
+  rub:[
+   ["Vocabulario y temas","Más de 15 palabras, bien elegidas y de los cuatro bloques","15 palabras de los cuatro bloques, alguna poco relevante","Menos de 15 palabras o faltan bloques","Pocas palabras o sin relación con la unidad"],
+   ["Definiciones","Claras, propias, precisas y sin decir la palabra","Correctas, con alguna imprecisa o demasiado larga","Varias vagas, copiadas del glosario o con la palabra dentro","Incorrectas o ausentes"],
+   ["Cruces y cuadrícula","Al menos 12 palabras cruzadas, todo unido y sin errores de letras","Cruces correctos con algún error menor","Varias palabras sueltas o errores de cruce","Cuadrícula inviable"],
+   ["Pistas y presentación","Pistas numeradas, ordenadas en H y V y presentación limpia","Pistas correctas con algún fallo de orden o numeración","Numeración confusa o presentación descuidada","No se puede resolver por la presentación"],
+   ["Comprobación y entrega","Probado por otra persona, con solución, PDF bien nombrado","Con solución y nombre correcto; sin prueba","Falta solución o el nombre no es el pedido","Entrega incompleta o fuera de formato"]],
+  amp:["Reto extra: marca varias casillas y haz que, leídas en orden, formen una <b>palabra secreta</b> relacionada con el montaje.","Reto extra: define algunas palabras con un ejemplo de una película o serie que conozcas."]}];
+ const iA=r.findIndex(b=>b[0]==="act"&&/A2\.5/.test(b[1]));
+ r.splice(iA>=0?iA+1:r.length,0,act);
+ const t="Realiza la actividad A2.6 (crucigrama audiovisual) con al menos 15 palabras de las unidades 1 y 2 y evalúalo con su rúbrica.";
+ const ia=u.actividades.findIndex(x=>/actividad A2\.5/.test(x));
+ if(!u.actividades.includes(t))u.actividades.splice(ia>=0?ia+1:u.actividades.length,0,t);
 })();
