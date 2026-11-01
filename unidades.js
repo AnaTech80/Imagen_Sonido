@@ -1,4 +1,4 @@
-const V_CONT="67";
+const V_CONT="69";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3152,4 +3152,144 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  const t="Realiza la actividad A2.6 (crucigrama audiovisual) con al menos 15 palabras de las unidades 1 y 2 y evalúalo con su rúbrica.";
  const ia=u.actividades.findIndex(x=>/actividad A2\.5/.test(x));
  if(!u.actividades.includes(t))u.actividades.splice(ia>=0?ia+1:u.actividades.length,0,t);
+})();
+
+/* v68: unidad 2 — montaje narrativo/expresivo (cuándo y vídeos), MRP/MRI explicados, historia del montaje detallada, vídeos sustituidos */
+(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ const ix=fn=>r.findIndex(fn);
+ const rep=(fn,nb)=>{const i=ix(fn);if(i<0)throw new Error("v68: no encontrado "+nb);return i;};
+ const H=t=>b=>b[0]==="h"&&b[1].startsWith(t);
+ const DEF=t=>b=>b[0]==="def"&&b[1]===t;
+
+ // ===== 1) Dos grandes formas de montar: cuándo se usa cada una + vídeos =====
+ let i=rep(b=>b[0]==="tabla"&&b[1][1]==="Montaje narrativo","tabla");
+ r.splice(i,1,
+  ["tabla",["","Montaje narrativo","Montaje expresivo"],[
+   ["Qué busca","Contar una historia con claridad, asegurando la continuidad de la acción","Provocar una emoción o una idea en el espectador, mostrando los hechos desde la mirada del realizador"],
+   ["Cómo une los planos","Uno tras otro, de forma lógica, para que el corte pase inadvertido","Por contraste, por choque o por comparación entre imágenes"],
+   ["¿Cuándo se usa?","En casi todo el cine y la televisión de ficción, en series, noticias, documentales informativos o tutoriales: siempre que lo importante sea que el espectador <b>entienda</b> qué pasa, dónde y cuándo","Cuando se quiere <b>emocionar, impactar o transmitir una idea</b> más que contar los hechos: el clímax de una película, un videoclip, un anuncio, un tráiler, el cine de autor o de vanguardia, un recuerdo o un sueño"],
+   ["Pregunta de quien monta","«¿Se entiende lo que pasa?»","«¿Qué quiero que sienta o piense quien lo ve?»"],
+   ["Ejemplo","Una persecución que seguimos plano a plano sin perder el hilo","La escalera de Odesa de <i>El acorazado Potemkin</i>, que dilata el tiempo y golpea con imágenes"]]],
+  ["tip","⚠️","Ojo","No son excluyentes. Una misma película usa el <b>montaje narrativo</b> la mayor parte del tiempo y reserva el <b>expresivo</b> para los momentos clave. Para decidir cuál usar, pregúntate: <b>¿necesito que se entienda o que se sienta?</b>"],
+  ["p","<b>Mira y compara.</b> Primero una persecución montada para que no te pierdas, y después una escena montada para que sientas."],
+  ["yt","SXThMXxnNMU","Montaje narrativo: la persecución de «Bullitt» (1968)",0],
+  ["ul",["Qué observar: siempre sabes dónde está cada coche y hacia dónde va.","Los cortes pasan inadvertidos: cada plano continúa la acción del anterior.","Se alternan planos del interior y del exterior de los coches para contar con claridad quién persigue a quién."]],
+  ["yt","JecXKK2rmCc","Montaje expresivo: la escalera de Odesa (El acorazado Potemkin, Eisenstein, 1925)",0],
+  ["ul",["Qué observar: los planos <b>chocan</b> (botas que avanzan frente a rostros aterrados) y el tiempo se <b>dilata</b>: la escena dura más que en la realidad.","No importa tanto «qué pasa» como lo que provoca: horror, indignación, injusticia.","Eisenstein lo llama <b>montaje de atracciones</b>: lo verás con detalle en el apartado de teorías."]],
+  ["p","<b>Una versión más moderna.</b> En <i>Los intocables</i> (Brian De Palma, 1987), la escena de la estación de tren es un homenaje directo a la escalera de Odesa: un cochecito de bebé baja las escaleras mientras el tiempo se ralentiza y los planos se alargan para aumentar la tensión."],
+  ["yt","oxc0FiwY5dY","Montaje expresivo actual: la estación de «Los intocables» (1987)",0]
+ );
+
+ // ===== 2) Vídeos no disponibles: quitar cajas duplicadas y sustituir =====
+ const a0=ix(H("A. Antecedentes")),a1=ix(b=>b[0]==="parte"&&/^5\./.test(b[1]));
+ if(a0<0||a1<0)throw new Error("v68 limites");
+ for(let k=a1-1;k>a0;k--)if(r[k][0]==="vlink")r.splice(k,1);
+ u.videos=u.videos.filter(v=>!["_FrdVdKlxUk","vZ871wZd7UY"].includes(v[0]));
+ const AP="A. Antecedentes: Modelo de Representación Primitivo (MRP)",BP="B. Montaje clásico o invisible: Modelo de Representación Institucional (MRI)";
+ u.videos.push(["MTb_s0LNFmI","Viaje a la Luna (Méliès, 1902)",AP],["FoLxNeBI6BM","The Great Train Robbery (Porter, 1903)",AP],["A0qdqWHvq9k","La villa solitaria (D. W. Griffith, 1909)",BP]);
+ const swap=(oldId,nid,tit)=>{const k=ix(b=>b[0]==="yt"&&b[1]===oldId);if(k>=0){r[k][1]=nid;r[k][2]=tit;}};
+ swap("5_xcB0-y10E","MTb_s0LNFmI","Viaje a la Luna (Georges Méliès, 1902)");
+ swap("r0oBQIWAfe4","FoLxNeBI6BM","The Great Train Robbery (Edwin S. Porter, 1903)");
+ swap("YisiBXOWM8Y","A0qdqWHvq9k","La villa solitaria (D. W. Griffith, 1909): montaje paralelo");
+
+ // ===== 3) A. Antecedentes: el MRP explicado =====
+ const hA=ix(H("A. Antecedentes"));
+ r.splice(hA+1,0,
+  ["p","Entre 1895 y 1910, más o menos, el cine se parece mucho al <b>teatro filmado</b>. Los estudiosos (sobre todo Noël Burch) llaman a esta forma de contar <b>Modelo de Representación Primitivo (MRP)</b>. Estos son sus rasgos; en el apartado B verás cómo el modelo clásico los va dejando atrás."],
+  ["ul",[
+   "Frontalidad: los personajes actúan de cara a la cámara, como ante el público de un teatro; la cámara es una butaca fija.",
+   "Exterioridad: el espectador mira desde fuera; ve lo que hacen los personajes, pero no entra en sus emociones.",
+   "Distancia: la cámara se queda lejos (planos generales) y casi nunca se acerca a un rostro o a un objeto.",
+   "Platitud visual: la imagen es plana, sin sensación de volumen ni de profundidad: decorados pintados, personajes alineados y luz uniforme.",
+   "Autarquía: cada plano se basta a sí mismo; contiene una escena entera y se entiende sin el anterior ni el siguiente.",
+   "Imagen centrífuga: la imagen «se escapa» hacia los lados; la acción no se organiza hacia el centro, los personajes entran y salen por los bordes del encuadre y la mirada no está guiada.",
+   "Falta de cierre: las escenas terminan sin concluir con claridad y sin conectar causa y efecto con la siguiente; el relato queda «abierto»."]],
+  ["tip","💡","Tip","Para reconocer el MRP, piensa en una obra de teatro grabada con una cámara fija desde el patio de butacas: todo se ve entero, de frente y de lejos."]);
+
+ const set=(fn,txt)=>{const k=ix(fn);if(k<0)throw new Error("v68 def");r[k][2]=txt;};
+ set(DEF("Hermanos Lumière"),"Auguste y Louis Lumière inventaron el cinematógrafo (1895). Cada película era <b>un solo plano fijo</b> de menos de un minuto, sin cortes, que registraba un trozo de realidad: obreros saliendo de una fábrica, un tren llegando a la estación. En 1896 Louis Lumière unió cuatro películas y se considera el <b>primer montaje</b>. Era un <b>montaje sintético</b>: toda la acción cabe dentro de un mismo plano y no hay control sobre ella.<br><b>Cómo reconocerlo:</b> cámara fija, frontal y lejana; cada plano es una escena completa (autarquía).<br><b>Para ver:</b> <i>La llegada del tren a la estación</i> (1896), justo aquí debajo.");
+ set(DEF("Georges Méliès"),"Mago y director de teatro. Descubrió que si paraba la cámara, cambiaba algo en la escena y seguía grabando, al verlo una persona o un objeto se transformaba o desaparecía: es el <b>truco de sustitución</b>. Añadió sobreimpresiones, dobles exposiciones, maquetas, fundidos y encadenados. Sus películas son una sucesión de «cuadros» como en una obra de teatro: cada escena es un plano fijo, de frente y distante (<b>frontalidad</b>), con decorados pintados.<br><b>Cómo reconocerlo:</b> magia, fantasía y decorados teatrales.<br><b>Obra clave:</b> <i>Viaje a la Luna</i> (1902). <b>Hoy:</b> es el origen de los efectos especiales; Martin Scorsese le rinde homenaje en <i>La invención de Hugo</i> (2011).");
+ set(DEF("Escuela de Brighton"),"Grupo de pioneros ingleses (James Williamson, G. A. Smith, A. Collings y Alfred Darling). A diferencia de Méliès, <b>cortaron la acción en varios planos</b>: movieron la cámara, la acercaron y la colocaron en distintos ángulos. Inventaron recursos que seguimos usando: el <b>primer plano</b> y el <b>plano detalle</b>, el <b>plano-contraplano</b>, el travelling dramático y el plano subjetivo (lo que ve el personaje). Así nace la <b>continuidad narrativa por medio de la fragmentación</b>: una escena se cuenta con varios planos que el espectador entiende como una sola acción.<br><b>Cómo reconocerlo:</b> primeros planos y cambios de plano dentro de una misma escena.<br><b>Ejemplo clásico:</b> <i>La lupa de la abuela</i> (Smith, 1900), donde se corta a lo que ve la niña con la lupa.");
+ set(DEF("Edwin S. Porter"),"Operador y director de la productora de Edison. En <i>The Great Train Robbery</i> (1903) montó escenas filmadas en momentos y lugares distintos para formar una <b>unidad narrativa</b>: asalto, huida y persecución con intriga. Con ella inició el género del <b>western</b>. Alterna acciones que ocurren a la vez (<b>montaje alternado</b>) y usa la panorámica y el primer plano.<br><b>Detalle curioso:</b> la película acaba con un primer plano del bandido disparando directamente al espectador. Es una clara <b>huella de enunciación</b> (ver apartado B): el modelo clásico las eliminará.<br><b>Duración aproximada:</b> unos 12 minutos.");
+
+ // ===== 4) B. Montaje clásico: MRP frente a MRI, huella de enunciación =====
+ set(DEF("David W. Griffith"),"Cineasta estadounidense, figura clave del paso del MRP al MRI, y el primero en usar el montaje como <b>medio expresivo</b>. Alterna puntos de vista según la tensión dramática y usa el primer plano para mostrar emociones. Su gran aportación es el <b>montaje paralelo</b>: alternar dos acciones simultáneas en lugares distintos (unos ladrones asaltan una casa mientras el marido corre a salvarla) para crear <b>suspense</b>. Cuando las dos acciones acaban encontrándose, se habla de <b>montaje cruzado</b>, que subraya las relaciones de causa y de tiempo.<br><b>Para ver:</b> <i>La villa solitaria</i> (1909), unos 10 minutos.<br><b>Hoy:</b> el bautizo de <i>El Padrino</i> (1972) alterna la ceremonia con los asesinatos encargados por Michael Corleone; la persecución con rescate «en el último minuto» sigue siendo un clásico.");
+ const nGr=ix(DEF("David W. Griffith"));
+ r.splice(nGr+1,0,["nota","<i>El nacimiento de una nación</i> (1915), su obra más famosa, es técnicamente muy influyente, pero es una película <b>racista</b> que idealiza al Ku Klux Klan. Por eso el ejemplo para ver es otro. Conviene conocer las dos cosas: lo que aportó al lenguaje del cine y lo que la película defiende."]);
+ set(DEF("André Bazin"),"Teórico francés (revista <i>Cahiers du cinéma</i>). Defiende que lo más valioso del cine es mostrar la realidad con respeto, en su espacio y su tiempo reales. Se apoya en tres ideas:<br><b>1. Montaje prohibido:</b> cuando lo esencial de una situación depende de que dos o más elementos estén <b>a la vez</b> en el mismo plano, no se debe cortar (si cortas, el espectador podría pensar que hay truco).<br><b>2. Transparencia:</b> si hay que cortar, que los planos discontinuos queden lo más disimulados posible mediante el raccord.<br><b>3. Plano secuencia y profundidad de campo:</b> un plano largo, sin cortes, con elementos nítidos tanto cerca como lejos de la cámara, deja que el espectador elija dónde mirar.<br><b>Ejemplo:</b> <i>Ciudadano Kane</i> (Orson Welles, 1941), con personajes nítidos en primer y último término. <b>Hoy:</b> <i>1917</i> (2019), que simula un único plano secuencia.");
+ i=ix(b=>b[0]==="p"&&/^Cuenta los hechos de forma cronológica/.test(b[1]));
+ r[i][1]="Cuenta los hechos de forma cronológica o con saltos al futuro (<b>flash-forward</b>) y al pasado (<b>flashback</b>), siempre con forma narrativa. Su rasgo principal es el <b>signo analítico</b>: dividir la escena en planos distintos (general, medio, primer plano…) unidos con continuidad. Su objetivo es <b>borrar la huella de enunciación</b>.";
+ r.splice(i+1,0,
+  ["clave","<b>Huella de enunciación.</b> Toda película la cuenta alguien: la cámara, el director, el montador. Las <b>huellas de enunciación</b> son las señales que delatan a ese «narrador»: un personaje que mira a cámara, un movimiento de cámara sin motivo, un corte brusco, un texto que explica. El montaje clásico las <b>esconde</b> para que el espectador sienta que la historia se cuenta sola y se olvide de la cámara, sentado «cómodamente» dentro de la historia."],
+  ["ej","En una conversación clásica nadie mira a cámara y los cortes siguen las miradas de los personajes (plano-contraplano). Si un personaje se dirigiera al público, como en la serie <i>Fleabag</i> o en <i>Deadpool</i>, la huella de enunciación sería evidente. Recuerda también el disparo final de Porter."]);
+ i=ix(b=>b[0]==="tabla"&&b[1][0]==="Modelo primitivo (MRP)");
+ r[i]=["tabla",["Modelo primitivo (MRP)","Modelo institucional (MRI)","Qué cambia"],[
+  ["Frontalidad","Supresión de frontalidad (escorzos)","Los personajes se colocan de perfil, de espaldas o en posición oblicua (<b>escorzo</b>): se gana volumen y se hace posible el plano-contraplano"],
+  ["Exterioridad","Escalaridad (plano medio, primer plano y plano detalle)","Hay varios tamaños de plano y la cámara entra en la escena: vemos rostros, gestos y detalles"],
+  ["Platitud visual","Mejoras técnicas (luz y objetivos)","La luz modelada y los objetivos dan volumen y profundidad a la imagen"],
+  ["Autarquía","Continuidad","Los planos dependen unos de otros: el raccord enlaza acción, espacio y tiempo"],
+  ["Distancia","Proximidad","La cámara se acerca para que el espectador se implique con los personajes"],
+  ["Imagen centrífuga","Imagen centrípeta (centrado)","La composición se organiza hacia el centro del encuadre y guía la mirada hacia lo importante"],
+  ["Falta de cierre","Clausura","Cada escena y la película terminan con sentido: causa, consecuencia y un final que cierra la historia"]]];
+
+ // ===== 5) C. Vanguardias: explicar cada corriente y cada autor =====
+ i=ix(b=>b[0]==="ul"&&/^Los ismos:/.test(b[1][0]));
+ r[i][1]=[
+  "Los ismos (cubismo y futurismo): vanguardias artísticas de principios del siglo XX que inspiraron a los cineastas. El <b>cubismo</b> rompe la perspectiva única y muestra un objeto desde varios puntos de vista a la vez (en el cine, fragmentar la realidad en planos). El <b>futurismo</b> exalta la velocidad, la máquina y el movimiento (en el cine, ritmo rápido y cortes veloces).",
+  "Film d'Art (primera vanguardia francesa): Marcel L'Herbier, Louis Delluc, Abel Gance y Jean Epstein defienden que el cine es un arte con <b>lenguaje propio</b>, distinto del teatro y de la literatura, y que ese lenguaje está en el <b>montaje</b>, el <b>ritmo</b>, la <b>música</b> y la <b>poesía visual</b>. No la confundas con la productora Film d'Art de 1908, que filmaba obras de teatro. Para ver: <i>La glace à trois faces</i> (Epstein, 1927).",
+  "Cine puro o filmes abstractos: Viking Eggeling, Hans Richter, Walter Ruttmann y Fernand Léger hacen películas <b>sin historia ni personajes</b>, solo con formas, líneas, luz y ritmo, como «música para los ojos» (Léger, <i>Ballet mécanique</i>, 1924). Trabajan la <b>arbitrariedad del significante</b>: el significante es la imagen o el sonido y el significado, lo que quiere decir; aquí no hay relación obligada, una forma significa lo que el autor decida y no tiene que parecerse a nada real.",
+  "Formativismo teórico: Rudolf Arnheim y Béla Balázs son <b>teóricos</b>, no cineastas. Defienden que el cine es arte precisamente porque <b>no copia la realidad</b>, sino que la transforma con el encuadre, el montaje o el blanco y negro. Arnheim sostiene que las «limitaciones» del cine mudo (sin color ni sonido) obligan a crear; Balázs destaca el <b>primer plano</b> como descubrimiento de la expresión del rostro y de los objetos. Es la postura opuesta a la de Bazin."];
+ set(DEF("Dziga Vertov"),"Cineasta soviético que defiende un cine sin actores, sin guion y sin decorados: el <b>cine-ojo</b>. Para él la cámara es un ojo más perfecto que el humano, capaz de captar la vida «desprevenida». Su manifiesto de los kinoks propone un <b>montaje integral</b> que organiza el material rodado en tres fases: inventario del material, observaciones del ojo humano sobre el tema y montaje central.<br><b>Cómo reconocerlo:</b> ciudades en movimiento, sobreimpresiones, cámara lenta y rápida, pantalla dividida y cortes muy rápidos.<br><b>Obra clave:</b> <i>El hombre de la cámara</i> (1929).");
+ set(DEF("Lev Kuleshov"),"Cineasta y profesor soviético que fundó la primera escuela de montaje. Su <b>efecto Kuleshov</b> demuestra que un mismo plano adquiere <b>significados distintos</b> según el plano al que se une.<br><b>El experimento:</b> unió el mismo primer plano de un actor, con expresión neutra, con tres imágenes distintas: un plato de sopa, un ataúd y una mujer en un diván. El público creyó ver en su cara hambre, tristeza y deseo. El sentido nace de la <b>unión</b> de los planos y no de cada plano por separado (se cuenta así, aunque la película original se perdió).<br><b>Hoy:</b> es lo que hacemos al montar un vídeo: el orden de los planos cambia lo que el espectador entiende.");
+ set(DEF("Vsévolod Pudovkin"),"El más narrativo de los directores soviéticos. Para él el montaje es la máxima expresión del cine y el filme no se rueda, sino que <b>se construye</b>: cada plano es un ladrillo que se coloca para levantar la historia. Usa el montaje para guiar la emoción y la atención del espectador con contrastes, paralelismos y símbolos, sin perder claridad (por eso es más «continuista» que Eisenstein).<br><b>Obra clave:</b> <i>La madre</i> (1926).");
+ set(DEF("Serguéi M. Eisenstein"),"Convierte la vanguardia en una teoría sistemática. Concibe el <b>montaje como choque</b>: dos planos distintos chocan y producen un significado nuevo, frente al montaje transparente de Bazin.<br><b>Montaje de atracciones:</b> unir imágenes fuertes y agresivas que golpean la emoción del espectador (el «cine-puño», frente al «cine-ojo» de Vertov).<br><b>Montaje intelectual:</b> el sentido no está en los planos sino en las relaciones entre ellos; en <i>Octubre</i> compara a un político con un pavo real mecánico para que el espectador deduzca una idea.<br><b>Ejemplo:</b> en <i>El acorazado Potemkin</i> (1925), la escalera de Odesa alarga el tiempo y alterna las botas de los soldados con los rostros de la multitud; tres planos de leones de piedra parecen levantarse como símbolo de la rebelión.");
+ i=ix(b=>b[0]==="tabla"&&b[1][0]==="Montaje institucional (MRI)");
+ r[i]=["tabla",["Montaje institucional (MRI)","Eisenstein","Qué significa"],[
+  ["Búsqueda de transparencia","Intervención directa","El montaje clásico se esconde; Eisenstein quiere que se note y que influya en el espectador"],
+  ["Protagonista individual: el héroe","Protagonista colectivo: el pueblo","Un héroe con nombre (Griffith) frente al pueblo como protagonista (los marineros y los ciudadanos de <i>Potemkin</i>)"],
+  ["Naturalización","Desnaturalización","Presentar lo que se cuenta como algo natural y sin costuras, frente a mostrar que está construido"],
+  ["Sutura","Ausencia de sutura","La <b>sutura</b> es la «costura» que mantiene al espectador dentro de la historia: al ocultar los cortes y seguir las miradas, te identificas con los personajes. Sin sutura, los cortes se notan y te mantienen como espectador crítico"],
+  ["Linealidad","Conflicto","Una historia que avanza en línea de causa y efecto frente a choques entre planos y entre ideas"],
+  ["Clausura: fin de la historia en sí misma","Clausura relativa: esperanza de futuro","Un final cerrado que lo resuelve todo frente a un final que deja la esperanza o la tarea para el futuro"]]];
+
+ // ===== 6) D. Segunda mitad del siglo XX =====
+ set(DEF("Nouvelle Vague"),"Estilo emblemático de los años sesenta, surgido entre jóvenes cineastas franceses, muchos procedentes de la crítica o del documental. Rechazaban el cine académico y defendían la <b>espontaneidad</b>, el <b>rodaje en exteriores</b>, la improvisación y los actores nuevos. Destacan Truffaut, Rohmer y Godard.<br><b>Cómo reconocerlo:</b> cámara en mano, calles reales, luz natural y cortes que rompen el raccord a propósito.<br><b>Ejemplos:</b> en <i>Al final de la escapada</i> (Godard, 1960) aparece el <b>jump cut</b>, un corte que salta unos segundos dentro de un mismo plano; <i>Los 400 golpes</i> (Truffaut, 1959) termina con el protagonista mirando a cámara en un fotograma congelado. <b>Hoy:</b> el jump cut es el corte típico de los vídeos de YouTube.");
+ set(DEF("Dogma 95"),"Movimiento danés nacido en Copenhague en 1995, con Lars von Trier y Thomas Vinterberg. Propone «luchar contra ciertas tendencias del cine actual» y ve en las nuevas tecnologías una democratización del cine. Su <b>voto de castidad</b> impone, entre otras, estas reglas: rodar en exteriores sin decorados ni accesorios añadidos, no separar sonido e imagen, <b>cámara en mano</b>, color sin iluminación especial, sin trucajes ni filtros, sin acción superficial, sin cambios temporales ni geográficos, sin cine de género, formato de 35 mm y sin que el director aparezca en los créditos.<br><b>Cómo reconocerlo:</b> imagen temblorosa, luz natural y sonido directo, con aspecto casi de documental.<br><b>Ejemplos:</b> <i>La celebración</i> (Vinterberg, 1998) y <i>Los idiotas</i> (Von Trier, 1998).");
+ set(DEF("Montaje posmoderno"),"Nace a principios de los ochenta. Mezcla corrientes revisionistas y nuevos discursos como el videojuego, el cómic, el spot, el videoclip o la televisión. Se caracteriza por la <b>mezcla de géneros</b>, la <b>intertextualidad</b> (citar y homenajear otras obras), la parodia y la <b>narración fracturada</b> en el espacio y el tiempo.<br><b>Cómo reconocerlo:</b> ritmo muy rápido, saltos en el tiempo y guiños a otras películas.<br><b>Ejemplos:</b> <i>Pulp Fiction</i> (1994) cuenta su historia desordenada en el tiempo; <i>Scott Pilgrim contra el mundo</i> (2010) mezcla cine, cómic y videojuego.");
+
+ // ===== 7) Glosario =====
+ const G=u.glosario,has=t=>G.some(g=>g[0].toLowerCase()===t.toLowerCase());
+ [["Autarquía","En el montaje primitivo, cualidad del plano que se basta a sí mismo: contiene una escena entera y no depende del anterior ni del siguiente."],
+  ["Clausura","En el montaje clásico, cierre coherente de la escena y de la película, con causa, consecuencia y un final que resuelve la historia."],
+  ["Falta de cierre","Rasgo del modelo primitivo: las escenas terminan sin concluir con claridad ni conectar causa y efecto con la siguiente."],
+  ["Frontalidad","Colocación de los personajes de cara a la cámara, como ante el público de un teatro."],
+  ["Huella de enunciación","Señal que delata que alguien cuenta la historia: mirada a cámara, movimiento sin motivo, corte brusco o texto explicativo. El montaje clásico las oculta."],
+  ["Imagen centrífuga","Imagen en la que la acción se dispersa hacia los bordes del encuadre, con personajes que entran y salen, sin guiar la mirada hacia el centro."],
+  ["Imagen centrípeta","Imagen compuesta hacia el centro del encuadre, que guía la mirada hacia lo importante."],
+  ["Platitud visual","Imagen plana, sin volumen ni profundidad, propia del cine primitivo."],
+  ["Sutura","En el montaje clásico, efecto de «costura» que mantiene al espectador dentro de la historia al ocultar los cortes y seguir las miradas de los personajes."],
+  ["Montaje paralelo","Alternancia de dos acciones simultáneas en lugares distintos para crear suspense."],
+  ["Jump cut","Corte que salta unos instantes dentro de un mismo plano y rompe el raccord; típico de la Nouvelle Vague."]
+ ].forEach(g=>{if(!has(g[0]))G.push(g);});
+ G.sort((a,b)=>a[0].localeCompare(b[0],"es"));
+})();
+
+/* v69: unidad 2 — vídeos: Viaje a la Luna alternativo, Odesa sin repetir, fragmento corto de Vertov */
+(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ // Viaje a la Luna: otra versión + enlace de respaldo a Internet Archive
+ const iL=r.findIndex(b=>b[0]==="yt"&&b[1]==="MTb_s0LNFmI");
+ if(iL>=0){r[iL][1]="QYNMOrp8rO8";
+  if(!r.some(b=>b[0]==="enlace"&&/LeVoyageDansLaLun/.test(b[1])))r.splice(iL+1,0,["enlace","https://archive.org/details/LeVoyageDansLaLun","Ver «Viaje a la Luna» (1902) en Internet Archive"]);}
+ u.videos.forEach(v=>{if(v[0]==="MTb_s0LNFmI")v[0]="QYNMOrp8rO8";});
+ // Odesa: ya está arriba; quitar el segundo vídeo
+ const iO=r.findIndex(b=>b[0]==="yt"&&b[1]==="8ORUQvD6qyQ");
+ if(iO>=0)r.splice(iO,1);
+ u.videos=u.videos.filter(v=>v[0]!=="8ORUQvD6qyQ");
+ const e=r.find(b=>b[0]==="def"&&b[1]==="Serguéi M. Eisenstein");
+ if(e&&!/Para ver:/.test(e[2]))e[2]+="<br><b>Para ver:</b> la escalera de Odesa, en el apartado «¿Qué es el montaje?», más arriba.";
+ // Vertov: fragmento corto en lugar de la película completa (más de 1 hora)
+ const iV=r.findIndex(b=>b[0]==="yt"&&b[1]==="UDHgm-PpY2w");
+ if(iV>=0){r[iV][1]="kIdZ8AD3jFQ";r[iV][2]="Fragmento de El hombre de la cámara (Vertov, 1929)";r[iV][3]=0;}
 })();
