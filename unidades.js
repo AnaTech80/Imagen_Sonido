@@ -1,4 +1,4 @@
-const V_CONT="69";
+const V_CONT="70";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3292,4 +3292,12 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  // Vertov: fragmento corto en lugar de la película completa (más de 1 hora)
  const iV=r.findIndex(b=>b[0]==="yt"&&b[1]==="UDHgm-PpY2w");
  if(iV>=0){r[iV][1]="kIdZ8AD3jFQ";r[iV][2]="Fragmento de El hombre de la cámara (Vertov, 1929)";r[iV][3]=0;}
+})();
+
+/* v70: unidad 2 — Viaje a la Luna: vídeo aportado por Ana */
+(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ const i=r.findIndex(b=>b[0]==="yt"&&b[1]==="QYNMOrp8rO8");
+ if(i>=0)r[i][1]="tMOheYcb6MU";
+ u.videos.forEach(v=>{if(v[0]==="QYNMOrp8rO8")v[0]="tMOheYcb6MU";});
 })();
