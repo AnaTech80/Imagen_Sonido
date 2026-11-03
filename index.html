@@ -163,7 +163,7 @@ main h2{margin:.2rem 0 .6rem;font-size:1.7rem;line-height:1.15}
 <button id="arriba" aria-label="Subir al inicio" title="Subir al inicio">↑</button>
 <script src="unidades.js"></script>
 <script>
-const V_INDEX="72";
+const V_INDEX="73";
 // Fuente de los bloques: currículo de Imagen y Sonido (GVA), Decreto 108/2022. Pendiente de revisión.
 const BLOQUES=[
  {t:"Imagen",g:[
@@ -195,7 +195,7 @@ const nb=i=>`Bloque ${i}. ${BLOQUES[i-1].t}`;
 function inicio(){
  const li=(u,i)=>`<li><a href="#/unidad/${i+1}"><span class="perf"></span><span class="num">${i+1}</span><span class="tit">${u.t}<small>${u.fase}</small></span></a></li>`;
  const fin=UNIDADES.findIndex(u=>u.f),uf=UNIDADES[fin];
- app.innerHTML='<ol class="strip">'+UNIDADES.map((u,i)=>u.f?"":li(u,i)).join("")+'</ol><h2 class="sa-h">Situación de Aprendizaje final</h2><div class="sa"><a href="#/unidad/'+(fin+1)+'"><span class="perf"></span><span class="num">🎬</span><span class="tit">'+uf.t+'<small>Aplicas todo lo aprendido en las siete unidades · Crear</small></span></a></div>'+ruletaHTML(1+Math.floor(Math.random()*8),true)+'<p class="pie">Recorrido del curso: analizar, preparar, grabar, retocar, montar y sonorizar; y, para terminar, crear tu cortometraje.</p><p><a class="back" href="#/bloques">Ver los 7 bloques de saberes</a></p><p><a class="back" href="#/interes">🌐 Páginas de interés: filmotecas, concursos y recursos</a></p><p class="pie">Marco normativo: LOE modificada por la LOMLOE, Real Decreto 243/2022 y Decreto 108/2022 del Consell (Currículo de Bachillerato de la Comunitat Valenciana), modificado por el Decreto 103/2026.</p>';
+ app.innerHTML='<ol class="strip">'+UNIDADES.map((u,i)=>u.f?"":li(u,i)).join("")+'</ol><h2 class="sa-h">Situación de Aprendizaje final</h2><div class="sa"><a href="#/unidad/'+(fin+1)+'"><span class="perf"></span><span class="num">🎬</span><span class="tit">'+uf.t+'<small>Aplicas todo lo aprendido en las siete unidades · Crear</small></span></a></div>'+ruletaHTML(1+Math.floor(Math.random()*8),true)+'<p class="pie">Recorrido del curso: analizar, preparar, grabar, retocar, montar y sonorizar; y, para terminar, crear tu cortometraje.</p><p><a class="back" href="#/bloques">Ver los 7 bloques de saberes</a></p><p><a class="back" href="#/interes">🌐 Páginas de interés: filmotecas, concursos y recursos</a></p><p><a class="back" href="#/cine">🎬 Cortos y películas para ver, por temática</a></p><p class="pie">Marco normativo: LOE modificada por la LOMLOE, Real Decreto 243/2022 y Decreto 108/2022 del Consell (Currículo de Bachillerato de la Comunitat Valenciana), modificado por el Decreto 103/2026.</p>';
  document.title="Imagen y Sonido · Bachillerato";
 }
 const quita=t=>t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
@@ -754,7 +754,7 @@ function unidad(n){
  app.innerHTML=`<div class="ubar" id="ubar"><b>${u.f?"Situación de Aprendizaje":"Unidad "+n}</b><span class="ubt">${u.t}</span><span class="ubs" id="ubs"></span></div>${nav()}
  <div class="layout${C.toc?"":" sola"}">${C.toc?`<aside class="side">${C.toc}</aside>`:""}<div class="panel${u.f?" final":""}"><h2>${u.f?"Situación de Aprendizaje final: "+u.t:"Unidad "+n+". "+u.t}</h2>
  ${u.f?`<p class="mute">No es una unidad del currículo: es una Situación de Aprendizaje (SdA) en la que aplicas todo lo anterior para crear tu propia pieza.</p>`:""}
- ${C.html}${referencias(n)}</div></div><p><a class="back" href="#/interes">🌐 Páginas de interés: filmotecas, concursos y recursos</a></p>${nav()}`;
+ ${C.html}${referencias(n)}</div></div><p><a class="back" href="#/interes">🌐 Páginas de interés: filmotecas, concursos y recursos</a></p><p><a class="back" href="#/cine">🎬 Cortos y películas para ver, por temática</a></p>${nav()}`;
  document.title=`${u.t} · Imagen y Sonido`;
  spy.ult=null;
  scrollTo(0,0);
@@ -818,6 +818,54 @@ function interes(){
  document.title="Páginas de interés · Imagen y Sonido";
  scrollTo(0,0);
 }
+
+const CINE=[
+["🌈 Identidad, diferencia e inclusión",[
+["Alike","Daniel Martínez Lara y Rafa Cano Méndez · España, 2015 · 8 min","https://www.youtube.com/watch?v=PDHIyrfMl_U","Ser uno mismo frente a la presión de encajar; la creatividad en la escuela y en el trabajo.","El color que se va apagando y la ausencia total de diálogos: todo se cuenta con imagen, gesto y música."],
+["Cuerdas","Pedro Solís García · España, 2013 · 10 min","https://www.youtube.com/watch?v=4INwx_tmTKw","Amistad e inclusión de una persona con parálisis cerebral. Goya 2014 al mejor cortometraje de animación.","Cómo los planos cortos y el sonido transmiten cercanía y cariño sin necesidad de explicarlo."],
+["The Present","Jacob Frey · Alemania, 2014 · 4 min","https://www.youtube.com/watch?v=C_nJJHaNmnY","Discapacidad y aceptación; un final inesperado.","Cómo el montaje retrasa la información para que el final nos sorprenda."],
+["Hair Love","Matthew A. Cherry · EE. UU., 2019 · 7 min","https://www.youtube.com/watch?v=kNw8V_Fkw28","Familia, identidad y orgullo de la propia imagen. Oscar 2020 al mejor corto de animación.","Cómo cuenta una historia emotiva sin diálogos, solo con gestos, música y planos detalle."],
+["The Silent Child","Chris Overton · Reino Unido, 2017 · 20 min","https://www.youtube.com/watch?v=GEIsbvwxmwQ","Sordera, comunicación y derecho a una educación inclusiva. Oscar 2018 al mejor corto de acción real.","El uso del sonido y del silencio para ponernos en el lugar de la niña."]
+]],
+["🌍 Memoria, migración y justicia social",[
+["Historia de un oso (Bear Story)","Gabriel Osorio · Chile, 2014 · 11 min","https://www.youtube.com/watch?v=0bSILdQZFYE","Memoria histórica y exilio; inspirada en la historia del abuelo del director durante la dictadura chilena. Oscar 2016 al mejor corto de animación.","El relato dentro del relato (un oso que cuenta su historia con una caja de música) y la música como narradora."],
+["El viaje de Said","Coke Riobóo · España, 2006","https://vimeo.com/16037500","Migración, riesgo y esperanza. Animación con plastilina; Goya 2007 al mejor corto de animación.","Cómo una técnica artesanal y sencilla consigue una historia muy dura y cercana."],
+["Binta y la gran idea","Javier Fesser · España, 2004 · 30 min","https://vimeo.com/84569319","Derecho a la educación, desigualdad y amistad entre niñas de dos realidades distintas.","Cómo el montaje y la voz de la niña contraponen dos mundos."]
+]],
+["💼 Sociedad, trabajo y consumo",[
+["El empleo","Santiago Bou Grasso · Argentina, 2008 · 6 min","https://vimeo.com/32966847","Sátira sobre la alienación en el trabajo y en la sociedad.","Cómo un mundo sin palabras sostiene una crítica social completa y cómo funciona el final."]
+]],
+["😮 Suspense, plano secuencia y sonido",[
+["Madre","Rodrigo Sorogoyen · España, 2017 · 19 min","https://vimeo.com/161940404","Maternidad, miedo y desesperación. Goya 2018 al mejor cortometraje de ficción y nominado al Oscar.","Se rueda en un único plano secuencia y casi todo lo sabemos por lo que se oye al teléfono: sonido fuera de campo y tensión.","Tema duro (angustia por la seguridad de un niño). Valora si proyectarlo en clase."],
+["Timecode","Juanjo Giménez · España, 2016 · 15 min","https://vimeo.com/165890547","Rutina, relaciones y vigilancia. Palma de Oro al mejor cortometraje en Cannes 2016.","La relación entre imagen, ritmo y movimiento, y cómo se cuenta con cámaras de vigilancia.","El enlace es el tráiler; no he encontrado el corto completo en abierto."]
+]],
+["💞 Contar sin palabras",[
+["Paperman","John Kahrs · EE. UU., 2012 · 7 min","https://www.youtube.com/watch?v=jo_pJkWuUyQ","Amor, azar y segundas oportunidades. Oscar 2013 al mejor corto de animación.","El blanco y negro con el rojo como acento, la mezcla de 2D y 3D y el uso de la elipsis."],
+["Ice Merchants","João Gonzalez · Portugal, Francia y Reino Unido, 2022 · 14 min","https://www.youtube.com/watch?v=F2S5oeTxkDQ","Padre e hijo, rutina y pérdida. Nominado al Oscar al mejor corto de animación.","La verticalidad del decorado, la repetición de la rutina y la música; no hay diálogos."]
+]],
+["🖼️ Experimentos con la imagen: montaje y vanguardia",[
+["Un perro andaluz","Luis Buñuel y Salvador Dalí · España y Francia, 1929 · 16 min","https://archive.org/details/un-chien-andalou__1929-film__luis_bunuel","Surrealismo: sueños, deseo y subconsciente. Montaje por asociación, sin lógica narrativa.","Cómo los cortes unen imágenes por su forma o por su sentido, no por la acción (compáralo con el montaje clásico).","Contiene imágenes impactantes (como el plano del ojo). Avisa antes de proyectarla."],
+["La jetée","Chris Marker · Francia, 1962 · 28 min","https://archive.org/details/vimeo-165899598","Tiempo, memoria y ciencia ficción. Contada casi solo con fotografías fijas.","El montaje de fotografías y la voz en off; busca el único momento en que la imagen se mueve."]
+]],
+["📽️ Clásicos para entender el montaje y la luz",[
+["El acorazado Potemkin","Serguéi M. Eisenstein · URSS, 1925 · unos 75 min","https://archive.org/details/BattleshipPotemkin","Revolución y propaganda. Montaje de choque: es la película de la escalera de Odesa que estudias en la unidad 2.","Cómo los choques entre planos provocan emoción y dilatan el tiempo."],
+["Nosferatu","F. W. Murnau · Alemania, 1922 · alrededor de 1 h 30","https://archive.org/details/nosferatu-1922_202504","Terror y miedo a lo desconocido. Cine mudo expresionista.","La luz y la sombra, los encuadres y los intertítulos: cómo se crea miedo sin sonido."]
+]],
+["🍿 Películas largas para ver en plataformas",[
+["First Man (El primer hombre)","Damien Chazelle · EE. UU., 2018 · 2 h 22 min","https://www.sensacine.com/peliculas/pelicula-135374/","Superación, duelo y precio personal de llegar a la Luna. Según Sensacine, disponible en Prime Video (suscripción).","La cámara en mano y los planos muy cercanos dentro de la nave, y el contraste entre el ruido de las misiones y el silencio de la Luna."],
+["Sound of Metal","Darius Marder · EE. UU., 2019 · unas 2 h","","Pérdida de audición y adaptación. Oscar 2021 al mejor sonido y al mejor montaje.","El diseño de sonido: cómo oímos lo que oye (o no oye) el protagonista.","Sin enlace directo: busca en qué plataforma está (por ejemplo, con JustWatch)."],
+["La invención de Hugo","Martin Scorsese · EE. UU., 2011 · unas 2 h","","Cine, memoria y homenaje a Georges Méliès (lo conoces de la unidad 2).","Las referencias al cine primitivo y los trucos de Méliès recreados.","Sin enlace directo: busca en qué plataforma está (por ejemplo, con JustWatch)."]
+]]
+];
+function cine(){
+ app.innerHTML=`<a class="back" href="#/">Volver a las unidades</a><div class="panel"><h2>Cortos y películas para ver</h2>
+ <p class="nota-i">Selección para alumnado de 2.º de Bachillerato, agrupada por temática. Para cada título verás de qué trata y qué debes mirar con ojos de realizador. Los enlaces llevan a YouTube, Vimeo o Internet Archive: en algunos casos la copia la ha subido una persona ajena a los autores, y los enlaces pueden dejar de funcionar. Comprueba cada vídeo antes de proyectarlo; si no abre, búscalo por su título. En la unidad 8 (apartado «Cortometrajes para inspirarte») tienes más cortos.</p>
+ <div class="sticky"><b>Ficha de visionado en 4 líneas:</b> 1) ¿De qué trata y qué quiere contar? 2) ¿Qué planos, ángulos y movimientos usa? 3) ¿Qué papel tienen el sonido, la música y el silencio? 4) ¿Cómo se resuelve el final y por qué?</div>
+ <div class="btns">${CINE.map((g,i)=>`<button onclick="document.getElementById('c-${i}').scrollIntoView({behavior:'smooth'})">${g[0]}</button>`).join("")}</div>
+ ${CINE.map(([t,l],i)=>`<h3 id="c-${i}">${t}</h3><ul class="enl">${l.map(([n,d,u,tm,ob,av])=>`<li>${u?`<a href="${u}" target="_blank" rel="noopener">▶ ${n}</a>`:`<b>${n}</b>`} <small>(${d})</small><br><small><b>Temática:</b> ${tm}</small><br><small><b>Fíjate en:</b> ${ob}</small>${av?`<br><small>⚠️ ${av}</small>`:""}</li>`).join("")}</ul>`).join("")}</div>`;
+ document.title="Cortos y películas · Imagen y Sonido";
+ scrollTo(0,0);
+}
 function ruta(){
  const h=location.hash;
  let m;
@@ -825,6 +873,7 @@ function ruta(){
  else if(m=h.match(/^#\/bloque\/(\d+)$/))bloque(+m[1]);
  else if(h==="#/bloques")bloques();
  else if(h==="#/interes")interes();
+ else if(h==="#/cine")cine();
  else inicio();
  if(!/#\/(unidad|bloque)\/\d+/.test(h)||true){scrollTo(0,0);requestAnimationFrame(()=>scrollTo(0,0));setTimeout(()=>scrollTo(0,0),80)}
 }
