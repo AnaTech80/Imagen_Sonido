@@ -1,4 +1,4 @@
-const V_CONT="73";
+const V_CONT="76";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3300,4 +3300,73 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  const i=r.findIndex(b=>b[0]==="yt"&&b[1]==="QYNMOrp8rO8");
  if(i>=0)r[i][1]="tMOheYcb6MU";
  u.videos.forEach(v=>{if(v[0]==="QYNMOrp8rO8")v[0]="tMOheYcb6MU";});
+})();
+
+/* v75: actividad A2.5 — historia individual, vídeo en equipo de 2-3 personas, entrega y autoría */
+(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ const b=r.find(x=>x[0]==="act"&&/A2\.5/.test(x[1]));
+ if(!b)throw new Error("A2.5 no encontrada");
+ const a=b[2];
+ a.nota="la historia se escribe de forma individual, pero el vídeo se hace en equipo de 2 o 3 personas. Puedes grabar con el móvil, pero el montaje final debe hacerse con un programa de edición. La duración máxima es de 2 minutos.";
+ a.obj=[
+  "Escribir de forma individual una historia breve que condense mucho tiempo con una elipsis temporal.",
+  "Compartir tu idea con tu equipo y elegir entre todos la mejor, incorporando ideas de las demás personas.",
+  "Grabar y montar en equipo un vídeo de no más de 2 minutos en el que el paso del tiempo sea el protagonista.",
+  "Hacer visible el paso del tiempo con objetos, vestuario, luz, planos y transiciones, y dejar en el vídeo una evidencia de vuestra autoría."];
+ const marca='<h5>Tu caja de herramientas';
+ const bloque='<h5>Cómo se trabaja: de la idea individual al vídeo en equipo</h5><ol>'
+  +'<li><b>Fase individual.</b> Cada persona escribe su historia (dos párrafos como máximo) y la <b>entrega en AULES</b>.</li>'
+  +'<li><b>Fase de equipo.</b> Os juntáis en equipos de <b>2 o 3 personas</b>. Cada integrante presenta su idea y, <b>entre todos, elegís la mejor</b>, añadiendo lo que os guste de las ideas de las demás personas.</li>'
+  +'<li><b>Fase de producción.</b> Escribís la versión final, grabáis los planos y montáis el vídeo final (máximo 2 minutos).</li>'
+  +'<li><b>Entrega del vídeo.</b> La sube a AULES <b>solo una persona del equipo: la primera por orden de lista</b>. En la entrega debe escribir los <b>nombres de las demás personas del equipo</b>.</li></ol>'
+  +'<h5>Evidencia de autoría</h5><p>El vídeo tiene que demostrar que lo habéis hecho vosotros. Incluye <b>al menos una evidencia de autoría propia</b>: por ejemplo, <b>salir como personaje</b> (aunque sea de espaldas, con las manos o con la voz), un plano con un objeto o un lugar vuestro reconocible, o unos créditos finales con los nombres del equipo. Si alguien no quiere salir en imagen, puede aportar la voz, la música original o un elemento propio. Recuerda pedir permiso a todas las personas que aparezcan en el vídeo.</p>';
+ if(!a.explora.includes("Evidencia de autoría")&&a.explora.includes(marca))a.explora=a.explora.replace(marca,bloque+marca);
+ a.pasos=[
+  "<b>Escribe tu historia (individual).</b> Recomendable que no pase de dos párrafos. Mediante imágenes y saltos temporales, se tiene que ver mucho tiempo condensado en pocas palabras. Súbela a AULES.",
+  "<b>Poned las ideas en común (equipo de 2 o 3).</b> Leed las historias, elegid la mejor y mejoradla con ideas de todas las personas del equipo.",
+  "<b>Preparad el paso del tiempo.</b> Antes de filmar, pensad con cuidado en los objetos, los cambios de vestuario, el aspecto de los personajes y los cambios de luz que harán evidente el paso del tiempo.",
+  "<b>Filmad los planos de vuestra secuencia.</b> Podéis grabarlos en el orden que queráis: será en el montaje donde les deis el orden final. Grabad también algún plano de apoyo (detalles, relojes, ventanas) por si hace falta.",
+  "<b>Montad el vídeo final.</b> Con un programa de edición, ordenad los planos, ajustad los cortes y elegid las transiciones. ¡Recordad que el paso del tiempo debe ser el protagonista! La pieza no puede superar los 2 minutos y debe incluir una evidencia de vuestra autoría.",
+  "<b>Entregad.</b> La persona del equipo que aparezca primera por orden de lista sube el vídeo y anota en la entrega los nombres del resto del equipo."];
+ a.entrega="Hay dos entregas en AULES. <b>1) Individual:</b> tu historia escrita (máximo dos párrafos), nombrada «Apellidos, Nombre A2.5 historia». <b>2) De equipo:</b> el vídeo (máximo 2 minutos, en MP4), que sube <b>solo la primera persona del equipo por orden de lista</b>, nombrado «Apellidos, Nombre A2.5 vídeo» con sus propios apellidos y nombre, e indicando en el texto de la entrega los <b>nombres de las demás personas del equipo</b>. Si el vídeo pesa demasiado y lo subes a una plataforma con enlace, incluye ese enlace en el apartado de Comentarios de la entrega en AULES, y comprueba antes que cualquier persona que lo reciba puede verlo.";
+ const ru=a.rub;
+ const ie=ru.findIndex(x=>x[0]==="Idea e historia escrita");
+ if(ie>=0)ru[ie]=["Idea e historia escrita (individual)","Historia original y clara, en dos párrafos como máximo, pensada para condensar mucho tiempo, entregada en plazo","Historia correcta, con alguna imprecisión","Historia confusa o que no necesita elipsis","Sin historia escrita o fuera de plazo"];
+ const id=ru.findIndex(x=>x[0]==="Duración y entrega");
+ if(id>=0)ru[id]=["Duración y entrega","Dura 2 minutos o menos, en MP4, bien nombrado, lo sube la persona indicada y se indican los nombres del equipo","Entrega correcta con un pequeño fallo","Se pasa de duración o falla el nombre, el formato o la lista del equipo","Entrega fuera de formato o imposible de ver"];
+ if(!ru.some(x=>x[0]==="Autoría y trabajo en equipo"))ru.splice(id>=0?id:ru.length,0,["Autoría y trabajo en equipo","Incluye una evidencia clara de autoría y se nota que integra ideas de todo el equipo","Hay evidencia de autoría, con poca integración de ideas","La autoría es dudosa o solo se refleja la idea de una persona","Sin evidencia de autoría"]);
+ const t="Realiza la actividad A2.5 (creando con la elipsis temporal): escribe tu historia de forma individual y, después, graba y monta en equipo de 2 o 3 personas un vídeo de dos minutos como máximo; evalúalo con su rúbrica.";
+ const ia=u.actividades.findIndex(x=>/actividad A2\.5/.test(x));
+ if(ia>=0)u.actividades[ia]=t;
+})();
+
+/* v76: actividad A2.6 — se comparte por OneDrive y se entrega en blanco + resuelto de otra persona */
+(function(){
+ const u=CONTENIDO[2];
+ const b=u.rico.find(x=>x[0]==="act"&&/A2\.6/.test(x[1]));
+ if(!b)throw new Error("A2.6 no encontrada");
+ const a=b[2];
+ const bloque='<h5>Cómo se comparte y se resuelve</h5><ol>'
+  +'<li><b>Guarda tu crucigrama en blanco</b> (cuadrícula numerada y pistas, sin la solución) en <b>OneDrive</b>.</li>'
+  +'<li><b>Compártelo con permiso de edición</b> con otra persona de la clase, para que pueda escribir las respuestas en él. Lo más sencillo es hacerlo por parejas cruzadas: tú resuelves el suyo y esa persona resuelve el tuyo. Asegúrate de que todos los crucigramas tienen quien los resuelva.</li>'
+  +'<li><b>Resuelve el crucigrama</b> que te hayan compartido, sin mirar el glosario más de lo necesario, y avisa a su autor o autora si alguna pista no se entiende.</li>'
+  +'<li><b>Mejora tu crucigrama</b> con lo que te cuente quien lo ha resuelto: pistas confusas, cruces con errores o palabras que no ha podido encontrar.</li></ol>';
+ const marca='<h5>Plantilla 1: ejemplo resuelto</h5>';
+ if(!a.explora.includes("Cómo se comparte y se resuelve")&&a.explora.includes(marca))a.explora=a.explora.replace(marca,bloque+marca);
+ a.explora=a.explora.replace("<li><b>Prueba final:</b> pide a una persona que lo resuelva sin ayuda y corrige las pistas que no entienda.</li>","<li><b>Prueba final:</b> otra persona de la clase lo resuelve sin ayuda (lo compartes por OneDrive) y corriges las pistas que no entienda.</li>");
+ a.pasos=[
+  "<b>Elige tus palabras.</b> Repasa el glosario y tus apuntes y selecciona 15 o más, cubriendo los cuatro bloques.",
+  "<b>Escribe una definición propia</b> para cada palabra en la lista (plantilla 2), sin decir la palabra.",
+  "<b>Construye la cuadrícula.</b> Empieza por la palabra más larga y cruza el resto por letras comunes (plantilla 3 o tu herramienta).",
+  "<b>Numera y ordena las pistas</b> en Horizontales y Verticales. Guarda una copia en blanco (sin solución).",
+  "<b>Compártelo en OneDrive con permiso de edición</b> con otra persona de la clase, para que lo resuelva.",
+  "<b>Resuelve el crucigrama de otra persona</b> y mejora el tuyo con sus comentarios.",
+  "<b>Entrega en AULES</b> tu crucigrama en blanco y el crucigrama que has resuelto de otra persona."];
+ a.entrega="Sube a AULES <b>dos archivos</b> (PDF o el formato en que lo hayas hecho). <b>1) Tu crucigrama en blanco:</b> cuadrícula numerada y pistas (Horizontales y Verticales), sin la solución, nombrado «Apellidos, Nombre A2.6 en blanco». <b>2) El crucigrama que has resuelto de otra persona:</b> con las respuestas escritas, nombrado «Apellidos, Nombre A2.6 resuelto» e indicando en el texto de la entrega <b>de quién es</b>. Si lo has hecho en Canva u otra plataforma con enlace, escribe el enlace en el apartado de <b>Comentarios</b> de la entrega y comprueba que cualquiera puede verlo.";
+ const ru=a.rub;
+ const i=ru.findIndex(x=>x[0]==="Comprobación y entrega");
+ if(i>=0)ru[i]=["Comprobación y entrega","Compartido en OneDrive, resuelto por otra persona, mejorado con sus comentarios; sube el crucigrama en blanco y el resuelto de otra persona, bien nombrados","Entrega correcta con un pequeño fallo (nombre, de quién es o falta el enlace)","Falta alguno de los dos archivos, o el resuelto está sin completar","Entrega incompleta o fuera de formato"];
+ const ia=u.actividades.findIndex(x=>/actividad A2\.6/.test(x));
+ if(ia>=0)u.actividades[ia]="Realiza la actividad A2.6 (crucigrama audiovisual) con al menos 15 palabras de las unidades 1 y 2, compártelo en OneDrive con otra persona para que lo resuelva, resuelve el suyo y evalúalo con su rúbrica.";
 })();

@@ -163,7 +163,7 @@ main h2{margin:.2rem 0 .6rem;font-size:1.7rem;line-height:1.15}
 <button id="arriba" aria-label="Subir al inicio" title="Subir al inicio">↑</button>
 <script src="unidades.js"></script>
 <script>
-const V_INDEX="73";
+const V_INDEX="76";
 // Fuente de los bloques: currículo de Imagen y Sonido (GVA), Decreto 108/2022. Pendiente de revisión.
 const BLOQUES=[
  {t:"Imagen",g:[
@@ -857,12 +857,26 @@ const CINE=[
 ["La invención de Hugo","Martin Scorsese · EE. UU., 2011 · unas 2 h","","Cine, memoria y homenaje a Georges Méliès (lo conoces de la unidad 2).","Las referencias al cine primitivo y los trucos de Méliès recreados.","Sin enlace directo: busca en qué plataforma está (por ejemplo, con JustWatch)."]
 ]]
 ];
+
+const CINE_ALT={
+"El viaje de Said":["https://www.youtube.com/watch?v=Vj_uTysl3kI","https://vimeo.com/16037500"],
+"Binta y la gran idea":["https://www.youtube.com/watch?v=meLXFLl1FE8","https://vimeo.com/84569319"],
+"El empleo":["https://www.youtube.com/watch?v=GvUsQ64REXs","https://vimeo.com/32966847"],
+"Madre":["https://www.youtube.com/watch?v=C3xcP0b3QtE","https://vimeo.com/161940404"],
+"Timecode":["https://www.youtube.com/watch?v=EtfI81Edspo","https://vimeo.com/165890547"],
+"Un perro andaluz":["https://www.youtube.com/watch?v=DZvK9feAoZA","https://archive.org/details/un-chien-andalou__1929-film__luis_bunuel"],
+"La jetée":["https://www.youtube.com/watch?v=WInLeJdwBz4","https://archive.org/details/vimeo-165899598"],
+"El acorazado Potemkin":["https://www.youtube.com/watch?v=DWhxQYoaGuc","https://archive.org/details/BattleshipPotemkin"],
+"Nosferatu":["https://www.youtube.com/watch?v=Y4yJ9S3P6aA","https://archive.org/details/nosferatu-1922_202504"]
+};
+CINE.forEach(g=>g[1].forEach(it=>{const a=CINE_ALT[it[0]];if(a){it[2]=a[0];it[5]=it[5]||"";it[6]=a[1];}}));
 function cine(){
  app.innerHTML=`<a class="back" href="#/">Volver a las unidades</a><div class="panel"><h2>Cortos y películas para ver</h2>
  <p class="nota-i">Selección para alumnado de 2.º de Bachillerato, agrupada por temática. Para cada título verás de qué trata y qué debes mirar con ojos de realizador. Los enlaces llevan a YouTube, Vimeo o Internet Archive: en algunos casos la copia la ha subido una persona ajena a los autores, y los enlaces pueden dejar de funcionar. Comprueba cada vídeo antes de proyectarlo; si no abre, búscalo por su título. En la unidad 8 (apartado «Cortometrajes para inspirarte») tienes más cortos.</p>
+ <div class="nota"><b>Desde la red del instituto:</b> si un enlace da «la conexión no es privada», suele ser el filtro del centro y no el enlace. Hay vídeos de YouTube o Vimeo marcados «solo para adultos» que piden iniciar sesión. Lo más seguro es <b>probar y preparar el vídeo antes</b> de la clase (en casa o con datos del móvil) y tenerlo descargado o abierto en una pestaña. Si falla de forma habitual, pide al coordinador o coordinadora TIC del centro que lo revise.</div>
  <div class="sticky"><b>Ficha de visionado en 4 líneas:</b> 1) ¿De qué trata y qué quiere contar? 2) ¿Qué planos, ángulos y movimientos usa? 3) ¿Qué papel tienen el sonido, la música y el silencio? 4) ¿Cómo se resuelve el final y por qué?</div>
  <div class="btns">${CINE.map((g,i)=>`<button onclick="document.getElementById('c-${i}').scrollIntoView({behavior:'smooth'})">${g[0]}</button>`).join("")}</div>
- ${CINE.map(([t,l],i)=>`<h3 id="c-${i}">${t}</h3><ul class="enl">${l.map(([n,d,u,tm,ob,av])=>`<li>${u?`<a href="${u}" target="_blank" rel="noopener">▶ ${n}</a>`:`<b>${n}</b>`} <small>(${d})</small><br><small><b>Temática:</b> ${tm}</small><br><small><b>Fíjate en:</b> ${ob}</small>${av?`<br><small>⚠️ ${av}</small>`:""}</li>`).join("")}</ul>`).join("")}</div>`;
+ ${CINE.map(([t,l],i)=>`<h3 id="c-${i}">${t}</h3><ul class="enl">${l.map(([n,d,u,tm,ob,av,al])=>`<li>${u?`<a href="${u}" target="_blank" rel="noopener">▶ ${n}</a>`:`<b>${n}</b>`} <small>(${d})${al?` · <a href="${al}" target="_blank" rel="noopener">enlace alternativo</a>`:""}</small><br><small><b>Temática:</b> ${tm}</small><br><small><b>Fíjate en:</b> ${ob}</small>${av?`<br><small>⚠️ ${av}</small>`:""}</li>`).join("")}</ul>`).join("")}</div>`;
  document.title="Cortos y películas · Imagen y Sonido";
  scrollTo(0,0);
 }
