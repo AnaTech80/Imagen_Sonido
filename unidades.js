@@ -1,4 +1,4 @@
-const V_CONT="79";
+const V_CONT="80";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3454,4 +3454,50 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  const t="Realiza la actividad A2.7 (cine fórum): tras ver una película en clase, rellena la ficha de análisis con los conceptos de las unidades 1 y 2 y evalúala con su rúbrica.";
  const ia=u.actividades.findIndex(x=>/actividad A2\.6/.test(x));
  if(!u.actividades.includes(t))u.actividades.splice(ia>=0?ia+1:u.actividades.length,0,t);
+})();
+
+/* v80: A2.5 — ajustes del móvil, editores para Android y tutoriales; A2.6 — PDF pesado */
+(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ const a5=r.find(b=>b[0]==="act"&&/A2\.5/.test(b[1]));
+ if(a5){
+  const a=a5[2];
+  const tips='<h5>Antes de grabar: ajustes básicos de la cámara del móvil</h5><ul>'
+   +'<li><b>Limpia la lente</b> con un paño suave: una huella en el objetivo estropea todos los planos.</li>'
+   +'<li><b>Graba en horizontal.</b> En vertical aparecen bandas negras a los lados al verlo en el ordenador o en clase.</li>'
+   +'<li><b>Resolución y fotogramas:</b> en los ajustes de la cámara de vídeo elige <b>Full HD (1080p) a 30 fps</b>. El 4K pesa mucho y se hace lento al montar. Usa los <b>mismos ajustes en todos los planos</b>.</li>'
+   +'<li><b>Activa la cuadrícula</b> (rejilla) para aplicar la regla de los tercios y mantener recto el horizonte.</li>'
+   +'<li><b>Enfoque y exposición:</b> toca la pantalla sobre el motivo y, si tu móvil lo permite, mantén pulsado para <b>bloquear el enfoque y la luz</b>. Así no cambian a mitad del plano.</li>'
+   +'<li><b>No uses el zoom digital:</b> pierde calidad. Acércate tú o usa la lente del móvil pensada para acercar.</li>'
+   +'<li><b>Estabilidad:</b> apoya el móvil en una superficie, usa un trípode o pega los codos al cuerpo. Activa la estabilización de vídeo si existe.</li>'
+   +'<li><b>Luz:</b> mejor luz natural y con la luz de lado o desde atrás de la cámara. Evita el contraluz si no lo buscas a propósito. Apaga el flash y los filtros de belleza.</li>'
+   +'<li><b>Sonido:</b> acércate a quien habla, evita el viento y graba unos segundos de silencio para poder limpiar el ruido al montar.</li>'
+   +'<li><b>Antes de empezar:</b> comprueba la batería y el espacio libre, y activa «No molestar» para que ninguna llamada interrumpa.</li>'
+   +'<li><b>Margen de montaje:</b> empieza a grabar unos segundos antes de la acción y para unos segundos después. Graba también planos de apoyo.</li></ul>'
+   +'<p>Más consejos de rodaje y montaje, de la secuencia «Producir, montar y compartir» del INTEF y Red.es: <a href="https://descargas.intef.es/recursos_educativos/RED_ES/04_Bachillerato/1/B_1_067_2025_1055/producir_montar_y_compartir_dar_vida_a_la_pieza_audiovisual.html" target="_blank" rel="noopener">abrir la guía</a>.</p>';
+  const marca='<h5>Tu caja de herramientas';
+  if(!a.explora.includes("ajustes básicos de la cámara del móvil")&&a.explora.includes(marca))a.explora=a.explora.replace(marca,tips+marca);
+  const ini=a.explora.indexOf("<h5>Programas para montar");
+  const prog='<h5>Programas para montar: gratuitos y sin registro</h5><ul>'
+   +'<li><b>Ordenador:</b> <b>Kdenlive</b> es libre y gratuito, no pide cuenta, no pone marca de agua y tus archivos se quedan en tu equipo. Es el que se trabaja en la unidad 6. Otras opciones libres: <b>Shotcut</b> y <b>OpenShot</b>.</li>'
+   +'<li><b>iPhone o iPad:</b> <b>iMovie</b>, gratuita y sin crear cuentas nuevas. Se descarga solo desde la tienda oficial.</li></ul>'
+   +'<h5>Editores para móvil Android</h5>'
+   +'<div class="tw"><table><thead><tr><th>App</th><th>Gratis</th><th>¿Pide cuenta?</th><th>Marca de agua</th><th>Cuidado con…</th></tr></thead><tbody>'
+   +'<tr><td><b>VN Editor de vídeo</b></td><td>Sí</td><td>No es necesaria para editar</td><td>No</td><td>Si te ofrece iniciar sesión, omítelo.</td></tr>'
+   +'<tr><td><b>CapCut</b></td><td>Sí, con funciones de pago</td><td>No es necesaria para editar</td><td>No</td><td>No inicies sesión con TikTok ni con Google, y no subas proyectos a su nube. Rechaza las plantillas y efectos premium.</td></tr>'
+   +'<tr><td><b>InShot</b></td><td>Sí, con anuncios</td><td>No es necesaria</td><td>Sí, salvo que veas un anuncio o pagues</td><td>Es la opción menos cómoda: úsala solo si no puedes instalar las otras.</td></tr>'
+   +'<tr><td><b>Editor de la galería</b></td><td>Sí, ya viene instalado</td><td>No</td><td>No</td><td>Solo para cortes sencillos; no sirve para montar varios planos con transiciones.</td></tr></tbody></table></div>'
+   +'<p><b>Recomendamos empezar por VN.</b> Estos datos se han comprobado en las webs oficiales y en reseñas, pero las apps cambian sus condiciones: <b>mira lo que te pide al abrirla</b> antes de aceptar nada.</p>'
+   +'<p><b>Normas para instalar:</b> descarga solo desde <b>Google Play</b>, nunca archivos APK ni versiones «Mod» o «Pro gratis» de otras webs, porque suelen llevar virus. No aceptes permisos que no necesitas (contactos, ubicación…). Si el vídeo pesa mucho para subirlo a AULES, expórtalo en <b>1080p o 720p a 30 fps</b>.</p>'
+   +'<h5>Tutoriales para aprender a montar</h5><ul>'
+   +'<li><a href="https://www.youtube.com/results?search_query=VN+video+editor+tutorial+espa%C3%B1ol+principiantes" target="_blank" rel="noopener">Tutoriales de VN en español</a></li>'
+   +'<li><a href="https://www.youtube.com/results?search_query=CapCut+tutorial+espa%C3%B1ol+principiantes+m%C3%B3vil" target="_blank" rel="noopener">Tutoriales de CapCut en español</a></li>'
+   +'<li><a href="https://www.youtube.com/results?search_query=InShot+tutorial+espa%C3%B1ol+principiantes" target="_blank" rel="noopener">Tutoriales de InShot en español</a></li>'
+   +'<li><a href="https://www.youtube.com/results?search_query=Kdenlive+tutorial+espa%C3%B1ol+principiantes" target="_blank" rel="noopener">Tutoriales de Kdenlive en español</a></li></ul>'
+   +'<p>Hay más en <a href="#/interes">Páginas de interés</a>. Busca tutoriales de pocos minutos y recientes: las apps cambian mucho el aspecto de los menús.</p>'
+   +'<p><b>Antes de instalar nada,</b> evita aplicaciones que te obliguen a registrarte o que pidan permisos que no necesitan, y consulta con tu profesora si dudas. Y recuerda pedir permiso a todas las personas que aparezcan en tu vídeo.</p>';
+  if(ini>=0)a.explora=a.explora.slice(0,ini)+prog;
+ }
+ const a6=r.find(b=>b[0]==="act"&&/A2\.6/.test(b[1]));
+ if(a6&&!/PDF24/.test(a6[2].entrega))a6[2].entrega+=' <b>Si el PDF pesa demasiado para AULES,</b> puedes reducirlo con la herramienta «Comprimir PDF» de <a href="https://tools.pdf24.org/es/" target="_blank" rel="noopener">PDF24 Tools</a> (no subas documentos con datos personales).';
 })();
