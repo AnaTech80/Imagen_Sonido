@@ -1,4 +1,4 @@
-const V_CONT="76";
+const V_CONT="79";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3369,4 +3369,89 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  if(i>=0)ru[i]=["Comprobación y entrega","Compartido en OneDrive, resuelto por otra persona, mejorado con sus comentarios; sube el crucigrama en blanco y el resuelto de otra persona, bien nombrados","Entrega correcta con un pequeño fallo (nombre, de quién es o falta el enlace)","Falta alguno de los dos archivos, o el resuelto está sin completar","Entrega incompleta o fuera de formato"];
  const ia=u.actividades.findIndex(x=>/actividad A2\.6/.test(x));
  if(ia>=0)u.actividades[ia]="Realiza la actividad A2.6 (crucigrama audiovisual) con al menos 15 palabras de las unidades 1 y 2, compártelo en OneDrive con otra persona para que lo resuelva, resuelve el suyo y evalúalo con su rúbrica.";
+})();
+
+/* v77: vídeos «Cómo se hicieron» (unidad 2) */
+(function(){
+ const u=CONTENIDO[2],v=u.videos,ap="Cómo se hicieron: el cine por dentro";
+ const nuevos=[
+  ["n_6OWFON7ZU","Titanic (1997): así se hizo",ap],
+  ["Grh9x4mfXis","Titanic (1997): composición de efectos digitales (sub. español)",ap],
+  ["YlDHdLT36Dw","Matrix (1999): el «bullet time»",ap],
+  ["xN70T8qCcFM","Jurassic Park (1993): construyendo el animatronic de Rexy",ap],
+  ["5Fr6MuZ0eFM","La guerra de las galaxias (1977): cómo se hizo",ap],
+  ["z2h4qg0215Y","El Señor de los Anillos (2001): la perspectiva forzada que hizo pequeños a los hobbits",ap],
+  ["OJ1JzYPjcj0","Avatar (2009): captura de movimiento",ap],
+  ["vtRjKSiwv5U","Origen (2010): making of",ap],
+  ["YjqViXJPvog","Gravity (2013): cómo se filmó",ap],
+  ["yEULlTitcek","Mad Max: Furia en la carretera (2015): detrás de las cámaras",ap],
+  ["mrzr9GRnBEI","1917 (2019): cómo se hizo el falso plano secuencia",ap]];
+ nuevos.forEach(n=>{if(!v.some(x=>x[0]===n[0]))v.push(n)});
+})();
+
+/* v78: «Cómo se hicieron»: se quitan los vídeos no disponibles o antiguos y se ponen otros recientes */
+(function(){
+ const u=CONTENIDO[2],ap="Cómo se hicieron: el cine por dentro";
+ const quitar=["Grh9x4mfXis","z2h4qg0215Y","yEULlTitcek","YjqViXJPvog","YlDHdLT36Dw","xN70T8qCcFM","5Fr6MuZ0eFM","OJ1JzYPjcj0","vtRjKSiwv5U"];
+ u.videos=u.videos.filter(x=>!quitar.includes(x[0]));
+ const nuevos=[
+  ["7DDEvcMK3wY","Misión Imposible: Sentencia mortal (2023): detrás de las escenas",ap],
+  ["5bPy4_F2kCo","El reino del planeta de los simios (2024): el detrás de cámaras",ap],
+  ["oLnV8p_dIsU","Lo imposible (2012): efectos especiales del tsunami",ap],
+  ["H8XUbh6Wtus","Lo imposible (2012): cómo se rodó el tsunami (corto)",ap],
+  ["ESu5chHAvfA","La sociedad de la nieve (2023): detrás de cámaras de la avalancha",ap],
+  ["0ca9EiA3wMo","Top Gun: Maverick (2022): cómo se rodaron las escenas de vuelo",ap],
+  ["MH--BhQW24Y","Dune: Parte dos (2024): detrás de las cámaras en el desierto",ap],
+  ["gHB6xAE1tmI","Oppenheimer (2023): la bomba atómica sin efectos digitales",ap],
+  ["OADqt6KPf2o","Avatar: El camino del agua (2022): detrás de cámaras",ap]];
+ nuevos.forEach(n=>{if(!u.videos.some(x=>x[0]===n[0]))u.videos.push(n)});
+})();
+
+/* v79: «Cómo se hicieron» (se quitan 2, se añaden vídeos de animación) y actividad A2.7 de cine fórum */
+(function(){
+ const u=CONTENIDO[2],ap="Cómo se hicieron: el cine por dentro";
+ const quitar=["H8XUbh6Wtus","OADqt6KPf2o"];
+ u.videos=u.videos.filter(x=>!quitar.includes(x[0]));
+ [["VZ__r7MEFBs","Avatar: El camino del agua (2022): el detrás de cámaras",ap],
+  ["pEAc1y_I1jE","Klaus (2019): un juego de luces en animación 2D",ap],
+  ["PITNvuEV0Co","Spider-Man: Cruzando el Multiverso (2023): cómo se animó",ap],
+  ["yASq1C7LSDI","Pinocho de Guillermo del Toro (2022): detrás de cámaras del stop motion",ap],
+  ["kHnSjWFr6ec","¿Cómo se hacen las películas de animación 3D? (Disney y Pixar)",ap]
+ ].forEach(n=>{if(!u.videos.some(x=>x[0]===n[0]))u.videos.push(n)});
+
+ const r=u.rico;
+ if(r.some(b=>b[0]==="act"&&/A2\.7/.test(b[1])))return;
+ const ficha='<div class="tw"><table><thead><tr><th>Apartado</th><th>Qué tienes que anotar</th></tr></thead><tbody>'
+  +'<tr><td><b>1. Ficha</b></td><td>Título, año y dirección. Género y, si lo ves, subgénero. ¿Ficción o no ficción? ¿Qué propósito tiene (narrativo, descriptivo, expositivo o argumentativo)?</td></tr>'
+  +'<tr><td><b>2. Composición</b></td><td>Elige <b>una imagen</b> que recuerdes. Indica el motivo, el fondo y una regla de composición que se vea (centro de interés, tercios, espacio activo, líneas, enmarcado…). ¿Qué tipo de composición predomina y qué transmite?</td></tr>'
+  +'<tr><td><b>3. Planos y ángulos</b></td><td>Elige <b>un plano</b> que te haya impactado: su escala (general, medio, primer plano…), su angulación (picado, contrapicado…) y el efecto que consigue en quien mira.</td></tr>'
+  +'<tr><td><b>4. Movimiento y montaje</b></td><td>Un movimiento de cámara que recuerdes (panorámica, travelling, zoom…). ¿El montaje es más narrativo o más expresivo? ¿Notaste elipsis, transiciones o un montaje alternado? ¿Viste algún fallo de raccord?</td></tr>'
+  +'<tr><td><b>5. Mensaje</b></td><td>Una figura retórica, un símbolo o una metáfora visual. ¿Qué quiere conseguir la película y cómo lo consigue?</td></tr>'
+  +'<tr><td><b>6. Opinión crítica</b></td><td>¿Qué valores transmite? ¿Qué te ha parecido y por qué? Razona tu respuesta con al menos <b>dos conceptos</b> de las unidades 1 y 2.</td></tr></tbody></table></div>';
+ const act=["act","Actividad A2.7. Cine fórum: analizo la película que hemos visto",{
+  chip:"Unidades 1 y 2 · Imagen y Sonido",
+  nota:"esta actividad sirve para cualquier película o cortometraje que veamos en clase. Mientras la ves, apunta ideas; al terminar, escribe tu reflexión con los conceptos de las unidades 1 y 2.",
+  obj:["Aplicar a una película real los conceptos de las unidades 1 y 2: género, composición, planos, ángulos, movimiento y montaje.","Justificar con ejemplos concretos de la película lo que dices, en lugar de limitarte a «me gusta» o «no me gusta».","Desarrollar el sentido crítico: qué cuenta la película, cómo lo cuenta y qué valores transmite."],
+  explora:"<p>Al final de la sesión de cine, dedica los últimos 10-15 minutos a rellenar esta <b>ficha de análisis</b>. No hace falta recordarlo todo: elige <b>una imagen</b> y <b>un plano</b> y analízalos bien. Es mejor un ejemplo claro que muchos vagos.</p>"+ficha
+   +"<h5>Consejos para anotar mientras ves la película</h5><ul>"
+   +"<li><b>Apunta tiempos:</b> si puedes, anota el minuto aproximado en el que ocurre lo que te llama la atención, para encontrarlo después.</li>"
+   +"<li><b>Escribe palabras clave:</b> «contrapicado, rey», «panorámica, paisaje»… bastan dos o tres palabras que te recuerden la escena.</li>"
+   +"<li><b>Mira cómo se cuenta:</b> no solo qué pasa, sino con qué plano, desde qué ángulo y con qué corte.</li></ul>"
+   +"<h5>Cómo se hace una buena reflexión</h5><ul>"
+   +"<li><b>Describe, interpreta, valora.</b> Primero qué ves, después qué significa y por último qué opinas.</li>"
+   +"<li><b>Usa el vocabulario de la unidad</b> (consulta el glosario si lo necesitas), pero explícalo con tus palabras.</li>"
+   +"<li><b>Argumenta.</b> Cada opinión lleva un «porque» y un ejemplo de la película.</li></ul>",
+  pasos:["<b>Durante la película</b>, apunta en un papel palabras clave de las imágenes, planos y escenas que te llamen la atención.","<b>Al terminar</b>, elige una imagen y un plano y rellena los seis apartados de la ficha.","<b>Revisa</b> que has usado al menos dos conceptos de la unidad 1 y dos de la unidad 2, bien explicados.","<b>Comparte</b> con la clase, si hay tiempo, una de tus ideas: ¿coincide con la de tus compañeros y compañeras?"],
+  entrega:"Entrega la ficha en el formato que indique el profesorado: en papel al terminar la sesión o en AULES, nombrada «Apellidos, Nombre A2.7» y con el título de la película. Extensión orientativa: una página.",
+  rub:[
+   ["Uso de los conceptos","Aplica con precisión al menos cuatro conceptos de las unidades 1 y 2","Aplica tres conceptos, con alguna imprecisión","Aplica uno o dos, con errores","No usa conceptos de la unidad"],
+   ["Ejemplos de la película","Cada idea se apoya en un ejemplo concreto y bien descrito","La mayoría de ideas tienen ejemplo","Ejemplos vagos o genéricos","Sin ejemplos"],
+   ["Opinión crítica","Razona su opinión y los valores de la película con argumentos propios","Opinión razonada, pero poco desarrollada","Opinión sin argumentos","Sin opinión"],
+   ["Claridad y presentación","Ficha completa, ordenada y bien redactada","Completa, con algún fallo de orden o redacción","Incompleta o confusa","No se entiende o no se entrega"]],
+  amp:["Reto extra: compara esta película con otra que hayamos visto y dime qué hace diferente el lenguaje audiovisual de cada una.","Reto extra: busca un fotograma de la película y analiza su composición con las diez reglas de la unidad 1."]}];
+ const iA=r.findIndex(b=>b[0]==="act"&&/A2\.6/.test(b[1]));
+ r.splice(iA>=0?iA+1:r.length,0,act);
+ const t="Realiza la actividad A2.7 (cine fórum): tras ver una película en clase, rellena la ficha de análisis con los conceptos de las unidades 1 y 2 y evalúala con su rúbrica.";
+ const ia=u.actividades.findIndex(x=>/actividad A2\.6/.test(x));
+ if(!u.actividades.includes(t))u.actividades.splice(ia>=0?ia+1:u.actividades.length,0,t);
 })();

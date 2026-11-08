@@ -163,7 +163,7 @@ main h2{margin:.2rem 0 .6rem;font-size:1.7rem;line-height:1.15}
 <button id="arriba" aria-label="Subir al inicio" title="Subir al inicio">↑</button>
 <script src="unidades.js"></script>
 <script>
-const V_INDEX="76";
+const V_INDEX="79";
 // Fuente de los bloques: currículo de Imagen y Sonido (GVA), Decreto 108/2022. Pendiente de revisión.
 const BLOQUES=[
  {t:"Imagen",g:[
@@ -675,13 +675,15 @@ function intro(c){
  if(c.clase)it.push(["clase","Para trabajar con toda la clase"]);
  if(c.quiz)it.push(["autoeval","Autoevaluación"]);
  if(c.mapa)it.push(["mapa","Mapa conceptual"]);
- it.push(["glosario","Glosario"]);if(c.videos)it.push(["videos","Vídeos recomendados"]);it.push(["refs","Referencias curriculares"]);
+ it.push(["glosario","Glosario"]);if(c.videos){it.push(["videos","Vídeos recomendados"]);if(c.videos.some(v=>/^Cómo se hicieron/.test(v[2])))it.push(["videos-hicieron","Cómo se hicieron: el cine por dentro",1])}it.push(["refs","Referencias curriculares"]);
  return {obj:x,toc:`<nav class="toc"><b>En esta unidad</b>${tocLista(it)}</nav>`};
 }
 
 function videosSec(c){
  if(!c.videos||!c.videos.length)return"";
- return `<h3 id="videos">Vídeos recomendados</h3><p class="nota-i">Selección de vídeos para ver en el aula. Cada tarjeta indica el apartado al que apoya y su duración, para que puedas calcular si cabe en el tiempo que queda de clase. Revísalos antes de proyectarlos.</p><div class="vgrid" data-vg>${c.videos.map(([id,t,ap,hint,st])=>`<div class="vitem" id="v-${id}"><div class="vcard"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" onerror="this.style.display='none'"><button class="play" data-yt="${id}" data-t="${st||0}" aria-label="Reproducir vídeo">▶</button></div><b class="vt">${t}</b><span class="vap">Apartado: ${ap}</span><span class="dur" data-dur="${id}"${hint?` data-hint="${hint}"`:""}>⏱ duración: se mide con conexión</span><a href="https://www.youtube.com/watch?v=${id}${st?"&t="+st+"s":""}" target="_blank" rel="noopener">Abrir en YouTube</a></div>`).join("")}</div><p class="vtot" aria-live="polite"></p>`;
+ const MK=v=>/^Cómo se hicieron/.test(v[2]),A=c.videos.filter(v=>!MK(v)),B=c.videos.filter(MK);
+ const tarj=L=>`<div><div class="vgrid" data-vg>${L.map(([id,t,ap,hint,st])=>`<div class="vitem" id="v-${id}"><div class="vcard"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" onerror="this.style.display='none'"><button class="play" data-yt="${id}" data-t="${st||0}" aria-label="Reproducir vídeo">▶</button></div><b class="vt">${t}</b>${/^Cómo se hicieron/.test(ap)?"":`<span class="vap">Apartado: ${ap}</span>`}<span class="dur" data-dur="${id}"${hint?` data-hint="${hint}"`:""}>⏱ duración: se mide con conexión</span><a href="https://www.youtube.com/watch?v=${id}${st?"&t="+st+"s":""}" target="_blank" rel="noopener">Abrir en YouTube</a></div>`).join("")}</div><p class="vtot" aria-live="polite"></p></div>`;
+ return `<h3 id="videos">Vídeos recomendados</h3><p class="nota-i">Selección de vídeos para ver en el aula. Cada tarjeta indica el apartado al que apoya y su duración, para que puedas calcular si cabe en el tiempo que queda de clase. Revísalos antes de proyectarlos.${B.length?" Al final tienes el grupo «Cómo se hicieron», con películas emblemáticas y los trucos de rodaje, cámara y efectos que las hicieron posibles.":""}</p>${tarj(A)}`+(B.length?`<h4 id="videos-hicieron">Cómo se hicieron: el cine por dentro</h4><p class="nota-i">Vídeos de «detrás de las cámaras» de películas actuales, de imagen real y de animación. Sirven para ver en la práctica la escala de plano, la angulación, el movimiento de cámara y los escenarios que se han estudiado en estas unidades.</p>${tarj(B)}`:"");
 }
 const fmtDur=s=>s<60?Math.round(s)+" s":(Math.floor(s/60)+" min"+(Math.round(s%60)?" "+String(Math.round(s%60)).padStart(2,"0")+" s":""));
 function durGet(id){try{const v=+localStorage.getItem("dur:"+id);return v>0?v:0}catch(e){return 0}}
