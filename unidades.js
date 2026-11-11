@@ -1,4 +1,4 @@
-const V_CONT="80";
+const V_CONT="81";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3500,4 +3500,12 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  }
  const a6=r.find(b=>b[0]==="act"&&/A2\.6/.test(b[1]));
  if(a6&&!/PDF24/.test(a6[2].entrega))a6[2].entrega+=' <b>Si el PDF pesa demasiado para AULES,</b> puedes reducirlo con la herramienta «Comprimir PDF» de <a href="https://tools.pdf24.org/es/" target="_blank" rel="noopener">PDF24 Tools</a> (no subas documentos con datos personales).';
+})();
+
+/* v81: A2.5 — el reto extra suma 0,5 puntos (bonificación, máximo 10) */
+(function(){
+ const a5=CONTENIDO[2].rico.find(b=>b[0]==="act"&&/A2\.5/.test(b[1]));
+ if(!a5)return;
+ const a=a5[2];
+ a.amp=["Reto extra (+0,5 puntos): incluye un match-cut o un encadenado que una dos momentos distintos por su forma, su color o su movimiento. Es voluntario: suma <b>0,5 puntos</b> a la nota de la actividad, sin pasar de 10, y no entra en la rúbrica. Un encadenado sin esa relación entre las dos imágenes no cuenta."];
 })();
