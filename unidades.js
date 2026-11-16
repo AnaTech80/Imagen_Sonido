@@ -1,4 +1,4 @@
-const V_CONT="81";
+const V_CONT="82";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3508,4 +3508,55 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  if(!a5)return;
  const a=a5[2];
  a.amp=["Reto extra (+0,5 puntos): incluye un match-cut o un encadenado que una dos momentos distintos por su forma, su color o su movimiento. Es voluntario: suma <b>0,5 puntos</b> a la nota de la actividad, sin pasar de 10, y no entra en la rúbrica. Un encadenado sin esa relación entre las dos imágenes no cuenta."];
+})();
+
+/* v82: unidad 3 — actividad A3.1 «Storyboard de una persecución» */
+(function(){
+ const u=CONTENIDO[3],r=u.rico;
+ if(r.some(b=>b[0]==="act"&&/A3\.1/.test(b[1])))return;
+ const celda="border:1px solid var(--line);padding:.4rem;vertical-align:top";
+ const vacio='<div style="min-height:70px"></div>';
+ const filas=[
+  ['1','Ejemplo: el protagonista camina por el pasillo con la maleta','Plano entero','Normal','Travelling de acompañamiento','Pasos y ruedas de la maleta. Ambiente de aeropuerto.','Corte'],
+  ['2',vacio,'','','','',''],['3',vacio,'','','','',''],['4',vacio,'','','','','']];
+ const tabla='<div class="tw"><table><thead><tr><th>Nº</th><th>Dibujo</th><th>Plano (escala)</th><th>Ángulo</th><th>Movimiento</th><th>Acción y sonido</th><th>Transición</th></tr></thead><tbody>'
+  +filas.map(f=>'<tr><td style="'+celda+'">'+f[0]+'</td><td style="'+celda+'">'+f[1]+'</td>'+f.slice(2).map(x=>'<td style="'+celda+'">'+(x||"&nbsp;")+'</td>').join("")+'</tr>').join("")
+  +'</tbody></table></div>';
+ const guion='<div class="box ej"><b>GUION</b><br><b>SECUENCIA 1. PASILLOS AEROPUERTO EXT. / DÍA</b><br>'
+  +'El protagonista va andando por el pasillo con una maleta en la mano, se detiene y saca del bolsillo interior de la chaqueta un billete de avión, le da un beso sonriendo y se lo vuelve a guardar. El protagonista sigue caminando, le parece oír unos pasos tras él, se gira pero no ve a nadie. Acelerando el paso sube las escaleras, tropieza y se le cae la maleta escaleras abajo; se levanta, se ha hecho daño en el tobillo. Renqueante baja y recoge su maleta, algo le hace mirar hacia arriba, a unos metros de él está el antagonista observándole. El protagonista echa a correr como puede escaleras arriba, el antagonista le persigue. Tras unos instantes de persecución el protagonista llega al final de un pasillo, la única puerta que hay está cerrada y aunque intenta abrirla le resulta imposible. El antagonista gira la esquina y comienza a acercarse lentamente con cara de satisfacción; el protagonista, acorralado contra la pared, espera con desesperación la resolución inevitable.<br><b>FUNDE A NEGRO.</b></div>';
+ const act=["act","Actividad A3.1. Storyboard de una persecución: el montaje narrativo",{
+  chip:"Unidad 3 · Imagen y Sonido",
+  nota:"un storyboard no es un dibujo bonito: es la forma de decidir, antes de rodar, qué plano pones, desde dónde y con qué corte. Si se entiende sin explicarlo, está bien hecho.",
+  obj:["Convertir un guion literario en una secuencia de planos pensada para contar la historia con claridad (montaje narrativo).","Aplicar lo aprendido en las unidades 1, 2 y 3: composición, escala de plano, angulación, movimiento, continuidad y ritmo.","Reflejar la intención del montaje en dibujos, iconos y textos, de forma que cualquiera entienda la secuencia sin que se la expliques."],
+  explora:"<p>A partir del <b>guion literario</b> de esta página, realiza <b>sobre papel el montaje narrativo de la secuencia</b>: lee el guion y elabora el <b>storyboard</b>, dibujando cada uno de los planos con los que tú contarías la historia. Toma como pauta lo aprendido en las unidades 1, 2 y 3 (recursos expresivos, técnicas del lenguaje audiovisual y guiones audiovisuales). Se utilizará la <b>plantilla facilitada por el profesorado</b> y se tendrán en cuenta las pautas y elementos explicados en las unidades, de modo que la intención del montaje quede reflejada en los dibujos, los iconos y los textos. Puedes usar <b>tantas páginas como necesites</b> para narrar la historia.</p>"
+   +guion
+   +"<h5>Antes de dibujar, decide</h5><ul>"
+   +"<li><b>¿Cuántos planos necesitas?</b> Cada cambio de acción, de lugar o de punto de vista suele pedir un plano nuevo. No hay un número fijo: lo importante es que la historia se entienda.</li>"
+   +"<li><b>¿Qué escala y qué ángulo cuentan mejor cada momento?</b> Piensa qué quieres que sienta quien mira: ¿cómo harías que el antagonista parezca amenazante? ¿Y que el protagonista parezca débil o acorralado?</li>"
+   +"<li><b>¿Cómo muestras lo que no se ve?</b> El guion dice que el protagonista oye pasos, pero se gira y no ve a nadie. ¿Qué haces con el <b>fuera de campo</b> y el sonido?</li>"
+   +"<li><b>¿Cómo mueves la cámara?</b> Un <b>travelling</b>, una <b>panorámica</b> o un plano fijo no transmiten lo mismo. Piensa cuándo conviene cada uno.</li>"
+   +"<li><b>¿Cómo marcas el ritmo?</b> En una persecución, los planos suelen ser más cortos y los cortes más rápidos. ¿Cómo lo harías aquí? ¿Usarías un <b>montaje alternado</b> entre perseguido y perseguidor?</li>"
+   +"<li><b>¿Cómo mantienes la continuidad?</b> Respeta la <b>ley del eje</b> y la dirección del movimiento: si el protagonista sale por un lado del encuadre, entra por el opuesto. Cuida los objetos: la maleta, el billete, la puerta.</li>"
+   +"<li><b>¿Qué detalles cuentan más que una frase?</b> Fíjate en los objetos y gestos del guion (el billete, la maleta, el tobillo, la puerta cerrada) y piensa si merecen un plano detalle.</li></ul>"
+   +"<h5>Plantilla orientativa</h5><p>Usa la plantilla facilitada por el profesorado. Si no la tienes, copia esta tabla en papel: una fila por plano, con el dibujo y las anotaciones. La primera fila es solo un ejemplo del formato.</p>"+tabla
+   +"<h5>Cómo se dibuja un storyboard</h5><ul>"
+   +"<li><b>Dibujos sencillos:</b> basta con figuras simples y claras. Se valora que se vea el encuadre, no el arte.</li>"
+   +"<li><b>Marco rectangular</b> en cada viñeta, con la proporción de la pantalla (horizontal).</li>"
+   +"<li><b>Flechas</b> para los movimientos de la cámara (una flecha dentro de la viñeta) y de los personajes.</li>"
+   +"<li><b>Iconos y textos</b> debajo: número de plano, escala, ángulo, movimiento, sonido y transición.</li>"
+   +"<li><b>Mismo personaje, mismo aspecto</b> en todos los planos: la ropa y los objetos deben coincidir.</li></ul>",
+  pasos:["<b>Lee el guion dos veces.</b> La primera, para entender la historia. La segunda, para marcar cada acción y cada cambio de lugar o de punto de vista.","<b>Haz una lista de planos.</b> Decide cuántos necesitas y qué cuenta cada uno.","<b>Elige para cada plano</b> la escala, el ángulo y el movimiento de cámara, pensando en el efecto que buscas.","<b>Dibuja las viñetas</b> en la plantilla, con flechas para los movimientos.","<b>Escribe debajo de cada viñeta</b> el número de plano, la escala, el ángulo, el movimiento, la acción, el sonido y la transición.","<b>Revisa la continuidad:</b> eje, dirección de los movimientos, objetos y ropa. ¿Se entiende la secuencia sin explicarla?","<b>Entrega</b> todas las páginas en orden."],
+  entrega:"Entrega todas las páginas del storyboard en un <b>único PDF</b> en AULES, nombrado «Apellidos, Nombre A3.1». Haz una foto o un escaneo con el móvil de cada hoja, <b>en orden y con buena luz</b>, de forma que se lea bien. Si el PDF pesa demasiado para AULES, puedes reducirlo con la herramienta «Comprimir PDF» de <a href=\"https://tools.pdf24.org/es/\" target=\"_blank\" rel=\"noopener\">PDF24 Tools</a> (no subas documentos con datos personales).",
+  rub:[
+   ["Interpretación del guion","Cubre todas las acciones del guion, en orden y sin añadir ni quitar nada importante","Cubre casi todas las acciones, con algún fallo menor","Omite varias acciones o cambia el orden","No se corresponde con el guion"],
+   ["Escala y angulación","Elige cada escala y cada ángulo con intención y se entiende por qué","Escala y ángulo correctos, con poca justificación","Escalas y ángulos repetidos o poco coherentes","Sin escala ni ángulo indicados"],
+   ["Movimiento y montaje narrativo","Aplica ritmo, alternancia de planos y movimientos de cámara que cuentan la persecución con claridad","Usa algún recurso de montaje, con ritmo irregular","Plano a plano sin una intención de montaje clara","No se aprecia montaje"],
+   ["Continuidad","Respeta ley del eje, direcciones, objetos y vestuario","Continuidad correcta con algún fallo","Fallos de continuidad que confunden","No hay continuidad"],
+   ["Dibujos, iconos y textos","Dibujos claros, con flechas e iconos, y anotaciones completas en cada plano","Dibujos y anotaciones correctos, con algún plano incompleto","Dibujos poco claros o anotaciones escasas","Sin dibujos o sin anotaciones"],
+   ["Presentación y entrega","PDF ordenado, legible y bien nombrado","Entrega correcta con un fallo pequeño","Desordenado o con partes ilegibles","Entrega incompleta o fuera de formato"]],
+  amp:["Reto extra: cuenta con una música o un sonido ambiente, e indica en cada plano qué suena y por qué.","Reto extra: haz un <b>animatic</b>. Fotografía tus viñetas y móntalas con un editor de vídeo, con la duración de cada plano y un sonido de ambiente."]}];
+ const ix=r.findIndex(b=>b[0]==="act");
+ r.splice(ix>=0?ix:r.length,0,act);
+ const t="Realiza la actividad A3.1 (storyboard de una persecución): a partir del guion literario, dibuja los planos con los que contarías la historia y evalúala con su rúbrica.";
+ if(!u.actividades.includes(t))u.actividades.unshift(t);
 })();
