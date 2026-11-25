@@ -1,4 +1,4 @@
-const V_CONT="82";
+const V_CONT="83";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3558,5 +3558,58 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  const ix=r.findIndex(b=>b[0]==="act");
  r.splice(ix>=0?ix:r.length,0,act);
  const t="Realiza la actividad A3.1 (storyboard de una persecución): a partir del guion literario, dibuja los planos con los que contarías la historia y evalúala con su rúbrica.";
+ if(!u.actividades.includes(t))u.actividades.unshift(t);
+})();
+
+/* v83: unidad 2 — actividad A2.8 «Modelos de montaje frente al MRP» (exposición en equipo) */
+(function(){
+ const u=CONTENIDO[2],r=u.rico;
+ if(r.some(b=>b[0]==="act"&&/A2\.8/.test(b[1])))return;
+ const celda="border:1px solid var(--line);padding:.4rem;vertical-align:top";
+ const modelos=[
+  ["Montaje clásico o invisible (MRI) y D. W. Griffith","Apartado B","Escalaridad, proximidad, continuidad y clausura. ¿Qué hace Griffith con la cámara que el MRP no hacía?","«La villa solitaria» (1909), en el apartado B"],
+  ["André Bazin: realismo y transparencia","Apartado B","Distancia y autarquía. El plano largo de Bazin y el plano fijo del MRP ¿son lo mismo?","«Ciudadano Kane» (1941) o «1917» (2019)"],
+  ["Dziga Vertov y el cine-ojo","Apartado C","Frontalidad y exterioridad. ¿Qué cambia cuando la cámara sale a la calle y se mueve?","«El hombre de la cámara» (1929), en el apartado C"],
+  ["Lev Kuleshov y su efecto","Apartado C","Autarquía. En el MRP cada plano se basta solo; para Kuleshov el sentido nace de unir planos.","«El efecto Kuleshov», en el apartado C"],
+  ["Vsévolod Pudovkin: el filme se construye","Apartado C","Autarquía y falta de cierre. ¿Qué papel tiene cada plano al «construir» la historia?","«La madre» (1926)"],
+  ["Serguéi M. Eisenstein: el montaje como choque","Apartado C","Exterioridad y autarquía. ¿Cómo se provoca la emoción al chocar dos planos?","La escalera de Odesa («El acorazado Potemkin», 1925), en «¿Qué es el montaje?»"],
+  ["Primeras vanguardias: «ismos», Film d'Art y cine puro","Apartado C","Platitud visual y teatro filmado. ¿Cómo defienden un lenguaje propio frente al teatro?","«Ballet mécanique» (1924) o «La glace à trois faces» (1927)"],
+  ["Nouvelle Vague","Apartado D","Continuidad, raccord y final cerrado. ¿Qué reglas del cine clásico rompe a propósito?","«Los 400 golpes» (1959), en el apartado D, o «Al final de la escapada» (1960)"],
+  ["Dogma 95","Apartado D","Cámara fija frente a cámara en mano, trucajes de Méliès frente a «sin trucajes». ¿Vuelve al origen o lo contrario?","«La celebración» (1998)"],
+  ["Montaje posmoderno","Apartado D","Distancia, ritmo y clausura. ¿Cómo mira hoy el espectador comparado con el del MRP?","«Pulp Fiction» (1994) o «Scott Pilgrim contra el mundo» (2010)"]];
+ const tModelos='<div class="tw"><table><thead><tr><th>Nº</th><th>Modelo</th><th>Dónde está</th><th>Pista para compararlo con el MRP</th><th>Ejemplo para analizar</th></tr></thead><tbody>'
+  +modelos.map((m,i)=>'<tr><td style="'+celda+'">'+(i+1)+'</td><td style="'+celda+'"><b>'+m[0]+'</b></td><td style="'+celda+'">'+m[1]+'</td><td style="'+celda+'">'+m[2]+'</td><td style="'+celda+'">'+m[3]+'</td></tr>').join("")
+  +'</tbody></table></div>';
+ const act=["act","Actividad A2.8. Un modelo de montaje frente al cine primitivo: exposición en equipo",{
+  chip:"Unidad 2 · Imagen y Sonido · En equipo",
+  nota:"el MRP duró solo unos quince años (1895-1910), pero en ese tiempo el cine pasó de un solo plano fijo a contar historias con varios planos. Todo lo que viene después se entiende mejor si sabes de dónde partía.",
+  obj:["Explicar con rigor un modelo o corriente de la teoría e historia del montaje (apartado 4 de esta unidad).","Compararlo con el Modelo de Representación Primitivo (MRP) a partir de sus rasgos y razonar qué cambia y por qué.","Ilustrarlo con un fragmento audiovisual analizado y exponerlo oralmente en equipo, con apoyo visual y en el tiempo asignado."],
+  explora:"<p>Cada equipo (de <b>tres o cuatro</b> personas) recibe un <b>modelo</b> del apartado 4 y prepara una <b>exposición de 4 a 6 minutos</b> para la clase. La idea es que expliquéis el modelo y lo <b>comparéis con el MRP</b>: ¿qué rasgos del cine primitivo conserva, cuáles rompe y qué aporta de nuevo?</p>"
+   +"<h5>Los modelos entre los que se elige</h5><p>Se reparten por sorteo o por elección, sin repetir. Lumière, Méliès, la Escuela de Brighton y Porter no se asignan: son el propio MRP (apartado A) y os servirán para comparar.</p>"+tModelos
+   +"<h5>Cómo es la exposición (unos 5 minutos)</h5><ol>"
+   +"<li><b>Presentación (30 s):</b> quiénes sois y qué modelo traéis.</li>"
+   +"<li><b>El modelo (1 min 30 s):</b> época, personas o corriente, idea central sobre el montaje y recursos.</li>"
+   +"<li><b>Comparación con el MRP (1 min 30 s):</b> al menos <b>cuatro rasgos</b> (frontalidad, exterioridad, distancia, platitud visual, autarquía, imagen centrífuga, falta de cierre). Para cada uno: cómo era en el MRP y qué cambia.</li>"
+   +"<li><b>Ejemplo audiovisual (1 min):</b> un fragmento de <b>1 o 2 minutos</b> en el que se vea el modelo. Señalad dos o tres momentos concretos (un plano, un corte, un movimiento).</li>"
+   +"<li><b>Conclusión (30 s):</b> qué aportó el modelo al lenguaje del cine y dónde lo vemos hoy.</li></ol>"
+   +"<div class=\"box ej\"><b>💡 Tip:</b> si dudas de un rasgo del MRP, vuelve al apartado A de esta unidad. Para reconocerlo, piensa en una obra de teatro grabada con una cámara fija desde el patio de butacas.</div>"
+   +"<h5>Cómo se evalúa</h5><p>La exposición se evalúa en equipo con la rúbrica de esta actividad (contenido, comparación con el MRP, ejemplo, expresión oral, soporte visual y trabajo en equipo). La profesora puede valorar de forma individual los aspectos orales.</p>",
+  pasos:["<b>Reparto.</b> Elegid o sortead el modelo y repartid roles: coordinación y tiempo, contenido del modelo, comparación con el MRP y ejemplo audiovisual. <b>Todas las personas hablan</b> en la exposición.","<b>Estudiad el modelo</b> en el apartado 4 y anotad: época y lugar, personas o corriente, idea central sobre el montaje, recursos y una obra clave.","<b>Repasad el MRP</b> (apartado A) y completad la tabla de comparación de abajo con <b>al menos cuatro rasgos</b>.","<b>Elegid el fragmento</b> (1 o 2 minutos). Comprobad que se ve en YouTube y apuntad título, enlace y minutado. Anotad dos o tres cosas concretas que se vean (escala de plano, movimiento, corte) y relacionadlas con el modelo.","<b>Preparad la presentación en Canva</b>: como máximo 8 diapositivas, poco texto, imágenes y fotogramas con la <b>fuente citada</b>. La tabla de comparación va en una diapositiva.","<b>Ensayad con cronómetro</b> una vez, sin leer. Cuidad la voz, la mirada y el reparto de turnos.","<b>Exponed y responded</b> a las preguntas de la clase. Mientras escucháis a otros equipos, apuntad qué rasgo del MRP cambia cada modelo.","<b>Cierre de clase:</b> entre todos se completa una línea del tiempo con los modelos expuestos, de 1895 a hoy."],
+  tabla:["Rasgo del MRP","Qué significa","En el modelo de vuestro equipo"],
+  tablaF:[["Frontalidad","Los personajes actúan de cara a la cámara, como en el teatro",""],["Exterioridad","El espectador mira desde fuera, sin entrar en las emociones",""],["Distancia","La cámara está lejos y casi no se acerca",""],["Platitud visual","Imagen plana, sin volumen ni profundidad",""],["Autarquía","Cada plano se basta solo",""],["Imagen centrífuga","La acción se escapa por los bordes del encuadre",""],["Falta de cierre","Las escenas y el relato quedan abiertos",""]],
+  entrega:"Un solo envío por equipo en AULES: el <b>PDF de la presentación</b> de Canva (con la tabla de comparación y el fragmento con su enlace y minutado) nombrado «Apellidos de los miembros A2.8», y el enlace de Canva en los comentarios si lo hay. La exposición se hace en clase el día indicado por la profesora.",
+  rub:[
+   ["Dominio y rigor del modelo (2 puntos)","Explica con precisión el contexto, la idea central y los recursos del modelo, con ejemplos fieles al apartado 4 y sin errores conceptuales","Explica bien el modelo aunque omite algún dato o recurso secundario","Explicación incompleta o superficial, con ideas importantes que faltan o errores","Desconocimiento profundo del modelo o se limita a leer el texto de la unidad"],
+   ["Comparación con el MRP (2 puntos)","Compara con al menos cuatro rasgos del MRP, explica qué cambia en cada uno y por qué, y concluye qué aportó el modelo","Compara cuatro rasgos pero alguna comparación se queda en describir sin explicar qué cambia","Compara solo dos o tres rasgos o las comparaciones son vagas o confusas","No distingue el MRP del modelo o la comparación falta o es incorrecta"],
+   ["Ejemplo audiovisual (1,5 puntos)","Fragmento adecuado de 1 o 2 minutos con título y minutado, y señala momentos concretos donde se ve el modelo","Fragmento adecuado con pocos momentos concretos señalados o algún dato sin indicar","El fragmento se relaciona poco con el modelo o se muestra sin análisis","El fragmento no corresponde al modelo o no se puede ver"],
+   ["Claridad, estructura y transmisión (1,5 puntos)","Estructura clara (presentación, modelo, comparación, ejemplo y conclusión) y con palabras propias: la clase lo entiende y lo recuerda","Estructura correcta, con alguna transición brusca o detalles secundarios de más","Estructura confusa que cuesta seguir, o depende de leer","Sin estructura lógica: la clase no entiende la explicación"],
+   ["Expresión oral y comunicación no verbal (1 punto)","Voz clara y modulada, contacto visual constante, sin apoyarse en notas y con postura segura","Tono y expresión correctos, aunque a ratos decae el volumen o se apoya demasiado en las notas","Volumen bajo o monótono, poco contacto visual, lectura continuada o inseguridad evidente","Expresión ininteligible o lectura total, sin preparación comunicativa"],
+   ["Soporte visual y tiempo (1 punto)","Presentación de Canva con poco texto, imágenes claras y fuentes citadas, y se ajusta a los 4-6 minutos","Soporte correcto con exceso de texto o alguna imagen sin fuente, o ligero desajuste de tiempo","El soporte se lee literalmente o aporta poco, o se excede o se queda muy corto","No hay soporte visual utilizable o se ignora el tiempo asignado"],
+   ["Trabajo en equipo y reparto (1 punto)","Todas las personas intervienen de forma equilibrada con roles claros y se nota el ensayo","Intervienen todas, con cierto desequilibrio, y coordinación correcta","Una o dos personas llevan casi todo el peso y hay descoordinación","Trabajo prácticamente individual o sin reparto"]],
+  amp:["Prepara dos preguntas tipo test sobre tu modelo para que la clase las responda al final (en papel o con Kahoot).","Monta con un editor de vídeo un fragmento de 30 segundos que imite el estilo de tu modelo (por ejemplo, un plano fijo y frontal como en el MRP, o un jump cut como en la Nouvelle Vague)."]}];
+ act[2].tabla=[act[2].tabla,act[2].tablaF];delete act[2].tablaF;
+ const ix=r.findIndex(b=>b[0]==="act");
+ r.splice(ix>=0?ix:r.length,0,act);
+ const t="Realiza la actividad A2.8 (exposición en equipo): explica un modelo de la historia del montaje, compáralo con el MRP y evalúala con su rúbrica.";
  if(!u.actividades.includes(t))u.actividades.unshift(t);
 })();
