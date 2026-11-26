@@ -1,4 +1,4 @@
-const V_CONT="85";
+const V_CONT="86";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3708,4 +3708,38 @@ var COMPLEMENTARIAS=(function(){
  r.splice(ix>=0?ix:r.length,0,act);
  const t="Realiza la actividad A3.7 (idea de cortometraje y regla de South Park): escribe una sinopsis en tres actos y aplícale la regla «pero / por tanto».";
  if(!u.actividades.includes(t))u.actividades.unshift(t);
+})();
+
+/* v86: unidad 3 — vídeos nuevos, herramientas, planta de cámara, guion a una o dos columnas y fases de producción */
+(function(){
+ const u=CONTENIDO[3],r=u.rico;
+ if(r.some(b=>b[0]==="h"&&/^B\. Las tres fases de una producción/.test(b[1])))return;
+ const ix=f=>r.findIndex(f);
+ // 1) vídeos
+ const V=[["xKdz5Vp1D8g","Amar el cine 2: el guion","1. De la idea al guion"],["e6DzBapSXXI","Guion técnico para vídeo y planta de cámara (tutorial)","3. Tipos de guion: C. El guion técnico"],["U9XodE-rxe0","Cómo escribir un guion de cine en 6 pasos (curso de guion 1)","6. Cómo escribir tu guion paso a paso"]];
+ V.forEach(v=>{if(!u.videos.some(x=>x[0]===v[0]))u.videos.push(v);});
+ // 2) herramientas
+ let i=ix(b=>b[0]==="p"&&/^Programas que se usan para guiones y storyboards/.test(b[1]));
+ if(i>=0)r.splice(i,1,
+  ["p","Para empezar basta con <b>papel y lápiz</b> o una plantilla de viñetas. Si prefieres hacerlo en digital, estas son opciones frecuentes:"],
+  ["ul",["<b>Canva:</b> permite montar tu propia plantilla de storyboard con viñetas, imágenes y texto, y exportarla en PDF.","<b>Storyboard That:</b> web en inglés para crear storyboards arrastrando escenas, personajes y globos de texto. Su versión gratuita es limitada (unos dos storyboards por semana y solo las funciones básicas) y puede pedir una cuenta.","<b>Celtx:</b> programa para escribir guiones con el formato habitual del cine y desglose de escenas. Tiene una versión básica gratuita y otras funciones de pago.","Programas profesionales como <b>Final Draft</b> o <b>Fade In</b> suelen ser de pago: no los necesitas para esta unidad."]],
+  ["tip","⚠️","Ojo","Las condiciones de estas herramientas cambian con frecuencia. Comprueba qué ofrece la versión gratuita antes de empezar y no subas datos personales ni imágenes de otras personas sin su permiso."]);
+ // 3) guion a una o dos columnas (tras la tabla de formato del guion literario)
+ i=ix(b=>b[0]==="tabla"&&b[1]&&b[1][0]==="Aspecto"&&b[1][1]==="Norma habitual");
+ if(i>=0)r.splice(i+1,0,["def","Guion a una columna y a dos columnas","El <b>modelo americano</b> usa <b>una columna</b>: acciones y diálogos se escriben seguidos a lo largo de la página, y es el más habitual en el cine. El <b>modelo europeo</b> usa <b>dos columnas</b>: en una se escribe la imagen (acción) y en la otra el sonido (diálogos, música y ambientes). Se ve mucho en televisión, publicidad y guiones técnicos."]);
+ // 4) planta de cámara (tras el guion técnico)
+ i=ix(b=>b[0]==="h"&&b[1]==="C. El guion técnico");
+ if(i>=0){const k=r.findIndex((b,j)=>j>i&&b[0]==="clave");
+  r.splice(k+1,0,["def","Planta de cámara","Dibujo del escenario visto desde arriba, como el plano de una casa, en el que se marcan con iconos la posición de la <b>cámara</b>, de los <b>personajes</b> y del <b>micrófono</b>. Se añaden flechas para los desplazamientos y números para el orden de los planos. Sirve para decidir antes del rodaje dónde colocar cada cosa y para respetar el <b>eje de acción</b>."],
+   ["tip","💡","Tip","No hace falta saber dibujar: con cuadrados, círculos y flechas basta. Tras dibujar la planta, comprueba que las cámaras quedan todas del mismo lado del eje."]);}
+ // 5) fases de una producción (antes de la parte 6)
+ i=ix(b=>b[0]==="parte"&&/^6\. Cómo escribir tu guion/.test(b[1]));
+ if(i>=0)r.splice(i,0,
+  ["h","B. Las tres fases de una producción"],
+  ["p","Un audiovisual no empieza cuando se enciende la cámara. Pasa por tres fases, y el guion está en la primera."],
+  ["tabla",["Fase","Qué se hace","Ejemplos"],[["<b>1. Preproducción</b>","Se define el proyecto, se calcula el presupuesto, se busca al equipo, las localizaciones y los permisos, y se planifica todo por escrito. Termina con el plan de rodaje.","Idea, guion, desglose, plan de rodaje, storyboard"],["<b>2. Producción</b>","Se rueda o graba siguiendo el plan y se vigila que todo vaya según lo previsto.","Rodaje, hoja de llamada, registro de tomas"],["<b>3. Postproducción</b>","Se monta la imagen, se sonoriza y se ajusta el color; después se entrega la obra y se hace un balance de plazos, costes y calidad.","Montaje (unidad 6), sonido (unidad 7), entrega"]]],
+  ["clave","La preproducción es la fase más importante: lo que no se prevé en el papel se paga después en tiempo y esfuerzo durante el rodaje."]);
+ // glosario
+ [["Planta de cámara","Dibujo del escenario visto desde arriba con la posición de cámaras, personajes y micrófonos."],["Preproducción","Primera fase de una producción: planificación del proyecto antes del rodaje."],["Postproducción","Última fase de una producción: montaje, sonido, color y entrega."]].forEach(g=>{if(!u.glosario.some(x=>x[0]===g[0]))u.glosario.push(g);});
+ u.glosario.sort((a,b)=>a[0].localeCompare(b[0],"es"));
 })();
