@@ -1,4 +1,4 @@
-const V_CONT="83";
+const V_CONT="85";
 // Contenido de las unidades. Criterios: textos del currículo de Imagen y Sonido (Decreto 108/2022).
 // La asignación de criterios a cada unidad y los textos de contenido y actividades son propuesta pendiente de revisión.
 const CONTENIDO={
@@ -3510,10 +3510,10 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  a.amp=["Reto extra (+0,5 puntos): incluye un match-cut o un encadenado que una dos momentos distintos por su forma, su color o su movimiento. Es voluntario: suma <b>0,5 puntos</b> a la nota de la actividad, sin pasar de 10, y no entra en la rúbrica. Un encadenado sin esa relación entre las dos imágenes no cuenta."];
 })();
 
-/* v82: unidad 3 — actividad A3.1 «Storyboard de una persecución» */
+/* v82 (renumerada A3.6 en v84): unidad 3 — actividad A3.6 «Storyboard de una persecución» */
 (function(){
  const u=CONTENIDO[3],r=u.rico;
- if(r.some(b=>b[0]==="act"&&/A3\.1/.test(b[1])))return;
+ if(r.some(b=>b[0]==="act"&&/A3\.6/.test(b[1])))return;
  const celda="border:1px solid var(--line);padding:.4rem;vertical-align:top";
  const vacio='<div style="min-height:70px"></div>';
  const filas=[
@@ -3524,7 +3524,7 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
   +'</tbody></table></div>';
  const guion='<div class="box ej"><b>GUION</b><br><b>SECUENCIA 1. PASILLOS AEROPUERTO EXT. / DÍA</b><br>'
   +'El protagonista va andando por el pasillo con una maleta en la mano, se detiene y saca del bolsillo interior de la chaqueta un billete de avión, le da un beso sonriendo y se lo vuelve a guardar. El protagonista sigue caminando, le parece oír unos pasos tras él, se gira pero no ve a nadie. Acelerando el paso sube las escaleras, tropieza y se le cae la maleta escaleras abajo; se levanta, se ha hecho daño en el tobillo. Renqueante baja y recoge su maleta, algo le hace mirar hacia arriba, a unos metros de él está el antagonista observándole. El protagonista echa a correr como puede escaleras arriba, el antagonista le persigue. Tras unos instantes de persecución el protagonista llega al final de un pasillo, la única puerta que hay está cerrada y aunque intenta abrirla le resulta imposible. El antagonista gira la esquina y comienza a acercarse lentamente con cara de satisfacción; el protagonista, acorralado contra la pared, espera con desesperación la resolución inevitable.<br><b>FUNDE A NEGRO.</b></div>';
- const act=["act","Actividad A3.1. Storyboard de una persecución: el montaje narrativo",{
+ const act=["act","Actividad A3.6. Storyboard de una persecución: el montaje narrativo",{
   chip:"Unidad 3 · Imagen y Sonido",
   nota:"un storyboard no es un dibujo bonito: es la forma de decidir, antes de rodar, qué plano pones, desde dónde y con qué corte. Si se entiende sin explicarlo, está bien hecho.",
   obj:["Convertir un guion literario en una secuencia de planos pensada para contar la historia con claridad (montaje narrativo).","Aplicar lo aprendido en las unidades 1, 2 y 3: composición, escala de plano, angulación, movimiento, continuidad y ritmo.","Reflejar la intención del montaje en dibujos, iconos y textos, de forma que cualquiera entienda la secuencia sin que se la expliques."],
@@ -3546,7 +3546,7 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
    +"<li><b>Iconos y textos</b> debajo: número de plano, escala, ángulo, movimiento, sonido y transición.</li>"
    +"<li><b>Mismo personaje, mismo aspecto</b> en todos los planos: la ropa y los objetos deben coincidir.</li></ul>",
   pasos:["<b>Lee el guion dos veces.</b> La primera, para entender la historia. La segunda, para marcar cada acción y cada cambio de lugar o de punto de vista.","<b>Haz una lista de planos.</b> Decide cuántos necesitas y qué cuenta cada uno.","<b>Elige para cada plano</b> la escala, el ángulo y el movimiento de cámara, pensando en el efecto que buscas.","<b>Dibuja las viñetas</b> en la plantilla, con flechas para los movimientos.","<b>Escribe debajo de cada viñeta</b> el número de plano, la escala, el ángulo, el movimiento, la acción, el sonido y la transición.","<b>Revisa la continuidad:</b> eje, dirección de los movimientos, objetos y ropa. ¿Se entiende la secuencia sin explicarla?","<b>Entrega</b> todas las páginas en orden."],
-  entrega:"Entrega todas las páginas del storyboard en un <b>único PDF</b> en AULES, nombrado «Apellidos, Nombre A3.1». Haz una foto o un escaneo con el móvil de cada hoja, <b>en orden y con buena luz</b>, de forma que se lea bien. Si el PDF pesa demasiado para AULES, puedes reducirlo con la herramienta «Comprimir PDF» de <a href=\"https://tools.pdf24.org/es/\" target=\"_blank\" rel=\"noopener\">PDF24 Tools</a> (no subas documentos con datos personales).",
+  entrega:"Entrega todas las páginas del storyboard en un <b>único PDF</b> en AULES, nombrado «Apellidos, Nombre A3.6». Haz una foto o un escaneo con el móvil de cada hoja, <b>en orden y con buena luz</b>, de forma que se lea bien. Si el PDF pesa demasiado para AULES, puedes reducirlo con la herramienta «Comprimir PDF» de <a href=\"https://tools.pdf24.org/es/\" target=\"_blank\" rel=\"noopener\">PDF24 Tools</a> (no subas documentos con datos personales).",
   rub:[
    ["Interpretación del guion","Cubre todas las acciones del guion, en orden y sin añadir ni quitar nada importante","Cubre casi todas las acciones, con algún fallo menor","Omite varias acciones o cambia el orden","No se corresponde con el guion"],
    ["Escala y angulación","Elige cada escala y cada ángulo con intención y se entiende por qué","Escala y ángulo correctos, con poca justificación","Escalas y ángulos repetidos o poco coherentes","Sin escala ni ángulo indicados"],
@@ -3557,7 +3557,7 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
   amp:["Reto extra: cuenta con una música o un sonido ambiente, e indica en cada plano qué suena y por qué.","Reto extra: haz un <b>animatic</b>. Fotografía tus viñetas y móntalas con un editor de vídeo, con la duración de cada plano y un sonido de ambiente."]}];
  const ix=r.findIndex(b=>b[0]==="act");
  r.splice(ix>=0?ix:r.length,0,act);
- const t="Realiza la actividad A3.1 (storyboard de una persecución): a partir del guion literario, dibuja los planos con los que contarías la historia y evalúala con su rúbrica.";
+ const t="Realiza la actividad A3.6 (storyboard de una persecución): a partir del guion literario, dibuja los planos con los que contarías la historia y evalúala con su rúbrica.";
  if(!u.actividades.includes(t))u.actividades.unshift(t);
 })();
 
@@ -3611,5 +3611,101 @@ CONTENIDO[8].criterios=[["5.2.6", "Planificar y realizar tareas o proyectos, ind
  const ix=r.findIndex(b=>b[0]==="act");
  r.splice(ix>=0?ix:r.length,0,act);
  const t="Realiza la actividad A2.8 (exposición en equipo): explica un modelo de la historia del montaje, compáralo con el MRP y evalúala con su rúbrica.";
+ if(!u.actividades.includes(t))u.actividades.unshift(t);
+})();
+
+/* v84: actividades complementarias — AC1 «La bola negra» (página propia #/complementarias) */
+var COMPLEMENTARIAS=(function(){
+ const celda="border:1px solid var(--line);padding:.4rem;vertical-align:top";
+ const tab=(cab,filas)=>'<div class="tw"><table><thead><tr>'+cab.map(x=>'<th>'+x+'</th>').join("")+'</tr></thead><tbody>'+filas.map(f=>'<tr>'+f.map(x=>'<td style="'+celda+'">'+x+'</td>').join("")+'</tr>').join("")+'</tbody></table></div>';
+ const calendario=tab(["Cuándo","Qué se hace","Cómo"],[
+  ["Antes del cine","Carnet de espectador y caza del fallo","Individual"],
+  ["Cine","Se ve la película. En la sala no se escribe ni se graba","Individual"],
+  ["Al salir (24 h)","Ficha de memoria","Individual"],
+  ["Sesión 1","Primera impresión, mapa de las tres épocas y elección del producto","Equipo"],
+  ["Sesión 2","Autopsia de una escena","Equipo"],
+  ["Sesión 3","Taller: creamos el producto","Equipo"],
+  ["Sesión 4","Festival de la clase, premios y crítica personal","Equipo e individual"]]);
+ const roles=tab(["Rol","Te fijas en…"],[
+  ["👁️ Ojo","Escalas de plano, ángulos y composición: ¿qué planos se repiten y cuáles recuerdas?"],
+  ["🎨 Pincel","Color, luz, vestuario y decorados de cada época."],
+  ["✂️ Tijeras","Montaje: cómo se pasa de una época a otra, qué objetos o gestos conectan tiempos y cómo es el ritmo."],
+  ["🎧 Oído","Música, silencios y sonidos de ambiente."],
+  ["🔎 Detective","Símbolos: ¿qué representa la bola negra? ¿Qué objetos o colores significan algo más?"],
+  ["📝 Guionista","Personajes, conflicto y estructura del relato en cada época."]]);
+ const autopsia=tab(["Aspecto","Lo que observáis"],[
+  ["Escena elegida (máximo 2 min) y minuto",""],["Número de planos y duración media",""],["Tres planos: escala, ángulo y movimiento",""],["Composición (regla, tipo de composición, color)",""],["Transiciones y continuidad (corte, encadenado, <i>match-cut</i>, raccord)",""],["Sonido y música (diegético o extradiegético; silencios)",""],["Efecto que busca la escena en quien mira",""],["Vuestro veredicto: ¿funciona y por qué?",""]]);
+ const act=["Actividad AC1. «La bola negra»: del patio de butacas a la sala de montaje",{
+  chip:"Complementaria · Imagen y Sonido · Individual y en equipo",
+  nota:"«La bola negra» (Javier Calvo y Javier Ambrossi, España, 2026, 155 min) cuenta tres épocas —1931-32, 1937 y 2017— a partir de una obra inacabada de Federico García Lorca. Es una buena película para ver cómo el color, el sonido y el montaje cambian de una época a otra.",
+  obj:["Ver la película con una misión de observación y analizarla con el vocabulario de las unidades 1 y 2.","Descubrir cómo están hechas las escenas: planos, composición, color, sonido y montaje.","Defender una opinión con argumentos y presentarla en equipo en el festival de la clase."],
+  explora:"<p>Sois la <b>redacción de una revista de cine</b>. Después de ver la película tenéis que contestar a tres preguntas: <b>¿qué cuenta?</b>, <b>¿cómo lo cuenta?</b> y <b>¿merece la pena?</b> (con argumentos, no con «me ha gustado»).</p>"
+   +"<h5>Calendario del proyecto</h5>"+calendario
+   +"<div class=\"box ej\"><b>Normas de la sala y del debate:</b> móvil guardado y en silencio; en la sala no se graba ni se escribe (se memoriza y se anota al salir); se critica la idea y no a la persona; y no se cuenta el final a quien no la haya visto.</div>"
+   +"<h5>1. Antes del cine: carnet de espectador</h5><p>Elige <b>un rol de observación</b> para ver la película y escribe dos expectativas: algo que esperas y algo que te da miedo que falle.</p>"+roles
+   +"<div class=\"box ej\"><b>🔎 Reto secreto: la caza del fallo.</b> Los <b>fallos de raccord</b> (un objeto que cambia de sitio, una luz que no cuadra, un peinado distinto) existen en casi todas las películas. En «La bola negra» puede haber uno… o ninguno. Estate atento a un fallo de raccord o a un <b>anacronismo</b> (algo que no encaja con la época). No lo apuntes en sala: al salir anota <b>el minuto aproximado, qué ves en el plano A y qué cambia en el plano B</b>. Sin pruebas no cuenta. Premio: el «Ojo de lince» en el festival. Si nadie encuentra nada, también puntúa un informe razonado sobre un raccord <b>bien resuelto</b>.</div>"
+   +"<h5>2. Al salir: ficha de memoria (en 24 horas)</h5><ul><li>La imagen que más me impactó (describe el plano).</li><li>El momento que más me emocionó o incomodó, y por qué.</li><li>Lo que he visto desde mi rol.</li><li>Caza del fallo: minuto, plano A y plano B.</li><li>Una pregunta para los directores.</li></ul>"
+   +"<h5>3. Sesión 1: primera impresión y mapa de las tres épocas</h5><p>Se debaten frases polémicas en el <b>gradiómetro de opiniones</b> y cada equipo completa un mural con una columna por época (1931-32, 1937 y 2017): <b>color y luz, planos y movimiento, ritmo del montaje, sonido y música, y objeto o gesto que conecta</b>. Después anotad dos transiciones entre épocas y qué significan, y elegid vuestro producto.</p>"
+   +"<h5>4. Sesión 2: autopsia de una escena</h5><p>Tres visionados de una escena de un máximo de 2 minutos: el primero para <b>mirar</b>, el segundo para <b>anotar plano a plano</b> y el tercero para <b>solo escuchar</b>, con la pantalla tapada.</p>"+autopsia
+   +"<h5>5. Sesión 3: elegid el producto</h5><ul>"
+   +"<li><b>A. La reseña:</b> vídeo o podcast de 1 min 30 s a 2 min, con 3 argumentos de lenguaje audiovisual, 1 sobre el mensaje o los valores y un veredicto claro.</li>"
+   +"<li><b>B. La escena que falta:</b> guion de 1 página y storyboard de 6 viñetas (o vídeo de 2 min) con una misma situación en dos tiempos, recursos distintos en cada uno y un elemento que los conecte (un objeto, un gesto o un <i>match-cut</i>).</li>"
+   +"<li><b>C. Así está hecha:</b> dossier en Canva de 6 a 8 páginas con ficha técnica, mapa de épocas, autopsia anotada de una escena, símbolos y mensaje, conclusión y fuentes.</li></ul>"
+   +"<h5>6. Sesión 4: festival de la clase</h5><p>Cada equipo presenta en 3-4 minutos; se vota en papel (mejor idea, mejor sonido, mejor análisis, mejor trabajo en equipo y «Ojo de lince»; no se vota al propio equipo) y se cierra con una <b>crítica personal de 120-150 palabras</b>: una frase para enganchar, dos argumentos de lenguaje audiovisual con ejemplo, un argumento sobre el mensaje y tu veredicto de 0 a 5.</p>"
+   +"<div class=\"box ej\"><b>📘 Mini glosario:</b> <b>raccord</b> es la continuidad entre planos (posición, vestuario, luz, movimiento, sonido). <b>Match-cut</b> es el corte que une dos planos por su forma, color o movimiento. <b>Elipsis</b> es un salto en el tiempo sin contarlo. <b>Diegético</b> es el sonido que existe en la historia y <b>extradiegético</b>, la música o voz que solo oímos nosotros.</div>"
+   +"<p>📄 <a href=\"descargas/La-bola-negra-cuadernillo-alumnado.pdf\" target=\"_blank\" rel=\"noopener\">Descarga el cuadernillo del alumnado (PDF)</a> con las fichas para imprimir y rellenar.</p>"
+   +"<div class=\"box ej\"><b>Si no puedes ir al cine:</b> el proyecto, la rúbrica y los plazos son los mismos para todo el mundo. Tu profesora te indicará cómo ver la película o sus fragmentos principales y trabajarás en un equipo mixto con el resto.</div>",
+  pasos:["<b>Antes del cine:</b> elige tu rol, escribe tus dos expectativas y recuerda la caza del fallo.","<b>Al salir:</b> completa la ficha de memoria y entrégala por AULES en 24 horas.","<b>Sesión 1:</b> participa en el gradiómetro, completa con tu equipo el mapa de las tres épocas y elegid el producto A, B o C.","<b>Sesión 2:</b> haced la autopsia de una escena con los tres visionados y redactad el veredicto en cinco líneas.","<b>Sesión 3:</b> repartid roles (dirección, guion y documentación, imagen y edición, voz y portavoz) y cread el producto. Preparad una pregunta para los directores.","<b>Sesión 4:</b> presentad, coevaluad a los demás equipos y escribe tu crítica personal y tu autoevaluación."],
+  entrega:"Cada persona entrega en AULES su <b>carnet y ficha de memoria</b> y, al final, su <b>crítica personal</b>. Cada equipo entrega <b>un solo envío</b> con el producto (PDF o enlace) y el mapa y la autopsia; lo sube la primera persona de la lista e indica los nombres del resto. Los fotogramas deben ser breves, con la fuente citada; no se sube la película. Pide permiso a quien aparezca en un vídeo o foto, y usa música propia o con licencia abierta.",
+  rub:[
+   ["Lenguaje audiovisual","Usa con precisión al menos 4 conceptos de las unidades 1 y 2, con ejemplos de la película","Usa 3 conceptos, con alguna imprecisión","Usa 1 o 2 conceptos, con errores","No usa vocabulario de la materia"],
+   ["Argumentación","Defiende su opinión con argumentos razonados y ejemplos de la película","Opinión razonada, con pocos ejemplos","Opinión sin argumentos","Sin opinión"],
+   ["Creatividad y calidad","Original, cuidado y con intención en imagen, sonido y diseño","Correcto, con poca originalidad","Descuidado o poco claro","No se entiende o no se entrega"],
+   ["Trabajo en equipo","Reparto equilibrado y roles cumplidos","Colaboración correcta con algún desequilibrio","Colaboración irregular","Trabajo casi individual"],
+   ["Presentación","Clara, en tiempo y atractiva","Correcta, con algún fallo","Confusa o fuera de tiempo","No presenta"],
+   ["Fuentes y respeto","Fuentes citadas, permisos y derechos cuidados","Fuentes citadas con algún fallo","Citas incompletas","Sin citar o sin permisos"]],
+  amp:["Reto extra: un fallo de raccord demostrado con minuto, plano A y plano B recibe una mención especial («Ojo de lince»)."]}];
+ return [act];
+})();
+
+/* v85: unidad 3 — actividad A3.7 «Idea de cortometraje y regla de South Park» */
+(function(){
+ const u=CONTENIDO[3],r=u.rico;
+ if(r.some(b=>b[0]==="act"&&/A3\.7/.test(b[1])))return;
+ const celda="border:1px solid var(--line);padding:.4rem;vertical-align:top";
+ const temas=["El amor y el desamor","La amistad y la traición","La libertad frente a la opresión","La justicia y la venganza","La muerte y el duelo","La soledad y la pertenencia","La identidad y la búsqueda de uno mismo","La familia y los secretos","El poder y la corrupción","La superación y el miedo","La desigualdad y la injusticia social","La naturaleza frente a la sociedad","La guerra y la paz","El paso del tiempo y la memoria","La ambición y sus consecuencias","El destino y el libre albedrío"];
+ const preg=[["¿Qué mensaje te gustaría transmitir al espectador?","«Ante la adversidad la unión hace la fuerza», «la belleza física es temporal», «la amistad lo es todo»."],["¿Qué te gustaría expresar sobre la naturaleza humana?","«No sobrevive el más fuerte, sino el que mejor se adapta», «el ser humano no es malo por naturaleza», «las personas que no tienen nada que perder son peligrosas»."],["¿Qué preguntas te sueles hacer una y otra vez?","«¿Merecemos el amor verdadero?», «¿existe el libre albedrío o todo está determinado?», «¿los hombres y las mujeres pueden ser solo amigos?»"]];
+ const tPreg='<div class="tw"><table><thead><tr><th>Pregunta para empezar</th><th>Ejemplos</th></tr></thead><tbody>'+preg.map(p=>'<tr><td style="'+celda+'"><b>'+p[0]+'</b></td><td style="'+celda+'">'+p[1]+'</td></tr>').join("")+'</tbody></table></div>';
+ const ej=[["ORIGINAL","Ana se mira en el espejo de su dormitorio: a pesar de los nervios está satisfecha. Se gusta con el ajustado vestido negro. Mira la hora en el móvil. «Ha llegado el taxi», grita la compañera de piso. Ya en el taxi, de camino a la cita, Ana sonríe viendo a las parejas en la calle.","Es un planteamiento correcto, pero se queda plano: no hay obstáculos."],
+  ["INICIO","Ana se mira en el espejo: a pesar de los nervios está satisfecha. Se gusta con el vestido negro. No le quita la etiqueta, la esconde como puede. Mira la hora en el móvil.",""],
+  ["PERO","El taxi que había pedido aún no ha llegado.",""],["POR TANTO","Pide a la compañera de piso que le preste el coche.",""],
+  ["PERO","La amiga advierte: el coche no está bien últimamente.",""],["POR TANTO","Le cuesta arrancar. Ana cree que no subirá la rampa del garaje, pero consigue ponerse en camino hacia la cita. Para ahorrar tiempo se dispone a cruzar el polígono industrial.",""],
+  ["PERO","El coche la deja tirada en medio de la nada, en una calle solitaria.",""],["POR TANTO","Un conductor se para y la confunde con otra persona. Ana tiene una idea: le dice que su piso está cerca. El hombre acepta. Ana le da indicaciones hasta que ve la oportunidad de bajar del coche en un semáforo en rojo.",""],
+  ["POR TANTO","Huye a la carrera, con el vestido ajustado y con tacones.",""],["POR TANTO","Cae al suelo y se rompe el vestido.",""],["POR TANTO","No podrá cambiarlo, pero ya lo arreglará más tarde. No muy lejos ve una parada de taxis…",""]];
+ const tEj='<div class="tw"><table><thead><tr><th>Conector</th><th>Qué pasa</th></tr></thead><tbody>'+ej.map(e=>'<tr><td style="'+celda+'"><b>'+e[0]+'</b></td><td style="'+celda+'">'+e[1]+(e[2]?'<br><i>'+e[2]+'</i>':'')+'</td></tr>').join("")+'</tbody></table></div>';
+ const act=["act","Actividad A3.7. Idea de cortometraje y regla de South Park (pero / por tanto)",{
+  chip:"Unidad 3 · Imagen y Sonido · Individual",
+  nota:"los creadores de la serie «South Park», Trey Parker y Matt Stone, dicen que entre dos escenas de una historia nunca debería ir «y entonces…». Deberían ir «<b>pero</b>» o «<b>por tanto</b>». Si cada escena es consecuencia de la anterior o la contradice, la historia no se detiene.",
+  obj:["Formular la idea o sinopsis de un cortometraje a partir de un tema universal y de una intención propia.","Estructurar la idea en tres actos: planteamiento, nudo y desenlace.","Aplicar la regla «pero / por tanto» para convertir una secuencia plana en una cadena de conflictos y peripecias."],
+  explora:"<p>Esta actividad se hace en <b>un único documento</b> con dos partes. En la primera creas tu <b>idea de cortometraje</b>; en la segunda aplicas a esa idea la <b>regla de South Park</b> para crear <b>nudos, conflictos, peripecias y catástrofes</b>.</p>"
+   +"<h5>Parte 1. Idea de cortometraje</h5><p>Elige <b>un tema universal principal</b> de la lista y, si quieres, <b>uno o dos secundarios</b>. Con ellos escribe una <b>idea o sinopsis</b> de la historia que te gustaría contar.</p>"
+   +"<ul>"+temas.map(t=>"<li>"+t+"</li>").join("")+"</ul>"
+   +"<p>Puedes plantearte estas preguntas:</p>"+tPreg
+   +"<div class=\"box ej\"><b>Estructura:</b> la sinopsis debe tener <b>tres actos</b> (tres párrafos): <b>planteamiento</b> de la idea principal, <b>nudo</b> y <b>desenlace</b>.</div>"
+   +"<h5>Parte 2. Regla de South Park («pero… por tanto»)</h5><p>Entre un hecho y el siguiente, sustituye el «y entonces» por un <b>PERO</b> (algo se opone, aparece un obstáculo) o por un <b>POR TANTO</b> (consecuencia directa de lo anterior). Así la historia avanza por causas y efectos en lugar de ser una lista de sucesos.</p>"
+   +"<h5>Ejemplo resuelto: una secuencia antes y después</h5>"+tEj
+   +"<div class=\"box ej\"><b>💡 Tip:</b> escribe cada escena de tu sinopsis en una línea y pon entre ellas la palabra <b>PERO</b> o <b>POR TANTO</b>. Si solo te sale «y luego», esa escena aún no empuja la historia. Cambia el orden, añade un obstáculo o elimina la escena.</div>",
+  pasos:["<b>Elige el tema universal principal</b> de la lista (y, si quieres, uno o dos secundarios) y apunta qué quieres decir sobre él, con ayuda de las tres preguntas.","<b>Escribe la sinopsis en tres actos</b> (tres párrafos): planteamiento, nudo y desenlace.","<b>Aplica la regla «pero / por tanto»</b> a tu idea: escribe la cadena de acontecimientos de un acto (o de toda la historia) con un conector entre cada dos hechos.","<b>Subraya o marca</b> los conflictos, las peripecias y el momento de mayor dificultad (la «catástrofe») que han aparecido al aplicar la regla.","<b>Revisa:</b> ¿hay algún «y entonces»? Sustitúyelo por un «pero» o un «por tanto». Si hace falta, ajusta la sinopsis de la parte 1."],
+  entrega:"Entrega en AULES <b>un único documento</b> (PDF o Word) con la parte 1 y la parte 2, nombrado «Apellidos, Nombre A3.7». Esta idea te servirá como punto de partida para el guion de tu cortometraje.",
+  rub:[
+   ["Idea y tema universal","El tema universal está claro y la idea expresa un mensaje propio, original y bien definido","El tema y la idea son claros, aunque poco personales","La idea es confusa o no se relaciona bien con el tema","No hay idea o no se identifica el tema"],
+   ["Estructura en tres actos","Planteamiento, nudo y desenlace bien diferenciados y proporcionados en tres párrafos","Los tres actos están, con algún desequilibrio","Faltan o se confunden dos de los actos","No se aprecia estructura"],
+   ["Aplicación de la regla pero / por tanto","Todos los hechos se enlazan con «pero» o «por tanto» con sentido, sin «y entonces»","La mayoría de los conectores son correctos, con algún «y entonces»","Pocos conectores o usados sin causalidad","No aplica la regla"],
+   ["Conflictos y peripecias","Aparecen obstáculos, giros y un momento de máxima dificultad que mantienen el interés","Hay obstáculos y algún giro, aunque poco desarrollados","Los conflictos son escasos o previsibles","La historia no tiene conflicto"],
+   ["Redacción y presentación","Redacción clara, correcta y ordenada, en un único documento bien nombrado","Redacción correcta con fallos menores o algún detalle de entrega","Redacción poco clara o con muchos errores","Documento incompleto o fuera de formato"]],
+  amp:["Reescribe una escena de tu película favorita con «pero / por tanto» y comprueba qué conectores usa realmente.","Aplica la regla a la idea de un compañero o una compañera y proponedle un «pero» que no haya pensado."]}];
+ const ix=r.findIndex(b=>b[0]==="act");
+ r.splice(ix>=0?ix:r.length,0,act);
+ const t="Realiza la actividad A3.7 (idea de cortometraje y regla de South Park): escribe una sinopsis en tres actos y aplícale la regla «pero / por tanto».";
  if(!u.actividades.includes(t))u.actividades.unshift(t);
 })();
